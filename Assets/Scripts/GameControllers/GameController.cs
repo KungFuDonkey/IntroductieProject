@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
         }
         CreatePlayer(); //Create a networked player object for each player that loads into the multiplayer scenes.
     }
-    //hi
+    
     private void CreatePlayer()
     {
         Debug.Log("Creating Player");
