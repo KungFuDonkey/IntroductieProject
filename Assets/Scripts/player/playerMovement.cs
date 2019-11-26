@@ -83,8 +83,19 @@ public class playerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
     }
+
+
     public void hit()
     {
         lives -= 20;
+        Debug.Log(lives);
+        if (lives <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        animator.SetTrigger("Die");
     }
 }
