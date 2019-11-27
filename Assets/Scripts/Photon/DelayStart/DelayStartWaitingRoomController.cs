@@ -127,12 +127,12 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
             ResetTimer();
         }
         // when there is enough players in the room the start timer will begin counting down
-        if (readyToStart && playerCount == readyPlayers)
+        if (readyToStart)
         {
             fullRoomTimer -= Time.deltaTime;
             timerToStartGame = fullRoomTimer;
         }
-        else if (readyToCountDown && playerCount == readyPlayers)
+        else if (readyToCountDown)
         {
             notFullRoomTimer -= Time.deltaTime;
             timerToStartGame = notFullRoomTimer;
@@ -174,17 +174,17 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         SceneManager.LoadScene(menuSceneIndex);
     }
 
-    public void Ready()
-    {
-        ReadyButton.SetActive(false);
-        UnReadyButton.SetActive(true);
-        readyPlayers++;
-    }
+    //public void Ready()
+    //{
+    //    ReadyButton.SetActive(false);
+    //    UnReadyButton.SetActive(true);
+    //    readyPlayers++;
+    //}
 
-    public void UnReady()
-    {
-        ReadyButton.SetActive(true);
-        UnReadyButton.SetActive(false);
-        readyPlayers--;
-    }
+    //public void UnReady()
+    //{
+    //    ReadyButton.SetActive(true);
+    //    UnReadyButton.SetActive(false);
+    //    readyPlayers--;
+    //}
 }
