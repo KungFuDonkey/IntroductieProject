@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class AvatarSetup : MonoBehaviour
     public int CharacterValue;
     public GameObject myCharacter;
     int spawnPicker;
+    string CharacterName; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,7 @@ public class AvatarSetup : MonoBehaviour
         if (PV.IsMine)
         {
             PV.RPC("RPC_AddCharacter", RpcTarget.AllBuffered, PlayerInfo.PI.mySelectedCharacter);
+            myCharacter = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", CharacterName), GameController.GS.spawnPoints[spawnPicker].position, GameController.GS.spawnPoints[spawnPicker].rotation, 0);
         }
     }
 
@@ -24,6 +28,14 @@ public class AvatarSetup : MonoBehaviour
     void RPC_AddCharacter(int whichCharacter)
     {
         CharacterValue = whichCharacter;
-        myCharacter = Instantiate(PlayerInfo.PI.allCharacters[whichCharacter], GameController.GS.spawnPoints[spawnPicker].position, GameController.GS.spawnPoints[spawnPicker].rotation, transform);
+        switch (whichCharacter)
+        {
+            case 0:
+                CharacterName = "Charmandolphin";
+                break; 
+            case 1:
+                CharacterName = "McQuirtle";
+                break;
+        }
     }
 }
