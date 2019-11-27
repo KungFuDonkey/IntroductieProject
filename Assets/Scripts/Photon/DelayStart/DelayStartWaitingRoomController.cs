@@ -22,6 +22,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
     private int roomSize;
     [SerializeField]
     private int minPlayersToStart;
+    private int readyPlayers;
 
     // text variables for holding the displays for the countdown timer and player count
     [SerializeField]
@@ -42,6 +43,11 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
     private float maxWaitTime;
     [SerializeField]
     private float maxFullRoomWaitTime;
+    [SerializeField]
+    private GameObject ReadyButton;
+    [SerializeField]
+    private GameObject UnReadyButton;
+
 
     private void Start()
     {
@@ -167,4 +173,18 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(menuSceneIndex);
     }
+
+    //public void Ready()
+    //{
+    //    ReadyButton.SetActive(false);
+    //    UnReadyButton.SetActive(true);
+    //    readyPlayers++;
+    //}
+
+    //public void UnReady()
+    //{
+    //    ReadyButton.SetActive(true);
+    //    UnReadyButton.SetActive(false);
+    //    readyPlayers--;
+    //}
 }
