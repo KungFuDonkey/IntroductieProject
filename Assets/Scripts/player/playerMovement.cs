@@ -16,7 +16,6 @@ public class playerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
-    public int lives = 100;
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -82,20 +81,5 @@ public class playerMovement : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-    }
-
-
-    public void hit()
-    {
-        lives -= 20;
-        Debug.Log(lives);
-        if (lives <= 0)
-        {
-            Die();
-        }
-    }
-    void Die()
-    {
-        animator.SetTrigger("Die");
     }
 }

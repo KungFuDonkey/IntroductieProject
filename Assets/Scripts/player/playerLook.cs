@@ -41,15 +41,16 @@ public class playerLook : MonoBehaviour
         
             transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
             playerbody.Rotate(Vector3.up * mouseX);
-            fireTimer -= Time.deltaTime;
+            if(fireTimer > 0)
+            {
+                fireTimer -= Time.deltaTime;
+            }
             camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
 
-            if (Input.GetMouseButton(0) && fireTimer < 0)
+            if (Input.GetMouseButton(0) && fireTimer <= 0)
             {
                 animator.SetTrigger("Attack");
                 GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation);
-                bullet.name = playerbody.name + "b";
-                Debug.Log("Creating Bullet");
                 fireTimer = FIRETIMER;
             }
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6566919889582241477}
   - component: {fileID: 5485755773084567574}
   - component: {fileID: 6610593777205366952}
-  - component: {fileID: 3351282037439876772}
+  - component: {fileID: 7661668131828090832}
   - component: {fileID: -4807044702083222862}
   - component: {fileID: -3408606628873015289}
   - component: {fileID: 5064559294242678947}
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3351282037439876772
+--- !u!114 &7661668131828090832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,18 +93,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2021224530575781666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191dfd8712b0d404e91bf728035ffbad, type: 3}
+  m_Script: {fileID: 11500000, guid: f45b1f124ac57ba46b6a3713aebab69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4000
   maxDistance: 5000
-  radius: 0.6
+  radius: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 512
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
+  damage: 10
+  type: Fire
+  damageDelay: 0.2
 --- !u!54 &-4807044702083222862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -120,7 +123,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &-3408606628873015289
 SphereCollider:
   m_ObjectHideFlags: 0
