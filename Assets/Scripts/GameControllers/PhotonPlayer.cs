@@ -15,7 +15,7 @@ public class PhotonPlayer : MonoBehaviour
         int spawnPicker = Random.Range(0, GameController.GS.spawnPoints.Length);
         if (PV.IsMine)
         {
-            myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtle"),
+            myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Charmandolphin"),
                 GameController.GS.spawnPoints[spawnPicker].position, GameController.GS.spawnPoints[spawnPicker].rotation,0);
             myAvatar.name = "thisPlayer";
             Debug.Log("player created");
