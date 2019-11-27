@@ -12,8 +12,11 @@ public class ProjectileBehavior : MonoBehaviour
     public float radius;
     public LayerMask groundMask;
     public LayerMask playerMask;
+    public float damage;
+    public string type;
+    public float damageDelay = 0.2f;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         PV = GetComponent<PhotonView>();
         controller = GetComponent<Rigidbody>();
@@ -21,21 +24,31 @@ public class ProjectileBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         maxDistance -= speed * Time.deltaTime;
         if (maxDistance < 0)
         {
             Destroy(this.gameObject);
         }
-    }
-    private void OnTriggerEnter(UnityEngine.Collider other)
-    {
-        Destroy(this.gameObject);
-        if (other.gameObject.tag == "Avatar")
+        if(damageDelay >= 0)
         {
-            other.gameObject.SendMessage("hit");
-            Debug.Log("hit Avatar");
+            damageDelay -= Time.deltaTime;
+        }
+    }
+    void OnTriggerEnter(Collider hit)
+    {
+        Debug.Log(damageDelay);
+        if (damageDelay < 0)
+        {
+            Destroy(this.gameObject);
+            if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
+            {
+                GameObject hitObject = hit.gameObject;
+                Debug.Log(hitObject.name);
+                playerBehavior actionScript = hitObject.GetComponent<playerBehavior>();
+                actionScript.hit(damage, type);
+            }
         }
     }
 }
