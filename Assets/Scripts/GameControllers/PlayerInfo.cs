@@ -25,6 +25,7 @@ public class PlayerInfo : MonoBehaviour
                 PlayerInfo.PI = this;
             }
         }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update

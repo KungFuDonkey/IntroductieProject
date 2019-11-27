@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6625515504320424120}
   - component: {fileID: 779518082250305925}
-  - component: {fileID: -1449481213244734187}
+  - component: {fileID: 8326112204578270552}
   m_Layer: 0
   m_Name: PhotonNetworkPlayer
   m_TagString: Untagged
@@ -54,7 +54,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-1449481213244734187
+--- !u!114 &8326112204578270552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,7 +63,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6631512099306905026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94920449594b71149989164c07ec715b, type: 3}
+  m_Script: {fileID: 11500000, guid: d7ac4dd52590b56478eaebf15221d6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAvatar: {fileID: 0}
+  CharacterValue: 0
+  myCharacter: {fileID: 0}
