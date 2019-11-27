@@ -29,8 +29,13 @@ public class ProjectileBehavior : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(UnityEngine.Collider other)
     {
         Destroy(this.gameObject);
+        if (other.gameObject.tag == "Avatar")
+        {
+            other.gameObject.SendMessage("hit");
+            Debug.Log("hit Avatar");
+        }
     }
 }
