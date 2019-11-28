@@ -14,7 +14,7 @@ public class ProjectileBehavior : MonoBehaviour
     public LayerMask playerMask;
     public float damage;
     public string type;
-    public float damageDelay = 0.2f;
+    bool fired = false;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -31,15 +31,10 @@ public class ProjectileBehavior : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if(damageDelay >= 0)
-        {
-            damageDelay -= Time.deltaTime;
-        }
     }
     void OnTriggerEnter(Collider hit)
     {
-        Debug.Log(damageDelay);
-        if (damageDelay < 0)
+        if (fired)
         {
             Destroy(this.gameObject);
             if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
@@ -50,5 +45,6 @@ public class ProjectileBehavior : MonoBehaviour
                 actionScript.hit(damage, type);
             }
         }
+        fired = true;
     }
 }
