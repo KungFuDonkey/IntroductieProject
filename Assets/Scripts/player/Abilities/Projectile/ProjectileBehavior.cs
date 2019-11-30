@@ -9,7 +9,6 @@ public class ProjectileBehavior : Ability
     protected float speed;
     protected float maxDistance;
     private bool fired = false;
-    public LayerMask groundMask;
     // Start is called before the first frame update
     protected override void Start()
     {

@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     // This script will be added to any multiplayer scene
     public Transform[] spawnPoints = new Transform[4];
+    public GameObject thisPlayer;
     void Start()
     {
         for (int i = 0; i < 2; i++)
@@ -33,5 +34,12 @@ public class GameController : MonoBehaviour
             GameController.GS = this;
         }
     }
-
+    public GameObject player()
+    {
+        if(thisPlayer == null)
+        {
+            thisPlayer = GameObject.FindGameObjectWithTag("thisPlayer");
+        }
+        return thisPlayer;
+    }
 }
