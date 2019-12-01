@@ -949,11 +949,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4934736084870232014, guid: 7a44ca02cd47215499b528ec3296c5d0,
-        type: 3}
-      propertyPath: m_Name
-      value: NetworkController
-      objectReference: {fileID: 0}
     - target: {fileID: 4934736084870232013, guid: 7a44ca02cd47215499b528ec3296c5d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1008,6 +1003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934736084870232014, guid: 7a44ca02cd47215499b528ec3296c5d0,
+        type: 3}
+      propertyPath: m_Name
+      value: NetworkController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a44ca02cd47215499b528ec3296c5d0, type: 3}
@@ -1806,11 +1806,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4992565987801354785, guid: 67dd2bb0e04082a429f665ba392b4225,
-        type: 3}
-      propertyPath: m_Name
-      value: DelayStartLobbyController
-      objectReference: {fileID: 0}
     - target: {fileID: 4992565987801354784, guid: 67dd2bb0e04082a429f665ba392b4225,
         type: 3}
       propertyPath: delayStartButton
@@ -1825,6 +1820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: roomSize
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992565987801354785, guid: 67dd2bb0e04082a429f665ba392b4225,
+        type: 3}
+      propertyPath: m_Name
+      value: DelayStartLobbyController
       objectReference: {fileID: 0}
     - target: {fileID: 4992565987801354787, guid: 67dd2bb0e04082a429f665ba392b4225,
         type: 3}

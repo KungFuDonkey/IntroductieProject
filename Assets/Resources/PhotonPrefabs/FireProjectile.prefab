@@ -96,17 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45b1f124ac57ba46b6a3713aebab69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8000
-  maxDistance: 5000
-  radius: 0.5
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 512
   playerMask:
     serializedVersion: 2
     m_Bits: 2048
-  damage: 10
-  type: Fire
 --- !u!54 &-4807044702083222862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,12 +109,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!135 &-3408606628873015289
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -134,7 +126,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5064559294242678947
 MonoBehaviour:

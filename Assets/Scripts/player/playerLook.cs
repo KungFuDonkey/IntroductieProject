@@ -38,7 +38,6 @@ public class playerLook : MonoBehaviour
             yRotation -= mouseY;
             yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        
             transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
             playerbody.Rotate(Vector3.up * mouseX);
             if(fireTimer > 0)
@@ -51,7 +50,13 @@ public class playerLook : MonoBehaviour
             {
                 animator.SetTrigger("Attack");
                 GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation);
+                bullet.transform.name += 'b';
                 fireTimer = FIRETIMER;
+            }
+            if(Input.GetKey(KeyCode.E)){
+                GameObject aoe = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "AOE"), head.position, Quaternion.identity);
+                aoe.transform.name += '*';
+                aoe.transform.parent = playerbody;
             }
         }
     }
