@@ -1,22 +1,23 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-public class playerBehavior : MonoBehaviour
+public class fakemonBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     private PhotonView PV;
     CharacterController controller;
     private Animator animator;
-    public float speed;
-    public float jumpspeed;
+    protected string type;
+    protected float movementSpeed;
+    protected float jumpspeed;
+    protected float lives;
     public float gravity;
     public float mouseSens;
-    Vector3 velocity;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
-    public float lives = 100;
+    Vector3 velocity;
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -52,7 +53,7 @@ public class playerBehavior : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            controller.Move(movement * 2 * speed * Time.deltaTime);
+            controller.Move(movement * 2 * movementSpeed * Time.deltaTime);
             if (movement.x != 0 || movement.z != 0)
             {
                 animator.SetBool("IsWalking", false);
@@ -66,7 +67,7 @@ public class playerBehavior : MonoBehaviour
         }
         else
         {
-            controller.Move(movement * speed * Time.deltaTime);
+            controller.Move(movement * movementSpeed * Time.deltaTime);
             if (movement.x != 0 || movement.z != 0)
             {
                 animator.SetBool("IsWalking", true);

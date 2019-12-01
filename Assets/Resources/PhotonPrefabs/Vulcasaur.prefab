@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 1634077590255025346}
   - component: {fileID: 8895985945499285734}
   - component: {fileID: 158531355123098309}
-  - component: {fileID: 945283963505953238}
+  - component: {fileID: 1567755336930255965}
   m_Layer: 11
   m_Name: Vulcasaur
   m_TagString: Untagged
@@ -1411,7 +1411,7 @@ CapsuleCollider:
   m_Height: 93.55774
   m_Direction: 1
   m_Center: {x: 0, y: 33.78721, z: 9.601702}
---- !u!114 &945283963505953238
+--- !u!114 &1567755336930255965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1420,11 +1420,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4223839372269688492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5959770e00c328746a1874642297b4b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3285474a576bb21498835e4f67d94332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpspeed: 10
   gravity: 20
   mouseSens: 100
   groundCheck: {fileID: 1847489981280627831}
@@ -1432,7 +1430,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  lives: 100
 --- !u!1 &4258309278135129035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,6 +1773,8 @@ MonoBehaviour:
   mouseSens: 100
   fireTimer: 2
   FIRETIMER: 2
+  aoeTimer: 10
+  AOETIMER: 10
 --- !u!1 &5191748653226388422
 GameObject:
   m_ObjectHideFlags: 0

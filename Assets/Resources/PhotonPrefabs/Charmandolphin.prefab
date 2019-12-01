@@ -2735,7 +2735,7 @@ GameObject:
   - component: {fileID: 5102670425140187731}
   - component: {fileID: 3418473287446810770}
   - component: {fileID: 3720170820068383744}
-  - component: {fileID: 2209024589675748964}
+  - component: {fileID: 8258121473839677637}
   m_Layer: 11
   m_Name: Charmandolphin
   m_TagString: Avatar
@@ -2881,7 +2881,7 @@ CapsuleCollider:
   m_Height: 71.24765
   m_Direction: 1
   m_Center: {x: 0, y: 30.684467, z: 0}
---- !u!114 &2209024589675748964
+--- !u!114 &8258121473839677637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2890,11 +2890,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8384545620802384373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5959770e00c328746a1874642297b4b2, type: 3}
+  m_Script: {fileID: 11500000, guid: e96f7fa35b8dcc842962a86c8b5dcd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpspeed: 10
   gravity: 20
   mouseSens: 100
   groundCheck: {fileID: 2493336879855191155}
@@ -2902,7 +2900,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  lives: 100
 --- !u!1 &8531459886400750515
 GameObject:
   m_ObjectHideFlags: 0

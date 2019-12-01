@@ -36,7 +36,7 @@ public class ProjectileBehavior : Ability
             {
                 GameObject hitObject = hit.gameObject;
                 Debug.Log(hitObject.name);
-                playerBehavior actionScript = hitObject.GetComponent<playerBehavior>();
+                fakemonBehaviour actionScript = hitObject.GetComponent<fakemonBehaviour>();
                 actionScript.hit(damage, type);
             }
         }

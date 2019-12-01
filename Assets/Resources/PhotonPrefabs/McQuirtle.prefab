@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5250929922091505284}
   - component: {fileID: 6982336741518937094}
   - component: {fileID: 5700708709367557993}
-  - component: {fileID: 4121285679223828329}
+  - component: {fileID: 2150740757060555040}
   m_Layer: 11
   m_Name: McQuirtle
   m_TagString: Untagged
@@ -163,7 +163,7 @@ CapsuleCollider:
   m_Height: 49.297962
   m_Direction: 1
   m_Center: {x: 0, y: 21.815987, z: 6.3037395}
---- !u!114 &4121285679223828329
+--- !u!114 &2150740757060555040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,11 +172,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 56373786714794946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5959770e00c328746a1874642297b4b2, type: 3}
+  m_Script: {fileID: 11500000, guid: e96f7fa35b8dcc842962a86c8b5dcd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpspeed: 10
   gravity: 20
   mouseSens: 100
   groundCheck: {fileID: 4773491524312209321}
@@ -184,7 +182,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  lives: 100
 --- !u!1 &81983905753314798
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +270,8 @@ MonoBehaviour:
   mouseSens: 100
   fireTimer: 2
   FIRETIMER: 2
+  aoeTimer: 10
+  AOETIMER: 10
 --- !u!114 &5331799324525401158
 MonoBehaviour:
   m_ObjectHideFlags: 0

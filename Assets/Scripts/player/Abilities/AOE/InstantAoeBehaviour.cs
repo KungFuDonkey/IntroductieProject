@@ -38,7 +38,7 @@ public class InstantAoeBehaviour : Ability
     public void hitPlayer()
     {
         GameObject player = GameController.GS.player();
-        playerBehavior actionScript = player.GetComponent<playerBehavior>();
+        fakemonBehaviour actionScript = player.GetComponent<fakemonBehaviour>();
         actionScript.hit(damage, type);
     }
 }
