@@ -1731,6 +1731,8 @@ MonoBehaviour:
   mouseSens: 100
   fireTimer: -10.655812
   FIRETIMER: 2
+  aoeTimer: 10
+  AOETIMER: 10
 --- !u!114 &7523582103493427371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2732,8 +2734,8 @@ GameObject:
   - component: {fileID: 2796515436145995971}
   - component: {fileID: 5102670425140187731}
   - component: {fileID: 3418473287446810770}
-  - component: {fileID: 1217216836909885894}
   - component: {fileID: 3720170820068383744}
+  - component: {fileID: 2209024589675748964}
   m_Layer: 11
   m_Name: Charmandolphin
   m_TagString: Avatar
@@ -2865,27 +2867,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1217216836909885894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8384545620802384373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0931b1fcf79b7f34c869311844c99804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  jumpspeed: 10
-  gravity: 20
-  mouseSens: 100
-  groundCheck: {fileID: 2493336879855191155}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!136 &3720170820068383744
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2900,6 +2881,28 @@ CapsuleCollider:
   m_Height: 71.24765
   m_Direction: 1
   m_Center: {x: 0, y: 30.684467, z: 0}
+--- !u!114 &2209024589675748964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384545620802384373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5959770e00c328746a1874642297b4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  jumpspeed: 10
+  gravity: 20
+  mouseSens: 100
+  groundCheck: {fileID: 2493336879855191155}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
+  lives: 100
 --- !u!1 &8531459886400750515
 GameObject:
   m_ObjectHideFlags: 0

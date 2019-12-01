@@ -17,6 +17,7 @@ public class playerLook : MonoBehaviour
     
     public float mouseSens;
     public float fireTimer = 2, FIRETIMER = 2;
+    public float aoeTimer = 10, AOETIMER = 10;
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -44,6 +45,10 @@ public class playerLook : MonoBehaviour
             {
                 fireTimer -= Time.deltaTime;
             }
+            if (aoeTimer > 0)
+            {
+                aoeTimer -= Time.deltaTime;
+            }
             camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
 
             if (Input.GetMouseButton(0) && fireTimer <= 0)
@@ -53,10 +58,11 @@ public class playerLook : MonoBehaviour
                 bullet.transform.name += 'b';
                 fireTimer = FIRETIMER;
             }
-            if(Input.GetKey(KeyCode.E)){
+            if (Input.GetKey(KeyCode.E) && aoeTimer <= 0){
                 GameObject aoe = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "AOE"), head.position, Quaternion.identity);
                 aoe.transform.name += '*';
                 aoe.transform.parent = playerbody;
+                aoeTimer = AOETIMER;
             }
         }
     }

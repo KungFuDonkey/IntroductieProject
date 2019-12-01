@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4929662398191255624
+--- !u!1 &6100642684049729898
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6201642585777350297}
-  - component: {fileID: 8989108916982873392}
-  - component: {fileID: 6306196828928437661}
-  - component: {fileID: 3319384163484290112}
-  - component: {fileID: -3874959875485521082}
+  - component: {fileID: 2889383189856392167}
+  - component: {fileID: 4747452612043256400}
+  - component: {fileID: 79706103377553576}
+  - component: {fileID: 664589628038737915}
+  - component: {fileID: 326820198304111532}
   m_Layer: 0
   m_Name: AOE
   m_TagString: Untagged
@@ -20,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6201642585777350297
+--- !u!4 &2889383189856392167
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929662398191255624}
+  m_GameObject: {fileID: 6100642684049729898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &8989108916982873392
+--- !u!2083052967 &4747452612043256400
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929662398191255624}
+  m_GameObject: {fileID: 6100642684049729898}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 1e7c7e3d7dd273f4f86b99af4fb24bc4, type: 3}
   m_InitialEventName: OnPlay
@@ -50,9 +50,9 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 2
-        m_Name: Radius
-        m_Overridden: 0
+      - m_Value: 500
+        m_Name: Spawn Rate
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -73,13 +73,13 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!73398921 &6306196828928437661
+--- !u!73398921 &79706103377553576
 VFXRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929662398191255624}
+  m_GameObject: {fileID: 6100642684049729898}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -112,13 +112,13 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3319384163484290112
+--- !u!114 &664589628038737915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929662398191255624}
+  m_GameObject: {fileID: 6100642684049729898}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
@@ -134,13 +134,13 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-3874959875485521082
+--- !u!114 &326820198304111532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929662398191255624}
+  m_GameObject: {fileID: 6100642684049729898}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61883f9b2b0ebc84a8d436faf9c24faa, type: 3}
