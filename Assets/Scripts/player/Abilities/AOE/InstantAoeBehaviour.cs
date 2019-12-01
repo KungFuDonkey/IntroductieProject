@@ -27,7 +27,7 @@ public class InstantAoeBehaviour : Ability
             interval -= Time.deltaTime;
             if (interval < 0)
             {
-                if (Physics.CheckSphere(this.gameObject.transform.position, radius, LayerMask.NameToLayer("ThisPlayer")))
+                if (Physics.CheckSphere(this.gameObject.transform.position, radius, LayerMask.NameToLayer("ThisPlayer")) && name[name.Length - 1] != '*')
                 {
                     hitPlayer();
                 }

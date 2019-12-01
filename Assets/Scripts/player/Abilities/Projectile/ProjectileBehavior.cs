@@ -32,7 +32,7 @@ public class ProjectileBehavior : Ability
         if (fired)
         {
             Destroy(this.gameObject);
-            if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
+            if (hit.gameObject.layer == LayerMask.NameToLayer("ThisPlayer") && name[name.Length - 1] != 'b')
             {
                 GameObject hitObject = hit.gameObject;
                 Debug.Log(hitObject.name);
