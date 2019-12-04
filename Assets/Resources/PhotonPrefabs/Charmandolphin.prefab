@@ -1685,9 +1685,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2523923952714421724}
-  - component: {fileID: 6199981880973031334}
   - component: {fileID: 7523582103493427371}
   - component: {fileID: 4407284866759229048}
+  - component: {fileID: 67344160415455881}
   m_Layer: 11
   m_Name: Head
   m_TagString: Untagged
@@ -1712,27 +1712,6 @@ Transform:
   m_Father: {fileID: 3718748312988534380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6199981880973031334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5606216908649842579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84544e34bd618cc42b457f02bbd63636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerbody: {fileID: 7552208850684891247}
-  head: {fileID: 2523923952714421724}
-  camera: {fileID: 4046155511486112766}
-  projectileSpawner: {fileID: 4282306356184479805}
-  mouseSens: 100
-  fireTimer: -10.655812
-  FIRETIMER: 2
-  aoeTimer: 10
-  AOETIMER: 10
 --- !u!114 &7523582103493427371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1770,6 +1749,23 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &67344160415455881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606216908649842579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerbody: {fileID: 7552208850684891247}
+  head: {fileID: 2523923952714421724}
+  camera: {fileID: 4046155511486112766}
+  projectileSpawner: {fileID: 4282306356184479805}
+  mouseSens: 100
 --- !u!1 &5615063258405618997
 GameObject:
   m_ObjectHideFlags: 0

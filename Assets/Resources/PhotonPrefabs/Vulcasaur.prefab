@@ -1690,7 +1690,7 @@ GameObject:
   - component: {fileID: 1454044225763891945}
   - component: {fileID: 4724722807144590881}
   - component: {fileID: 6708659005589203262}
-  - component: {fileID: 2175509645498296510}
+  - component: {fileID: 4631906706078805988}
   m_Layer: 0
   m_Name: Head 5
   m_TagString: Untagged
@@ -1754,7 +1754,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &2175509645498296510
+--- !u!114 &4631906706078805988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5051606334804926641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84544e34bd618cc42b457f02bbd63636, type: 3}
+  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerbody: {fileID: 920227870203667647}
@@ -1771,10 +1771,6 @@ MonoBehaviour:
   camera: {fileID: 2626312057498619278}
   projectileSpawner: {fileID: 1403123309957144746}
   mouseSens: 100
-  fireTimer: 2
-  FIRETIMER: 2
-  aoeTimer: 10
-  AOETIMER: 10
 --- !u!1 &5191748653226388422
 GameObject:
   m_ObjectHideFlags: 0
