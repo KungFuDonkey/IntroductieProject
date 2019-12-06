@@ -256,7 +256,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3244686595414911464}
   - component: {fileID: 2416582211594642401}
-  - component: {fileID: 5925513768955410150}
   - component: {fileID: 2649197733209642847}
   m_Layer: 11
   m_Name: HeadSkin
@@ -383,19 +382,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0066898465, y: 0.5083045, z: 0.047478527}
     m_Extent: {x: 0.11998923, y: 0.17843318, z: 0.14143117}
   m_DirtyAABB: 0
---- !u!114 &5925513768955410150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295032572559083424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d535fced55a040b49a3b1aeafa84ccf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PV: {fileID: 2147205479657838164}
 --- !u!64 &2649197733209642847
 MeshCollider:
   m_ObjectHideFlags: 0
