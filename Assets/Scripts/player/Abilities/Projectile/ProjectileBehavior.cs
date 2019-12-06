@@ -39,10 +39,11 @@ public class ProjectileBehavior : Ability
     {
         if (fired)
         {
-            if (hit.gameObject.layer == LayerMask.NameToLayer("ThisPlayer") && name[name.Length - 1] != 'b')
+            Debug.Log(hit.gameObject.layer);
+            if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
             {
                 PhotonView hitObject = hit.gameObject.GetPhotonView();
-                hitObject.RPC("hit", RpcTarget.All, new object[] { damage, type });
+                hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type });
             }
             PhotonNetwork.Destroy(this.gameObject);
         }

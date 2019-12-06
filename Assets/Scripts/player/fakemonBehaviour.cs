@@ -27,10 +27,6 @@ public class fakemonBehaviour : MonoBehaviour
         {
             Destroy(this);
         }
-        else
-        {
-            this.gameObject.layer = LayerMask.NameToLayer("ThisPlayer");
-        }
     }
 
     // Update is called once per frame
@@ -96,6 +92,6 @@ public class fakemonBehaviour : MonoBehaviour
         {
             animator.SetTrigger("Die");
         }
-        Debug.Log("hit");
+        Debug.Log(lives);
     }
 }
