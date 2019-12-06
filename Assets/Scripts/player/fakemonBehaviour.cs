@@ -8,6 +8,8 @@ public class fakemonBehaviour : MonoBehaviour
     CharacterController controller;
     private Animator animator;
     protected string type;
+    protected string weaktype;
+    protected string strongtype;
     protected float movementSpeed;
     protected float jumpspeed;
     protected float lives;
@@ -87,7 +89,19 @@ public class fakemonBehaviour : MonoBehaviour
     [PunRPC]
     public void hit(float damage, string type)
     {
-        lives -= damage;
+        if(type == weaktype)
+        {
+            lives -= (float)(0.5 * damage);
+        }
+        else if(type == strongtype)
+        {
+            lives -= (float)(1.5 * damage);
+        }
+        else
+        {
+            lives -= damage;
+        }
+
         if (lives <= 0)
         {
             animator.SetTrigger("Die");
