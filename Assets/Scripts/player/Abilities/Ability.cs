@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
-    PhotonView PV;
+    protected PhotonView PV;
     protected float damage;
     protected string type;
     public LayerMask playerMask;
@@ -13,6 +13,10 @@ public class Ability : MonoBehaviour
     protected virtual void Start()
     {
         PV = GetComponent<PhotonView>();
+        if (!PV.IsMine)
+        {
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame

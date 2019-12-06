@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 1634077590255025346}
   - component: {fileID: 8895985945499285734}
   - component: {fileID: 158531355123098309}
-  - component: {fileID: 945283963505953238}
+  - component: {fileID: 1567755336930255965}
   m_Layer: 11
   m_Name: Vulcasaur
   m_TagString: Untagged
@@ -1411,7 +1411,7 @@ CapsuleCollider:
   m_Height: 93.55774
   m_Direction: 1
   m_Center: {x: 0, y: 33.78721, z: 9.601702}
---- !u!114 &945283963505953238
+--- !u!114 &1567755336930255965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1420,11 +1420,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4223839372269688492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5959770e00c328746a1874642297b4b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3285474a576bb21498835e4f67d94332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpspeed: 10
   gravity: 20
   mouseSens: 100
   groundCheck: {fileID: 1847489981280627831}
@@ -1432,7 +1430,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  lives: 100
 --- !u!1 &4258309278135129035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,7 +1690,7 @@ GameObject:
   - component: {fileID: 1454044225763891945}
   - component: {fileID: 4724722807144590881}
   - component: {fileID: 6708659005589203262}
-  - component: {fileID: 2175509645498296510}
+  - component: {fileID: 4631906706078805988}
   m_Layer: 0
   m_Name: Head 5
   m_TagString: Untagged
@@ -1757,7 +1754,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &2175509645498296510
+--- !u!114 &4631906706078805988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1766,7 +1763,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5051606334804926641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84544e34bd618cc42b457f02bbd63636, type: 3}
+  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerbody: {fileID: 920227870203667647}
@@ -1774,8 +1771,6 @@ MonoBehaviour:
   camera: {fileID: 2626312057498619278}
   projectileSpawner: {fileID: 1403123309957144746}
   mouseSens: 100
-  fireTimer: 2
-  FIRETIMER: 2
 --- !u!1 &5191748653226388422
 GameObject:
   m_ObjectHideFlags: 0

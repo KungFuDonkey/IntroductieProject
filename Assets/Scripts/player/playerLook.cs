@@ -1,23 +1,23 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class playerLook : MonoBehaviour
 {
     // Start is called before the first frame update
-    private PhotonView PV;
+    protected PhotonView PV;
     public Transform playerbody;
     public Transform head;
     public Transform camera; 
-    private Animator animator;
+    protected Animator animator;
     public Transform projectileSpawner;
     float yRotation = 0f;
     
     public float mouseSens;
-    public float fireTimer = 2, FIRETIMER = 2;
-    public float aoeTimer = 10, AOETIMER = 10;
+    protected float attackSpeed, ATTACKSPEED;
+    protected float eAbility, EABILITY;
+    protected float qAbility, QABILITY;
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -26,44 +26,52 @@ public class playerLook : MonoBehaviour
         if (!PV.IsMine)
         {
             Destroy(camera.gameObject);
+            Destroy(this);
         }
     }
     
     // Update is called once per frame
     void LateUpdate()
     {
-        if (PV.IsMine)
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+        yRotation -= mouseY;
+        yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+
+        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        playerbody.Rotate(Vector3.up * mouseX);
+        if (attackSpeed > 0)
         {
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
-            yRotation -= mouseY;
-            yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-
-            transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
-            playerbody.Rotate(Vector3.up * mouseX);
-            if(fireTimer > 0)
-            {
-                fireTimer -= Time.deltaTime;
-            }
-            if (aoeTimer > 0)
-            {
-                aoeTimer -= Time.deltaTime;
-            }
-            camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
-
-            if (Input.GetMouseButton(0) && fireTimer <= 0)
-            {
-                animator.SetTrigger("Attack");
-                GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation);
-                bullet.transform.name += 'b';
-                fireTimer = FIRETIMER;
-            }
-            if (Input.GetKey(KeyCode.E) && aoeTimer <= 0){
-                GameObject aoe = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "AOE"), head.position, Quaternion.identity);
-                aoe.transform.name += '*';
-                aoe.transform.parent = playerbody;
-                aoeTimer = AOETIMER;
-            }
+            attackSpeed -= Time.deltaTime;
         }
+        if (eAbility > 0)
+        {
+            eAbility -= Time.deltaTime;
+        }
+        camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+
+        if (Input.GetMouseButton(0) && attackSpeed <= 0)
+        {
+            basicAttack();
+        }
+        else if (Input.GetKey(KeyCode.E) && eAbility <= 0)
+        {
+            eAttack();
+        }
+        else if(Input.GetKey(KeyCode.Q) && qAbility <= 0)
+        {
+            qAttack();
+        }
+    }
+    protected virtual void basicAttack()
+    {
+    }
+    protected virtual void eAttack()
+    {
+
+    }
+    protected virtual void qAttack()
+    {
+
     }
 }

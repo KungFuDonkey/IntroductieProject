@@ -6,7 +6,7 @@ public class FireBall : ProjectileBehavior
 {
     public FireBall()
     {
-        speed = 10;
+        speed = 20;
         maxDistance = 10000;
         damage = 10;
         type = "Fire";
