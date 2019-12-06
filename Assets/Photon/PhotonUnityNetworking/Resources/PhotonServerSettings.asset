@@ -18,7 +18,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: eu
     Server: 
     Port: 0
     Protocol: 0
@@ -33,10 +33,9 @@ MonoBehaviour:
   - DestroyRpc
   - DestroySpaceship
   - Fire
+  - hit
   - RespawnSpaceship
   - RPC_AddCharacter
   - RPC_SyncTimer
-  - onRemoteTrigger
-  - hit
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
