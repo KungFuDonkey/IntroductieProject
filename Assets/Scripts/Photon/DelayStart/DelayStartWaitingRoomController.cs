@@ -141,7 +141,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         {
             if (startingGame)
                 return;
-            StartGame();
+            StartCharacterSelection();
         }
     }
 
@@ -153,7 +153,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         fullRoomTimer = maxFullRoomWaitTime;
     }
 
-    void StartGame()
+    void StartCharacterSelection()
     {
         //Multiplayer scene is loaded to start the game
         startingGame = true;
