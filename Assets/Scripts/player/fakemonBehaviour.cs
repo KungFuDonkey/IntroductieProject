@@ -108,4 +108,8 @@ public class fakemonBehaviour : MonoBehaviour
         }
         Debug.Log(lives);
     }
+    public void AddSpeed(Vector3 Speed)
+    {
+        velocity = velocity + Speed;
+    }
 }

@@ -11,4 +11,5 @@ public class VulcanoSaur : fakemonBehaviour
         jumpspeed = 5;
         lives = 200;
     }
+
 }

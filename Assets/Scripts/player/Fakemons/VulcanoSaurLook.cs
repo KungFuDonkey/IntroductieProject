@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class VulcanoSaurLook : playerLook
 {
+    public GameObject VulcasaurAvatar; 
     VulcanoSaurLook()
     {
         attackSpeed = 0;
@@ -20,9 +21,16 @@ public class VulcanoSaurLook : playerLook
     }
     protected override void eAttack()
     {
-        GameObject aoe = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "AOE"), head.position, Quaternion.identity);
-        aoe.transform.name += '*';
-        aoe.transform.parent = playerbody;
+        Transform Vulcasaur = VulcasaurAvatar.transform.GetChild(0).transform;
+        Quaternion angleAdjust = Quaternion.Euler(16.622f, Vulcasaur.rotation.y, 0);
+        Vector3 positionAdjust = Vulcasaur.up * 4f - Vulcasaur.forward * -1;
+        GameObject Vulcano = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vulcano"), Vulcasaur.position - positionAdjust, angleAdjust);
+        Vulcano.transform.name += '*';
+        Vulcano.transform.parent = VulcasaurAvatar.transform;
         eAbility = EABILITY;
+    }
+    protected override void qAttack()
+    {
+        
     }
 }

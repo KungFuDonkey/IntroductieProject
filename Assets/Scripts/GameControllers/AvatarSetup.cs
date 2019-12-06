@@ -37,7 +37,7 @@ public class AvatarSetup : MonoBehaviour
                 CharacterName = "McQuirtle";
                 break;
             case 2:
-                CharacterName = "Vulcasaur";
+                CharacterName = "VulcasaurAvatar";
                 break;
         }
     }
