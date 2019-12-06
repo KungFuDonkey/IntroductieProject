@@ -60,7 +60,7 @@ public class playerLook : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.Q) && qAbility <= 0)
         {
-
+            qAttack();
         }
     }
     protected virtual void basicAttack()

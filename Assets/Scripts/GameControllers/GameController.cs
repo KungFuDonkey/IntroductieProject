@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
             for (int j = 0; j < 2; j++)
             {
                 spawnPoints[2 * i + j] = Resources.Load<Transform>("PlayerSpawner");
-                spawnPoints[2 * i + j] = Instantiate(spawnPoints[2 * i + j], new Vector3(25 + 50 * i, 50, 25 + 50 * j), Quaternion.identity);
+                spawnPoints[2 * i + j] = Instantiate(spawnPoints[2 * i + j], new Vector3(25 + 50 * i, 20, 25 + 50 * j), Quaternion.identity);
                 spawnPoints[2 * i + j].transform.parent = gameObject.transform;
             }
         }

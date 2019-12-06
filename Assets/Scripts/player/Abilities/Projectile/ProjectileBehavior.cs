@@ -9,6 +9,7 @@ public class ProjectileBehavior : Ability
     protected float speed;
     protected float maxDistance;
     private bool fired = false;
+    private float firedTimer = 0.1f;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -21,24 +22,29 @@ public class ProjectileBehavior : Ability
     {
         base.Update();
         maxDistance -= speed;
-        Debug.Log(maxDistance);
         if (maxDistance < 0)
         {
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+        if(!fired && firedTimer > 0)
+        {
+            firedTimer -= Time.deltaTime;
+            if(firedTimer < 0)
+            {
+                fired = true;
+            }
         }
     }
     void OnTriggerEnter(Collider hit)
     {
         if (fired)
         {
-            Destroy(this.gameObject);
             if (hit.gameObject.layer == LayerMask.NameToLayer("ThisPlayer") && name[name.Length - 1] != 'b')
             {
-                GameObject hitObject = hit.gameObject;
-                Debug.Log(hitObject.name);
-                fakemonBehaviour actionScript = hitObject.GetComponent<fakemonBehaviour>();
-                actionScript.hit(damage, type);
+                PhotonView hitObject = hit.gameObject.GetPhotonView();
+                hitObject.RPC("hit", RpcTarget.All, new object[] { damage, type });
             }
+            PhotonNetwork.Destroy(this.gameObject);
         }
         fired = true;
     }
