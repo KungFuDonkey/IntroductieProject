@@ -11,6 +11,12 @@ public class McSquirtleLook : playerLook
         eAbility = 0;
         EABILITY = 10f;
     }
+    protected override void LateUpdate()
+    {
+        base.LateUpdate();
+        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+    }
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");

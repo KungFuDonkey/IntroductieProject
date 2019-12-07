@@ -11,6 +11,14 @@ public class VulcanoSaurLook : playerLook
         ATTACKSPEED = 0.8f;
         eAbility = 0;
         EABILITY = 12f;
+        qAbility = 0;
+        QABILITY = 12f;
+    }
+    protected override void LateUpdate()
+    {
+        base.LateUpdate();
+        transform.localRotation = Quaternion.Euler(0f, 0f, yRotation);
+        camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
     }
     protected override void basicAttack()
     {
@@ -31,6 +39,9 @@ public class VulcanoSaurLook : playerLook
     }
     protected override void qAttack()
     {
-        
+        Transform Vulcasaur = VulcasaurAvatar.transform.GetChild(0).transform;
+        GameObject MagmaVines = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "MagmaVines"), Vulcasaur.position, Vulcasaur.rotation);
+        MagmaVines.transform.parent = Vulcasaur.transform;
+        qAbility = QABILITY;
     }
 }

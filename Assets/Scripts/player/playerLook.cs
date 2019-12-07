@@ -12,7 +12,7 @@ public class playerLook : MonoBehaviour
     public Transform camera; 
     protected Animator animator;
     public Transform projectileSpawner;
-    float yRotation = 0f;
+    protected float yRotation = 0f;
     
     public float mouseSens;
     protected float attackSpeed, ATTACKSPEED;
@@ -31,14 +31,13 @@ public class playerLook : MonoBehaviour
     }
     
     // Update is called once per frame
-    void LateUpdate()
+    protected virtual void LateUpdate()
     {
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         yRotation -= mouseY;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         playerbody.Rotate(Vector3.up * mouseX);
         if (attackSpeed > 0)
         {
@@ -48,7 +47,10 @@ public class playerLook : MonoBehaviour
         {
             eAbility -= Time.deltaTime;
         }
-        camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        if (qAbility > 0)
+        {
+            qAbility -= Time.deltaTime;
+        }
 
         if (Input.GetMouseButton(0) && attackSpeed <= 0)
         {
