@@ -12,52 +12,29 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
     // photon view for sending rpc that updates the timer
     private PhotonView myPhotonView;
 
-    // scene navigation indexes
-    [SerializeField]
-    private int multiplayerSceneIndex;
-    [SerializeField]
-    private int menuSceneIndex;
     // number of players in the room out of the total room size
     private int playerCount;
     private int roomSize;
-    [SerializeField]
-    private int minPlayersToStart;
-    private int readyPlayers;
 
     // text variables for holding the displays for the countdown timer and player count
     [SerializeField]
     private Text playerCountDisplay;
     [SerializeField]
-    private Text timerToStartDisplay;
-
-    // bool values for if the timer can count down
-    private bool readyToCountDown;
-    private bool readyToStart;
-    private bool startingGame;
-    //countdown timer variables
-    private float timerToStartGame;
-    private float notFullRoomTimer;
-    private float fullRoomTimer;
+    private Text playerListDisplay;
+    [SerializeField]
+    private InputField inputField;
     //countdown timer reset variables
     [SerializeField]
-    private float maxWaitTime;
-    [SerializeField]
-    private float maxFullRoomWaitTime;
-    [SerializeField]
     private GameObject ReadyButton;
-    [SerializeField]
-    private GameObject UnReadyButton;
 
 
     private void Start()
     {
         //initialize variables
         myPhotonView = GetComponent<PhotonView>();
-        fullRoomTimer = maxFullRoomWaitTime;
-        notFullRoomTimer = maxWaitTime;
-        timerToStartGame = maxWaitTime;
-
         PlayerCountUpdate();
+        if (PhotonNetwork.IsMasterClient)
+            ReadyButton.SetActive(true);
     }
 
     void PlayerCountUpdate()
@@ -68,19 +45,8 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         playerCount = PhotonNetwork.PlayerList.Length;
         roomSize = PhotonNetwork.CurrentRoom.MaxPlayers;
         playerCountDisplay.text = playerCount + ":" + roomSize;
-        if (playerCount == roomSize)
-        {
-            readyToStart = true;
-        }
-        else if (playerCount >= minPlayersToStart)
-        {
-            readyToCountDown = true;
-        }
-        else
-        {
-            readyToCountDown = false;
-            readyToStart = false;
-        } 
+        if(PhotonNetwork.IsMasterClient)
+            myPhotonView.RPC("UpdatePlayerList", RpcTarget.AllBuffered);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -88,20 +54,21 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         //called whenever a new player joins the room
         PlayerCountUpdate();
         //send master clients countdown timer to all other players in order to sync time.
-        if(PhotonNetwork.IsMasterClient)
-            myPhotonView.RPC("RPC_SyncTimer", RpcTarget.Others, timerToStartGame);
     }
 
     [PunRPC]
-    private void RPC_SyncTimer(float timeIn)
+    private void UpdatePlayerList()
     {
-        //RPC for syncing the countdown timer to those that join after it has started the countdown
-        timerToStartGame = timeIn;
-        notFullRoomTimer = timeIn;
-        if (timeIn < fullRoomTimer)
+        string playerlist = "";
+        foreach (Player p in PhotonNetwork.PlayerList)
         {
-            fullRoomTimer = timeIn;
+            if (p.NickName == "")
+            {
+                p.NickName = "player";
+            }
+            playerlist += p.NickName + "\n";
         }
+        playerListDisplay.text = playerlist;
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -109,78 +76,31 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         //called whenever a player leaves the room
         PlayerCountUpdate();
     }
-
-    private void Update()
-    {
-        WaitingForMorePlayers();
-    }
-
-    void WaitingForMorePlayers()
-    {
-        //If there is are not enough players in the room the timer will stop and reset
-        if (playerCount < minPlayersToStart)
-        {
-            ResetTimer();
-        }
-        // when there is enough players in the room the start timer will begin counting down
-        if (readyToStart)
-        {
-            fullRoomTimer -= Time.deltaTime;
-            timerToStartGame = fullRoomTimer;
-        }
-        else if (readyToCountDown)
-        {
-            notFullRoomTimer -= Time.deltaTime;
-            timerToStartGame = notFullRoomTimer;
-        }
-        // format and display countdown timer
-        string tempTimer = string.Format("{0:00}", timerToStartGame);
-        timerToStartDisplay.text = tempTimer;
-        // if the countdown timer reaches 0 the game will then start
-        if (timerToStartGame <= 0f)
-        {
-            if (startingGame)
-                return;
-            StartCharacterSelection();
-        }
-    }
-
-    void ResetTimer()
-    {
-        //resets the count down timer
-        timerToStartGame = maxWaitTime;
-        notFullRoomTimer = maxWaitTime;
-        fullRoomTimer = maxFullRoomWaitTime;
-    }
-
     void StartCharacterSelection()
     {
         //Multiplayer scene is loaded to start the game
-        startingGame = true;
         if (!PhotonNetwork.IsMasterClient)
             return;
         PhotonNetwork.CurrentRoom.IsOpen = false;
-        PhotonNetwork.LoadLevel(multiplayerSceneIndex);
+        PhotonNetwork.LoadLevel(2);
     }
 
     public void DelayCancel()
     {
         //public function paired to cancel button in waiting room scene
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(menuSceneIndex);
+        SceneManager.LoadScene(0);
     }
 
-    //public void Ready()
-    //{
-    //    ReadyButton.SetActive(false);
-    //    UnReadyButton.SetActive(true);
-    //    readyPlayers++;
-    //}
+    public void OnChangeName()
+    {
+        Player p = PhotonNetwork.LocalPlayer;
+        p.NickName = inputField.text.ToString();
+        myPhotonView.RPC("UpdatePlayerList", RpcTarget.AllBuffered);
+    }
 
-    //public void UnReady()
-    //{
-    //    ReadyButton.SetActive(true);
-    //    UnReadyButton.SetActive(false);
-    //    readyPlayers--;
-    //}
+    public void OnReady()
+    {
+        StartCharacterSelection();
+    }
 }

@@ -4,13 +4,21 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class CharacterSelectionController : MonoBehaviour
+public class CharacterSelectionController : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     PhotonView PV;
+    [SerializeField]
+    private Text playerCountDisplay;
+    [SerializeField]
+    private Text timerToStartDisplay;
     private float roomTimer = 10f;
     private bool startingGame = false;
+    private int playerCount;
+    private int roomSize;
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -19,20 +27,31 @@ public class CharacterSelectionController : MonoBehaviour
             PV.RPC("RPC_SyncTimer", RpcTarget.Others, roomTimer);
         }
         CreateCursor();
+        playerCountUpdate();
     }
 
-    // Update is called once per frame
+    void playerCountUpdate()
+    {
+        playerCount = PhotonNetwork.PlayerList.Length;
+        roomSize = PhotonNetwork.CurrentRoom.MaxPlayers;
+        playerCountDisplay.text = playerCount + ":" + roomSize;
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        playerCountUpdate();
+    }
     void Update()
     {
-        roomTimer -= Time.deltaTime;
-        /*
+        //roomTimer -= Time.deltaTime;
         if (roomTimer <= 0f)
         {
             if (startingGame)
                 return;
             StartGame();
         }
-        */
+        string tempTimer = string.Format("{0:00}", roomTimer);
+        timerToStartDisplay.text = tempTimer;
     }
     private void CreateCursor()
     {
@@ -51,5 +70,11 @@ public class CharacterSelectionController : MonoBehaviour
         if (!PhotonNetwork.IsMasterClient)
             return;
         PhotonNetwork.LoadLevel(3);
+    }
+    public void DelayCancel()
+    {
+        //public function paired to cancel button in waiting room scene
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
     }
 }
