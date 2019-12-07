@@ -43,7 +43,7 @@ public class CharacterSelectionController : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        //roomTimer -= Time.deltaTime;
+        roomTimer -= Time.deltaTime;
         if (roomTimer <= 0f)
         {
             if (startingGame)
