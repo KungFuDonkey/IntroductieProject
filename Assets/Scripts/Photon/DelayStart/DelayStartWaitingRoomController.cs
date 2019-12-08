@@ -69,6 +69,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
             playerlist += p.NickName + "\n";
         }
         playerListDisplay.text = playerlist;
+        Debug.Log("updated PlayerList");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

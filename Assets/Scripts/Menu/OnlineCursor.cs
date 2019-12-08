@@ -11,10 +11,7 @@ public class OnlineCursor : MousePointer
         base.Start();
         PV = GetComponent<PhotonView>();
         transform.parent = GameObject.Find("DelayStartMenu").transform;
-        if (PV.IsMine)
-        {
-            PV.RPC("ChangeValues", RpcTarget.AllBuffered, new object[] { PhotonNetwork.LocalPlayer.NickName, Screen.width, Screen.height });
-        }
+        nickname.text = PV.Owner.NickName;
     }
     protected override void Update()
     {
@@ -32,11 +29,4 @@ public class OnlineCursor : MousePointer
         }
     }
     */
-    [PunRPC]
-    void ChangeValues(string nick, int width, int height)
-    {
-        nickname.text = nick;
-        widthDiff = (Screen.width - width) / 2;
-        heightDiff = (Screen.height - height) / 2;
-    }
 }
