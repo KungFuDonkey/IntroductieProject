@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class VulcanoSaurLook : playerLook
 {
-    public GameObject VulcasaurAvatar; 
+    public GameObject VulcasaurAvatar;
+    public Vector3 projectileSpawnerLocalRotation;
+    public Vector3 projectileSpawnerRotationEuler;
     VulcanoSaurLook()
     {
         attackSpeed = 0;
@@ -23,7 +25,7 @@ public class VulcanoSaurLook : playerLook
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation);
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,-90,0));
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }

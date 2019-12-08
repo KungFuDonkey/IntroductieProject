@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 1930125646934327857}
   - component: {fileID: 2729032303062452512}
   - component: {fileID: 9185200224708772580}
-  - component: {fileID: 8223620279311747664}
   - component: {fileID: 1571260685992662150}
   - component: {fileID: -3110761198833338101}
   - component: {fileID: -428376177737136001}
-  m_Layer: 29
+  - component: {fileID: 6882967126008532291}
+  - component: {fileID: 6583060844078551966}
+  m_Layer: 0
   m_Name: WaterProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,10 +59,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3d5b85150ec0b54cbbada671dd12d1a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,27 +84,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8223620279311747664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211485278746075481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191dfd8712b0d404e91bf728035ffbad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4000
-  maxDistance: 5000
-  radius: 0.6
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 2147483648
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &1571260685992662150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,7 +108,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211485278746075481}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -147,9 +128,40 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 6583060844078551966}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &6882967126008532291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211485278746075481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0df0a3f07b7faa4da8291b508b342f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &6583060844078551966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211485278746075481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

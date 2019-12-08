@@ -999,13 +999,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4680187848757366645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9039429916995506624}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &4757566648843962538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1803,8 @@ MonoBehaviour:
   projectileSpawner: {fileID: 4034803452704463293}
   mouseSens: 100
   VulcasaurAvatar: {fileID: 5666542008569308714}
+  projectileSpawnerLocalRotation: {x: 0, y: 0, z: 0}
+  projectileSpawnerRotationEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &6482230681388049626
 GameObject:
   m_ObjectHideFlags: 0
