@@ -5,6 +5,8 @@ using UnityEngine;
 public class MeleeBehaviour : Ability
 {
     // Start is called before the first frame update
+    protected float range;
+    public GameObject Head;
     protected override void Start()
     {
         base.Start();

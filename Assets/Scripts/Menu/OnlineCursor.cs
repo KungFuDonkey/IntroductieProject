@@ -13,7 +13,7 @@ public class OnlineCursor : MousePointer
         transform.parent = GameObject.Find("DelayStartMenu").transform;
         if (PV.IsMine)
         {
-            PV.RPC("ChangeValues", RpcTarget.All, new object[] { PhotonNetwork.LocalPlayer.NickName, Screen.width, Screen.height });
+            PV.RPC("ChangeValues", RpcTarget.AllBuffered, new object[] { PhotonNetwork.LocalPlayer.NickName, Screen.width, Screen.height });
         }
     }
     protected override void Update()

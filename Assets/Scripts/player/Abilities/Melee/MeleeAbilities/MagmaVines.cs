@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MagmaVines : MeleeBehaviour
 {
+    MagmaVines()
+    {
+        range = 7f;
+    }
     Animator Vines;
     // Start is called before the first frame update
     protected override void Start()
@@ -15,6 +19,4 @@ public class MagmaVines : MeleeBehaviour
     {
         Destroy(gameObject);
     }
-
-    
 }
