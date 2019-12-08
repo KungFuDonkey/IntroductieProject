@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VulcanoSaur : fakemonBehaviour
+public class Vulcasaur : fakemonBehaviour
 {
-    public VulcanoSaur()
+    public Vulcasaur()
     {
         type = "fire";
         movementSpeed = 7;
