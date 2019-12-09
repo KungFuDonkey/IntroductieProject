@@ -42,10 +42,10 @@ public class CharmandolphinLook : playerLook
         //spawning a new gameobject and destroying the old one
         Transform Charmandolphin = CharmandolphinAvatar.transform.GetChild(0).transform;
         GameObject evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
+        PhotonNetwork.Destroy(CharmandolphinAvatar);
         if (evolveTime <= 0)
         {
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
-            PhotonNetwork.Destroy(CharmandolphinAvatar);
             PhotonNetwork.Destroy(evolveBulb);
         }
         
