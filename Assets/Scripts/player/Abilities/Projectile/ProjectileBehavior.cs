@@ -26,7 +26,7 @@ public class ProjectileBehavior : Ability
         maxDistance -= speed;
         if (maxDistance < 0 && !destroyed)
         {
-            Destroy(this.transform.GetChild(0).gameObject);
+            PhotonNetwork.Destroy(this.transform.GetChild(0).gameObject);
             destroyed = true;
         }
         else if (destroyed)
