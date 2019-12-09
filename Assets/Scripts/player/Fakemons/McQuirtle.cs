@@ -6,7 +6,7 @@ public class McQuirtle : fakemonBehaviour
 {
     public McQuirtle()
     {
-        type = "earth";
+        type = "grass";
         movementSpeed = 12;
         jumpspeed = 14;
         lives = 80;
