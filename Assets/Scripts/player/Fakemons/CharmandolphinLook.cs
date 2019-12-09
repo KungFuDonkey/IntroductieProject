@@ -24,7 +24,7 @@ public class CharmandolphinLook : playerLook
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "WaterProjectile"), projectileSpawner.position, transform.rotation);
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "WaterProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,0,0));
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }
