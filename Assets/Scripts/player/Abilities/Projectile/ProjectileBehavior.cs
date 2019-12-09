@@ -26,8 +26,7 @@ public class ProjectileBehavior : Ability
         maxDistance -= speed;
         if (maxDistance < 0 && !destroyed)
         {
-            PhotonNetwork.Destroy(this.transform.GetChild(0).gameObject);
-            destroyed = true;
+            destroy();
         }
         else if (destroyed)
         {
@@ -56,8 +55,14 @@ public class ProjectileBehavior : Ability
                 PhotonView hitObject = hit.gameObject.GetPhotonView();
                 hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type });
             }
-            PhotonNetwork.Destroy(this.gameObject);
+            destroy();
         }
         fired = true;
+    }
+    private void destroy()
+    {
+        Destroy(this.transform.GetChild(0).gameObject);
+        destroyed = true;
+        controller.velocity = Vector3.down * 10;
     }
 }
