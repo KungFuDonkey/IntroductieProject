@@ -1,23 +1,25 @@
 ﻿using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class playerLook : MonoBehaviour
 {
-    // Start is called before the first frame update
     protected PhotonView PV;
     public Transform playerbody;
     public Transform head;
-    public Transform camera; 
+    public Transform camera;
     protected Animator animator;
     public Transform projectileSpawner;
     protected float yRotation = 0f;
-    
+
     public float mouseSens;
     protected float attackSpeed, ATTACKSPEED;
     protected float eAbility, EABILITY;
     protected float qAbility, QABILITY;
+    protected float evolveXP, evolveXPNeeded;
+    protected bool canEvolve;
+
+
+    // Start is called before the first frame update
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -29,7 +31,7 @@ public class playerLook : MonoBehaviour
             Destroy(this);
         }
     }
-    
+
     // Update is called once per frame
     protected virtual void LateUpdate()
     {
@@ -51,6 +53,10 @@ public class playerLook : MonoBehaviour
         {
             qAbility -= Time.deltaTime;
         }
+        if (evolveXP >= evolveXPNeeded)
+        {
+
+        }
 
         if (Input.GetMouseButton(0) && attackSpeed <= 0)
         {
@@ -60,9 +66,13 @@ public class playerLook : MonoBehaviour
         {
             eAttack();
         }
-        else if(Input.GetKey(KeyCode.Q) && qAbility <= 0)
+        else if (Input.GetKey(KeyCode.Q) && qAbility <= 0)
         {
             qAttack();
+        }
+        else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded && canEvolve)
+        {
+            evolve();
         }
     }
     protected virtual void basicAttack()
@@ -70,10 +80,11 @@ public class playerLook : MonoBehaviour
     }
     protected virtual void eAttack()
     {
-
     }
     protected virtual void qAttack()
     {
-
+    }
+    protected virtual void evolve()
+    {
     }
 }
