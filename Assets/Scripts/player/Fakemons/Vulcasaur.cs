@@ -8,7 +8,7 @@ public class Vulcasaur : fakemonBehaviour
     {
         type = "fire";
         movementSpeed = 7;
-        jumpspeed = 5;
+        jumpspeed = 10;
         lives = 200;
     }
 

@@ -48,6 +48,6 @@ public class CharmandolphinLook : playerLook
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
             PhotonNetwork.Destroy(evolveBulb);
         }
-        
+
     }
 }

@@ -24,7 +24,7 @@ public class McQuirtleLook : playerLook
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation);
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,-18,0));
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }
