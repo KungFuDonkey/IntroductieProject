@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class McSquirtleLook : playerLook
 {
+    public GameObject burger;
+    public float SpinDuration = 10f; 
+    bool spinning = false;
     public McSquirtleLook()
     {
         attackSpeed = 0;
@@ -16,6 +19,16 @@ public class McSquirtleLook : playerLook
         base.LateUpdate();
         transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        if (spinning)
+        {
+            burger.transform.Rotate(Vector3.forward * 5);
+            SpinDuration -= Time.deltaTime;
+            if (SpinDuration <= 0)
+            {
+                animator.SetBool("InShellSpin", false);
+                spinning = false;
+            }
+        }
     }
     protected override void basicAttack()
     {
@@ -30,5 +43,11 @@ public class McSquirtleLook : playerLook
         aoe.transform.name += '*';
         aoe.transform.parent = playerbody;
         eAbility = EABILITY;
+    }
+    protected override void qAttack()
+    {
+        base.qAttack();
+        animator.SetBool("InShellSpin", true);
+        spinning = true;
     }
 }

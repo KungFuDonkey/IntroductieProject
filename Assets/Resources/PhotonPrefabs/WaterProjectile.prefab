@@ -58,10 +58,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3d5b85150ec0b54cbbada671dd12d1a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,12 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191dfd8712b0d404e91bf728035ffbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4000
-  maxDistance: 5000
-  radius: 0.6
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 2147483648
   playerMask:
     serializedVersion: 2
     m_Bits: 0
