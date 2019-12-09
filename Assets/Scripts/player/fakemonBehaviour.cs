@@ -5,6 +5,7 @@ public class fakemonBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     private PhotonView PV;
+    GameObject MyAvatar;
     CharacterController controller;
     private Animator animator;
     protected string type;
@@ -22,6 +23,7 @@ public class fakemonBehaviour : MonoBehaviour
     Vector3 velocity;
     void Start()
     {
+        MyAvatar = transform.parent.gameObject;
         PV = GetComponent<PhotonView>();
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -111,5 +113,10 @@ public class fakemonBehaviour : MonoBehaviour
     public void AddSpeed(Vector3 Speed)
     {
         velocity = velocity + Speed;
+    }
+    public void Die()
+    {
+        Debug.Log("You Died");
+        PhotonNetwork.Destroy(MyAvatar);
     }
 }
