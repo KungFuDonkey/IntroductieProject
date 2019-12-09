@@ -28,6 +28,15 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList: []
+  RpcList:
+  - ClickRpc
+  - DestroyRpc
+  - DestroySpaceship
+  - Fire
+  - hit
+  - RespawnSpaceship
+  - RPC_AddCharacter
+  - RPC_SyncTimer
+  - UpdatePlayerList
   DisableAutoOpenWizard: 1
   ShowSettings: 0

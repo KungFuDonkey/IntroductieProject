@@ -8,7 +8,6 @@ public class Ability : MonoBehaviour
     protected PhotonView PV;
     protected float damage;
     protected string type;
-    public LayerMask playerMask;
     // Start is called before the first frame update
     protected virtual void Start()
     {
