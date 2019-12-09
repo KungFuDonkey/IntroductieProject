@@ -1,6 +1,8 @@
 ﻿using Photon.Pun;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameController : MonoBehaviour
 {
@@ -46,5 +48,10 @@ public class GameController : MonoBehaviour
     public void DeathScreen()
     {
         Deathscreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void LeaveMatch()
+    {
+        SceneManager.LoadScene(0);
     }
 }

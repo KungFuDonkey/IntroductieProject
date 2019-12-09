@@ -10,7 +10,7 @@ public class playerLook : MonoBehaviour
     protected Animator animator;
     public Transform projectileSpawner;
     protected float yRotation = 0f;
-
+    bool alive = true;
     public float mouseSens;
     protected float attackSpeed, ATTACKSPEED;
     protected float eAbility, EABILITY;
@@ -35,48 +35,51 @@ public class playerLook : MonoBehaviour
     // Update is called once per frame
     protected virtual void LateUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-        yRotation -= mouseY;
-        yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+        if (alive)
+        {
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
+            yRotation -= mouseY;
+            yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        playerbody.Rotate(Vector3.up * mouseX);
-        if (attackSpeed > 0)
-        {
-            attackSpeed -= Time.deltaTime;
-        }
-        if (eAbility > 0)
-        {
-            eAbility -= Time.deltaTime;
-        }
-        if (qAbility > 0)
-        {
-            qAbility -= Time.deltaTime;
-        }
-        if (evolveXP >= evolveXPNeeded)
-        {
+            playerbody.Rotate(Vector3.up * mouseX);
+            if (attackSpeed > 0)
+            {
+                attackSpeed -= Time.deltaTime;
+            }
+            if (eAbility > 0)
+            {
+                eAbility -= Time.deltaTime;
+            }
+            if (qAbility > 0)
+            {
+                qAbility -= Time.deltaTime;
+            }
+            if (evolveXP >= evolveXPNeeded)
+            {
 
-        }
+            }
 
-        if (Input.GetMouseButton(0) && attackSpeed <= 0)
-        {
-            basicAttack();
-        }
-        else if (Input.GetKey(KeyCode.E) && eAbility <= 0)
-        {
-            eAttack();
-        }
-        else if (Input.GetKey(KeyCode.Q) && qAbility <= 0)
-        {
-            qAttack();
-        }
-        else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded && canEvolve)
-        {
-            evolve();
-        }
+            if (Input.GetMouseButton(0) && attackSpeed <= 0)
+            {
+                basicAttack();
+            }
+            else if (Input.GetKey(KeyCode.E) && eAbility <= 0)
+            {
+                eAttack();
+            }
+            else if (Input.GetKey(KeyCode.Q) && qAbility <= 0)
+            {
+                qAttack();
+            }
+            else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded && canEvolve)
+            {
+                evolve();
+            }
 
-        evolveXP += (xpGenerator * Time.deltaTime);
-        evolveTime -= Time.deltaTime;
+            evolveXP += (xpGenerator * Time.deltaTime);
+            evolveTime -= Time.deltaTime;
+        }
     }
     protected virtual void basicAttack()
     {
