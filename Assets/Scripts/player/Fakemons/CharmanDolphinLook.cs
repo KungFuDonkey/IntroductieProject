@@ -37,10 +37,17 @@ public class CharmandolphinLook : playerLook
     }
     protected override void evolve()
     {
+        evolveTime = 2f;
         canEvolve = false; //boolean for testing
         //spawning a new gameobject and destroying the old one
         Transform Charmandolphin = CharmandolphinAvatar.transform.GetChild(0).transform;
-        GameObject evolution = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
+        GameObject evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
         PhotonNetwork.Destroy(CharmandolphinAvatar);
+        if (evolveTime <= 0)
+        {
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
+            PhotonNetwork.Destroy(evolveBulb);
+        }
+        
     }
 }
