@@ -8,7 +8,9 @@ public class ProjectileBehavior : Ability
     protected Rigidbody controller;
     protected float speed;
     protected float maxDistance;
+    protected float particleTimer;
     private bool fired = false;
+    private bool destroyed = false;
     private float firedTimer = 0.1f;
     // Start is called before the first frame update
     protected override void Start()
@@ -22,9 +24,18 @@ public class ProjectileBehavior : Ability
     {
         base.Update();
         maxDistance -= speed;
-        if (maxDistance < 0)
+        if (maxDistance < 0 && !destroyed)
         {
-            PhotonNetwork.Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.transform.GetChild(0).gameObject);
+            destroyed = true;
+        }
+        else if (destroyed)
+        {
+            particleTimer -= Time.deltaTime;
+            if(particleTimer < 0)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
         }
         if(!fired && firedTimer > 0)
         {

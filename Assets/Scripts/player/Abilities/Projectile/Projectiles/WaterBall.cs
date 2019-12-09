@@ -10,6 +10,7 @@ public class WaterBall : ProjectileBehavior
         maxDistance = 100000;
         damage = 8;
         type = "Water";
+        particleTimer = 3;
     }
     protected override void Start()
     {
