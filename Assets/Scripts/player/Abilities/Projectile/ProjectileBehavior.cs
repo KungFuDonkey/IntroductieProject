@@ -10,7 +10,7 @@ public class ProjectileBehavior : Ability
     protected float maxDistance;
     protected float particleTimer;
     private bool fired = false;
-    private bool destroyed = false;
+    protected bool destroyed = false;
     private float firedTimer = 0.1f;
     // Start is called before the first frame update
     protected override void Start()

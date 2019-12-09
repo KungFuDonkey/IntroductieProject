@@ -19,7 +19,10 @@ public class FireBall : ProjectileBehavior
     protected override void Update()
     {
         base.Update();
-        speed += 10 * Time.deltaTime;
-        controller.velocity = transform.forward * speed;
+        if (!destroyed)
+        {
+            speed += 10 * Time.deltaTime;
+            controller.velocity = transform.forward * speed;
+        }
     }
 }
