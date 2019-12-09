@@ -37,7 +37,7 @@ public class CharmandolphinLook : playerLook
     }
     protected override void evolve()
     {
-        evolveTime = 2f;
+        evolveTime = 3f;
         canEvolve = false; //boolean for testing
         //spawning a new gameobject and destroying the old one
         Transform Charmandolphin = CharmandolphinAvatar.transform.GetChild(0).transform;
