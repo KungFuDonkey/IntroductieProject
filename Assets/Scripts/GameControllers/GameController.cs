@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
     }
     public void LeaveMatch()
     {
+        PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);
     }
 }
