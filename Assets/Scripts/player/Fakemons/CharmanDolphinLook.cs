@@ -2,9 +2,9 @@
 using System.IO;
 using UnityEngine;
 
-public class CharmanDolphinLook : playerLook
+public class CharmandolphinLook : playerLook
 {
-    public CharmanDolphinLook()
+    public CharmandolphinLook()
     {
         attackSpeed = 0;
         ATTACKSPEED = 0.5f;

@@ -2,12 +2,12 @@
 using System.IO;
 using UnityEngine;
 
-public class VulcanoSaurLook : playerLook
+public class VulcasaurLook : playerLook
 {
     public GameObject VulcasaurAvatar;
     public Vector3 projectileSpawnerLocalRotation;
     public Vector3 projectileSpawnerRotationEuler;
-    VulcanoSaurLook()
+    VulcasaurLook()
     {
         attackSpeed = 0;
         ATTACKSPEED = 0.8f;

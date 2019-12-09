@@ -8,6 +8,7 @@ public class VulcanoLaunch : MovementBehaviour
     public float LaunchSpeed;
     public GameObject FreezeBone;
     Vector3 StartRotation, StartPosition;
+
     protected override void Start()
     {
         animator = GetComponent<Animator>();
@@ -23,7 +24,7 @@ public class VulcanoLaunch : MovementBehaviour
     }
     public void VulcanoJump()
     {
-        fakemonBehaviour fakemonBehaviour = transform.parent.GetComponentInChildren<VulcanoSaur>();
+        fakemonBehaviour fakemonBehaviour = transform.parent.GetComponentInChildren<Vulcasaur>();
         fakemonBehaviour.AddSpeed(new Vector3(0, LaunchSpeed, 0));
     }
 }

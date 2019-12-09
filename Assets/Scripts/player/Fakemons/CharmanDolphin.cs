@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharmanDolphin : fakemonBehaviour
+public class Charmandolphin : fakemonBehaviour
 {
-    public CharmanDolphin()
+    public Charmandolphin()
     {
         type = "water";
         movementSpeed = 10;

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class McSquirtle : fakemonBehaviour
+public class McQuirtle : fakemonBehaviour
 {
-    public McSquirtle()
+    public McQuirtle()
     {
         type = "earth";
         movementSpeed = 12;

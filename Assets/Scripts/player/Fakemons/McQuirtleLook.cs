@@ -2,9 +2,9 @@
 using System.IO;
 using UnityEngine;
 
-public class McSquirtleLook : playerLook
+public class McQuirtleLook : playerLook
 {
-    public McSquirtleLook()
+    public McQuirtleLook()
     {
         attackSpeed = 0;
         ATTACKSPEED = 0.2f;
