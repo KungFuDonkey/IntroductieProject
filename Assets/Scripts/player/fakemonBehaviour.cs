@@ -47,6 +47,12 @@ public class fakemonBehaviour : MonoBehaviour
             float y = Input.GetAxis("Jump");
             if (y != 0)
             {
+                lives -= 50;
+                if (lives <= 0)
+                {
+                    animator.SetTrigger("Die");
+                }
+                Debug.Log(lives);
                 velocity.y = y * jumpspeed;
             }
             else
@@ -117,6 +123,7 @@ public class fakemonBehaviour : MonoBehaviour
     public void Die()
     {
         Debug.Log("You Died");
-        PhotonNetwork.Destroy(MyAvatar);
+        //PhotonNetwork.Destroy(MyAvatar);
+        GameController.GS.Deathscreen.SetActive(true); 
     }
 }
