@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CharmandolphinLook : playerLook
 {
+    public GameObject CharmandolphinAvatar;
     public CharmandolphinLook()
     {
         attackSpeed = 0;
         ATTACKSPEED = 0.5f;
         eAbility = 0;
         EABILITY = 12f;
+        evolveXPNeeded = 1000f;
+        evolveXP = 0f;
+        canEvolve = true;
     }
     protected override void LateUpdate()
     {
@@ -30,5 +34,13 @@ public class CharmandolphinLook : playerLook
         aoe.transform.name += '*';
         aoe.transform.parent = playerbody;
         eAbility = EABILITY;
+    }
+    protected override void evolve()
+    {
+        canEvolve = false; //boolean for testing
+        //spawning a new gameobject and destroying the old one
+        Transform Charmandolphin = CharmandolphinAvatar.transform.GetChild(0).transform;
+        GameObject evolution = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
+        PhotonNetwork.Destroy(CharmandolphinAvatar);
     }
 }

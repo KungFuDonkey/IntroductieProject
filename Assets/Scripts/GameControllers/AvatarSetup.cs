@@ -31,10 +31,10 @@ public class AvatarSetup : MonoBehaviour
         switch (whichCharacter)
         {
             case 0:
-                CharacterName = "Charmandolphin";
+                CharacterName = "CharmandolphinAvatar";
                 break; 
             case 1:
-                CharacterName = "McQuirtle";
+                CharacterName = "McQuirtleAvatar";
                 break;
             case 2:
                 CharacterName = "VulcasaurAvatar";
