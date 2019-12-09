@@ -15,7 +15,7 @@ public class VulcasaurLook : playerLook
         EABILITY = 12f;
         qAbility = 0;
         QABILITY = 12f;
-        evolveXPNeeded = 0f;
+        evolveXPNeeded = 1000f;
         evolveXP = 0f;
         canEvolve = true;
     }
@@ -51,11 +51,10 @@ public class VulcasaurLook : playerLook
     }
     protected override void evolve()
     {
-        Debug.Log("evolve");
         canEvolve = false; //boolean for testing
         //spawning a new gameobject and destroying the old one
         Transform Vulcasaur = VulcasaurAvatar.transform.GetChild(0).transform;
-        GameObject evolution = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Charmandolphin"), Vulcasaur.position + new Vector3(0, 1, 0), Vulcasaur.rotation);
+        GameObject evolution = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CharmandolphinAvatar"), Vulcasaur.position + new Vector3(0, 1, 0), Vulcasaur.rotation);
         PhotonNetwork.Destroy(VulcasaurAvatar);
     }
 }

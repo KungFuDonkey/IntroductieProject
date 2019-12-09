@@ -15,7 +15,7 @@ public class playerLook : MonoBehaviour
     protected float attackSpeed, ATTACKSPEED;
     protected float eAbility, EABILITY;
     protected float qAbility, QABILITY;
-    protected float evolveXP, evolveXPNeeded;
+    protected float evolveXP, evolveXPNeeded, xpGenerator = 200;
     protected bool canEvolve;
 
 
@@ -74,6 +74,8 @@ public class playerLook : MonoBehaviour
         {
             evolve();
         }
+
+        evolveXP += (xpGenerator * Time.deltaTime);
     }
     protected virtual void basicAttack()
     {

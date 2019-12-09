@@ -12,6 +12,7 @@ public class McQuirtleLook : playerLook
         eAbility = 0;
         EABILITY = 10f;
         evolveXPNeeded = 1000f;
+        evolveXP = 0f;
         canEvolve = true;
     }
     protected override void LateUpdate()
@@ -38,8 +39,8 @@ public class McQuirtleLook : playerLook
     {
         canEvolve = false; //boolean for testing
         //spawning a new gameobject and destroying the old one
-        Transform Vulcasaur = McQuirtleAvatar.transform.GetChild(0).transform;
-        GameObject evolution = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vulcasaur"), Vulcasaur.position + new Vector3(0, 1, 0), Vulcasaur.rotation);
+        Transform McQuirtle = McQuirtleAvatar.transform.GetChild(0).transform;
+        GameObject evolution = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), McQuirtle.position + new Vector3(0, 1, 0), McQuirtle.rotation);
         PhotonNetwork.Destroy(McQuirtleAvatar);
     }
 }
