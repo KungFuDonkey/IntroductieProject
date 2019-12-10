@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharmandolphinLook : playerLook
 {
-    public GameObject CharmandolphinAvatar;
     public CharmandolphinLook()
     {
         attackSpeed = 0;
@@ -20,6 +19,11 @@ public class CharmandolphinLook : playerLook
         base.LateUpdate();
         transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        if (hover)
+        {
+            avatarTrans.Translate(0, Time.deltaTime, 0);
+            evolveBulb.transform.Translate(0, Time.deltaTime, 0);
+        }
     }
     protected override void basicAttack()
     {
@@ -37,17 +41,14 @@ public class CharmandolphinLook : playerLook
     }
     protected override void evolve()
     {
-        evolveTime = 3f;
-        canEvolve = false; //boolean for testing
-        //spawning a new gameobject and destroying the old one
-        Transform Charmandolphin = CharmandolphinAvatar.transform.GetChild(0).transform;
-        GameObject evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
-        PhotonNetwork.Destroy(CharmandolphinAvatar);
-        if (evolveTime <= 0)
-        {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), Charmandolphin.position + new Vector3(0, 1, 0), Charmandolphin.rotation);
-            PhotonNetwork.Destroy(evolveBulb);
-        }
-
+        base.evolve();
+        avatar.GetComponentInChildren<Charmandolphin>().gravity = 0;
+        //CharmandolphinAvatar.GetComponentInChildren<CharmandolphinLook>().enabled = false;
+    }
+    protected void evolve2()
+    {
+        PhotonNetwork.Destroy(avatar);
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), evolveBulb.transform.position, evolveBulb.transform.rotation);
+        PhotonNetwork.Destroy(evolveBulb);
     }
 }
