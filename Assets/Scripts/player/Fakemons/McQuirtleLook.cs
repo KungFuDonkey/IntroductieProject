@@ -16,11 +16,6 @@ public class McQuirtleLook : playerLook
         base.LateUpdate();
         transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
-        if (hover)
-        {
-            avatarTrans.Translate(0, Time.deltaTime, 0);
-            evolveBulb.transform.Translate(0, Time.deltaTime, 0);
-        }
     }
     protected override void basicAttack()
     {
@@ -44,8 +39,8 @@ public class McQuirtleLook : playerLook
     }
     protected void evolve2()
     {
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), localTrans.position, localTrans.rotation);
         PhotonNetwork.Destroy(avatar);
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), evolveBulb.transform.position, evolveBulb.transform.rotation);
         PhotonNetwork.Destroy(evolveBulb);
     }
 }
