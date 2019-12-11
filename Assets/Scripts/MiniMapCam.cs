@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MiniMapCam : MonoBehaviour
 {
-    [SerializeField] private Transform playerTransform;
+    public Transform playerTransform;
     [SerializeField] private float yOffset;
+    void start()
+    {
+    }
 
     private void LateUpdate()
     {
