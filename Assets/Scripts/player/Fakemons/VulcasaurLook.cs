@@ -20,11 +20,7 @@ public class VulcasaurLook : playerLook
         base.LateUpdate();
         transform.localRotation = Quaternion.Euler(0f, 0f, yRotation);
         camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
-        if (hover)
-        {
-            avatarTrans.Translate(0, Time.deltaTime, 0);
-            evolveBulb.transform.Translate(0, Time.deltaTime, 0);
-        }
+        
     }
     protected override void basicAttack()
     {
@@ -35,19 +31,17 @@ public class VulcasaurLook : playerLook
     }
     protected override void eAttack()
     {
-        //Transform Vulcasaur = VulcasaurAvatar.transform.GetChild(0).transform;
-        Quaternion angleAdjust = Quaternion.Euler(16.622f, avatarTrans.rotation.y, 0);
-        Vector3 positionAdjust = avatarTrans.up * 4f - avatarTrans.forward * -1;
-        GameObject Vulcano = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vulcano"), avatarTrans.position - positionAdjust, angleAdjust);
+        Quaternion angleAdjust = Quaternion.Euler(16.622f, localTrans.rotation.y, 0);
+        Vector3 positionAdjust = localTrans.up * 4f - localTrans.forward * -1;
+        GameObject Vulcano = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vulcano"), localTrans.position - positionAdjust, angleAdjust);
         Vulcano.transform.name += '*';
         Vulcano.transform.parent = avatar.transform;
         eAbility = EABILITY;
     }
     protected override void qAttack()
     {
-        avatarTrans = avatar.transform.GetChild(0).transform;
-        GameObject MagmaVines = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "MagmaVines"), avatarTrans.position, avatarTrans.rotation);
-        MagmaVines.transform.parent = avatarTrans;
+        GameObject MagmaVines = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "MagmaVines"), localTrans.position, localTrans.rotation);
+        MagmaVines.transform.parent = localTrans;
         qAbility = QABILITY;
     }
     protected override void evolve()
