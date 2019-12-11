@@ -18,8 +18,8 @@ public class playerLook : MonoBehaviour
     protected float attackSpeed, ATTACKSPEED;
     protected float eAbility, EABILITY;
     protected float qAbility, QABILITY;
-    protected float evolveXP, evolveXPNeeded, xpGenerator = 200f, evolveTime;
-    protected bool canEvolve, hover;
+    protected float evolveXP = 0f, evolveXPNeeded = 1000f, xpGenerator = 200f, evolveTime;
+    protected bool canEvolve = true, hover = false, evolving = false;
     protected Transform avatarTrans;
 
 
@@ -40,7 +40,7 @@ public class playerLook : MonoBehaviour
     // Update is called once per frame
     protected virtual void LateUpdate()
     {
-        if (alive)
+        if (alive && !evolving)
         {
             float mouseX = Input.GetAxis("Mouse X");
             float mouseY = Input.GetAxis("Mouse Y");
@@ -60,9 +60,9 @@ public class playerLook : MonoBehaviour
             {
                 qAbility -= Time.deltaTime;
             }
-        if (evolveXP < evolveXPNeeded)
-        {
-            evolveXP += (xpGenerator * Time.deltaTime);
+            if (evolveXP < evolveXPNeeded)
+            {
+                evolveXP += (xpGenerator * Time.deltaTime);
 
             }
 
@@ -78,27 +78,11 @@ public class playerLook : MonoBehaviour
             {
                 qAttack();
             }
-            else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded && canEvolve)
+            else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded)
             {
                 evolve();
             }
-
-            evolveXP += (xpGenerator * Time.deltaTime);
-            evolveTime -= Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.E) && eAbility <= 0)
-        {
-            eAttack();
-        }
-        else if (Input.GetKey(KeyCode.Q) && qAbility <= 0)
-        {
-            qAttack();
-        }
-        else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded && canEvolve)
-        {
-            evolve();
-        }
-
     }
     protected virtual void basicAttack()
     {
@@ -111,10 +95,11 @@ public class playerLook : MonoBehaviour
     }
     protected virtual void evolve()
     {
+        evolving = true;
         canEvolve = false;
         evolveTime = 3f;
         //spawning a new gameobject and destroying the old one
-        evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), transform.position + new Vector3(0, 1, 0), transform.rotation);
+        evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), avatarTrans.position + new Vector3(0, avatarTrans.lossyScale.y, 0), avatarTrans.rotation);
         Invoke("evolve2", evolveTime);
         //add animation: in the air after jumping out of pokeball
         hover = true;
