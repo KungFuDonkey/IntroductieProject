@@ -15,7 +15,6 @@ public class WaterBall : ProjectileBehavior
     protected override void Start()
     {
         base.Start();
-        Debug.Log("water");
     }
     protected override void Update()
     {
