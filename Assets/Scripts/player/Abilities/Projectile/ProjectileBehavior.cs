@@ -63,5 +63,6 @@ public class ProjectileBehavior : Ability
         Destroy(this.transform.GetChild(0).gameObject);
         destroyed = true;
         this.transform.position = Vector3.zero;
+        controller.velocity = Vector3.zero;
     }
 }

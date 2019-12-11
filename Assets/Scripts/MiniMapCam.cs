@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MiniMapCam : MonoBehaviour
 {
-    protected Transform playerTransform;
+    [SerializeField] protected Transform playerTransform;
     [SerializeField] private float yOffset;
-    void start()
+    /*void start()
     {
+        Debug.Log(transform.position);
         playerTransform = gameObject.GetComponent<Transform>();
         Debug.Log(gameObject.GetComponent<Transform>().name);
-    }
+    }*/
     private void LateUpdate()
     {
         Vector3 targetPosition = playerTransform.position;
