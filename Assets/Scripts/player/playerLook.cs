@@ -88,7 +88,7 @@ public class playerLook : MonoBehaviour
             }
             else
             {
-                evolveBulb.transform.localScale += new Vector3(1, 1, 1) * Time.deltaTime;
+                evolveBulb.transform.localScale += new Vector3(2, 2, 2) * Time.deltaTime;
                 localTrans.Translate(0, Time.deltaTime, 0);
                 evolveBulb.transform.Translate(0, Time.deltaTime, 0);
             }
@@ -105,11 +105,12 @@ public class playerLook : MonoBehaviour
     }
     protected virtual void evolve()
     {
+        avatarTrans = localTrans;
         evolving = true;
         canEvolve = false;
         evolveTime = 3f;
         //spawning a new gameobject and destroying the old one
-        evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), avatarTrans.position + new Vector3(0, avatarTrans.lossyScale.y, 0), avatarTrans.rotation);
+        evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), avatarTrans.position + new Vector3(0, 1, 0), avatarTrans.rotation);
         Invoke("evolve2", evolveTime);
         //add animation: in the air after jumping out of pokeball
         hover = true;

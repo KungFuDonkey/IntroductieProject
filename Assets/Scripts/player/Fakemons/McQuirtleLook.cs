@@ -39,8 +39,8 @@ public class McQuirtleLook : playerLook
     }
     protected void evolve2()
     {
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), localTrans.position, localTrans.rotation);
         PhotonNetwork.Destroy(avatar);
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), evolveBulb.transform.position, evolveBulb.transform.rotation);
         PhotonNetwork.Destroy(evolveBulb);
     }
 }
