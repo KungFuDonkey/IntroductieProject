@@ -6,7 +6,6 @@ public class playerLook : MonoBehaviour
 {
     protected PhotonView PV;
     public Transform playerbody;
-    public Transform head;
     public Transform camera;
     protected Animator animator;
     public Transform projectileSpawner;

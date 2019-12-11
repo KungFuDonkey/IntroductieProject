@@ -26,7 +26,7 @@ public class McQuirtleLook : playerLook
     }
     protected override void eAttack()
     {
-        GameObject aoe = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "AOE"), head.position, Quaternion.identity);
+        GameObject aoe = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "AOE"), transform.position, Quaternion.identity);
         aoe.transform.name += '*';
         aoe.transform.parent = playerbody;
         eAbility = EABILITY;

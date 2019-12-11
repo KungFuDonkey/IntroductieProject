@@ -49,7 +49,6 @@ public class ProjectileBehavior : Ability
     {
         if (fired)
         {
-            Debug.Log(hit.gameObject.layer);
             if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
             {
                 PhotonView hitObject = hit.gameObject.GetPhotonView();
@@ -63,6 +62,6 @@ public class ProjectileBehavior : Ability
     {
         Destroy(this.transform.GetChild(0).gameObject);
         destroyed = true;
-        controller.velocity = Vector3.down * 10;
+        this.transform.position = Vector3.zero;
     }
 }
