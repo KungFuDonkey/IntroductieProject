@@ -14,11 +14,11 @@ public class inventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        jinventory = inventory.instance;
+        jinventory = new inventory();
         jinventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        jinventoryUI.SetActive(!jinventoryUI.activeSelf);
+        jinventoryUI.SetActive(false);
     }
 
     // Update is called once per frame
