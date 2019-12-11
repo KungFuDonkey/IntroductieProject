@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 30873956997894519}
   - component: {fileID: 1886548895827847703}
   - component: {fileID: 4120632146252755170}
+  - component: {fileID: 7279279434689485090}
   m_Layer: 11
   m_Name: Charmandolphin
   m_TagString: Player
@@ -849,6 +850,19 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &7279279434689485090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340234347494928699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34fa0896ca27e9943a42194cd7702f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 10
 --- !u!1 &2443560312621085332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,8 +2873,6 @@ MonoBehaviour:
     type: 3}
   avatar: {fileID: 6416601331166297404}
   mouseSens: 100
-  avatarTrans: {fileID: 0}
-  localTrans: {fileID: 0}
 --- !u!1 &8698445869027839395
 GameObject:
   m_ObjectHideFlags: 0
