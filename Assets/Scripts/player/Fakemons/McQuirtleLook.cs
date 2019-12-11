@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class McQuirtleLook : playerLook
 {
-    public GameObject McQuirtleAvatar;
     public McQuirtleLook()
     {
         attackSpeed = 0;
@@ -14,12 +13,18 @@ public class McQuirtleLook : playerLook
         evolveXPNeeded = 1000f;
         evolveXP = 0f;
         canEvolve = true;
+        hover = false;
     }
     protected override void LateUpdate()
     {
         base.LateUpdate();
         transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        if (hover)
+        {
+            avatarTrans.Translate(0, Time.deltaTime, 0);
+            evolveBulb.transform.Translate(0, Time.deltaTime, 0);
+        }
     }
     protected override void basicAttack()
     {
@@ -37,10 +42,14 @@ public class McQuirtleLook : playerLook
     }
     protected override void evolve()
     {
-        canEvolve = false; //boolean for testing
-        //spawning a new gameobject and destroying the old one
-        Transform McQuirtle = McQuirtleAvatar.transform.GetChild(0).transform;
-        GameObject evolution = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), McQuirtle.position + new Vector3(0, 1, 0), McQuirtle.rotation);
-        PhotonNetwork.Destroy(McQuirtleAvatar);
+        base.evolve();
+        avatar.GetComponentInChildren<McQuirtle>().gravity = 0;
+        //McQuirtleAvatar.GetComponentInChildren<McQuirtleLook>().enabled = false;
+    }
+    protected void evolve2()
+    {
+        PhotonNetwork.Destroy(avatar);
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), evolveBulb.transform.position, evolveBulb.transform.rotation);
+        PhotonNetwork.Destroy(evolveBulb);
     }
 }
