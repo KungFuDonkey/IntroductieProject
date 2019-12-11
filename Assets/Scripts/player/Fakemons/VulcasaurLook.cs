@@ -14,10 +14,6 @@ public class VulcasaurLook : playerLook
         EABILITY = 12f;
         qAbility = 0;
         QABILITY = 12f;
-        evolveXPNeeded = 1000f;
-        evolveXP = 0f;
-        canEvolve = true;
-        hover = false;
     }
     protected override void LateUpdate()
     {

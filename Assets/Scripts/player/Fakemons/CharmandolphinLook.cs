@@ -10,9 +10,6 @@ public class CharmandolphinLook : playerLook
         ATTACKSPEED = 0.5f;
         eAbility = 0;
         EABILITY = 12f;
-        evolveXPNeeded = 1000f;
-        evolveXP = 0f;
-        canEvolve = true;
     }
     protected override void LateUpdate()
     {

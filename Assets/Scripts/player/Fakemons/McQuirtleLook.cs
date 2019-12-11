@@ -10,10 +10,6 @@ public class McQuirtleLook : playerLook
         ATTACKSPEED = 0.2f;
         eAbility = 0;
         EABILITY = 10f;
-        evolveXPNeeded = 1000f;
-        evolveXP = 0f;
-        canEvolve = true;
-        hover = false;
     }
     protected override void LateUpdate()
     {
