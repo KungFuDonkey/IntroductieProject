@@ -19,8 +19,7 @@ public class playerLook : MonoBehaviour
     protected float qAbility, QABILITY;
     protected float evolveXP = 0f, evolveXPNeeded = 1000f, xpGenerator = 200f, evolveTime;
     protected bool canEvolve = true, hover = false, evolving = false;
-    protected Transform avatarTrans, localTrans;
-
+    public Transform avatarTrans, localTrans;
 
     // Start is called before the first frame update
     void Start()

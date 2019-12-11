@@ -576,6 +576,28 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &1832548834187375309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715242097096508442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4c34e6d4b9c6e4d97f004b32ece368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerbody: {fileID: 5025669205581620189}
+  head: {fileID: 344467245889094037}
+  camera: {fileID: 5774489175783310469}
+  projectileSpawner: {fileID: 1587063048596080468}
+  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
+    type: 3}
+  avatar: {fileID: 8987212494309188012}
+  mouseSens: 100
+  avatarTrans: {fileID: 0}
+  localTrans: {fileID: 0}
 --- !u!1 &1070341350303120726
 GameObject:
   m_ObjectHideFlags: 0
