@@ -12,9 +12,7 @@ public class inventory : MonoBehaviour
         instance = this;
     }
 
-
-
-
+   
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
