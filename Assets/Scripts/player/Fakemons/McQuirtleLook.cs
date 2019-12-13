@@ -35,7 +35,6 @@ public class McQuirtleLook : playerLook
     {
         base.evolve();
         avatar.GetComponentInChildren<McQuirtle>().gravity = 0;
-        //McQuirtleAvatar.GetComponentInChildren<McQuirtleLook>().enabled = false;
     }
     protected void evolve2()
     {

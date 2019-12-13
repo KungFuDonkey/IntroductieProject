@@ -35,7 +35,6 @@ public class CharmandolphinLook : playerLook
     {
         base.evolve();
         avatar.GetComponentInChildren<Charmandolphin>().gravity = 0;
-        //CharmandolphinAvatar.GetComponentInChildren<CharmandolphinLook>().enabled = false;
     }
     protected void evolve2()
     {
