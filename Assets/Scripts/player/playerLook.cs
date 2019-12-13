@@ -37,7 +37,7 @@ public class playerLook : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void LateUpdate()
+    protected virtual void Update()
     {
         if (alive)
         {
@@ -104,7 +104,7 @@ public class playerLook : MonoBehaviour
     protected virtual void evolve()
     {
         avatarTrans = localTrans;
-        //evolving = true;
+        evolving = true;
         canEvolve = false;
         evolveTime = 3f;
         //spawning a new gameobject and destroying the old one
