@@ -48,7 +48,6 @@ public class VulcasaurLook : playerLook
     {
         base.evolve();
         avatar.GetComponentInChildren<Vulcasaur>().gravity = 0;
-        //VulcasaurAvatar.GetComponentInChildren<VulcasaurLook>().enabled = false;
     }
     protected void evolve2()
     {
