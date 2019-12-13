@@ -7,6 +7,7 @@ public class playerLook : MonoBehaviour
     protected PhotonView PV;
     public Transform playerbody;
     public Transform avatarcamera;
+    public Transform MiniMap;
     protected Animator animator;
     public Transform projectileSpawner;
     public GameObject evolveBulb;
@@ -31,6 +32,7 @@ public class playerLook : MonoBehaviour
         {
             Destroy(avatarcamera.gameObject);
             Destroy(this);
+            Destroy(MiniMap.gameObject);
         }
         avatarTrans = avatar.transform;
         localTrans = avatarTrans.GetChild(0).transform;
