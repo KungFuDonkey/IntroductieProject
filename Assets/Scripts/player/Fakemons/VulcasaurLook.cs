@@ -19,7 +19,7 @@ public class VulcasaurLook : playerLook
     {
         base.LateUpdate();
         transform.localRotation = Quaternion.Euler(0f, 0f, yRotation);
-        camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
         
     }
     protected override void basicAttack()

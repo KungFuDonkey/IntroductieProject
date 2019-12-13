@@ -6,7 +6,7 @@ public class playerLook : MonoBehaviour
 {
     protected PhotonView PV;
     public Transform playerbody;
-    public Transform camera;
+    public Transform avatarcamera;
     protected Animator animator;
     public Transform projectileSpawner;
     public GameObject evolveBulb;
@@ -29,7 +29,7 @@ public class playerLook : MonoBehaviour
         animator = playerbody.GetComponent<Animator>();
         if (!PV.IsMine)
         {
-            Destroy(camera.gameObject);
+            Destroy(avatarcamera.gameObject);
             Destroy(this);
         }
         avatarTrans = avatar.transform;

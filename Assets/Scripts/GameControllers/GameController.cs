@@ -55,4 +55,8 @@ public class GameController : MonoBehaviour
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);
     }
+    public void Spectate()
+    {
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SpectateCamera"), transform.position, transform.rotation);
+    }
 }

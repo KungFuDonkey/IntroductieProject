@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using System.IO;
 
 public class fakemonBehaviour : MonoBehaviour
 {
@@ -123,6 +124,7 @@ public class fakemonBehaviour : MonoBehaviour
         alive = false;
         Debug.Log("You Died");
         //PhotonNetwork.Destroy(MyAvatar);
-        GameController.GS.DeathScreen(); 
+        GameController.GS.DeathScreen();
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SpectateCamera"), transform.position, transform.rotation);
     }
 }
