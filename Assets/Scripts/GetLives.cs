@@ -22,6 +22,10 @@ public class GetLives : MonoBehaviour
     [SerializeField] private bool pechaBerry;
     [SerializeField] private bool oranBerry;
     [SerializeField] private bool lumBerry;
+   
+
+    
+
 
 
 
@@ -33,9 +37,9 @@ public class GetLives : MonoBehaviour
           
             candyItem.SetActive(false);
             candyTrigger.SetActive(false);
-           
-
+            
             inventory.instance.Add(item);
+            
         }
 
         else if (other.CompareTag("Avatar") && pokebal == true)
@@ -77,13 +81,13 @@ public class GetLives : MonoBehaviour
 
             inventory.instance.Add(item);
         }
-
-
     }
 
+   
+  
 
 
-    
+
 
     /*private void OnTriggerStay(Collider other)
     {
