@@ -35,7 +35,9 @@ public class GetLives : MonoBehaviour
             candyTrigger.SetActive(false);
            
 
-            inventory.instance.Add(item);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
+            //inventory.instance.Add(item);
         }
 
         else if (other.CompareTag("Avatar") && pokebal == true)
@@ -44,8 +46,9 @@ public class GetLives : MonoBehaviour
 
             pokeballItem.SetActive(false);
             pokeballTrigger.SetActive(false);
-
-            inventory.instance.Add(item);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
+            //inventory.instance.Add(item);
         }
 
         else if (other.CompareTag("Avatar") && pechaBerry == true)

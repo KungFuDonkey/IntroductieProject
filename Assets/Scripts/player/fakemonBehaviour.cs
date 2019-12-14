@@ -10,6 +10,8 @@ public class fakemonBehaviour : MonoBehaviour
     GameObject MyAvatar;
     CharacterController controller;
     private Animator animator;
+    public GameObject hud;
+    HUD myHUD;
     protected string type;
     protected string weaktype;
     protected string strongtype;
@@ -25,14 +27,21 @@ public class fakemonBehaviour : MonoBehaviour
     Vector3 velocity;
     void Start()
     {
-        MyAvatar = transform.parent.gameObject;
         PV = GetComponent<PhotonView>();
-        controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
         if (!PV.IsMine)
         {
             Destroy(this);
         }
+        else
+        {
+            hud = Instantiate(hud);
+        }
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        MyAvatar = transform.parent.gameObject;
+        hud.transform.parent = transform.parent;
+        myHUD = hud.GetComponent<HUD>();
+        myHUD.MiniMap.playerTransform = transform;
     }
 
     // Update is called once per frame
@@ -58,7 +67,10 @@ public class fakemonBehaviour : MonoBehaviour
                     velocity.y = -gravity;
                 }
             }
-
+            if (Input.GetKey(KeyCode.O))
+            {
+                Die();
+            }
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 controller.Move(movement * 2 * movementSpeed * Time.deltaTime);
@@ -113,6 +125,7 @@ public class fakemonBehaviour : MonoBehaviour
         {
             animator.SetTrigger("Die");
         }
+        myHUD.healthBar.CurrentHealth = (int)lives;
         Debug.Log(lives);
     }
     public void AddSpeed(Vector3 Speed)
@@ -124,7 +137,11 @@ public class fakemonBehaviour : MonoBehaviour
         alive = false;
         Debug.Log("You Died");
         //PhotonNetwork.Destroy(MyAvatar);
-        GameController.GS.DeathScreen();
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SpectateCamera"), transform.position, transform.rotation);
+        myHUD.ShowDeathscreen();
+    }
+
+    public float Lives
+    {
+        get { return lives; }
     }
 }

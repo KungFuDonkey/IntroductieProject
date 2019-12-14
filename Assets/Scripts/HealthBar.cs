@@ -12,6 +12,7 @@ public class HealthBar : MonoBehaviour
     public int maxHealth;
     private int currentHealth;
     public Image visualHealth;
+    fakemonBehaviour AvatarBehaviour;
 
 
     // Start is called before the first frame update
@@ -21,7 +22,6 @@ public class HealthBar : MonoBehaviour
         maxXValue = healthTransform.position.x;
         minXValue = healthTransform.position.x - healthTransform.rect.width;
         currentHealth = maxHealth;
-        
     }
 
     // Update is called once per frame

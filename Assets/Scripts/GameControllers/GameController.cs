@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     // This script will be added to any multiplayer scene
     public Transform[] spawnPoints = new Transform[4];
+    public GameObject SpectateCamera;
     public GameObject Deathscreen; 
     public GameObject thisPlayer;
     void Start()
@@ -45,18 +46,10 @@ public class GameController : MonoBehaviour
         }
         return thisPlayer;
     }
-    public void DeathScreen()
-    {
-        Deathscreen.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-    }
     public void LeaveMatch()
     {
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);
     }
-    public void Spectate()
-    {
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SpectateCamera"), transform.position, transform.rotation);
-    }
+
 }
