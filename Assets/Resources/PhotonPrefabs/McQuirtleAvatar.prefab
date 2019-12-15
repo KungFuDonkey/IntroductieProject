@@ -659,6 +659,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
+  hideobjects:
+  - {fileID: 7539408937850647601}
+  - {fileID: 399445383264842993}
   movementSpeed: 12
   jumpspeed: 14
   gravity: 20
@@ -2280,7 +2283,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

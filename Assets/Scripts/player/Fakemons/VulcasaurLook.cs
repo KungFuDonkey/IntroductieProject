@@ -17,15 +17,14 @@ public class VulcasaurLook : playerLook, IPunObservable
     }
     protected override void LateUpdate()
     {
-        base.LateUpdate();
         Head.localRotation = Quaternion.Euler(-1.14f, 17.087f, yRotation);
         avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
-        
+        base.LateUpdate();
     }
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,-90,0));
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), avatarcamera.position, avatarcamera.rotation);
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }

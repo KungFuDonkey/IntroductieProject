@@ -11,6 +11,7 @@ public class fakemonBehaviour : MonoBehaviour
     CharacterController controller;
     private Animator animator;
     public GameObject hud;
+    public GameObject[] hideobjects;
     HUD myHUD;
     int deadPlayers = 0;
     protected string type;
@@ -44,6 +45,11 @@ public class fakemonBehaviour : MonoBehaviour
         else
         {
             hud = Instantiate(hud);
+            foreach (GameObject obj in hideobjects)
+            {
+                obj.layer = 10;
+            }
+
         }
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();

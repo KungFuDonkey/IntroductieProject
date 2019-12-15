@@ -381,7 +381,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -887,6 +887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
+  hideobjects:
+  - {fileID: 9072886840931271134}
+  - {fileID: 8925710618542213621}
   movementSpeed: 10
   jumpspeed: 10
   gravity: 22.9
@@ -2675,7 +2678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5362731000653825933}
   - component: {fileID: 1715907371839649799}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2811,7 +2814,7 @@ GameObject:
   - component: {fileID: 4189797243128658427}
   - component: {fileID: 5958955566699238845}
   - component: {fileID: 753445776839373221}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: HeadSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

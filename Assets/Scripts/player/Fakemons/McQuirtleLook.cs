@@ -13,14 +13,15 @@ public class McQuirtleLook : playerLook, IPunObservable
     }
     protected override void LateUpdate()
     {
-        base.LateUpdate();
         Head.localRotation = Quaternion.Euler(yRotation, 17.974f, 0f);
         avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        base.LateUpdate();
+
     }
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,-18,0));
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), avatarcamera.position, avatarcamera.rotation);
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }
