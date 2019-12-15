@@ -161,7 +161,7 @@ public class fakemonBehaviour : MonoBehaviour
         alivePlayerCount = (PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
         myHUD.AlivePlayers.text = "" + alivePlayerCount;
     }
-    protected virtual void OnLeftRoom()
+    protected void OnLeftRoom()
     {
         if (alive)
         {
@@ -182,10 +182,6 @@ public class fakemonBehaviour : MonoBehaviour
         get { return lives; }
     }
     void OnLobbyStatisticsUpdate()
-    {
-
-    }
-    protected void playerCounting()
     {
         alivePlayerCount = (PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
         myHUD.AlivePlayers.text = "" + alivePlayerCount;

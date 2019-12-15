@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour
 {
@@ -70,5 +69,9 @@ public class HUD : MonoBehaviour
         Instantiate(Spectator, transform.position, transform.rotation);
         Destroy(transform.parent.gameObject);
     }
-
+    public void LeaveMatch()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
+    }
 }
