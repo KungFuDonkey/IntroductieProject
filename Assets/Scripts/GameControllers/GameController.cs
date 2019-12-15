@@ -8,8 +8,6 @@ public class GameController : MonoBehaviour
 {
     // This script will be added to any multiplayer scene
     public Transform[] spawnPoints = new Transform[4];
-    public GameObject SpectateCamera;
-    public GameObject Deathscreen; 
     public GameObject thisPlayer;
     void Start()
     {

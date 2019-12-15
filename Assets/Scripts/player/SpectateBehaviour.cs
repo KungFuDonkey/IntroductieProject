@@ -18,7 +18,7 @@ public class SpectateBehaviour : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        controller = GetComponent<CharacterController>();
+        controller = GetComponentInParent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -39,7 +39,6 @@ public class SpectateBehaviour : MonoBehaviour
         {
             controller.Move(movement * movementSpeed * Time.deltaTime);
         }
-
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         yRotation -= mouseY;

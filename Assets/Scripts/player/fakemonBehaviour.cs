@@ -12,6 +12,7 @@ public class fakemonBehaviour : MonoBehaviour
     private Animator animator;
     public GameObject hud;
     HUD myHUD;
+    int deadPlayers = 0;
     protected string type;
     protected string weaktype;
     protected string strongtype;
@@ -50,6 +51,7 @@ public class fakemonBehaviour : MonoBehaviour
         hud.transform.parent = transform.parent;
         myHUD = hud.GetComponent<HUD>();
         myHUD.MiniMap.playerTransform = transform;
+        myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
     }
 
     // Update is called once per frame
@@ -143,11 +145,21 @@ public class fakemonBehaviour : MonoBehaviour
     public void Die()
     {
         alive = false;
+        PV.RPC("RPC_Die", RpcTarget.AllBuffered);
+
         Debug.Log("You Died");
         //PhotonNetwork.Destroy(MyAvatar);
         myHUD.ShowDeathscreen();
     }
 
+    [PunRPC]
+    protected virtual void RPC_Die()
+    {
+        Debug.Log("Died");
+
+        deadPlayers += 1;
+        myHUD.AlivePlayers.text = "" +(PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
+    }
     public float Lives
     {
         get { return lives; }

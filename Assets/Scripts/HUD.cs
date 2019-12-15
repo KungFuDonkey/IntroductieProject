@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Photon.Pun;
 
 public class HUD : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class HUD : MonoBehaviour
     public Transform itemsParent;
     public GameObject jinventoryUI;
     public GameObject Spectator;
-
+    public Text AlivePlayers;
 
     public inventory binventory;
 
@@ -21,7 +23,6 @@ public class HUD : MonoBehaviour
         binventory = inventory.instance;
 
         binventory.onItemChangedCallback += UpdateUI;
-
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         jinventoryUI.SetActive(false);
     }
@@ -69,4 +70,5 @@ public class HUD : MonoBehaviour
         Instantiate(Spectator, transform.position, transform.rotation);
         Destroy(transform.parent.gameObject);
     }
+
 }
