@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
     public GameObject Deathscreen;
     public Transform itemsParent;
     public GameObject jinventoryUI;
-    public GameObject SpectateCamera;
+    public GameObject Spectator;
 
 
     public inventory binventory;
@@ -66,7 +66,7 @@ public class HUD : MonoBehaviour
 
     public void Spectate()
     {
-        Instantiate(SpectateCamera, transform.position, transform.rotation);
+        Instantiate(Spectator, transform.position, transform.rotation);
         Destroy(transform.parent.gameObject);
     }
 }

@@ -7,14 +7,17 @@ public class SpectateBehaviour : MonoBehaviour
     protected float yRotation = 0f;
     Vector3 velocity;
     CharacterController controller;
-    protected float movementSpeed;
+    public float movementSpeed;
     public float friction;
+    public Transform Specatator;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         controller = GetComponent<CharacterController>();
     }
 
@@ -23,7 +26,9 @@ public class SpectateBehaviour : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        Vector3 movement = transform.right * x + transform.forward * z;
+        float y = Input.GetAxis("Jump");
+
+        Vector3 movement = transform.right * x + transform.up * y + transform.forward * z;
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -35,18 +40,6 @@ public class SpectateBehaviour : MonoBehaviour
             controller.Move(movement * movementSpeed * Time.deltaTime);
         }
 
-        float y = Input.GetAxis("Jump");
-        if (velocity.y < 0)
-        {
-            velocity.y += friction * Time.deltaTime;
-
-        }
-        else
-        {
-            velocity.y -= friction * Time.deltaTime;
-        }
-        controller.Move(velocity * Time.deltaTime);
-
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         yRotation -= mouseY;
@@ -54,8 +47,9 @@ public class SpectateBehaviour : MonoBehaviour
 
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
         transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        Specatator.Rotate(Vector3.up * mouseX);
 
-        transform.Rotate(Vector3.up * mouseX);
+       
 
 
 
