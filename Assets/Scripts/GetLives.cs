@@ -22,6 +22,10 @@ public class GetLives : MonoBehaviour
     [SerializeField] private bool pechaBerry;
     [SerializeField] private bool oranBerry;
     [SerializeField] private bool lumBerry;
+   
+
+    
+
 
 
 
@@ -80,13 +84,13 @@ public class GetLives : MonoBehaviour
 
             inventory.instance.Add(item);
         }
-
-
     }
 
+   
+  
 
 
-    
+
 
     /*private void OnTriggerStay(Collider other)
     {

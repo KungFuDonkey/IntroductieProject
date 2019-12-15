@@ -15,8 +15,8 @@ public class fakemonBehaviour : MonoBehaviour
     protected string type;
     protected string weaktype;
     protected string strongtype;
-    protected float movementSpeed;
-    protected float jumpspeed;
+    public float movementSpeed;
+    public float jumpspeed;
     protected float lives;
     public float gravity;
     public float mouseSens;
@@ -25,6 +25,14 @@ public class fakemonBehaviour : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     Vector3 velocity;
+
+    public static fakemonBehaviour instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         PV = GetComponent<PhotonView>();
