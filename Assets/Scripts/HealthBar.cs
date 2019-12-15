@@ -10,10 +10,16 @@ public class HealthBar : MonoBehaviour
     public RectTransform healthTransform;
     private float cachedY;
     public int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
     public Image visualHealth;
     fakemonBehaviour AvatarBehaviour;
 
+    public static HealthBar instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +43,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    private void HandleHealth()
+    public void HandleHealth()
     {
         float currentXValue = MapValues(currentHealth, 0, maxHealth, minXValue, maxXValue);
 
@@ -53,7 +59,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
+    public float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
     {
         return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }

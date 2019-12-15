@@ -23,6 +23,10 @@ public class Item : ScriptableObject
         {
             fakemonBehaviour.instance.movementSpeed *= 2f;
         }
+        if (name == "Oran Berry")
+        {
+            HealthBar.instance.CurrentHealth = HealthBar.instance.CurrentHealth + 20;
+        }
 
 
     }
