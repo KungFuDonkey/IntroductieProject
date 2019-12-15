@@ -61,9 +61,10 @@ public class GetLives : MonoBehaviour
 
            pechaBerryItem.SetActive(false);
            pechaBerryTrigger.SetActive(false);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
 
-
-            inventory.instance.Add(item);
+           
         }
 
         else if (other.CompareTag("Avatar") && oranBerry == true)
@@ -73,7 +74,8 @@ public class GetLives : MonoBehaviour
             oranBerryItem.SetActive(false);
             oranBerryTrigger.SetActive(false);
 
-            inventory.instance.Add(item);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
         }
         else if (other.CompareTag("Avatar") && lumBerry == true)
         {
@@ -82,7 +84,8 @@ public class GetLives : MonoBehaviour
             lumBerryItem.SetActive(false);
             lumBerryTrigger.SetActive(false);
 
-            inventory.instance.Add(item);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
         }
     }
 
