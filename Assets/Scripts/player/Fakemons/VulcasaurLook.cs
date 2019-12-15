@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-public class VulcasaurLook : playerLook
+public class VulcasaurLook : playerLook, IPunObservable
 {
     public Vector3 projectileSpawnerLocalRotation;
     public Vector3 projectileSpawnerRotationEuler;
@@ -18,7 +18,7 @@ public class VulcasaurLook : playerLook
     protected override void LateUpdate()
     {
         base.LateUpdate();
-        transform.localRotation = Quaternion.Euler(0f, 0f, yRotation);
+        Head.localRotation = Quaternion.Euler(-1.14f, 17.087f, yRotation);
         avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
         
     }
@@ -54,5 +54,9 @@ public class VulcasaurLook : playerLook
         PhotonNetwork.Destroy(avatar);
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CharmandolphinAvatar"), evolveBulb.transform.position, evolveBulb.transform.rotation);
         PhotonNetwork.Destroy(evolveBulb);
+    }
+    public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        base.OnPhotonSerializeView(stream, info);
     }
 }

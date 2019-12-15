@@ -51,6 +51,7 @@ public class fakemonBehaviour : MonoBehaviour
         hud.transform.parent = transform.parent;
         myHUD = hud.GetComponent<HUD>();
         myHUD.MiniMap.playerTransform = transform;
+        myHUD.healthBar.maxHealth = (int)lives;
         myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
     }
 
@@ -133,6 +134,8 @@ public class fakemonBehaviour : MonoBehaviour
 
         if (lives <= 0)
         {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
             animator.SetTrigger("Die");
         }
         myHUD.healthBar.CurrentHealth = (int)lives;

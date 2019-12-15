@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         cachedY = healthTransform.position.y;
         maxXValue = healthTransform.position.x;
         minXValue = healthTransform.position.x - healthTransform.rect.width;
