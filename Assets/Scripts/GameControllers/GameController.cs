@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
 {
     // This script will be added to any multiplayer scene
     public Transform[] spawnPoints = new Transform[4];
-    public GameObject Deathscreen; 
     public GameObject thisPlayer;
     void Start()
     {
@@ -45,14 +44,10 @@ public class GameController : MonoBehaviour
         }
         return thisPlayer;
     }
-    public void DeathScreen()
-    {
-        Deathscreen.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-    }
     public void LeaveMatch()
     {
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);
     }
+
 }

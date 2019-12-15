@@ -10,14 +10,28 @@ public class Item : ScriptableObject
     
     new public string name = "New Item";
     public Sprite icon = null;
+   
 
     public virtual void Use()
     {
-        if (name == "CandyItem")
+       
+        if (name == "HealthCandy")
         {
-            
+            fakemonBehaviour.instance.jumpspeed *= 2f;
         }
+        if (name == "Lum Berry")
+        {
+            fakemonBehaviour.instance.movementSpeed *= 2f;
+        }
+        if (name == "Oran Berry")
+        {
+            HealthBar.instance.CurrentHealth = HealthBar.instance.CurrentHealth + 20;
+        }
+
+
     }
+
+   
 
     public void RemoveItemFromInventory()
     {

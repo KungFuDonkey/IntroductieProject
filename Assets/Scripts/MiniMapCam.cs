@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MiniMapCam : MonoBehaviour
 {
-    [SerializeField] protected Transform playerTransform;
-    [SerializeField] private float yOffset;
+    [SerializeField] public Transform playerTransform;
+    [SerializeField] private float yOffset = 50;
     private void LateUpdate()
     {
         Vector3 targetPosition = playerTransform.position;

@@ -15,11 +15,11 @@ public class VulcasaurLook : playerLook
         qAbility = 0;
         QABILITY = 12f;
     }
-    protected override void Update()
+    protected override void LateUpdate()
     {
-        base.Update();
+        base.LateUpdate();
         transform.localRotation = Quaternion.Euler(0f, 0f, yRotation);
-        camera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
         
     }
     protected override void basicAttack()

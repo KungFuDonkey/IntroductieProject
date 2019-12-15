@@ -11,8 +11,21 @@ public class GetLives : MonoBehaviour
     [SerializeField] private GameObject candyTrigger;
     [SerializeField] private GameObject pokeballItem;
     [SerializeField] private GameObject pokeballTrigger;
+    [SerializeField] private GameObject pechaBerryItem;
+    [SerializeField] private GameObject pechaBerryTrigger;
+    [SerializeField] private GameObject oranBerryItem;
+    [SerializeField] private GameObject oranBerryTrigger;
+    [SerializeField] private GameObject lumBerryItem;
+    [SerializeField] private GameObject lumBerryTrigger;
     [SerializeField] private bool candy;
     [SerializeField] private bool pokebal;
+    [SerializeField] private bool pechaBerry;
+    [SerializeField] private bool oranBerry;
+    [SerializeField] private bool lumBerry;
+   
+
+    
+
 
 
 
@@ -24,8 +37,11 @@ public class GetLives : MonoBehaviour
           
             candyItem.SetActive(false);
             candyTrigger.SetActive(false);
+           
 
-            inventory.instance.Add(item);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
+            //inventory.instance.Add(item);
         }
 
         else if (other.CompareTag("Avatar") && pokebal == true)
@@ -34,16 +50,50 @@ public class GetLives : MonoBehaviour
 
             pokeballItem.SetActive(false);
             pokeballTrigger.SetActive(false);
-
-            inventory.instance.Add(item);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
+            //inventory.instance.Add(item);
         }
 
+        else if (other.CompareTag("Avatar") && pechaBerry == true)
+        {
 
+
+           pechaBerryItem.SetActive(false);
+           pechaBerryTrigger.SetActive(false);
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
+
+           
+        }
+
+        else if (other.CompareTag("Avatar") && oranBerry == true)
+        {
+
+
+            oranBerryItem.SetActive(false);
+            oranBerryTrigger.SetActive(false);
+
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
+        }
+        else if (other.CompareTag("Avatar") && lumBerry == true)
+        {
+
+
+            lumBerryItem.SetActive(false);
+            lumBerryTrigger.SetActive(false);
+
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.binventory.Add(item);
+        }
     }
 
+   
+  
 
 
-    
+
 
     /*private void OnTriggerStay(Collider other)
     {

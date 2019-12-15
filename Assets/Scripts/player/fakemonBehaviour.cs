@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using System.IO;
 
 public class fakemonBehaviour : MonoBehaviour
 {
@@ -9,11 +10,14 @@ public class fakemonBehaviour : MonoBehaviour
     GameObject MyAvatar;
     CharacterController controller;
     private Animator animator;
+    public GameObject hud;
+    HUD myHUD;
+    int deadPlayers = 0;
     protected string type;
     protected string weaktype;
     protected string strongtype;
-    protected float movementSpeed;
-    protected float jumpspeed;
+    public float movementSpeed;
+    public float jumpspeed;
     protected float lives;
     public float gravity;
     public float mouseSens;
@@ -22,16 +26,32 @@ public class fakemonBehaviour : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     Vector3 velocity;
+
+    public static fakemonBehaviour instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
-        MyAvatar = transform.parent.gameObject;
         PV = GetComponent<PhotonView>();
-        controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
         if (!PV.IsMine)
         {
             Destroy(this);
         }
+        else
+        {
+            hud = Instantiate(hud);
+        }
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        MyAvatar = transform.parent.gameObject;
+        hud.transform.parent = transform.parent;
+        myHUD = hud.GetComponent<HUD>();
+        myHUD.MiniMap.playerTransform = transform;
+        myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
     }
 
     // Update is called once per frame
@@ -57,7 +77,10 @@ public class fakemonBehaviour : MonoBehaviour
                     velocity.y = -gravity;
                 }
             }
-
+            if (Input.GetKey(KeyCode.O))
+            {
+                Die();
+            }
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 controller.Move(movement * 2 * movementSpeed * Time.deltaTime);
@@ -112,6 +135,7 @@ public class fakemonBehaviour : MonoBehaviour
         {
             animator.SetTrigger("Die");
         }
+        myHUD.healthBar.CurrentHealth = (int)lives;
         Debug.Log(lives);
     }
     public void AddSpeed(Vector3 Speed)
@@ -121,8 +145,23 @@ public class fakemonBehaviour : MonoBehaviour
     public void Die()
     {
         alive = false;
+        PV.RPC("RPC_Die", RpcTarget.AllBuffered);
+
         Debug.Log("You Died");
         //PhotonNetwork.Destroy(MyAvatar);
-        GameController.GS.DeathScreen(); 
+        myHUD.ShowDeathscreen();
+    }
+
+    [PunRPC]
+    protected virtual void RPC_Die()
+    {
+        Debug.Log("Died");
+
+        deadPlayers += 1;
+        myHUD.AlivePlayers.text = "" +(PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
+    }
+    public float Lives
+    {
+        get { return lives; }
     }
 }
