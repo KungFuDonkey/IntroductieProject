@@ -12,7 +12,7 @@ public class fakemonBehaviour : MonoBehaviour
     private Animator animator;
     public GameObject hud;
     HUD myHUD;
-    int deadPlayers = 0;
+    protected int deadPlayers = 0, playerCount, alivePlayerCount;
     protected string type;
     protected string weaktype;
     protected string strongtype;
@@ -158,10 +158,36 @@ public class fakemonBehaviour : MonoBehaviour
         Debug.Log("Died");
 
         deadPlayers += 1;
-        myHUD.AlivePlayers.text = "" +(PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
+        alivePlayerCount = (PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
+        myHUD.AlivePlayers.text = "" + alivePlayerCount;
     }
+    protected virtual void OnLeftRoom()
+    {
+        if (alive)
+        {
+            playerCounting();
+            Debug.Log(deadPlayers);
+            Debug.Log("alive");
+        }
+        else
+        {
+            deadPlayers -= 1;
+            Debug.Log(deadPlayers);
+        }
+        
+    }
+
     public float Lives
     {
         get { return lives; }
+    }
+    void OnLobbyStatisticsUpdate()
+    {
+
+    }
+    protected void playerCounting()
+    {
+        alivePlayerCount = (PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
+        myHUD.AlivePlayers.text = "" + alivePlayerCount;
     }
 }
