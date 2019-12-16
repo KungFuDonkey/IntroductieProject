@@ -10,6 +10,8 @@ public class CharmandolphinLook : playerLook
         ATTACKSPEED = 0.5f;
         eAbility = 0;
         EABILITY = 12f;
+        qAbility = 0;
+        QABILITY = 12f;
     }
     protected override void LateUpdate()
     {
@@ -30,6 +32,13 @@ public class CharmandolphinLook : playerLook
         aoe.transform.name += '*';
         aoe.transform.parent = playerbody;
         eAbility = EABILITY;
+    }
+    protected override void qAttack()
+    {
+        animator.SetTrigger("Attack");
+        GameObject AquaRing = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "AquaRing"), avatarcamera.position, avatarcamera.rotation * Quaternion.Euler(0, 90, 0));
+        AquaRing.transform.name += 'b';
+        qAbility = QABILITY;
     }
     protected override void evolve()
     {
