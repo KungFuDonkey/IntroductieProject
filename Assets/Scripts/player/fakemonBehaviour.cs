@@ -165,7 +165,6 @@ public class fakemonBehaviour : MonoBehaviour
     {
         if (alive)
         {
-            playerCounting();
             Debug.Log(deadPlayers);
             Debug.Log("alive");
         }
