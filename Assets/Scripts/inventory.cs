@@ -23,12 +23,13 @@ public class inventory : MonoBehaviour
 
     public void Add (Item item)
     {
+        Debug.Log(space - items.Count);
         if (items.Count >= space)
         {
             return; 
         }
         items.Add(item);
-
+        Debug.Log(onItemChangedCallback);
         if (onItemChangedCallback != null)
         {
             onItemChangedCallback.Invoke();

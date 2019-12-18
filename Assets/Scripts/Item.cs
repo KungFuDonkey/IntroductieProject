@@ -27,8 +27,6 @@ public class Item : ScriptableObject
         {
             HealthBar.instance.CurrentHealth = HealthBar.instance.CurrentHealth + 20;
         }
-
-
     }
 
    
