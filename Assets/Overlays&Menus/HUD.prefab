@@ -492,7 +492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7294397052567468805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1514,6 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthTransform: {fileID: 905921733511672419}
   maxHealth: 100
+  currentHealth: 0
   visualHealth: {fileID: 1173765699184814444}
 --- !u!222 &6023885555316102149
 CanvasRenderer:
