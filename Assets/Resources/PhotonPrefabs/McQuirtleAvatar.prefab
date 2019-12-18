@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 1509234582835099944}
   - component: {fileID: 5830480691968735659}
   - component: {fileID: 5331483617955007412}
+  - component: {fileID: 3702584914266618179}
   m_Layer: 11
   m_Name: McQuirtle
   m_TagString: Avatar
@@ -564,6 +565,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3978923116235990503}
   - {fileID: 4637840673832276053}
+  - {fileID: 3702584914266618179}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -657,6 +659,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
+  hideobjects:
+  - {fileID: 7539408937850647601}
+  - {fileID: 399445383264842993}
+  movementSpeed: 12
+  jumpspeed: 14
   gravity: 20
   mouseSens: 100
   groundCheck: {fileID: 3739885913562200113}
@@ -664,6 +671,27 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &3702584914266618179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107373906631295526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4c34e6d4b9c6e4d97f004b32ece368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerbody: {fileID: 4744990210481192868}
+  Head: {fileID: 7165855197232016856}
+  avatarcamera: {fileID: 1415527100695386992}
+  projectileSpawner: {fileID: 2560777225738415249}
+  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
+    type: 3}
+  avatar: {fileID: 2371499428266203527}
+  yRotation: 0
+  mouseSens: 100
 --- !u!1 &2189596152404652067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,9 +1253,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7165855197232016856}
-  - component: {fileID: 7627327311412225872}
-  - component: {fileID: 3748776499975399272}
-  - component: {fileID: 4831889377817647135}
   m_Layer: 0
   m_Name: Head 5
   m_TagString: Untagged
@@ -1252,62 +1277,6 @@ Transform:
   m_Father: {fileID: 1817791980399938408}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7627327311412225872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3699580614249327945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f4c34e6d4b9c6e4d97f004b32ece368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerbody: {fileID: 4744990210481192868}
-  avatarcamera: {fileID: 1415527100695386992}
-  projectileSpawner: {fileID: 2560777225738415249}
-  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
-    type: 3}
-  avatar: {fileID: 2371499428266203527}
-  mouseSens: 100
---- !u!114 &3748776499975399272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3699580614249327945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 4831889377817647135}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &4831889377817647135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3699580614249327945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!1 &4318303425317660254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,7 +2283,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

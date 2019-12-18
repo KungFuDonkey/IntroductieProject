@@ -11,6 +11,7 @@ public class fakemonBehaviour : MonoBehaviour
     CharacterController controller;
     private Animator animator;
     public GameObject hud;
+    public GameObject[] hideobjects;
     HUD myHUD;
     int deadPlayers = 0;
     protected string type;
@@ -44,6 +45,11 @@ public class fakemonBehaviour : MonoBehaviour
         else
         {
             hud = Instantiate(hud);
+            foreach (GameObject obj in hideobjects)
+            {
+                obj.layer = 10;
+            }
+
         }
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -51,6 +57,7 @@ public class fakemonBehaviour : MonoBehaviour
         hud.transform.parent = transform.parent;
         myHUD = hud.GetComponent<HUD>();
         myHUD.MiniMap.playerTransform = transform;
+        myHUD.healthBar.maxHealth = (int)lives;
         myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
     }
 
@@ -133,6 +140,8 @@ public class fakemonBehaviour : MonoBehaviour
 
         if (lives <= 0)
         {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
             animator.SetTrigger("Die");
         }
         myHUD.healthBar.CurrentHealth = (int)lives;

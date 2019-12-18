@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-public class CharmandolphinLook : playerLook
+public class CharmandolphinLook : playerLook, IPunObservable
 {
     public CharmandolphinLook()
     {
@@ -15,14 +15,15 @@ public class CharmandolphinLook : playerLook
     }
     protected override void LateUpdate()
     {
-        base.LateUpdate();
-        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        Head.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        base.LateUpdate();
+
     }
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "WaterProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,0,0));
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "WaterProjectile"), avatarcamera.position, avatarcamera.rotation);
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }
@@ -50,5 +51,9 @@ public class CharmandolphinLook : playerLook
         PhotonNetwork.Destroy(avatar);
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "McQuirtleAvatar"), evolveBulb.transform.position, evolveBulb.transform.rotation);
         PhotonNetwork.Destroy(evolveBulb);
+    }
+    public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        base.OnPhotonSerializeView(stream, info);
     }
 }

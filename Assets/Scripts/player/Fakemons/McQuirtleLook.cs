@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-public class McQuirtleLook : playerLook
+public class McQuirtleLook : playerLook, IPunObservable
 {
     public McQuirtleLook()
     {
@@ -13,14 +13,15 @@ public class McQuirtleLook : playerLook
     }
     protected override void LateUpdate()
     {
-        base.LateUpdate();
-        transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        Head.localRotation = Quaternion.Euler(yRotation, 17.974f, 0f);
         avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        base.LateUpdate();
+
     }
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,-18,0));
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), avatarcamera.position, avatarcamera.rotation);
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }
@@ -41,5 +42,9 @@ public class McQuirtleLook : playerLook
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "VulcasaurAvatar"), localTrans.position, localTrans.rotation);
         PhotonNetwork.Destroy(avatar);
         PhotonNetwork.Destroy(evolveBulb);
+    }
+    public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        base.OnPhotonSerializeView(stream, info);
     }
 }

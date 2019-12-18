@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-public class VulcasaurLook : playerLook
+public class VulcasaurLook : playerLook, IPunObservable
 {
     public Vector3 projectileSpawnerLocalRotation;
     public Vector3 projectileSpawnerRotationEuler;
@@ -17,15 +17,14 @@ public class VulcasaurLook : playerLook
     }
     protected override void LateUpdate()
     {
-        base.LateUpdate();
-        transform.localRotation = Quaternion.Euler(0f, 0f, yRotation);
+        Head.localRotation = Quaternion.Euler(-1.14f, 17.087f, yRotation);
         avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
-        
+        base.LateUpdate();
     }
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), projectileSpawner.position, transform.rotation * Quaternion.Euler(yRotation,-90,0));
+        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), avatarcamera.position, avatarcamera.rotation);
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }
@@ -54,5 +53,9 @@ public class VulcasaurLook : playerLook
         PhotonNetwork.Destroy(avatar);
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CharmandolphinAvatar"), evolveBulb.transform.position, evolveBulb.transform.rotation);
         PhotonNetwork.Destroy(evolveBulb);
+    }
+    public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        base.OnPhotonSerializeView(stream, info);
     }
 }

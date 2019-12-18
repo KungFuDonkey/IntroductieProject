@@ -2,16 +2,17 @@
 using System.IO;
 using UnityEngine;
 
-public class playerLook : MonoBehaviour
+public class playerLook : MonoBehaviourPunCallbacks, IPunObservable
 {
     protected PhotonView PV;
     public Transform playerbody;
+    public Transform Head;
     public Transform avatarcamera;
     protected Animator animator;
     public Transform projectileSpawner;
     public GameObject evolveBulb;
     public GameObject avatar;
-    protected float yRotation = 0f;
+    public float yRotation = 0f;
     bool alive = true;
     public float mouseSens;
     protected float attackSpeed, ATTACKSPEED;
@@ -30,7 +31,6 @@ public class playerLook : MonoBehaviour
         if (!PV.IsMine)
         {
             Destroy(avatarcamera.gameObject);
-            Destroy(this);
         }
         avatarTrans = avatar.transform;
         localTrans = avatarTrans.GetChild(0).transform;
@@ -39,59 +39,63 @@ public class playerLook : MonoBehaviour
     // Update is called once per frame
     protected virtual void LateUpdate()
     {
-        if (alive)
+        if (PV.IsMine)
         {
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
-            yRotation -= mouseY;
-            yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-            playerbody.Rotate(Vector3.up * mouseX);
-
-            if (!evolving)
+            if (alive)
             {
-                if (attackSpeed > 0)
-                {
-                    attackSpeed -= Time.deltaTime;
-                }
-                if (eAbility > 0)
-                {
-                    eAbility -= Time.deltaTime;
-                }
-                if (qAbility > 0)
-                {
-                    qAbility -= Time.deltaTime;
-                }
-                if (evolveXP < evolveXPNeeded)
-                {
-                    evolveXP += (xpGenerator * Time.deltaTime);
+                float mouseX = Input.GetAxis("Mouse X");
+                float mouseY = Input.GetAxis("Mouse Y");
+                yRotation -= mouseY;
+                yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+                playerbody.Rotate(Vector3.up * mouseX);
 
-                }
+                if (!evolving)
+                {
+                    if (attackSpeed > 0)
+                    {
+                        attackSpeed -= Time.deltaTime;
+                    }
+                    if (eAbility > 0)
+                    {
+                        eAbility -= Time.deltaTime;
+                    }
+                    if (qAbility > 0)
+                    {
+                        qAbility -= Time.deltaTime;
+                    }
+                    if (evolveXP < evolveXPNeeded)
+                    {
+                        evolveXP += (xpGenerator * Time.deltaTime);
 
-                if (Input.GetMouseButton(0) && attackSpeed <= 0)
-                {
-                    basicAttack();
+                    }
+
+                    if (Input.GetMouseButton(0) && attackSpeed <= 0)
+                    {
+                        basicAttack();
+                    }
+                    else if (Input.GetKey(KeyCode.E) && eAbility <= 0)
+                    {
+                        eAttack();
+                    }
+                    else if (Input.GetKey(KeyCode.Q) && qAbility <= 0)
+                    {
+                        qAttack();
+                    }
+                    else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded)
+                    {
+                        evolve();
+                    }
                 }
-                else if (Input.GetKey(KeyCode.E) && eAbility <= 0)
+                else
                 {
-                    eAttack();
+                    evolveBulb.transform.localScale += new Vector3(2, 2, 2) * Time.deltaTime;
+                    localTrans.Translate(0, Time.deltaTime, 0);
+                    evolveBulb.transform.Translate(0, Time.deltaTime, 0);
                 }
-                else if (Input.GetKey(KeyCode.Q) && qAbility <= 0)
-                {
-                    qAttack();
-                }
-                else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded)
-                {
-                    evolve();
-                }
-            }
-            else
-            {
-                evolveBulb.transform.localScale += new Vector3(2, 2, 2) * Time.deltaTime;
-                localTrans.Translate(0, Time.deltaTime, 0);
-                evolveBulb.transform.Translate(0, Time.deltaTime, 0);
             }
         }
     }
+        
     protected virtual void basicAttack()
     {
     }
@@ -112,5 +116,16 @@ public class playerLook : MonoBehaviour
         Invoke("evolve2", evolveTime);
         //add animation: in the air after jumping out of pokeball
         hover = true;
+    }
+    public virtual void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(yRotation);
+        }
+        else
+        {
+            yRotation = (float)stream.ReceiveNext();
+        }
     }
 }
