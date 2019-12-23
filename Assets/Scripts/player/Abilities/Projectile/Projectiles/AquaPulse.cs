@@ -2,20 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterBall : ProjectileBehavior
+public class AquaPulse : ProjectileBehavior
 {
-    public WaterBall()
-    {
-        speed = 50;
-        maxDistance = 200;
-        damage = 8;
-        type = "Water";
-        particleTimer = 3;
-    }
     protected override void Start()
     {
         base.Start();
     }
+
     protected override void Update()
     {
         base.Update();
