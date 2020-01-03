@@ -2,10 +2,10 @@
 using UnityEngine;
 using System.IO;
 
-public class fakemonBehaviour : MonoBehaviour, IPunObservable
+public class fakemonBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
-    public PhotonView PV;
+    private PhotonView PV;
     bool alive = true; 
     GameObject MyAvatar;
     CharacterController controller;
@@ -32,6 +32,7 @@ public class fakemonBehaviour : MonoBehaviour, IPunObservable
     protected bool effected;
 
     public static fakemonBehaviour instance;
+
     private void Awake()
     {
         instance = this;
@@ -40,16 +41,19 @@ public class fakemonBehaviour : MonoBehaviour, IPunObservable
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        name = PV.OwnerActorNr.ToString();
-        if(PV.IsMine)
+        if (!PV.IsMine)
+        {
+            Destroy(this);
+        }
+        else
         {
             hud = Instantiate(hud);
             foreach (GameObject obj in hideobjects)
             {
                 obj.layer = 10;
             }
+
         }
-        procedures++;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         MyAvatar = transform.parent.gameObject;
@@ -59,88 +63,35 @@ public class fakemonBehaviour : MonoBehaviour, IPunObservable
         myHUD.healthBar.maxHealth = (int)lives;
         myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
     }
-    private void Update()
-    {
-        if (procedures == 2)
-        {
-            PV.TransferOwnership(1);
-            procedures = 0;
-        }
-    }
-    [PunRPC]
-    public void hit(float damage, string type)
-    {
-        if(type == weaktype)
-        {
-            lives -= (float)(0.5 * damage);
-        }
-        else if(type == strongtype)
-        {
-            lives -= (float)(1.5 * damage);
-        }
-        else
-        {
-            lives -= damage;
-        }
 
-        if (lives <= 0)
-        {
-            animator.SetBool("IsWalking", false);
-            animator.SetBool("IsRunning", false);
-            animator.SetTrigger("Die");
-        }
-        myHUD.healthBar.CurrentHealth = (int)lives;
-        Debug.Log(lives);
-    }
-    public void AddSpeed(Vector3 Speed)
-    {
-        velocity = velocity + Speed;
-    }
-    public void Die()
-    {
-        alive = false;
-        PV.RPC("RPC_Die", RpcTarget.AllBuffered);
-
-        Debug.Log("You Died");
-        //PhotonNetwork.Destroy(MyAvatar);
-        myHUD.ShowDeathscreen();
-    }
-
-    [PunRPC]
-    protected virtual void RPC_Die()
-    {
-        Debug.Log("Died");
-
-        deadPlayers += 1;
-        myHUD.AlivePlayers.text = "" +(PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
-    }
-    public float Lives
-    {
-        get { return lives; }
-    }
-
-    [PunRPC]
-    protected void recieveInput(float horizontal, float vertical, bool shift, float jump/*, bool mouse, bool e, bool q, bool v*/)
+    // Update is called once per frame
+    void Update()
     {
         if (alive)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-            Vector3 movement = transform.right * horizontal + transform.forward * vertical;
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 movement = transform.right * x + transform.forward * z;
             if (isGrounded && velocity.y < 0)
             {
-                float y = jump;
+                float y = Input.GetAxis("Jump");
                 if (y != 0)
                 {
                     velocity.y = y * jumpspeed;
                 }
                 else
                 {
-
                     velocity.y = -gravity;
                 }
             }
-            if (shift)
+            if (Input.GetKey(KeyCode.O))
+            {
+                Die();
+            }
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 controller.Move(movement * 2 * movementSpeed * Time.deltaTime);
                 if (movement.x != 0 || movement.z != 0)
@@ -183,19 +134,31 @@ public class fakemonBehaviour : MonoBehaviour, IPunObservable
                 }
             }
         }
-
     }
     [PunRPC]
     public void hit(float damage, string type, string statusEffect)
     {
-        if (stream.IsWriting)
+        if(type == weaktype)
         {
             lives -= (float)(0.66 * damage);
         }
+        else if(type == strongtype)
+        {
+            lives -= (float)(1.5 * damage);
+        }
         else
         {
-            transform.position = (Vector3)stream.ReceiveNext();
+            lives -= damage;
         }
+
+        if (lives <= 0)
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
+            animator.SetTrigger("Die");
+        }
+        myHUD.healthBar.CurrentHealth = (int)lives;
+        Debug.Log(lives);
     }
     public void AddSpeed(Vector3 Speed)
     {

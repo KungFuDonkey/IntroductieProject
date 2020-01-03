@@ -13,9 +13,9 @@ public class McQuirtleLook : playerLook, IPunObservable
     }
     protected override void LateUpdate()
     {
-        base.LateUpdate();
         Head.localRotation = Quaternion.Euler(yRotation, 17.974f, 0f);
         avatarcamera.rotation = Quaternion.Euler(yRotation, playerbody.rotation.eulerAngles.y, playerbody.rotation.z);
+        base.LateUpdate();
 
     }
     protected override void basicAttack()
