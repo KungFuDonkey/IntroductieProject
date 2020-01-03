@@ -2,9 +2,9 @@
 using System.IO;
 using UnityEngine;
 
-public class CharmanDolphinLook : playerLook, IPunObservable
+public class CharmandolphinLook : playerLook, IPunObservable
 {
-    public CharmanDolphinLook()
+    public CharmandolphinLook()
     {
         attackSpeed = 0;
         ATTACKSPEED = 0.5f;
@@ -44,7 +44,7 @@ public class CharmanDolphinLook : playerLook, IPunObservable
     protected override void evolve()
     {
         base.evolve();
-        avatar.GetComponentInChildren<CharmanDolphin>().gravity = 0;
+        avatar.GetComponentInChildren<Charmandolphin>().gravity = 0;
     }
     protected void evolve2()
     {
