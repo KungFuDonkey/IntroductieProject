@@ -4,9 +4,9 @@ using UnityEngine;
 using Photon.Pun;
 
 
-public class Charmandolphin : fakemonBehaviour
+public class CharmanDolphin : fakemonBehaviour
 {
-    public Charmandolphin()
+    public CharmanDolphin()
     {
         type = "water";
         movementSpeed = 10;
