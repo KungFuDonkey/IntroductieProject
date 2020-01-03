@@ -83,7 +83,7 @@ public class fakemonBehaviour : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                controller.Move(movement * 2 * movementSpeed * Time.deltaTime);
+                controller.Move(movement * 1.5f * movementSpeed * Time.deltaTime);
                 if (movement.x != 0 || movement.z != 0)
                 {
                     animator.SetBool("IsWalking", false);
