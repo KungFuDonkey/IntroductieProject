@@ -52,7 +52,14 @@ public class ProjectileBehavior : Ability
             if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
             {
                 PhotonView hitObject = hit.gameObject.GetPhotonView();
-                hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type });
+                hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type, statusEffect });
+                if (statusEffect != "none")
+                {
+                    if (statusEffect == "slow")
+                    {
+                        hitObject.RPC("Slow", RpcTarget.AllBuffered);
+                    }
+                }
             }
             destroy();
         }
