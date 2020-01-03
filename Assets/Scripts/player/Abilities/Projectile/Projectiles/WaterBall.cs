@@ -6,8 +6,8 @@ public class WaterBall : ProjectileBehavior
 {
     public WaterBall()
     {
-        speed = 50;
-        maxDistance = 200;
+        speed = 30;
+        maxDistance = 150;
         damage = 8;
         type = "Water";
         particleTimer = 3;

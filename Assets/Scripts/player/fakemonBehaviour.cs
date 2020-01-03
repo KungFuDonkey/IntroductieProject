@@ -28,6 +28,9 @@ public class fakemonBehaviour : MonoBehaviour
     bool isGrounded;
     Vector3 velocity;
 
+    protected float effectTimer;
+    protected bool effected;
+
     public static fakemonBehaviour instance;
 
     private void Awake()
@@ -120,14 +123,24 @@ public class fakemonBehaviour : MonoBehaviour
             velocity.y -= gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
+            if (effected)
+            {
+                effectTimer -= Time.deltaTime;
+                if (effectTimer <= 0)
+                {
+                    movementSpeed *= 2f;
+                    Debug.Log("noSlow");
+                    effected = false;
+                }
+            }
         }
     }
     [PunRPC]
-    public void hit(float damage, string type)
+    public void hit(float damage, string type, string statusEffect)
     {
         if(type == weaktype)
         {
-            lives -= (float)(0.5 * damage);
+            lives -= (float)(0.66 * damage);
         }
         else if(type == strongtype)
         {
@@ -172,5 +185,13 @@ public class fakemonBehaviour : MonoBehaviour
     public float Lives
     {
         get { return lives; }
+    }
+    [PunRPC]
+    protected virtual void Slow()
+    {
+        Debug.Log("Slow");
+        effected = true;
+        effectTimer = 5f;
+        movementSpeed *= 0.5f;
     }
 }
