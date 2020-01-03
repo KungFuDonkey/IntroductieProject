@@ -23,7 +23,7 @@ public class ProjectileBehavior : Ability
     protected override void Update()
     {
         base.Update();
-        maxDistance -= speed;
+        maxDistance -= speed * Time.deltaTime;
         if (maxDistance < 0 && !destroyed)
         {
             destroy();
@@ -60,9 +60,11 @@ public class ProjectileBehavior : Ability
     }
     private void destroy()
     {
-        Destroy(this.transform.GetChild(0).gameObject);
+        Destroy(transform.GetChild(0).gameObject);
         destroyed = true;
-        this.transform.position = Vector3.zero;
+        GameObject childObj = GameObject.Find("Sphere");
+        //childObj.SetActive(false);
+        transform.position = Vector3.zero;
         controller.velocity = Vector3.zero;
     }
 }
