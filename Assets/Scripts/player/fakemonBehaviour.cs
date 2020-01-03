@@ -5,7 +5,7 @@ using System.IO;
 public class fakemonBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
-    private PhotonView PV;
+    public PhotonView PV;
     bool alive = true; 
     GameObject MyAvatar;
     CharacterController controller;
@@ -32,7 +32,6 @@ public class fakemonBehaviour : MonoBehaviour
     protected bool effected;
 
     public static fakemonBehaviour instance;
-
     private void Awake()
     {
         instance = this;
@@ -41,19 +40,16 @@ public class fakemonBehaviour : MonoBehaviour
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        if (!PV.IsMine)
-        {
-            Destroy(this);
-        }
-        else
+        name = PV.OwnerActorNr.ToString();
+        if(PV.IsMine)
         {
             hud = Instantiate(hud);
             foreach (GameObject obj in hideobjects)
             {
                 obj.layer = 10;
             }
-
         }
+
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         MyAvatar = transform.parent.gameObject;
@@ -63,18 +59,15 @@ public class fakemonBehaviour : MonoBehaviour
         myHUD.healthBar.maxHealth = (int)lives;
         myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (alive)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
 
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-
-            Vector3 movement = transform.right * x + transform.forward * z;
+            Vector3 movement = transform.right * horizontal + transform.forward * vertical;
             if (isGrounded && velocity.y < 0)
             {
                 float y = Input.GetAxis("Jump");
@@ -84,12 +77,9 @@ public class fakemonBehaviour : MonoBehaviour
                 }
                 else
                 {
+
                     velocity.y = -gravity;
                 }
-            }
-            if (Input.GetKey(KeyCode.O))
-            {
-                Die();
             }
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -136,11 +126,11 @@ public class fakemonBehaviour : MonoBehaviour
         }
     }
     [PunRPC]
-    public void hit(float damage, string type, string statusEffect)
+    public void hit(float damage, string type)
     {
         if(type == weaktype)
         {
-            lives -= (float)(0.66 * damage);
+            lives -= (float)(0.5 * damage);
         }
         else if(type == strongtype)
         {
