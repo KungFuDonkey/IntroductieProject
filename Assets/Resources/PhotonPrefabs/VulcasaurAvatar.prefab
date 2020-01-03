@@ -934,7 +934,6 @@ GameObject:
   - component: {fileID: 6544508294180536305}
   - component: {fileID: 3233834685115580368}
   - component: {fileID: 7524913872667477603}
-  - component: {fileID: 8657120151830428139}
   - component: {fileID: 607276644590427142}
   - component: {fileID: 6011481717677247586}
   - component: {fileID: 4625681295682066573}
@@ -1003,7 +1002,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 607276644590427142}
-  - {fileID: 8657120151830428139}
+  - {fileID: 5948292329430731060}
   - {fileID: 7524913872667477603}
   viewIdField: 0
   InstantiationId: 0
@@ -1031,21 +1030,6 @@ MonoBehaviour:
   mouseSens: 100
   projectileSpawnerLocalRotation: {x: 0, y: 0, z: 0}
   projectileSpawnerRotationEuler: {x: 0, y: 0, z: 0}
---- !u!114 &8657120151830428139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!114 &607276644590427142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,6 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3285474a576bb21498835e4f67d94332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
   hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
   hideobjects:
   - {fileID: 6330857936162896242}
@@ -1133,6 +1118,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
+  procedures: 0
 --- !u!1 &3188010945302266173
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,7 @@ public class playerLook : MonoBehaviourPunCallbacks, IPunObservable
         }
         avatarTrans = avatar.transform;
         localTrans = avatarTrans.GetChild(0).transform;
+        playerbody.GetComponent<fakemonBehaviour>().procedures++;
     }
 
     // Update is called once per frame
@@ -48,7 +49,6 @@ public class playerLook : MonoBehaviourPunCallbacks, IPunObservable
                 yRotation -= mouseY;
                 yRotation = Mathf.Clamp(yRotation, -90f, 90f);
                 playerbody.Rotate(Vector3.up * mouseX);
-
                 if (!evolving)
                 {
                     if (attackSpeed > 0)
@@ -93,6 +93,10 @@ public class playerLook : MonoBehaviourPunCallbacks, IPunObservable
                     evolveBulb.transform.Translate(0, Time.deltaTime, 0);
                 }
             }
+        }
+        else
+        {
+            return;
         }
     }
         
