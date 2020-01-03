@@ -886,19 +886,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96f7fa35b8dcc842962a86c8b5dcd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
-  hideobjects:
-  - {fileID: 9072886840931271134}
-  - {fileID: 8925710618542213621}
+  hud: {fileID: 0}
+  hideobjects: []
   movementSpeed: 10
   jumpspeed: 10
-  gravity: 22.9
-  mouseSens: 100
-  groundCheck: {fileID: 7333381103554040381}
+  gravity: 0
+  mouseSens: 0
+  groundCheck: {fileID: 0}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
 --- !u!114 &8056427262804297154
 MonoBehaviour:
   m_ObjectHideFlags: 0

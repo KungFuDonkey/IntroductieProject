@@ -44,7 +44,7 @@ public class CharmanDolphinLook : playerLook, IPunObservable
     protected override void evolve()
     {
         base.evolve();
-        avatar.GetComponentInChildren<Charmandolphin>().gravity = 0;
+        avatar.GetComponentInChildren<CharmanDolphin>().gravity = 0;
     }
     protected void evolve2()
     {
