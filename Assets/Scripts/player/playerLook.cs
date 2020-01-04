@@ -42,9 +42,9 @@ public class playerLook : MonoBehaviour
 
         verticalRotation += mouseY * sensitivity * Time.deltaTime;
         horizontalRotation += mouseX * sensitivity * Time.deltaTime;
-        playerbody.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        playerbody.localRotation = Quaternion.Euler(0f, horizontalRotation, 0f);
     }
-    //test
+
 }
 
 
