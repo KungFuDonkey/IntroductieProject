@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
             Input.GetKey(KeyCode.E),
             Input.GetKey(KeyCode.P),
             Input.GetKey(KeyCode.V),
-            Input.GetMouseButton(0),
+            Input.GetMouseButton(0)
         };
-
+        
         ClientSend.PlayerMovement(_inputs);
     }
 }

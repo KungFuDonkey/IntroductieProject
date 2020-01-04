@@ -25,7 +25,7 @@ namespace GameServer
             rotation = Quaternion.Identity;
             selectedCharacter = _selectedCharacter;
 
-            inputs = new bool[4];
+            inputs = new bool[10];
         }
 
         public void Update()
@@ -47,7 +47,6 @@ namespace GameServer
             {
                 _inputDirection.X -= 1;
             }
-
             Move(_inputDirection);
         }
 

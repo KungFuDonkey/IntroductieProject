@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
         {
             _player = Instantiate(myCharacter, _position, _rotation);
         }
-
         _player.GetComponent<PlayerManager>().id = _id;
         _player.GetComponent<PlayerManager>().username = _username;
         players.Add(_id, _player.GetComponent<PlayerManager>());

@@ -33,7 +33,7 @@ namespace GameServer
                 _inputs[i] = _packet.ReadBool();
             }
             Quaternion _rotation = _packet.ReadQuaternion();
-
+            Console.WriteLine(_rotation); 
             Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
         }
     }
