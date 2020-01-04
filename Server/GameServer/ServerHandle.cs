@@ -7,7 +7,7 @@ namespace GameServer
 {
     class ServerHandle
     {
-        public static void WelcomeReceived(int _fromClient, Packet _packet)
+        public static void WelcomeReceived(int _fromClient, ServerPacket _packet)
         {
             int _clientIdCheck = _packet.ReadInt();
             string _username = _packet.ReadString();
@@ -25,7 +25,7 @@ namespace GameServer
            
         }
 
-        public static void PlayerMovement(int _fromClient, Packet _packet)
+        public static void PlayerMovement(int _fromClient, ServerPacket _packet)
         {
             bool[] _inputs = new bool[_packet.ReadInt()];
             for (int i = 0; i < _inputs.Length; i++)

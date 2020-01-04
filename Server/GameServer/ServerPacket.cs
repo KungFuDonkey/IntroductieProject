@@ -21,14 +21,14 @@ namespace GameServer
         playerMovement
     }
 
-    public class Packet : IDisposable
+    public class ServerPacket : IDisposable
     {
         private List<byte> buffer;
         private byte[] readableBuffer;
         private int readPos;
 
         /// <summary>Creates a new empty packet (without an ID).</summary>
-        public Packet()
+        public ServerPacket()
         {
             buffer = new List<byte>(); // Initialize buffer
             readPos = 0; // Set readPos to 0
@@ -36,7 +36,7 @@ namespace GameServer
 
         /// <summary>Creates a new packet with a given ID. Used for sending.</summary>
         /// <param name="_id">The packet ID.</param>
-        public Packet(int _id)
+        public ServerPacket(int _id)
         {
             buffer = new List<byte>(); // Initialize buffer
             readPos = 0; // Set readPos to 0
@@ -46,7 +46,7 @@ namespace GameServer
 
         /// <summary>Creates a packet from which data can be read. Used for receiving.</summary>
         /// <param name="_data">The bytes to add to the packet.</param>
-        public Packet(byte[] _data)
+        public ServerPacket(byte[] _data)
         {
             buffer = new List<byte>(); // Initialize buffer
             readPos = 0; // Set readPos to 0

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
 
+    public LayerMask groundMask;
     public GameObject Charamandolphin;
     public GameObject McQuirtle;
     public GameObject Vulcasaur;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
 
         if (_selectedCharacter == 1)
         {
-          myCharacter = Charamandolphin;
+            myCharacter = Charamandolphin;
         }
         else if (_selectedCharacter == 2)
         {
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         }
         _player.GetComponent<PlayerManager>().id = _id;
         _player.GetComponent<PlayerManager>().username = _username;
+        _player.name = _id.ToString();
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
 }

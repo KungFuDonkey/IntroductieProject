@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace GameServer
 {
-    class Client
+    class ServerClient
     {
         public static int dataBufferSize = 4096;
 
@@ -16,7 +16,7 @@ namespace GameServer
         public TCP tcp;
         public UDP udp;
 
-        public Client(int _clientId)
+        public ServerClient(int _clientId)
         {
             id = _clientId;
             tcp = new TCP(id);
@@ -29,7 +29,7 @@ namespace GameServer
 
             private readonly int id;
             private NetworkStream stream;
-            private Packet receivedData;
+            private ServerPacket receivedData;
             private byte[] receiveBuffer;
 
             public TCP(int _id)
@@ -45,7 +45,7 @@ namespace GameServer
 
                 stream = socket.GetStream();
 
-                receivedData = new Packet();
+                receivedData = new ServerPacket();
                 receiveBuffer = new byte[dataBufferSize];
 
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
@@ -53,7 +53,7 @@ namespace GameServer
                 ServerSend.Welcome(id, "Welcome to the server!");
             }
 
-            public void SendData(Packet _packet)
+            public void SendData(ServerPacket _packet)
             {
                 try
                 {
@@ -112,7 +112,7 @@ namespace GameServer
                     byte[] _packetBytes = receivedData.ReadBytes(_packetLength);
                     ThreadManager.ExecuteOnMainThread(() =>
                     {
-                        using (Packet _packet = new Packet(_packetBytes))
+                        using (ServerPacket _packet = new ServerPacket(_packetBytes))
                         {
                             int _packetId = _packet.ReadInt();
                             Server.packetHandlers[_packetId](id, _packet);
@@ -155,19 +155,19 @@ namespace GameServer
                 endPoint = _endPoint;
             }
 
-            public void SendData(Packet _packet)
+            public void SendData(ServerPacket _packet)
             {
                 Server.SendUDPData(endPoint, _packet);
             }
 
-            public void HandleData(Packet _packetData)
+            public void HandleData(ServerPacket _packetData)
             {
                 int _packetLength = _packetData.ReadInt();
                 byte[] _packetBytes = _packetData.ReadBytes(_packetLength);
 
                 ThreadManager.ExecuteOnMainThread(() =>
                 {
-                    using (Packet _packet = new Packet(_packetBytes))
+                    using (ServerPacket _packet = new ServerPacket(_packetBytes))
                     {
                         int _packetId = _packet.ReadInt();
                         Server.packetHandlers[_packetId](id, _packet);
@@ -180,7 +180,7 @@ namespace GameServer
         {
             player = new Player(id, _playerName, new Vector3(0, 0, 0), _selectedCharacter);
 
-            foreach (Client _client in Server.clients.Values)
+            foreach (ServerClient _client in Server.clients.Values)
             {
                 if (_client.player != null)
                 {
@@ -191,7 +191,7 @@ namespace GameServer
                 }
             }
 
-            foreach (Client _client in Server.clients.Values)
+            foreach (ServerClient _client in Server.clients.Values)
             {
                 if (_client.player != null)
                 {

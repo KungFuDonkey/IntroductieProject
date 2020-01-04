@@ -491,7 +491,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4744990210481192868}
   - component: {fileID: 4328009629818369733}
-  - component: {fileID: 1509234582835099944}
   - component: {fileID: 5830480691968735659}
   - component: {fileID: 3451904487096225982}
   m_Layer: 11
@@ -541,24 +540,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &1509234582835099944
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107373906631295526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.05
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &5830480691968735659
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -629,6 +610,7 @@ GameObject:
   - component: {fileID: 4480167247736476074}
   - component: {fileID: 8194556593517771623}
   - component: {fileID: 1019901836288025190}
+  - component: {fileID: 1197715375346415649}
   m_Layer: 0
   m_Name: McQuirtleAvatar
   m_TagString: Avatar
@@ -687,6 +669,24 @@ MonoBehaviour:
   avatarcamera: {fileID: 1415527100695386992}
   projectileSpawner: {fileID: 2560777225738415249}
   avatar: {fileID: 2371499428266203527}
+--- !u!143 &1197715375346415649
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371499428266203527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.03
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2836805677688220514
 GameObject:
   m_ObjectHideFlags: 0

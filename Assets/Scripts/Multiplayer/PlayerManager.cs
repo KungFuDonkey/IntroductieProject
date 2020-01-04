@@ -8,5 +8,4 @@ public class PlayerManager : MonoBehaviour
     public string username;
     public int selectedCharacter;
     public int yRotation;
-
 }

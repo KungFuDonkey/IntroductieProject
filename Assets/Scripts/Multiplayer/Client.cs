@@ -15,7 +15,7 @@ public class Client : MonoBehaviour
     public int myId = 0;
     public TCP tcp;
     public UDP udp;
-
+    public bool host;
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
 
@@ -34,6 +34,10 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
+        if(ip == "127.0.0.1")
+        {
+            host = true;
+        }
         tcp = new TCP();
         udp = new UDP();
     }

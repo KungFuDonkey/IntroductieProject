@@ -10,8 +10,8 @@ namespace GameServer
     {
         public static int MaxPlayers { get; private set; }
         public static int Port { get; private set; }
-        public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
-        public delegate void PacketHandler(int _fromClient, Packet _packet);
+        public static Dictionary<int, ServerClient> clients = new Dictionary<int, ServerClient>();
+        public delegate void PacketHandler(int _fromClient, ServerPacket _packet);
         public static Dictionary<int, PacketHandler> packetHandlers;
 
         private static TcpListener tcpListener;
@@ -66,7 +66,7 @@ namespace GameServer
                     return;
                 }
 
-                using (Packet _packet = new Packet(_data))
+                using (ServerPacket _packet = new ServerPacket(_data))
                 {
                     int _clientId = _packet.ReadInt();
 
@@ -93,7 +93,7 @@ namespace GameServer
             }
         }
 
-        public static void SendUDPData(IPEndPoint _clientEndPoint, Packet _packet)
+        public static void SendUDPData(IPEndPoint _clientEndPoint, ServerPacket _packet)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace GameServer
         {
             for (int i = 1; i <= MaxPlayers; i++)
             {
-                clients.Add(i, new Client(i));
+                clients.Add(i, new ServerClient(i));
             }
 
             packetHandlers = new Dictionary<int, PacketHandler>()

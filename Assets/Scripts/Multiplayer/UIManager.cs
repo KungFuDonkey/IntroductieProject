@@ -8,8 +8,9 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     public int selectedCharacter = 1;
     public GameObject startMenu;
+    public GameObject server;
     public InputField usernameField;
-
+    public InputField ipAdress;
     private void Awake()
     {
         if (instance == null)
@@ -32,5 +33,16 @@ public class UIManager : MonoBehaviour
         startMenu.SetActive(false);
         usernameField.interactable = false;
         Client.instance.ConnectToServer();
+        Destroy(GameObject.Find("Main Camera"));
+    }
+
+    public void changeIP()
+    {
+        Client.instance.ip = ipAdress.text;
+    }
+
+    public void CreateServer()
+    {
+        Instantiate(server);
     }
 }
