@@ -66,6 +66,7 @@ public class Client : MonoBehaviour
             };
 
             receiveBuffer = new byte[dataBufferSize];
+            Debug.Log($"Connecting to {instance.ip}");
             socket.BeginConnect(instance.ip, instance.port, ConnectCallback, socket);
         }
 
