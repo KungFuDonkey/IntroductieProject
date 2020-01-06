@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ProjectileBehavior : Ability
 {
@@ -12,29 +13,24 @@ public class ProjectileBehavior : Ability
     private bool fired = false;
     protected bool destroyed = false;
     private float firedTimer = 0.1f;
+    private Vector3 spawnPos;
+    private float distance;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         controller = GetComponent<Rigidbody>();
+        spawnPos = controller.transform.position;
         controller.velocity = transform.forward * speed;
     }
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        maxDistance -= speed * Time.deltaTime;
-        if (maxDistance < 0 && !destroyed)
+        distance = Vector3.Distance(spawnPos, controller.transform.position);
+        if (maxDistance < distance && !destroyed)
         {
             destroy();
-        }
-        else if (destroyed)
-        {
-            particleTimer -= Time.deltaTime;
-            if(particleTimer < 0)
-            {
-                PhotonNetwork.Destroy(this.gameObject);
-            }
         }
         if(!fired && firedTimer > 0)
         {
@@ -49,10 +45,14 @@ public class ProjectileBehavior : Ability
     {
         if (fired)
         {
-            if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
+            if (hit.gameObject.layer == LayerMask.NameToLayer("Item"))
+            {
+                return;
+            }
+            else if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
             {
                 PhotonView hitObject = hit.gameObject.GetPhotonView();
-                hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type, statusEffect });
+                hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type });
                 if (statusEffect != "none")
                 {
                     if (statusEffect == "slow")
@@ -65,13 +65,12 @@ public class ProjectileBehavior : Ability
         }
         fired = true;
     }
-    private void destroy()
+    protected virtual void destroy()
     {
-        Destroy(transform.GetChild(0).gameObject);
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<VisualEffect>().Stop();
         destroyed = true;
-        GameObject childObj = GameObject.Find("Sphere");
-        //childObj.SetActive(false);
-        transform.position = Vector3.zero;
         controller.velocity = Vector3.zero;
     }
 }

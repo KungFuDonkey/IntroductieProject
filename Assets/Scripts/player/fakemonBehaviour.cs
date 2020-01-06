@@ -6,7 +6,7 @@ public class fakemonBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     public PhotonView PV;
-    bool alive = true; 
+    bool alive = true;
     GameObject MyAvatar;
     CharacterController controller;
     private Animator animator;
@@ -14,6 +14,7 @@ public class fakemonBehaviour : MonoBehaviour
     public GameObject[] hideobjects;
     HUD myHUD;
     int deadPlayers = 0;
+    int alivePlayers;
     protected string type;
     protected string weaktype;
     protected string strongtype;
@@ -58,6 +59,7 @@ public class fakemonBehaviour : MonoBehaviour
         myHUD.MiniMap.playerTransform = transform;
         myHUD.healthBar.maxHealth = (int)lives;
         myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
+        //groundMask = LayerMask.NameToLayer("Ground");
     }
     private void Update()
     {
@@ -77,7 +79,6 @@ public class fakemonBehaviour : MonoBehaviour
                 }
                 else
                 {
-
                     velocity.y = -gravity;
                 }
             }
@@ -130,7 +131,7 @@ public class fakemonBehaviour : MonoBehaviour
     {
         if(type == weaktype)
         {
-            lives -= (float)(0.5 * damage);
+            lives -= (float)(0.66 * damage);
         }
         else if(type == strongtype)
         {
@@ -170,7 +171,15 @@ public class fakemonBehaviour : MonoBehaviour
         Debug.Log("Died");
 
         deadPlayers += 1;
-        myHUD.AlivePlayers.text = "" +(PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
+        /*foreach (GameObject player in players)
+        {
+            if (player.alive)
+            {
+                alivePlayers += 1;
+            }
+        }
+        myHUD.AlivePlayers.text = "" + alivePlayers;*/
+        myHUD.AlivePlayers.text = "" + (PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
     }
     public float Lives
     {

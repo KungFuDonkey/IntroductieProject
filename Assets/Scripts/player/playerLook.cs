@@ -22,6 +22,8 @@ public class playerLook : MonoBehaviourPunCallbacks, IPunObservable
     protected bool canEvolve = true, hover = false, evolving = false;
     protected Transform avatarTrans, localTrans;
 
+    public Rigidbody bulletProjectile;
+
     // Start is called before the first frame update
     void Start()
     {
