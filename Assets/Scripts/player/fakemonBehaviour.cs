@@ -59,7 +59,6 @@ public class fakemonBehaviour : MonoBehaviour
         myHUD.MiniMap.playerTransform = transform;
         myHUD.healthBar.maxHealth = (int)lives;
         myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
-        //groundMask = LayerMask.NameToLayer("Ground");
     }
     private void Update()
     {
@@ -68,52 +67,33 @@ public class fakemonBehaviour : MonoBehaviour
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-
             Vector3 movement = transform.right * horizontal + transform.forward * vertical;
-            if (isGrounded && velocity.y < 0)
+
+            if (isGrounded && Input.GetAxis("Jump") == 1)
             {
-                float y = Input.GetAxis("Jump");
-                if (y != 0)
-                {
-                    velocity.y = y * jumpspeed;
-                }
-                else
-                {
-                    velocity.y = -gravity;
-                }
+                velocity.y = jumpspeed;
             }
-            if (Input.GetKey(KeyCode.LeftShift))
+            velocity.y -= gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+
+            if (movement.x != 0 || movement.z != 0)
             {
-                controller.Move(movement * 1.5f * movementSpeed * Time.deltaTime);
-                if (movement.x != 0 || movement.z != 0)
+                controller.Move(movement * movementSpeed * Time.deltaTime);
+                animator.SetBool("IsWalking", true);
+                animator.SetBool("IsRunning", false);
+                if (Input.GetKey(KeyCode.LeftShift))
                 {
+                    controller.Move(movement * 0.5f * movementSpeed * Time.deltaTime);
                     animator.SetBool("IsWalking", false);
                     animator.SetBool("IsRunning", true);
-                }
-                else
-                {
-                    animator.SetBool("IsWalking", false);
-                    animator.SetBool("IsRunning", false);
                 }
             }
             else
             {
-                controller.Move(movement * movementSpeed * Time.deltaTime);
-                if (movement.x != 0 || movement.z != 0)
-                {
-                    animator.SetBool("IsWalking", true);
-                    animator.SetBool("IsRunning", false);
-                }
-                else
-                {
-                    animator.SetBool("IsWalking", false);
-                    animator.SetBool("IsRunning", false);
-                }
+                animator.SetBool("IsWalking", false);
+                animator.SetBool("IsRunning", false);
             }
 
-            velocity.y -= gravity * Time.deltaTime;
-
-            controller.Move(velocity * Time.deltaTime);
             if (effected)
             {
                 effectTimer -= Time.deltaTime;
@@ -151,10 +131,12 @@ public class fakemonBehaviour : MonoBehaviour
         myHUD.healthBar.CurrentHealth = (int)lives;
         Debug.Log(lives);
     }
+
     public void AddSpeed(Vector3 Speed)
     {
         velocity = velocity + Speed;
     }
+
     public void Die()
     {
         alive = false;
@@ -181,10 +163,12 @@ public class fakemonBehaviour : MonoBehaviour
         myHUD.AlivePlayers.text = "" + alivePlayers;*/
         myHUD.AlivePlayers.text = "" + (PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
     }
+
     public float Lives
     {
         get { return lives; }
     }
+
     [PunRPC]
     protected virtual void Slow()
     {
