@@ -94,8 +94,26 @@ namespace GameServer
                 SendUDPDataToAll(_packet);
             }
         }
+    }
+    public static void PlayerAnimation(Player _player)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerAnimation))
+        {
+            _packet.Write(_player.id);
+            _packet.Write(_player.animationValues.Length);
+            foreach (bool animationValue in _player.animationValues)
+            {
+                _packet.Write(animationValue);
+            }
 
-        public static void PlayerRotation(Player _player)
+
+            SendUDPDataToAll(_player.id, _packet);
+        }
+    }
+
+    public static void PlayerRotation(Player _player)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
         {
             using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
             {

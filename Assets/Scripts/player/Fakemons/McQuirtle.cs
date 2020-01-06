@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class McQuirtle : fakemonBehaviour
 {
@@ -13,9 +12,8 @@ public class McQuirtle : fakemonBehaviour
         lives = 80;
     }
 
-    [PunRPC]
     protected override void RPC_Die()
     {
-        base.RPC_Die();
+
     }
 }

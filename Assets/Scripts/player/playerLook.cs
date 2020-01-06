@@ -12,6 +12,7 @@ public class playerLook : MonoBehaviour
     protected float horizontalRotation;
 
     public Transform playerbody;
+    public Transform body;
     public Transform Head;
     public Transform avatarcamera;
     protected Animator animator;
@@ -26,14 +27,19 @@ public class playerLook : MonoBehaviour
         verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
-        animator = playerbody.GetComponent<Animator>();
+        animator = body.GetComponent<Animator>();
         avatarTrans = avatar.transform;
         localTrans = avatarTrans.GetChild(0).transform;
     }
 
-    // Update is called once per frame
-    protected virtual void LateUpdate()
+
+
+        
+    
+// Update is called once per frame
+protected virtual void LateUpdate()
     {
+        
 
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = -Input.GetAxis("Mouse Y");

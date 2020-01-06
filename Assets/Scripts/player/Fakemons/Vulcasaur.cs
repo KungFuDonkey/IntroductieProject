@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class Vulcasaur : fakemonBehaviour
 {
@@ -13,9 +12,7 @@ public class Vulcasaur : fakemonBehaviour
         lives = 200;
     }
 
-    [PunRPC]
     protected override void RPC_Die()
     {
-        base.RPC_Die();
     }
 }

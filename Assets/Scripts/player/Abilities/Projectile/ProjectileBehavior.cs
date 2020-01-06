@@ -1,5 +1,4 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +32,7 @@ public class ProjectileBehavior : Ability
             particleTimer -= Time.deltaTime;
             if(particleTimer < 0)
             {
-                PhotonNetwork.Destroy(this.gameObject);
+
             }
         }
         if(!fired && firedTimer > 0)
@@ -51,13 +50,13 @@ public class ProjectileBehavior : Ability
         {
             if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
             {
-                PhotonView hitObject = hit.gameObject.GetPhotonView();
-                hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type, statusEffect });
+                //PhotonView hitObject = hit.gameObject.GetPhotonView();
+                //hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type, statusEffect });
                 if (statusEffect != "none")
                 {
                     if (statusEffect == "slow")
                     {
-                        hitObject.RPC("Slow", RpcTarget.AllBuffered);
+                        //hitObject.RPC("Slow", RpcTarget.AllBuffered);
                     }
                 }
             }

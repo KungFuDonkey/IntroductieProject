@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
 using UnityEngine;
 
 public class MagmaVines : MeleeBehaviour
@@ -23,15 +22,15 @@ public class MagmaVines : MeleeBehaviour
     }
     public void VineAttackEnd()
     {
-        PhotonNetwork.Destroy(gameObject);
+        //PhotonNetwork.Destroy(gameObject);
     }
     public void onAttack()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward * range + transform.up, 2, playerMask);
         foreach(Collider c in colliders)
         {
-            PhotonView hitObject = c.gameObject.GetPhotonView();
-            hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type });
+            //PhotonView hitObject = c.gameObject.GetPhotonView();
+            //hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type });
         }
 
     }

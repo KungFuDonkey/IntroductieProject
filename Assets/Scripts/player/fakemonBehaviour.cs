@@ -1,11 +1,9 @@
-﻿using Photon.Pun;
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 
 public class fakemonBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
-    public PhotonView PV;
     bool alive = true; 
     GameObject MyAvatar;
     CharacterController controller;
@@ -39,9 +37,7 @@ public class fakemonBehaviour : MonoBehaviour
 
     void Start()
     {
-        PV = GetComponent<PhotonView>();
-        name = PV.OwnerActorNr.ToString();
-        if(PV.IsMine)
+        if(true)
         {
             hud = Instantiate(hud);
             foreach (GameObject obj in hideobjects)
@@ -57,7 +53,7 @@ public class fakemonBehaviour : MonoBehaviour
         myHUD = hud.GetComponent<HUD>();
         myHUD.MiniMap.playerTransform = transform;
         myHUD.healthBar.maxHealth = (int)lives;
-        myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
+        myHUD.AlivePlayers.text = "";
     }
     private void Update()
     {
@@ -125,7 +121,7 @@ public class fakemonBehaviour : MonoBehaviour
             }
         }
     }
-    [PunRPC]
+
     public void hit(float damage, string type)
     {
         if(type == weaktype)
@@ -157,26 +153,26 @@ public class fakemonBehaviour : MonoBehaviour
     public void Die()
     {
         alive = false;
-        PV.RPC("RPC_Die", RpcTarget.AllBuffered);
+
 
         Debug.Log("You Died");
         //PhotonNetwork.Destroy(MyAvatar);
         myHUD.ShowDeathscreen();
     }
 
-    [PunRPC]
+
     protected virtual void RPC_Die()
     {
         Debug.Log("Died");
 
         deadPlayers += 1;
-        myHUD.AlivePlayers.text = "" +(PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
+        //myHUD.AlivePlayers.text = "" +(PhotonNetwork.CurrentRoom.Players.Count - deadPlayers);
     }
     public float Lives
     {
         get { return lives; }
     }
-    [PunRPC]
+
     protected virtual void Slow()
     {
         Debug.Log("Slow");
