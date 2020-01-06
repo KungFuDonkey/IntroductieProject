@@ -94,26 +94,24 @@ namespace GameServer
                 SendUDPDataToAll(_packet);
             }
         }
-    }
-    public static void PlayerAnimation(Player _player)
-    {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerAnimation))
+
+        public static void PlayerAnimation(Player _player)
         {
-            _packet.Write(_player.id);
-            _packet.Write(_player.animationValues.Length);
-            foreach (bool animationValue in _player.animationValues)
+            using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerAnimation))
             {
-                _packet.Write(animationValue);
+                _packet.Write(_player.id);
+                _packet.Write(_player.animationValues.Length);
+                foreach (bool animationValue in _player.animationValues)
+                {
+                    _packet.Write(animationValue);
+                }
+
+
+                SendUDPDataToAll(_player.id, _packet);
             }
-
-
-            SendUDPDataToAll(_player.id, _packet);
         }
-    }
 
-    public static void PlayerRotation(Player _player)
-    {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
+        public static void PlayerRotation(Player _player)
         {
             using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
             {
@@ -122,7 +120,7 @@ namespace GameServer
 
                 SendUDPDataToAll(_player.id, _packet);
             }
+            #endregion
         }
-        #endregion
     }
 }

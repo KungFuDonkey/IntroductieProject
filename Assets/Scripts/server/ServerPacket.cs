@@ -11,7 +11,8 @@ namespace GameServer
         welcome = 1,
         spawnPlayer,
         playerPosition,
-        playerRotation
+        playerRotation,
+        playerAnimation
     }
 
     /// <summary>Sent from client to server.</summary>

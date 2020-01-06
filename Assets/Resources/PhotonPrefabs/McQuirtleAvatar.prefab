@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 8194556593517771623}
   - component: {fileID: 1019901836288025190}
   - component: {fileID: 1197715375346415649}
+  - component: {fileID: -6367989117546569907}
   m_Layer: 0
   m_Name: McQuirtleAvatar
   m_TagString: Avatar
@@ -690,6 +691,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0.3}
+--- !u!114 &-6367989117546569907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371499428266203527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a952ff4a56b1c0459bdb4f9a8ad7856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 8194556593517771623}
 --- !u!1 &2836805677688220514
 GameObject:
   m_ObjectHideFlags: 0

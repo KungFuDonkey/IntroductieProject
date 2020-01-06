@@ -12,7 +12,7 @@ namespace GameServer
             {
                 if (_client.player != null)
                 {
-                    _client.player.Update();
+                    _client.player.UpdatePlayer();
                 }
             }
 
