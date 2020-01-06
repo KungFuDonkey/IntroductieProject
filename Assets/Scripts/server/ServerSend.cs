@@ -1,109 +1,110 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Text;
 
-public class ServerSend 
+namespace GameServer
 {
-    // Start is called before the first frame update
-    private static void SendTCPData(int _toClient, ServerPacket _packet)
+    class ServerSend
     {
-        _packet.WriteLength();
-        Server.clients[_toClient].tcp.SendData(_packet);
-    }
-
-    private static void SendUDPData(int _toClient, ServerPacket _packet)
-    {
-        _packet.WriteLength();
-        Server.clients[_toClient].udp.SendData(_packet);
-    }
-
-    private static void SendTCPDataToAll(ServerPacket _packet)
-    {
-        _packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+        private static void SendTCPData(int _toClient, ServerPacket _packet)
         {
-            Server.clients[i].tcp.SendData(_packet);
+            _packet.WriteLength();
+            Server.clients[_toClient].tcp.SendData(_packet);
         }
-    }
-    private static void SendTCPDataToAll(int _exceptClient, ServerPacket _packet)
-    {
-        _packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+
+        private static void SendUDPData(int _toClient, ServerPacket _packet)
         {
-            if (i != _exceptClient)
+            _packet.WriteLength();
+            Server.clients[_toClient].udp.SendData(_packet);
+        }
+
+        private static void SendTCPDataToAll(ServerPacket _packet)
+        {
+            _packet.WriteLength();
+            for (int i = 1; i <= Server.MaxPlayers; i++)
             {
                 Server.clients[i].tcp.SendData(_packet);
             }
         }
-    }
-
-    private static void SendUDPDataToAll(ServerPacket _packet)
-    {
-        _packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+        private static void SendTCPDataToAll(int _exceptClient, ServerPacket _packet)
         {
-            Server.clients[i].udp.SendData(_packet);
+            _packet.WriteLength();
+            for (int i = 1; i <= Server.MaxPlayers; i++)
+            {
+                if (i != _exceptClient)
+                {
+                    Server.clients[i].tcp.SendData(_packet);
+                }
+            }
         }
-    }
-    private static void SendUDPDataToAll(int _exceptClient, ServerPacket _packet)
-    {
-        _packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+
+        private static void SendUDPDataToAll(ServerPacket _packet)
         {
-            if (i != _exceptClient)
+            _packet.WriteLength();
+            for (int i = 1; i <= Server.MaxPlayers; i++)
             {
                 Server.clients[i].udp.SendData(_packet);
             }
         }
-    }
-
-    #region Packets
-    public static void Welcome(int _toClient, string _msg)
-    {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.welcome))
+        private static void SendUDPDataToAll(int _exceptClient, ServerPacket _packet)
         {
-            _packet.Write(_msg);
-            _packet.Write(_toClient);
-
-            SendTCPData(_toClient, _packet);
+            _packet.WriteLength();
+            for (int i = 1; i <= Server.MaxPlayers; i++)
+            {
+                if (i != _exceptClient)
+                {
+                    Server.clients[i].udp.SendData(_packet);
+                }
+            }
         }
-    }
 
-    public static void SpawnPlayer(int _toClient, Player _player)
-    {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.spawnPlayer))
+        #region Packets
+        public static void Welcome(int _toClient, string _msg)
         {
-            _packet.Write(_player.id);
-            _packet.Write(_player.username);
-            _packet.Write(_player.selectedCharacter);
-            _packet.Write(_player.position);
-            _packet.Write(_player.rotation);
+            using (ServerPacket _packet = new ServerPacket((int)ServerPackets.welcome))
+            {
+                _packet.Write(_msg);
+                _packet.Write(_toClient);
 
-            SendTCPData(_toClient, _packet);
-            Debug.Log($"spawning {_player.selectedCharacter} to id {_player.id}");
+                SendTCPData(_toClient, _packet);
+            }
         }
-    }
 
-    public static void PlayerPosition(Player _player)
-    {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerPosition))
+        public static void SpawnPlayer(int _toClient, Player _player)
         {
-            _packet.Write(_player.id);
-            _packet.Write(_player.position);
-
-            SendUDPDataToAll(_packet);
+            using (ServerPacket _packet = new ServerPacket((int)ServerPackets.spawnPlayer))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.username);
+                _packet.Write(_player.selectedCharacter);
+                _packet.Write(_player.position);
+                _packet.Write(_player.rotation);
+                
+                SendTCPData(_toClient, _packet);
+            }
         }
-    }
 
-    public static void PlayerRotation(Player _player)
-    {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
+        public static void PlayerPosition(Player _player)
         {
-            _packet.Write(_player.id);
-            _packet.Write(_player.rotation);
+            using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerPosition))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.position);
 
-            SendUDPDataToAll(_player.id, _packet);
+                SendUDPDataToAll(_packet);
+            }
         }
+
+        public static void PlayerRotation(Player _player)
+        {
+            using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.rotation);
+
+                SendUDPDataToAll(_player.id, _packet);
+            }
+        }
+        #endregion
     }
-    #endregion
 }

@@ -1,22 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Threading;
 using UnityEngine;
-
-public class ServerStart : MonoBehaviour
+namespace GameServer
 {
-    // Start is called before the first frame update
-    void Start()
+    class ServerStart : MonoBehaviour
     {
-        Server.Start(50, 26950);
-    }
+        private static bool isRunning = false;
 
-    void Update()
-    {
-        foreach (ServerClient _client in Server.clients.Values)
+        private void Start()
         {
-            if (_client.player != null)
+            serverStart();
+        }
+        static void serverStart()
+        {
+            isRunning = true;
+
+            Thread mainThread = new Thread(new ThreadStart(MainThread));
+            mainThread.Start();
+
+            Server.Start(50, 26950);
+        }
+
+        private static void MainThread()
+        {
+            Debug.Log($"Main thread started. Running at {Constants.TICKS_PER_SEC} ticks per second.");
+            DateTime _nextLoop = DateTime.Now;
+
+            while (isRunning)
             {
-                _client.player.UpdatePlayer();
+                while (_nextLoop < DateTime.Now)
+                {
+                    GameLogic.Update();
+
+                    _nextLoop = _nextLoop.AddMilliseconds(Constants.MS_PER_TICK);
+
+                    if (_nextLoop > DateTime.Now)
+                    {
+                        Thread.Sleep(_nextLoop - DateTime.Now);
+                    }
+                }
             }
         }
     }
