@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class McQuirtleLook : playerLook, IPunObservable
 {
+    public GameObject grass;
     public McQuirtleLook()
     {
         attackSpeed = 0;
         ATTACKSPEED = 0.2f;
         eAbility = 0;
         EABILITY = 10f;
+        qAbility = 0;
+        QABILITY = 10f;
     }
     protected override void LateUpdate()
     {
@@ -21,7 +24,7 @@ public class McQuirtleLook : playerLook, IPunObservable
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        Rigidbody bullet = Instantiate(bulletProjectile, avatarcamera.position, avatarcamera.rotation);
+        Rigidbody bullet = Instantiate(bulletProjectile, avatarcamera.position, avatarcamera.rotation, avatar.transform);
         bullet.transform.name += 'b';
         attackSpeed = ATTACKSPEED;
     }
@@ -31,6 +34,12 @@ public class McQuirtleLook : playerLook, IPunObservable
         aoe.transform.name += '*';
         aoe.transform.parent = playerbody;
         eAbility = EABILITY;
+    }
+    protected override void qAttack()
+    {
+        GameObject melee = Instantiate(grass, avatarcamera.position + new Vector3(0, -5, 3), Quaternion.identity, avatar.transform);
+        melee.transform.name += 'm';
+        qAbility = QABILITY;
     }
     protected override void evolve()
     {

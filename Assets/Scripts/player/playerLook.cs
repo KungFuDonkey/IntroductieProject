@@ -18,7 +18,7 @@ public class playerLook : MonoBehaviourPunCallbacks, IPunObservable
     protected float attackSpeed, ATTACKSPEED;
     protected float eAbility, EABILITY;
     protected float qAbility, QABILITY;
-    protected float evolveXP = 0f, evolveXPNeeded = 1000f, xpGenerator = 200f, evolveTime;
+    protected float evolveXP = 0f, evolveXPNeeded = 1000f, xpGenerator = 200f, evolveTime = 3f;
     protected bool canEvolve = true, hover = false, evolving = false;
     protected Transform avatarTrans, localTrans;
 
@@ -112,7 +112,6 @@ public class playerLook : MonoBehaviourPunCallbacks, IPunObservable
         avatarTrans = localTrans;
         evolving = true;
         canEvolve = false;
-        evolveTime = 3f;
         //spawning a new gameobject and destroying the old one
         evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), avatarTrans.position + new Vector3(0, 1, 0), avatarTrans.rotation);
         Invoke("evolve2", evolveTime);

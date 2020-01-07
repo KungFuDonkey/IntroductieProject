@@ -10,7 +10,7 @@ public class MagmaVines : MeleeBehaviour
     {
         range = 2.5f;
         damage = 10;
-        type = "normal";
+        type = "Normal";
     }
     Animator Vines;
     // Start is called before the first frame update

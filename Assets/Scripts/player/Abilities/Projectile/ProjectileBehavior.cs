@@ -15,7 +15,7 @@ public class ProjectileBehavior : Ability
     private float firedTimer = 0.1f;
     private Vector3 spawnPos;
     private float distance;
-    // Start is called before the first frame update
+    
     protected override void Start()
     {
         base.Start();
@@ -23,7 +23,7 @@ public class ProjectileBehavior : Ability
         spawnPos = controller.transform.position;
         controller.velocity = transform.forward * speed;
     }
-    // Update is called once per frame
+    
     protected override void Update()
     {
         base.Update();
@@ -67,10 +67,16 @@ public class ProjectileBehavior : Ability
     }
     protected virtual void destroy()
     {
+        if (destroyed)
+        {
+            Destroy(gameObject);
+            return;
+        }
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<VisualEffect>().Stop();
         destroyed = true;
         controller.velocity = Vector3.zero;
+        Invoke("destroy", 3f);
     }
 }

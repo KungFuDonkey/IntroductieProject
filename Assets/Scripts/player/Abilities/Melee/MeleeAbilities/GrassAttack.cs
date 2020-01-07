@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterBall : ProjectileBehavior
+public class GrassAttack : MeleeBehaviour
 {
-    public WaterBall()
+    GrassAttack()
     {
-        speed = 30;
-        maxDistance = 150;
-        damage = 8;
-        type = "Water";
+        range = 4f;
+        damage = 15;
+        type = "Grass";
     }
+    Animator melee;
+
     protected override void Start()
     {
         base.Start();
     }
+
     protected override void Update()
     {
         base.Update();
