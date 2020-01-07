@@ -2,18 +2,22 @@
 using System.IO;
 using UnityEngine;
 
-public class VulcasaurLook : playerLook, IPunObservable
+public class VulcasaurLook : fakemonBehaviour, IPunObservable
 {
     public Vector3 projectileSpawnerLocalRotation;
     public Vector3 projectileSpawnerRotationEuler;
     VulcasaurLook()
     {
-        attackSpeed = 0;
-        ATTACKSPEED = 0.8f;
+        basicAttackSpeed = 0;
+        BASICATTACKSPEED = 0.8f;
         eAbility = 0;
         EABILITY = 12f;
         qAbility = 0;
         QABILITY = 12f;
+        type = "fire";
+        movementSpeed = 7;
+        jumpspeed = 10;
+        lives = 100;
     }
     protected override void LateUpdate()
     {
@@ -24,9 +28,9 @@ public class VulcasaurLook : playerLook, IPunObservable
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        GameObject bullet = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "FireProjectile"), avatarcamera.position, avatarcamera.rotation);
+        GameObject bullet = Instantiate(basicProjectile, projectileSpawner.position, avatarcamera.rotation);
         bullet.transform.name += 'b';
-        attackSpeed = ATTACKSPEED;
+        basicAttackSpeed = BASICATTACKSPEED;
     }
     protected override void eAttack()
     {
@@ -57,5 +61,11 @@ public class VulcasaurLook : playerLook, IPunObservable
     public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         base.OnPhotonSerializeView(stream, info);
+    }
+
+    [PunRPC]
+    protected override void RPC_Die()
+    {
+        base.RPC_Die();
     }
 }

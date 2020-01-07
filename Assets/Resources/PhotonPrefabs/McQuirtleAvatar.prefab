@@ -653,7 +653,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107373906631295526}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89000b4628bd7954889c520128b4de25, type: 3}
   m_Name: 
@@ -672,6 +672,17 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
+  playerbody: {fileID: 4744990210481192868}
+  Head: {fileID: 7165855197232016856}
+  avatarcamera: {fileID: 1415527100695386992}
+  projectileSpawner: {fileID: 2560777225738415249}
+  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
+    type: 3}
+  avatar: {fileID: 2371499428266203527}
+  yRotation: 0
+  basicProjectile: {fileID: 0}
+  eAttackObject: {fileID: 0}
+  qAttackObject: {fileID: 0}
 --- !u!114 &3702584914266618179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +695,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4c34e6d4b9c6e4d97f004b32ece368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
+  hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
+  hideobjects: []
+  movementSpeed: 12
+  jumpspeed: 14
+  gravity: 30
+  mouseSens: 100
+  groundCheck: {fileID: 3739885913562200113}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
   playerbody: {fileID: 4744990210481192868}
   Head: {fileID: 7165855197232016856}
   avatarcamera: {fileID: 1415527100695386992}
@@ -692,10 +715,12 @@ MonoBehaviour:
     type: 3}
   avatar: {fileID: 2371499428266203527}
   yRotation: 0
-  mouseSens: 100
-  bulletProjectile: {fileID: 4008884263621979040, guid: f5874fd60bf395d438695eaa3eb9e003,
+  basicProjectile: {fileID: 7901789765541069245, guid: f5874fd60bf395d438695eaa3eb9e003,
     type: 3}
-  grass: {fileID: 6610522620537231701, guid: bbee1c434c4c66e4f92719b3f87ab6bb, type: 3}
+  eAttackObject: {fileID: -927199367670048503, guid: 806e5227bc35f6643b12b4aecda03dc8,
+    type: 3}
+  qAttackObject: {fileID: 6610522620537231701, guid: bbee1c434c4c66e4f92719b3f87ab6bb,
+    type: 3}
 --- !u!1 &2189596152404652067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,13 +2482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8601264114487590865}
-  m_LocalRotation: {x: 0, y: 0.85491186, z: 0, w: 0.51877326}
-  m_LocalPosition: {x: 0, y: 0.07227702, z: 0.07227702}
+  m_LocalRotation: {x: 0, y: -0.16504757, z: 0, w: 0.9862857}
+  m_LocalPosition: {x: -0.026, y: -0.013, z: 0.149}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7165855197232016856}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 117.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -19, z: 0}
 --- !u!114 &2335524741748336331
 MonoBehaviour:
   m_ObjectHideFlags: 0

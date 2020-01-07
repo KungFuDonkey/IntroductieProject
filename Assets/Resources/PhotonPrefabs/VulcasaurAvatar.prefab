@@ -933,12 +933,12 @@ GameObject:
   - component: {fileID: 3630679230349592520}
   - component: {fileID: 6544508294180536305}
   - component: {fileID: 3233834685115580368}
-  - component: {fileID: 7524913872667477603}
   - component: {fileID: 8657120151830428139}
   - component: {fileID: 607276644590427142}
   - component: {fileID: 6011481717677247586}
   - component: {fileID: 4625681295682066573}
   - component: {fileID: 5948292329430731060}
+  - component: {fileID: 7524913872667477603}
   m_Layer: 11
   m_Name: Vulcasaur
   m_TagString: Avatar
@@ -1008,29 +1008,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7524913872667477603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerbody: {fileID: 3630679230349592520}
-  Head: {fileID: 928170931994395084}
-  avatarcamera: {fileID: 7512653112228467478}
-  projectileSpawner: {fileID: 2531266276405304119}
-  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
-    type: 3}
-  avatar: {fileID: 3323276637181814587}
-  yRotation: 0
-  mouseSens: 100
-  projectileSpawnerLocalRotation: {x: 0, y: 0, z: 0}
-  projectileSpawnerRotationEuler: {x: 0, y: 0, z: 0}
 --- !u!114 &8657120151830428139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,11 +1092,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3285474a576bb21498835e4f67d94332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
   hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
   hideobjects:
   - {fileID: 6330857936162896242}
@@ -1133,6 +1111,56 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
+  playerbody: {fileID: 3630679230349592520}
+  Head: {fileID: 928170931994395084}
+  avatarcamera: {fileID: 7512653112228467478}
+  projectileSpawner: {fileID: 2531266276405304119}
+  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
+    type: 3}
+  avatar: {fileID: 3323276637181814587}
+  yRotation: 0
+  basicProjectile: {fileID: 0}
+  eAttackObject: {fileID: 0}
+  qAttackObject: {fileID: 0}
+--- !u!114 &7524913872667477603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178852972991044904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: {fileID: 0}
+  hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
+  hideobjects: []
+  movementSpeed: 12
+  jumpspeed: 14
+  gravity: 30
+  mouseSens: 100
+  groundCheck: {fileID: 8489625971052074569}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
+  playerbody: {fileID: 3630679230349592520}
+  Head: {fileID: 928170931994395084}
+  avatarcamera: {fileID: 7512653112228467478}
+  projectileSpawner: {fileID: 2531266276405304119}
+  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
+    type: 3}
+  avatar: {fileID: 3323276637181814587}
+  yRotation: 0
+  basicProjectile: {fileID: 7901789765541069245, guid: f5874fd60bf395d438695eaa3eb9e003,
+    type: 3}
+  eAttackObject: {fileID: 3665994131008355679, guid: d5827fa1ed5460b4488a8b93381e8f15,
+    type: 3}
+  qAttackObject: {fileID: 0}
+  projectileSpawnerLocalRotation: {x: 0, y: 0, z: 0}
+  projectileSpawnerRotationEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &3188010945302266173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3323276637181814587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.743515, y: 29.115952, z: -9.916538}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3630679230349592520}
@@ -1589,13 +1617,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4295651713184771589}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.435, y: 0, z: -0}
+  m_LocalRotation: {x: -0.0370072, y: -0.7061377, z: -0.012340746, w: 0.7069991}
+  m_LocalPosition: {x: -0.297, y: -0.083, z: 0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 928170931994395084}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -4, y: -90, z: 2}
 --- !u!1 &4420820746417375771
 GameObject:
   m_ObjectHideFlags: 0

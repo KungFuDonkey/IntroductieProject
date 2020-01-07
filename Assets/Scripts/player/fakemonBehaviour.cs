@@ -1,15 +1,15 @@
 ﻿using Photon.Pun;
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 
-public class fakemonBehaviour : MonoBehaviour
+public class fakemonBehaviour : MonoBehaviourPunCallbacks, IPunObservable
 {
     // Start is called before the first frame update
     public PhotonView PV;
     bool alive = true;
     GameObject MyAvatar;
     CharacterController controller;
-    private Animator animator;
+    protected Animator animator;
     public GameObject hud;
     public GameObject[] hideobjects;
     HUD myHUD;
@@ -33,6 +33,25 @@ public class fakemonBehaviour : MonoBehaviour
     protected bool effected;
 
     public static fakemonBehaviour instance;
+
+    public Transform playerbody;
+    public Transform Head;
+    public Transform avatarcamera;
+    public Transform projectileSpawner;
+    public GameObject evolveBulb;
+    public GameObject avatar;
+    public float yRotation = 0f;
+    protected float basicAttackSpeed, BASICATTACKSPEED;
+    protected float eAbility, EABILITY;
+    protected float qAbility, QABILITY;
+    protected float evolveXP = 0f, evolveXPNeeded = 1000f, xpGenerator = 200f, evolveTime = 3f;
+    protected bool canEvolve = true, evolving = false, movement = true;
+    protected Transform avatarTrans, localTrans;
+
+    public GameObject basicProjectile;
+    public GameObject eAttackObject;
+    public GameObject qAttackObject;
+
     private void Awake()
     {
         instance = this;
@@ -50,6 +69,10 @@ public class fakemonBehaviour : MonoBehaviour
                 obj.layer = 10;
             }
         }
+        if (!PV.IsMine)
+        {
+            Destroy(avatarcamera.gameObject);
+        }
 
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -59,10 +82,15 @@ public class fakemonBehaviour : MonoBehaviour
         myHUD.MiniMap.playerTransform = transform;
         myHUD.healthBar.maxHealth = (int)lives;
         myHUD.AlivePlayers.text = "" + PhotonNetwork.CurrentRoom.Players.Count;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        animator = playerbody.GetComponent<Animator>();
+        avatarTrans = avatar.transform;
+        localTrans = avatarTrans.GetChild(0).transform;
     }
     private void Update()
     {
-        if (alive)
+        if (alive && movement)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
             float horizontal = Input.GetAxis("Horizontal");
@@ -73,7 +101,10 @@ public class fakemonBehaviour : MonoBehaviour
             {
                 velocity.y = jumpspeed;
             }
-            velocity.y -= gravity * Time.deltaTime;
+            else if (!isGrounded)
+            {
+                velocity.y -= gravity * Time.deltaTime;
+            }
             controller.Move(velocity * Time.deltaTime);
 
             if (movement.x != 0 || movement.z != 0)
@@ -93,15 +124,72 @@ public class fakemonBehaviour : MonoBehaviour
                 animator.SetBool("IsWalking", false);
                 animator.SetBool("IsRunning", false);
             }
-
-            if (effected)
+        }
+        if (effected)
+        {
+            effectTimer -= Time.deltaTime;
+            if (effectTimer <= 0)
             {
-                effectTimer -= Time.deltaTime;
-                if (effectTimer <= 0)
+                movementSpeed *= 2f;
+                Debug.Log("noSlow");
+                effected = false;
+            }
+        }
+    }
+    protected virtual void LateUpdate()
+    {
+        if (PV.IsMine)
+        {
+            if (alive)
+            {
+                float mouseX = Input.GetAxis("Mouse X");
+                float mouseY = Input.GetAxis("Mouse Y");
+                yRotation -= mouseY;
+                yRotation = Mathf.Clamp(yRotation, -90f, 90f);
+                playerbody.Rotate(Vector3.up * mouseX);
+
+                if (movement)
                 {
-                    movementSpeed *= 2f;
-                    Debug.Log("noSlow");
-                    effected = false;
+                    if (basicAttackSpeed > 0)
+                    {
+                        basicAttackSpeed -= Time.deltaTime;
+                    }
+                    if (eAbility > 0)
+                    {
+                        eAbility -= Time.deltaTime;
+                    }
+                    if (qAbility > 0)
+                    {
+                        qAbility -= Time.deltaTime;
+                    }
+                    if (evolveXP < evolveXPNeeded)
+                    {
+                        evolveXP += (xpGenerator * Time.deltaTime);
+
+                    }
+
+                    if (Input.GetMouseButton(0) && basicAttackSpeed <= 0)
+                    {
+                        basicAttack();
+                    }
+                    else if (Input.GetKey(KeyCode.E) && eAbility <= 0)
+                    {
+                        eAttack();
+                    }
+                    else if (Input.GetKey(KeyCode.Q) && qAbility <= 0)
+                    {
+                        qAttack();
+                    }
+                    else if (Input.GetKey(KeyCode.V) && evolveXP >= evolveXPNeeded)
+                    {
+                        evolve();
+                    }
+                }
+                if (evolving)
+                {
+                    evolveBulb.transform.localScale += new Vector3(2, 2, 2) * Time.deltaTime;
+                    localTrans.Translate(0, Time.deltaTime, 0);
+                    evolveBulb.transform.Translate(0, Time.deltaTime, 0);
                 }
             }
         }
@@ -177,4 +265,35 @@ public class fakemonBehaviour : MonoBehaviour
         effectTimer = 5f;
         movementSpeed *= 0.5f;
     }
+    protected virtual void basicAttack()
+    {
+    }
+    protected virtual void eAttack()
+    {
+    }
+    protected virtual void qAttack()
+    {
+    }
+    protected virtual void evolve()
+    {
+        avatarTrans = localTrans;
+        evolving = true;
+        movement = false;
+        canEvolve = false;
+        //spawning a new gameobject and destroying the old one
+        evolveBulb = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "evolveBulb"), avatarTrans.position + new Vector3(0, 1, 0), avatarTrans.rotation);
+        Invoke("evolve2", evolveTime);
+    }
+    public virtual void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(yRotation);
+        }
+        else
+        {
+            yRotation = (float)stream.ReceiveNext();
+        }
+    }
 }
+

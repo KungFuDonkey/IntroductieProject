@@ -30,6 +30,7 @@ public class ProjectileBehavior : Ability
         distance = Vector3.Distance(spawnPos, controller.transform.position);
         if (maxDistance < distance && !destroyed)
         {
+            Debug.Log("max distance");
             destroy();
         }
         if(!fired && firedTimer > 0)
@@ -43,6 +44,7 @@ public class ProjectileBehavior : Ability
     }
     void OnTriggerEnter(Collider hit)
     {
+        Debug.Log("hit");
         if (fired)
         {
             if (hit.gameObject.layer == LayerMask.NameToLayer("Item"))
@@ -67,16 +69,12 @@ public class ProjectileBehavior : Ability
     }
     protected virtual void destroy()
     {
-        if (destroyed)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        destroyed = true;
+        Debug.Log("destroy");
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<VisualEffect>().Stop();
-        destroyed = true;
         controller.velocity = Vector3.zero;
-        Invoke("destroy", 3f);
+        Destroy(gameObject, 3f);
     }
 }

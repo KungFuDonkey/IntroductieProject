@@ -2,17 +2,20 @@
 using System.IO;
 using UnityEngine;
 
-public class McQuirtleLook : playerLook, IPunObservable
+public class McQuirtleLook : fakemonBehaviour, IPunObservable
 {
-    public GameObject grass;
     public McQuirtleLook()
     {
-        attackSpeed = 0;
-        ATTACKSPEED = 0.2f;
+        basicAttackSpeed = 0;
+        BASICATTACKSPEED = 0.2f;
         eAbility = 0;
         EABILITY = 10f;
         qAbility = 0;
         QABILITY = 10f;
+        type = "grass";
+        movementSpeed = 12;
+        jumpspeed = 14;
+        lives = 100;
     }
     protected override void LateUpdate()
     {
@@ -24,9 +27,9 @@ public class McQuirtleLook : playerLook, IPunObservable
     protected override void basicAttack()
     {
         animator.SetTrigger("Attack");
-        Rigidbody bullet = Instantiate(bulletProjectile, avatarcamera.position, avatarcamera.rotation, avatar.transform);
+        GameObject bullet = Instantiate(basicProjectile, avatarcamera.position, avatarcamera.rotation, avatar.transform);
         bullet.transform.name += 'b';
-        attackSpeed = ATTACKSPEED;
+        basicAttackSpeed = BASICATTACKSPEED;
     }
     protected override void eAttack()
     {
@@ -37,9 +40,10 @@ public class McQuirtleLook : playerLook, IPunObservable
     }
     protected override void qAttack()
     {
-        GameObject melee = Instantiate(grass, avatarcamera.position + new Vector3(0, -5, 3), Quaternion.identity, avatar.transform);
-        melee.transform.name += 'm';
+        GameObject grass = Instantiate(qAttackObject, avatarcamera.position + new Vector3(0, -5, 3), Quaternion.identity, avatar.transform);
+        grass.transform.name += 'm';
         qAbility = QABILITY;
+        Destroy(grass, 4f);
     }
     protected override void evolve()
     {
@@ -55,5 +59,11 @@ public class McQuirtleLook : playerLook, IPunObservable
     public override void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         base.OnPhotonSerializeView(stream, info);
+    }
+
+    [PunRPC]
+    protected override void RPC_Die()
+    {
+        base.RPC_Die();
     }
 }

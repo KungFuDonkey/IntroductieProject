@@ -273,8 +273,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541217456330410430}
-  m_LocalRotation: {x: 0.0000009483595, y: 0.8549123, z: 0.0000014054056, w: 0.5187726}
-  m_LocalPosition: {x: 0, y: 0.07227702, z: 0.05210068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.119, z: 0.559}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5164993996653377781}
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2291684216144090217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e96f7fa35b8dcc842962a86c8b5dcd4a, type: 3}
   m_Name: 
@@ -898,6 +898,17 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
+  playerbody: {fileID: 1128923936724814145}
+  Head: {fileID: 5164993996653377781}
+  avatarcamera: {fileID: 5855834769566638795}
+  projectileSpawner: {fileID: 1649462414279201258}
+  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
+    type: 3}
+  avatar: {fileID: 6424692634623431867}
+  yRotation: 0
+  basicProjectile: {fileID: 0}
+  eAttackObject: {fileID: 0}
+  qAttackObject: {fileID: 0}
 --- !u!114 &8056427262804297154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +921,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85c96a0d2295594998a87944bf234af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
+  hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
+  hideobjects: []
+  movementSpeed: 12
+  jumpspeed: 14
+  gravity: 30
+  mouseSens: 100
+  groundCheck: {fileID: 7333381103554040381}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
   playerbody: {fileID: 1128923936724814145}
   Head: {fileID: 5164993996653377781}
   avatarcamera: {fileID: 5855834769566638795}
@@ -918,7 +941,12 @@ MonoBehaviour:
     type: 3}
   avatar: {fileID: 6424692634623431867}
   yRotation: 0
-  mouseSens: 100
+  basicProjectile: {fileID: 7274291092898975832, guid: 4f38b6ac482aea2428eedac9c1852172,
+    type: 3}
+  eAttackObject: {fileID: 5720280929937296556, guid: 84379495697b2b34696b6e10a152fed8,
+    type: 3}
+  qAttackObject: {fileID: 4517102322477787491, guid: b3ab243db76e1e44891d226f55b9c427,
+    type: 3}
 --- !u!1 &2379973864674612475
 GameObject:
   m_ObjectHideFlags: 0
