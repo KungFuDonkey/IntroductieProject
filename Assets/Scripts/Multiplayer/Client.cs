@@ -186,9 +186,9 @@ public class Client : MonoBehaviour
         {
             int _localPort = ((IPEndPoint)instance.tcp.socket.Client.LocalEndPoint).Port;
             socket = new UdpClient(_localPort);
-            socket.AllowNatTraversal(true);
-
             socket.Connect(endPoint);
+            Debug.Log(endPoint.Address);
+            Debug.Log(endPoint.Port);
             socket.BeginReceive(ReceiveCallback, null);
 
             using (Packet _packet = new Packet())
