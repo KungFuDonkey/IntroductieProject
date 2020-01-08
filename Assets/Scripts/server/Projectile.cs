@@ -8,19 +8,14 @@ public class Projectile
     public int projectileType;
     public Vector3 position;
     public Quaternion rotation;
-    public LayerMask groundmask;
-    public CharacterController controller;
-    
-    public Projectile(int _id, Vector3 _spawnPosition, Quaternion _spawnRotation, int _projectileType)
-    {
-        id = _id;
-        position = _spawnPosition;
-        rotation = _spawnRotation;
-    }
+    protected LayerMask groundMask = 9;
+    protected string type = "Normal";
+    protected float damage;
+    protected float speed;
+    protected float maxDistance;
 
-    public void UpdateProjectile()
+    public virtual void UpdateProjectile()
     {
-        position.x += 10 * Time.deltaTime;
         ServerSend.ProjectileMove(this);
     }
 }

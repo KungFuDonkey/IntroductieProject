@@ -10,7 +10,6 @@ public class AquaPulse : ProjectileBehavior
         maxDistance = 80;
         damage = 15;
         type = "Water";
-        particleTimer = 1;
         statusEffect = "slow";
     }
     protected override void Start()

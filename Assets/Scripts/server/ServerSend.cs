@@ -129,7 +129,7 @@ public class ServerSend
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
         {
-            Server.projectiles.Add((int)GameManager.projectileNumber, new Projectile((int)GameManager.projectileNumber, _player.position, _player.rotation, _projectile));
+            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.position, _player.rotation));
             _packet.Write(GameManager.projectileNumber);
             GameManager.projectileNumber++;
 

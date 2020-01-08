@@ -8,7 +8,6 @@ public class ProjectileBehavior : Ability
     protected Rigidbody controller;
     protected float speed;
     protected float maxDistance;
-    protected float particleTimer;
     private bool fired = false;
     protected bool destroyed = false;
     private float firedTimer = 0.1f;
@@ -27,14 +26,6 @@ public class ProjectileBehavior : Ability
         if (maxDistance < 0 && !destroyed)
         {
             destroy();
-        }
-        else if (destroyed)
-        {
-            particleTimer -= Time.deltaTime;
-            if(particleTimer < 0)
-            {
-                PhotonNetwork.Destroy(this.gameObject);
-            }
         }
         if(!fired && firedTimer > 0)
         {

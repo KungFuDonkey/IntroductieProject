@@ -10,7 +10,6 @@ public class FireBall : ProjectileBehavior
         maxDistance = 150;
         damage = 10;
         type = "Fire";
-        particleTimer = 1;
     }
     protected override void Start()
     {

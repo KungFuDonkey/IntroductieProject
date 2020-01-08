@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterBall : ProjectileBehavior
+public class WaterBall : Projectile
 {
-    public WaterBall()
+
+    protected bool destroyed = false;
+    public WaterBall(int _id, Vector3 _spawnPosition, Quaternion _rotation)
     {
+        id = _id;
+        projectileType = 1;
+        position = _spawnPosition;
+        rotation = _rotation;
         speed = 30;
         maxDistance = 150;
         damage = 8;
         type = "Water";
-        particleTimer = 3;
     }
-    protected override void Start()
+    public override void UpdateProjectile()
     {
-        base.Start();
-    }
-    protected override void Update()
-    {
-        base.Update();
+        if (!destroyed)
+        {
+            position += Vector3.forward * speed * Time.deltaTime;
+        }
+        base.UpdateProjectile();
     }
 }
