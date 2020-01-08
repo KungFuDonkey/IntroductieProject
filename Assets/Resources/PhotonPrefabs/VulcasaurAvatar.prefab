@@ -932,13 +932,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3630679230349592520}
   - component: {fileID: 6544508294180536305}
-  - component: {fileID: 3233834685115580368}
-  - component: {fileID: 7524913872667477603}
-  - component: {fileID: 8657120151830428139}
-  - component: {fileID: 607276644590427142}
-  - component: {fileID: 6011481717677247586}
   - component: {fileID: 4625681295682066573}
-  - component: {fileID: 5948292329430731060}
+  - component: {fileID: 6465048772004040621}
   m_Layer: 11
   m_Name: Vulcasaur
   m_TagString: Avatar
@@ -984,116 +979,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3233834685115580368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 607276644590427142}
-  - {fileID: 8657120151830428139}
-  - {fileID: 7524913872667477603}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &7524913872667477603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerbody: {fileID: 3630679230349592520}
-  Head: {fileID: 928170931994395084}
-  avatarcamera: {fileID: 7512653112228467478}
-  projectileSpawner: {fileID: 2531266276405304119}
-  evolveBulb: {fileID: 2259118460482540502, guid: a6cd25bc15c79634bb654f109752fba9,
-    type: 3}
-  avatar: {fileID: 3323276637181814587}
-  yRotation: 0
-  mouseSens: 100
-  projectileSpawnerLocalRotation: {x: 0, y: 0, z: 0}
-  projectileSpawnerRotationEuler: {x: 0, y: 0, z: 0}
---- !u!114 &8657120151830428139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
---- !u!114 &607276644590427142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 4
-    SynchronizeType: 1
-    Name: IsWalking
-  - Type: 4
-    SynchronizeType: 1
-    Name: IsRunning
-  - Type: 9
-    SynchronizeType: 1
-    Name: Attack
-  - Type: 9
-    SynchronizeType: 1
-    Name: Die
-  m_SynchronizeLayers:
-  - SynchronizeType: 1
-    LayerIndex: 0
---- !u!143 &6011481717677247586
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.05
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &4625681295682066573
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1108,7 +993,7 @@ CapsuleCollider:
   m_Height: 93.55774
   m_Direction: 1
   m_Center: {x: 0, y: 33.78721, z: 9.601702}
---- !u!114 &5948292329430731060
+--- !u!114 &6465048772004040621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1117,22 +1002,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3178852972991044904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3285474a576bb21498835e4f67d94332, type: 3}
+  m_Script: {fileID: 11500000, guid: dba0819b11b34d2459f43ff4cb72ef8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 2772481579712140843, guid: c5e5b9bd24352614184d216b4f342916, type: 3}
-  hideobjects:
-  - {fileID: 6330857936162896242}
-  - {fileID: 519056445871292067}
-  movementSpeed: 7
-  jumpspeed: 10
-  gravity: 20
-  mouseSens: 100
-  groundCheck: {fileID: 8489625971052074569}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &3188010945302266173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1108,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4478984211883878458}
+  - component: {fileID: 1290718478177067670}
+  - component: {fileID: 8711004377289849737}
+  - component: {fileID: 3772400194338960272}
   m_Layer: 0
   m_Name: VulcasaurAvatar
   m_TagString: Avatar
@@ -1251,13 +1126,67 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3323276637181814587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.743515, y: 29.115952, z: -9.916538}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3630679230349592520}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1290718478177067670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323276637181814587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3772400194338960272}
+  sensitivity: 100
+  clampAngle: 85
+  playerbody: {fileID: 4478984211883878458}
+  Head: {fileID: 928170931994395084}
+  avatarcamera: {fileID: 7512653112228467478}
+  projectileSpawner: {fileID: 2531266276405304119}
+  avatar: {fileID: 3323276637181814587}
+--- !u!143 &8711004377289849737
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323276637181814587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 1.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0.3}
+--- !u!114 &3772400194338960272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323276637181814587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9eb21c5a50b1bb4aa6ae46288971351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  username: 
+  selectedCharacter: 0
+  yRotation: 0
 --- !u!1 &3352191594160721073
 GameObject:
   m_ObjectHideFlags: 0

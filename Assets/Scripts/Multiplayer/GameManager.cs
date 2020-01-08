@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject Charamandolphin;
     public GameObject McQuirtle;
     public GameObject Vulcasaur;
+    public GameObject CharamandolphinEnemy;
+    public GameObject McQuirtleEnemy;
+    public GameObject VulcasaurEnemy;
 
     private void Awake()
     {
@@ -28,30 +31,43 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer(int _id, string _username, int _selectedCharacter, Vector3 _position, Quaternion _rotation)
     {
-        GameObject myCharacter;
         GameObject _player;
         Debug.Log(_selectedCharacter);
 
         if (_selectedCharacter == 1)
         {
-            myCharacter = Charamandolphin;
+            if (_id == Client.instance.myId)
+            {
+                _player = Instantiate(Charamandolphin, _position, _rotation);
+            }
+            else
+            {
+                _player = Instantiate(CharamandolphinEnemy, _position, _rotation);
+            }
         }
         else if (_selectedCharacter == 2)
         {
-            myCharacter = Vulcasaur;
+            if (_id == Client.instance.myId)
+            {
+                _player = Instantiate(Vulcasaur, _position, _rotation);
+            }
+            else
+            {
+                _player = Instantiate(VulcasaurEnemy, _position, _rotation);
+            }
         }
         else
         {
-            myCharacter = McQuirtle;
+            if (_id == Client.instance.myId)
+            {
+                _player = Instantiate(McQuirtle, _position, _rotation);
+            }
+            else
+            {
+                _player = Instantiate(McQuirtleEnemy, _position, _rotation);
+            }
         }
-        if (_id == Client.instance.myId)
-        {
-            _player = Instantiate(myCharacter, _position, _rotation);
-        }
-        else
-        {
-            _player = Instantiate(myCharacter, _position, _rotation);
-        }
+
         _player.GetComponent<PlayerManager>().id = _id;
         _player.GetComponent<PlayerManager>().username = _username;
         _player.name = _id.ToString();
