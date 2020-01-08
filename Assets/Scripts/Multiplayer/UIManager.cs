@@ -44,5 +44,6 @@ public class UIManager : MonoBehaviour
     public void CreateServer()
     {
         Instantiate(server);
+
     }
 }

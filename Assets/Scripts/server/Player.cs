@@ -27,8 +27,10 @@ public class Player
         inputs = new bool[11];
     }
 
+    //update the player by checking his inputs and acting on them
     public void UpdatePlayer()
     {
+        //find the player in the game of the masterclient, otherwise it can't move
         if(controller == null)
         {
             try
@@ -80,7 +82,7 @@ public class Player
         _inputDirection.y = gravity;
         Move(_inputDirection);
     }
-
+    //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     private void Move(Vector3 _inputDirection)
     {
         controller.Move(_inputDirection * Time.deltaTime * 20);

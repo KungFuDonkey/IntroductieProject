@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ServerStart : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start the server
     void Start()
     {
         Server.Start(50, 26950);
     }
 
-    void Update()
+    //let the server run on fixed ticks
+    void FixedUpdate()
     {
         foreach (ServerClient _client in Server.clients.Values)
         {

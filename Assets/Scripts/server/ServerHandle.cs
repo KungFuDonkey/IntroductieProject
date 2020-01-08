@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ServerHandle
 {
+    //handle the welcome message and character spawining
     public static void WelcomeReceived(int _fromClient, ServerPacket _packet)
     {
         int _clientIdCheck = _packet.ReadInt();
@@ -20,7 +21,7 @@ public class ServerHandle
         Server.clients[_fromClient].SendIntoGame(_username, selectedCharacter);
 
     }
-
+    //hanle playermovement in the game
     public static void PlayerMovement(int _fromClient, ServerPacket _packet)
     {
         bool[] _inputs = new bool[_packet.ReadInt()];

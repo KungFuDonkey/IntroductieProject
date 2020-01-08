@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ServerSend 
 {
-    // Start is called before the first frame update
+    //functions for sending TCP or UDP data to different clients
     private static void SendTCPData(int _toClient, ServerPacket _packet)
     {
         _packet.WriteLength();
@@ -58,6 +58,7 @@ public class ServerSend
     }
 
     #region Packets
+    //the different packets in which you can send the server data to the clients
     public static void Welcome(int _toClient, string _msg)
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.welcome))
