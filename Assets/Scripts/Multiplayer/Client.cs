@@ -186,6 +186,7 @@ public class Client : MonoBehaviour
         {
             int _localPort = ((IPEndPoint)instance.tcp.socket.Client.LocalEndPoint).Port;
             socket = new UdpClient(_localPort);
+            socket.AllowNatTraversal(true);
 
             socket.Connect(endPoint);
             socket.BeginReceive(ReceiveCallback, null);
@@ -208,7 +209,7 @@ public class Client : MonoBehaviour
             }
             catch (Exception _ex)
             {
-                Debug.Log($"Error sending data to server via UDP: {_ex}");
+                Debug.Log($"Error sending data to server via UDP: {_ex}");  
             }
         }
 
