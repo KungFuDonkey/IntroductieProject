@@ -6,24 +6,43 @@ using Photon.Pun;
 
 public class HUD : MonoBehaviour
 {
+
+    public static HUD instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
     public GameObject Deathscreen;
     public Transform itemsParent;
+    public Transform gearParent;
     public GameObject jinventoryUI;
+   
     public GameObject Spectator;
     public Text AlivePlayers;
 
+    public EquipmentInventory jEquipmentInventory;
     public inventory binventory;
+ 
 
     InventorySlot[] slots;
+    EquipmentInventorySlot[] gearslots;
 
     void Start()
     {
         binventory = inventory.instance;
+        jEquipmentInventory = EquipmentInventory.instance;
+
 
         binventory.onItemChangedCallback += UpdateUI;
+        jEquipmentInventory.onItemChangedCallback += UpdateUI;
+      
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        gearslots = gearParent.GetComponentsInChildren<EquipmentInventorySlot>();
+
         jinventoryUI.SetActive(false);
     }
 
@@ -57,7 +76,20 @@ public class HUD : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
+
+        for (int i = 0; i < gearslots.Length; i++)
+        {
+            if (i < jEquipmentInventory.items.Count)
+            {
+                gearslots[i].AddItem(jEquipmentInventory.items[i]);
+            }
+            else
+            {
+                gearslots[i].ClearSlot();
+            }
+        }
     }
+ 
     public void ShowDeathscreen()
     {
         Deathscreen.SetActive(true);

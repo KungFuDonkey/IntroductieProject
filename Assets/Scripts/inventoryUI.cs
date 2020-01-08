@@ -6,20 +6,24 @@ public class inventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject jinventoryUI;
+    public Transform gearParent;
 
-   
+    EquipmentInventory bEquipmnetInventory;
     inventory binventory;
 
     InventorySlot[] slots;
+    EquipmentInventorySlot[] eslots;
     
     // Start is called before the first frame update
     void Start()
     {
         binventory = inventory.instance;
-       
+        bEquipmnetInventory = EquipmentInventory.instance;
+
         binventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        eslots = gearParent.GetComponentsInChildren<EquipmentInventorySlot>();
         jinventoryUI.SetActive(false);
     }
 
@@ -54,5 +58,18 @@ public class inventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
+
+        for (int i = 0; i < eslots.Length; i++)
+        {
+            if (i < bEquipmnetInventory.items.Count)
+            {
+                eslots[i].AddItem(bEquipmnetInventory.items[i]);
+            }
+            else
+            {
+                eslots[i].ClearSlot();
+            }
+        }
+
     }
 }
