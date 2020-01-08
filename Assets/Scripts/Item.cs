@@ -28,7 +28,7 @@ public class Item : ScriptableObject
        
          if (name == "Oran Berry")
         {
-            HealthBar.instance.CurrentHealth += 20;
+            HealthBar.instance.CurrentHealth += 25;
             if (HealthBar.instance.CurrentHealth > 100)
             {
                 HealthBar.instance.CurrentHealth = 100;

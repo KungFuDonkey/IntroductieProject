@@ -6,6 +6,7 @@ public class EquipmentInventory : MonoBehaviour
 {
     public EquipmentType EquipmentType;
     public static EquipmentInventory instance;
+    EquipmentInventorySlot invslot;
 
     void Awake()
     {
@@ -23,16 +24,18 @@ public class EquipmentInventory : MonoBehaviour
 
     public void Add(Item item)
     {
-        if (items.Count >= space)
-        {
-            return;
-        }
-        items.Add(item);
+        
+            if (items.Count >= space)
+            {
+                return;
+            }
+            items.Add(item);
 
-        if (onItemChangedCallback != null)
-        {
-            onItemChangedCallback.Invoke();
-        }
+            if (onItemChangedCallback != null)
+            {
+                onItemChangedCallback.Invoke();
+            }
+        
     }
 
     public void Remove(Item item)

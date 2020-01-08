@@ -116,11 +116,14 @@ public class GetLives : MonoBehaviour
                {
                    VisualShield.instance.CurrentHealth = 100;
                }
+             
+
         }
 
         else if (other.CompareTag("Avatar") && bracelet == true)
         {
-            
+            HUD myHUD = other.gameObject.transform.parent.GetComponentInChildren<HUD>();
+            myHUD.jEquipmentInventory.Add(item);
         }
     }
 

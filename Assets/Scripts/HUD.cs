@@ -76,7 +76,7 @@ public class HUD : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
-
+        
         for (int i = 0; i < gearslots.Length; i++)
         {
             if (i < jEquipmentInventory.items.Count)

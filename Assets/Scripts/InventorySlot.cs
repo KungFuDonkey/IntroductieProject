@@ -23,7 +23,7 @@ public class InventorySlot : MonoBehaviour
     private Item _item;
     public float seconds;
 
-    public void Start()
+    public virtual void Start()
     {
         seconds = 10;
     }

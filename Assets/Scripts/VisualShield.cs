@@ -29,7 +29,9 @@ public class VisualShield : MonoBehaviour
         cachedY = healthTransform.position.y;
         maxXValue = healthTransform.position.x;
         minXValue = healthTransform.position.x - healthTransform.rect.width;
-        currentHealth = maxHealth;
+        visualHealth.color = new Color32(255, 255, 255, 255);
+        currentHealth = 0;
+      
     }
 
     // Update is called once per frame
@@ -70,6 +72,7 @@ public class VisualShield : MonoBehaviour
         get { return currentHealth; }
         set
         {
+              Debug.Log("currentHealth:" + currentHealth);
             currentHealth = value;
             HandleHealth();
         }
