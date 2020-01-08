@@ -96,6 +96,23 @@ public class ServerSend
         }
     }
 
+    public static void PlayerAnimation(Player _player)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerAnimation))
+        {
+            _packet.Write(_player.id);
+            _packet.Write(_player.animationValues.Length);
+            foreach (bool _animationValue in _player.animationValues)
+            {
+                _packet.Write(_animationValue);
+            }
+
+            SendUDPDataToAll(_player.id, _packet);
+
+
+        }
+    }
+
     public static void PlayerRotation(Player _player)
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))

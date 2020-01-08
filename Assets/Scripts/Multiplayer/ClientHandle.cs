@@ -37,6 +37,17 @@ public class ClientHandle : MonoBehaviour
         GameManager.players[_id].transform.position = _position;
     }
 
+    public static void PlayerAnimation(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        bool[] _animationValues = new bool[_packet.ReadInt()];
+        for (int i = 0; i < _animationValues.Length; i++)
+        {
+            _animationValues[i] = _packet.ReadBool();
+        }
+        GameManager.players[_id].SetAnimations(_animationValues);
+
+    }
     public static void PlayerRotation(Packet _packet)
     {
         int _id = _packet.ReadInt();

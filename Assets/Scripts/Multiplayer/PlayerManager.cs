@@ -8,4 +8,16 @@ public class PlayerManager : MonoBehaviour
     public string username;
     public int selectedCharacter;
     public int yRotation;
+    public Animator playerAnimator;
+
+    public void SetAnimations(bool[] animationValues)
+    {
+        playerAnimator.SetBool("IsWalking", animationValues[0]);
+        playerAnimator.SetBool("IsRunning", animationValues[1]);
+        if (animationValues[2])
+        {
+            playerAnimator.SetTrigger("Attack");
+        }
+
+    }
 }

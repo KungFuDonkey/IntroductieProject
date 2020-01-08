@@ -4,14 +4,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    bool[] _inputs;
+    public Animator playerAnimator;
     private void FixedUpdate()
     {
         SendInputToServer();
+        if (_inputs[0] || _inputs[1] || _inputs[2] || _inputs[3])
+        {
+            if (_inputs[5])
+            {
+                playerAnimator.SetBool("IsWalking", false);
+                playerAnimator.SetBool("IsRunning", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("IsWalking", true);
+                playerAnimator.SetBool("IsRunning", false);
+            }
+        }
+        if (_inputs[10] || _inputs[6] || _inputs[7])
+        {
+            playerAnimator.SetTrigger("Attack");
+        }
     }
 
     private void SendInputToServer()
     {
-        bool[] _inputs = new bool[]
+        _inputs = new bool[]
         {
             Input.GetKey(KeyCode.W),
             Input.GetKey(KeyCode.S),

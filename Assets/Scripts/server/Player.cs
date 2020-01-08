@@ -15,6 +15,7 @@ public class Player
     public LayerMask groundmask;
     public CharacterController controller;
     private bool[] inputs;
+    public bool[] animationValues;
 
     public Player(int _id, string _username, Vector3 _spawnPosition, int _selectedCharacter)
     {
@@ -25,6 +26,13 @@ public class Player
         selectedCharacter = _selectedCharacter;
         groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
+        animationValues = new bool[4]
+        {
+            false,
+            false,
+            false,
+            false
+        };
     }
 
     //update the player by checking his inputs and acting on them
@@ -78,6 +86,24 @@ public class Player
         {
             _inputDirection += avatar.right;
         }
+
+        if (inputs[0] || inputs[1] || inputs[2] || inputs[3])
+        {
+            if (inputs[5])
+            {
+                animationValues[0] = false;
+                animationValues[1] = true;
+            }
+            else
+            {
+                animationValues[0] = true;
+                animationValues[1] = false;
+            }
+        }
+        if (inputs[10] || inputs[6] || inputs[7])
+        {
+            animationValues[3] = true;
+        }
         gravity -= 7 * Time.deltaTime;
         _inputDirection.y = gravity;
         Move(_inputDirection);
@@ -89,6 +115,7 @@ public class Player
         position = avatar.position;
         rotation = avatar.rotation;
         ServerSend.PlayerPosition(this);
+        ServerSend.PlayerAnimation(this);
         ServerSend.PlayerRotation(this);
     }
 
