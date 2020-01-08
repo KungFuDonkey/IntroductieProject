@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,14 +11,15 @@ public class GameManager : MonoBehaviour
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
 
     public LayerMask groundMask;
-    public GameObject Charamandolphin;
+    public GameObject Charmandolphin;
     public GameObject McQuirtle;
     public GameObject Vulcasaur;
-    public GameObject CharamandolphinEnemy;
+    public GameObject CharmandolphinEnemy;
     public GameObject McQuirtleEnemy;
     public GameObject VulcasaurEnemy;
     public GameObject WaterProjectile;
 
+    
     private void Awake()
     {
         if (instance == null)
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SpawnPlayer(int _id, string _username, int _selectedCharacter, Vector3 _position, Quaternion _rotation)
@@ -40,11 +43,11 @@ public class GameManager : MonoBehaviour
         {
             if (_id == Client.instance.myId)
             {
-                _player = Instantiate(Charamandolphin, _position, _rotation);
+                _player = Instantiate(Charmandolphin, _position, _rotation);
             }
             else
             {
-                _player = Instantiate(CharamandolphinEnemy, _position, _rotation);
+                _player = Instantiate(CharmandolphinEnemy, _position, _rotation);
             }
         }
         else if (_selectedCharacter == 2)

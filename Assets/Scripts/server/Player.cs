@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Player
 {
@@ -17,6 +18,8 @@ public class Player
     public CharacterController controller;
     private bool[] inputs;
     public bool[] animationValues;
+
+
 
     public Player(int _id, string _username, Vector3 _spawnPosition, int _selectedCharacter)
     {

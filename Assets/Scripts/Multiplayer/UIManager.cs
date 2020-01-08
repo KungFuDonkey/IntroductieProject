@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -48,5 +49,9 @@ public class UIManager : MonoBehaviour
             Destroy(currentserver);
         }
         Instantiate(server);
+    }
+    public void GoToScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
