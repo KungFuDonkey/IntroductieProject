@@ -129,13 +129,13 @@ public class ServerSend
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
         {
+            Server.projectiles.Add((int)GameManager.projectileNumber, new Projectile((int)GameManager.projectileNumber, _player.position, _player.rotation, _projectile));
             _packet.Write(GameManager.projectileNumber);
             GameManager.projectileNumber++;
-            Debug.Log($"{_player.position.x} {_player.position.y} {_player.position.z}");
+
             _packet.Write(_player.position);
             _packet.Write(_player.rotation);
             _packet.Write(_projectile);
-
             SendTCPDataToAll(_packet);
         }
     }

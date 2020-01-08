@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile
 {
     public int id;
     public int projectileType;
@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
 
     public void UpdateProjectile()
     {
-        position.x += 10;
+        position.x += 10 * Time.deltaTime;
         ServerSend.ProjectileMove(this);
     }
 }

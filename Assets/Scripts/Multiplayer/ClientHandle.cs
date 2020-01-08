@@ -64,7 +64,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
         int projectile = _packet.ReadInt();
-        Debug.Log($"{_position.x} {_position.y} {_position.z}");
+
         GameManager.instance.SpawnProjectile(_id, _position, _rotation, projectile);
     }
 

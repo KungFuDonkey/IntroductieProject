@@ -22,10 +22,7 @@ public class ServerStart : MonoBehaviour
         }
         foreach(Projectile _projectile in Server.projectiles.Values)
         {
-            if(_projectile != null)
-            {
-                _projectile.UpdateProjectile();
-            }
+            _projectile.UpdateProjectile();
         }
     }
 }
