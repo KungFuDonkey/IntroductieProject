@@ -11,7 +11,9 @@ public enum ServerPackets
     spawnPlayer,
     playerPosition,
     playerAnimation,
-    playerRotation
+    playerRotation,
+    projectile,
+    projectileMove
 }
 
 /// <summary>Sent from client to server.</summary>

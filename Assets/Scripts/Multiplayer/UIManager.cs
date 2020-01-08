@@ -32,18 +32,21 @@ public class UIManager : MonoBehaviour
     {
         startMenu.SetActive(false);
         usernameField.interactable = false;
+        if(ipAdress.text != "")
+        {
+            Client.instance.ip = ipAdress.text;
+        }
         Client.instance.ConnectToServer();
         Destroy(GameObject.Find("Main Camera"));
     }
 
-    public void changeIP()
-    {
-        Client.instance.ip = ipAdress.text;
-    }
-
     public void CreateServer()
     {
+        GameObject currentserver = GameObject.Find("Server(Clone)");
+        if(currentserver != null)
+        {
+            Destroy(currentserver);
+        }
         Instantiate(server);
-
     }
 }

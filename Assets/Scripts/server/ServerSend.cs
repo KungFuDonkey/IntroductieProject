@@ -123,5 +123,32 @@ public class ServerSend
             SendUDPDataToAll(_player.id, _packet);
         }
     }
+
+    public static void Projectile(Player _player, int _projectile)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
+        {
+            _packet.Write(GameManager.projectileNumber);
+            GameManager.projectileNumber++;
+            Debug.Log($"{_player.position.x} {_player.position.y} {_player.position.z}");
+            _packet.Write(_player.position);
+            _packet.Write(_player.rotation);
+            _packet.Write(_projectile);
+
+            SendTCPDataToAll(_packet);
+        }
+    }
+    
+    public static void ProjectileMove(Projectile _projectile)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectileMove))
+        {
+            _packet.Write(_projectile.id);
+            _packet.Write(_projectile.position);
+            _packet.Write(_projectile.rotation);
+
+            SendUDPDataToAll(_packet);
+        }
+    }
     #endregion
 }

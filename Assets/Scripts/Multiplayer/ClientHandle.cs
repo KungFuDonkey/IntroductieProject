@@ -14,7 +14,7 @@ public class ClientHandle : MonoBehaviour
         Client.instance.myId = _myId;
         ClientSend.WelcomeReceived();
 
-        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        Client.instance.udp.Connect();
     }
 
 
@@ -54,5 +54,27 @@ public class ClientHandle : MonoBehaviour
         Quaternion _rotation = _packet.ReadQuaternion();
 
         GameManager.players[_id].transform.rotation = _rotation;
+    }
+
+    public static void Projectile(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        int something = _packet.ReadInt();
+        Debug.Log(something);
+        Vector3 _position = _packet.ReadVector3();
+        Quaternion _rotation = _packet.ReadQuaternion();
+        int projectile = _packet.ReadInt();
+        Debug.Log($"{_position.x} {_position.y} {_position.z}");
+        GameManager.instance.SpawnProjectile(_id, _position, _rotation, projectile);
+    }
+
+    public static void ProjectileMove(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        Vector3 _position = _packet.ReadVector3();
+        Quaternion _rotation = _packet.ReadQuaternion();
+
+        GameManager.projectiles[_id].transform.rotation = _rotation;
+        GameManager.projectiles[_id].transform.position = _position;
     }
 }

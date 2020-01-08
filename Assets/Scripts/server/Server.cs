@@ -11,6 +11,7 @@ public class Server
     public static int MaxPlayers { get; private set; }
     public static int Port { get; private set; }
     public static Dictionary<int, ServerClient> clients = new Dictionary<int, ServerClient>();
+    public static Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>();
     public delegate void PacketHandler(int _fromClient, ServerPacket _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 

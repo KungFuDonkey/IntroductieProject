@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    public static uint projectileNumber = 0;
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
+    public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
 
     public LayerMask groundMask;
     public GameObject Charamandolphin;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject CharamandolphinEnemy;
     public GameObject McQuirtleEnemy;
     public GameObject VulcasaurEnemy;
+    public GameObject WaterProjectile;
 
     private void Awake()
     {
@@ -72,5 +74,15 @@ public class GameManager : MonoBehaviour
         _player.GetComponent<PlayerManager>().username = _username;
         _player.name = _id.ToString();
         players.Add(_id, _player.GetComponent<PlayerManager>());
+    }
+
+    public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int _projectileType)
+    {
+        GameObject _projectile;
+        //todo : different projectiles
+        _projectile = Instantiate(WaterProjectile,_position,_rotation);
+        _projectile.GetComponent<ProjectileManager>().id = _id;
+        _projectile.GetComponent<ProjectileManager>().projectileType = _projectileType;
+        projectiles.Add(_id, _projectile.GetComponent<ProjectileManager>());
     }
 }

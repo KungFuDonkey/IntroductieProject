@@ -64,7 +64,7 @@ public class Client : MonoBehaviour
                 ReceiveBufferSize = dataBufferSize,
                 SendBufferSize = dataBufferSize
             };
-
+            
             receiveBuffer = new byte[dataBufferSize];
             Debug.Log($"Connecting to {instance.ip}");
             socket.BeginConnect(instance.ip, instance.port, ConnectCallback, socket);
@@ -181,8 +181,9 @@ public class Client : MonoBehaviour
             endPoint = new IPEndPoint(IPAddress.Parse(instance.ip), instance.port);
         }
 
-        public void Connect(int _localPort)
+        public void Connect()
         {
+            int _localPort = ((IPEndPoint)instance.tcp.socket.Client.LocalEndPoint).Port;
             socket = new UdpClient(_localPort);
 
             socket.Connect(endPoint);
@@ -258,6 +259,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
             { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
+            { (int)ServerPackets.projectile, ClientHandle.Projectile },
+            { (int)ServerPackets.projectileMove, ClientHandle.ProjectileMove }
         };
         Debug.Log("Initialized packets.");
     }

@@ -20,5 +20,12 @@ public class ServerStart : MonoBehaviour
                 _client.player.UpdatePlayer();
             }
         }
+        foreach(Projectile _projectile in Server.projectiles.Values)
+        {
+            if(_projectile != null)
+            {
+                _projectile.UpdateProjectile();
+            }
+        }
     }
 }

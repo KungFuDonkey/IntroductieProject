@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player
 {
     public int id;
+    public int projectile;
     public string username;
     public int selectedCharacter;
     public Vector3 position;
@@ -107,6 +108,11 @@ public class Player
         gravity -= 7 * Time.deltaTime;
         _inputDirection.y = gravity;
         Move(_inputDirection);
+        if (inputs[10])
+        {
+            ServerSend.Projectile(this, projectile);
+            Debug.Log("shooting");
+        }
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     private void Move(Vector3 _inputDirection)
