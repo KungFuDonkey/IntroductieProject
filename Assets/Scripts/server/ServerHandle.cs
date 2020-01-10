@@ -29,6 +29,7 @@ public class ServerHandle
         {
             _inputs[i] = _packet.ReadBool();
         }
+        //UnityEngine.Debug.LogError($"recieved package in { stopwatches[_fromClient - 1].Elapsed.TotalMilliseconds}ms from { _fromClient}");
         Quaternion _rotation = _packet.ReadQuaternion();
         Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
     }

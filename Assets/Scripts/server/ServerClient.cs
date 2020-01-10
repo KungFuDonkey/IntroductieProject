@@ -190,7 +190,7 @@ public class ServerClient
 
     public void SendIntoGame(string _playerName, int selectedCharacter)
     {
-        player = new Player(id, _playerName, Vector3.zero, selectedCharacter);
+        player = new Player(id, _playerName, selectedCharacter);
 
         foreach (ServerClient _client in Server.clients.Values)
         {

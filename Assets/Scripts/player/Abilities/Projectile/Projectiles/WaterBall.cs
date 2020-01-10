@@ -21,7 +21,7 @@ public class WaterBall : Projectile
     {
         if (!destroyed)
         {
-            position += Vector3.forward * speed * Time.deltaTime;
+            position += rotation * Vector3.forward * speed * Time.deltaTime;
         }
         base.UpdateProjectile();
     }

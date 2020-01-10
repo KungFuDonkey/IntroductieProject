@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ServerSend 
 {
@@ -78,8 +79,6 @@ public class ServerSend
             _packet.Write(_player.id);
             _packet.Write(_player.username);
             _packet.Write(_player.selectedCharacter);
-            _packet.Write(_player.position);
-            _packet.Write(_player.rotation);
 
             SendTCPData(_toClient, _packet);
             Debug.Log($"spawning {_player.selectedCharacter} to id {_player.id}");
@@ -90,9 +89,10 @@ public class ServerSend
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerPosition))
         {
+            //UnityEngine.Debug.Log($"sending position to {_player.id} in {stopwatches[_player.id - 1].Elapsed.TotalMilliseconds}ms");
             _packet.Write(_player.id);
-            _packet.Write(_player.position);
-
+            _packet.Write(_player.avatar.position);
+            _packet.Write(DateTime.Now.ToString("ss.fff"));
             SendUDPDataToAll(_packet);
         }
     }
@@ -119,8 +119,7 @@ public class ServerSend
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
         {
             _packet.Write(_player.id);
-            _packet.Write(_player.rotation);
-
+            _packet.Write(_player.avatar.rotation);
             SendUDPDataToAll(_player.id, _packet);
         }
     }
@@ -129,12 +128,12 @@ public class ServerSend
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
         {
-            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.position, _player.rotation));
+            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.avatar.position, _player.avatar.rotation));
             _packet.Write(GameManager.projectileNumber);
             GameManager.projectileNumber++;
 
-            _packet.Write(_player.position);
-            _packet.Write(_player.rotation);
+            _packet.Write(_player.avatar.position);
+            _packet.Write(_player.avatar.rotation);
             _packet.Write(_projectile);
             SendTCPDataToAll(_packet);
         }
