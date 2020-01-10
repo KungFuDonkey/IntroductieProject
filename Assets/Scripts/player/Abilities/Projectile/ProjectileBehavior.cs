@@ -1,5 +1,4 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,7 +41,7 @@ public class ProjectileBehavior : Ability
         {
             if (hit.gameObject.layer == LayerMask.NameToLayer("ObjectWithLives"))
             {
-                PhotonView hitObject = hit.gameObject.GetPhotonView();
+                /*PhotonView hitObject = hit.gameObject.GetPhotonView();
                 hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type, statusEffect });
                 if (statusEffect != "none")
                 {
@@ -50,7 +49,7 @@ public class ProjectileBehavior : Ability
                     {
                         hitObject.RPC("Slow", RpcTarget.AllBuffered);
                     }
-                }
+                }*/
             }
             destroy();
         }

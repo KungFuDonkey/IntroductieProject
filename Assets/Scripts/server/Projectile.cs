@@ -5,15 +5,10 @@ using UnityEngine;
 public class Projectile
 {
     public int id;
-    public int projectileType;
     public Vector3 position;
     public Vector3 startDirection;
     public Quaternion rotation;
     protected LayerMask groundMask = 9;
-    protected string type = "Normal";
-    protected float damage;
-    protected float speed;
-    protected float maxDistance;
 
     public virtual void UpdateProjectile()
     {
