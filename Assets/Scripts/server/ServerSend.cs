@@ -82,6 +82,7 @@ public class ServerSend
 
             SendTCPData(_toClient, _packet);
             Debug.Log($"spawning {_player.selectedCharacter} to id {_player.id}");
+            ServerStart.instance.DebugServer($"spawning {_player.selectedCharacter} to id {_player.id}");
         }
     }
 
@@ -92,7 +93,6 @@ public class ServerSend
             //UnityEngine.Debug.Log($"sending position to {_player.id} in {stopwatches[_player.id - 1].Elapsed.TotalMilliseconds}ms");
             _packet.Write(_player.id);
             _packet.Write(_player.avatar.position);
-            _packet.Write(DateTime.Now.ToString("ss.fff"));
             SendUDPDataToAll(_packet);
         }
     }
@@ -124,11 +124,11 @@ public class ServerSend
         }
     }
 
-    public static void Projectile(Player _player, int _projectile)
+    public static void Projectile(Player _player, int _projectile, Vector3 _inputDirection)
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
         {
-            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.avatar.position, _player.avatar.rotation));
+            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.avatar.position, _player.avatar.rotation, _inputDirection));
             _packet.Write(GameManager.projectileNumber);
             GameManager.projectileNumber++;
 

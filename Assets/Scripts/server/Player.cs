@@ -16,7 +16,7 @@ public class Player
     public CharacterController controller;
     private bool[] inputs;
     public bool[] animationValues;
-
+    public float fireTimer = 0f, FIRETIMER = 2f;
     public Player(int _id, string _username, int _selectedCharacter)
     {
         id = _id;
@@ -105,13 +105,18 @@ public class Player
             animationValues[3] = true;
         }
         gravity -= 7 * Time.deltaTime;
-        _inputDirection.y = gravity;
-        Move(_inputDirection);
-        if (inputs[10])
+        if (inputs[10] && fireTimer < 0)
         {
-            ServerSend.Projectile(this, projectile);
+            fireTimer = FIRETIMER;
+            ServerSend.Projectile(this, projectile, _inputDirection);
             Debug.Log("shooting");
         }
+        else
+        {
+            fireTimer -= Time.deltaTime;
+        }
+        _inputDirection.y = gravity;
+        Move(_inputDirection);
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     private void Move(Vector3 _inputDirection)

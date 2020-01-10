@@ -62,7 +62,8 @@ public class ServerClient
             }
             catch (Exception _ex)
             {
-                Console.WriteLine($"Error sending data to player {id} via TCP: {_ex}");
+                Debug.Log($"Error sending data to player {id} via TCP: {_ex}");
+                ServerStart.instance.DebugServer($"Error sending data to player {id} via TCP: {_ex}");
             }
         }
 
@@ -85,7 +86,9 @@ public class ServerClient
             }
             catch (Exception _ex)
             {
-                Console.WriteLine($"Error receiving TCP data: {_ex}");
+                Debug.Log($"Error receiving TCP data: {_ex}");
+                ServerStart.instance.DebugServer($"Error receiving TCP data: {_ex}");
+                
                 Server.clients[id].Disconnect();
             }
         }
@@ -214,7 +217,8 @@ public class ServerClient
 
     private void Disconnect()
     {
-        Console.WriteLine($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
+        Debug.Log($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
+        ServerStart.instance.DebugServer($"{tcp.socket.Client.RemoteEndPoint} has disconnected.");
 
         player = null;
 

@@ -23,6 +23,7 @@ public class Server
         Port = _port;
 
         Debug.Log("starting server...");
+        ServerStart.instance.DebugServer("starting server...");
         InitializeServerData();
         tcpListener = new TcpListener(IPAddress.Any, Port);
         tcpListener.Start();
@@ -32,6 +33,7 @@ public class Server
         udpListener.BeginReceive(UDPReceiveCallback, null);
 
         Debug.Log($"Server started on port {Port}.");
+        ServerStart.instance.DebugServer($"Server started on port {Port}.");
     }
 
     private static void TCPConnectCallback(IAsyncResult _result)
@@ -39,6 +41,7 @@ public class Server
         TcpClient _client = tcpListener.EndAcceptTcpClient(_result);
         tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
         Debug.Log($"Incoming connection from {_client.Client.RemoteEndPoint}...");
+        ServerStart.instance.DebugServer($"Incoming connection from {_client.Client.RemoteEndPoint}...");
 
         for (int i = 1; i <= MaxPlayers; i++)
         {
@@ -50,6 +53,7 @@ public class Server
         }
 
         Debug.Log($"{_client.Client.RemoteEndPoint} failed to connect: Server full!");
+        ServerStart.instance.DebugServer($"{_client.Client.RemoteEndPoint} failed to connect: Server full!");
     }
 
     private static void UDPReceiveCallback(IAsyncResult _result)
@@ -89,6 +93,7 @@ public class Server
         catch (Exception _ex)
         {
             Debug.Log($"Error receiving UDP data: {_ex}");
+            ServerStart.instance.DebugServer($"Error receiving UDP data: {_ex}");
         }
     }
     public static void SendUDPData(IPEndPoint _clientEndPoint, ServerPacket _packet)
@@ -103,6 +108,7 @@ public class Server
         catch (Exception _ex)
         {
             Debug.Log($"Error sending data to {_clientEndPoint} via UDP: {_ex}");
+            ServerStart.instance.DebugServer($"Error sending data to {_clientEndPoint} via UDP: {_ex}");
         }
     }
 
@@ -119,5 +125,8 @@ public class Server
                 { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
             };
         Debug.Log("Initialized packets.");
+        ServerStart.instance.DebugServer("Initialized packets.");
     }
+
+
 }

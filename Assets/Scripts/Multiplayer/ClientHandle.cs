@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.NetworkInformation;
 using System;
 using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
 {
+    static System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -32,7 +34,8 @@ public class ClientHandle : MonoBehaviour
     {
         int _id = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
-        Debug.Log(float.Parse(DateTime.Now.ToString("ss.fff")) - float.Parse(_packet.ReadString()));
+        PingReply reply = ping.Send(Client.instance.ip, 1000);
+        Debug.Log(reply.RoundtripTime.ToString());
         GameManager.players[_id].transform.position = _position;
     }
 
