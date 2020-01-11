@@ -123,16 +123,18 @@ public class ServerSend
         }
     }
 
-    public static void Projectile(Player _player, int _projectile, Vector3 _inputDirection)
+    public static void Projectile(Player _player, int _projectile, Vector3 _inputDirection, float _verticalRotation)
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
         {
-            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.avatar.position, _player.avatar.rotation, _inputDirection));
+            Quaternion _rotation = Quaternion.Euler(_verticalRotation, _player.avatar.rotation.eulerAngles.y, _player.avatar.rotation.eulerAngles.z);
+            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.projectileSpawner.position, _rotation, _inputDirection));
             _packet.Write(GameManager.projectileNumber);
             GameManager.projectileNumber++;
 
-            _packet.Write(_player.avatar.position);
-            _packet.Write(_player.avatar.rotation);
+            _packet.Write(_player.projectileSpawner.position);
+
+            _packet.Write(_rotation);
             _packet.Write(_projectile);
             SendTCPDataToAll(_packet);
         }
@@ -147,6 +149,15 @@ public class ServerSend
             _packet.Write(_projectile.rotation);
 
             SendUDPDataToAll(_packet);
+        }
+    }
+
+    public static void DestroyProjectile(Projectile _projectile)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectileDestroy))
+        {
+            _packet.Write(_projectile.id);
+            SendTCPDataToAll(_packet);
         }
     }
     #endregion

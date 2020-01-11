@@ -1831,6 +1831,7 @@ GameObject:
   - component: {fileID: 2794935838943076817}
   - component: {fileID: 3684201068923077309}
   - component: {fileID: 6915441576916980476}
+  - component: {fileID: 5818656512481178635}
   m_Layer: 0
   m_Name: CharmandolphinAvatar
   m_TagString: Avatar
@@ -1868,6 +1869,7 @@ MonoBehaviour:
   player: {fileID: 6915441576916980476}
   sensitivity: 100
   clampAngle: 85
+  verticalRotation: 0
   playerbody: {fileID: 1702386895201921736}
   Head: {fileID: 5164993996653377781}
   avatarcamera: {fileID: 5855834769566638795}
@@ -1887,7 +1889,7 @@ CharacterController:
   m_Height: 3
   m_Radius: 0.8
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.2, z: 0}
@@ -1908,6 +1910,19 @@ MonoBehaviour:
   selectedCharacter: 0
   yRotation: 0
   playerAnimator: {fileID: 6668910900259913925}
+--- !u!114 &5818656512481178635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424692634623431867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 1649462414279201258}
 --- !u!1 &6542100540776073630
 GameObject:
   m_ObjectHideFlags: 0

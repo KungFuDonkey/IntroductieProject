@@ -27,7 +27,6 @@ public class ClientHandle : MonoBehaviour
         string _username = _packet.ReadString();
         int _selectedCharacter = _packet.ReadInt();
         Vector3 _spawnPoint = _packet.ReadVector3();
-        Debug.Log($"{_spawnPoint.x} {_spawnPoint.y} {_spawnPoint.z}");
         GameManager.instance.SpawnPlayer(_id, _username, _selectedCharacter, _spawnPoint, Quaternion.identity);
     }
 
@@ -66,6 +65,7 @@ public class ClientHandle : MonoBehaviour
         Debug.Log(something);
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
+        Debug.Log(_rotation.eulerAngles.x);
         int projectile = _packet.ReadInt();
 
         GameManager.instance.SpawnProjectile(_id, _position, _rotation, projectile);
@@ -79,5 +79,12 @@ public class ClientHandle : MonoBehaviour
 
         GameManager.projectiles[_id].transform.rotation = _rotation;
         GameManager.projectiles[_id].transform.position = _position;
+    }
+
+    public static void ProjectileDestroy(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        GameManager.projectiles[_id].DestroyProjectile();
+        GameManager.projectiles.Remove(_id);
     }
 }

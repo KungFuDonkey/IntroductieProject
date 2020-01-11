@@ -560,7 +560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081533385305180316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.346, z: 0}
   m_LocalScale: {x: 0.04107811, y: 0.04107811, z: 0.04107811}
   m_Children:
   - {fileID: 1256543665975691925}
@@ -1670,6 +1670,7 @@ GameObject:
   - component: {fileID: 1481318064691770941}
   - component: {fileID: 3140591216661301704}
   - component: {fileID: 4830465907272549318}
+  - component: {fileID: 870255041852760616}
   m_Layer: 0
   m_Name: CharmandolphinEnemy
   m_TagString: Avatar
@@ -1685,7 +1686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6487350444574394446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.841858, y: -9.4000025, z: 13.23102}
+  m_LocalPosition: {x: 60.841858, y: -9.88, z: 13.23102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 901875942387029428}
@@ -1720,13 +1721,26 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 2.7
+  m_Radius: 0.8
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &870255041852760616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487350444574394446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 1570265750455733535}
 --- !u!1 &6579318399713133061
 GameObject:
   m_ObjectHideFlags: 0

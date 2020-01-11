@@ -10,8 +10,10 @@ public abstract class Player
     public int selectedCharacter;
     public string username;
     public float gravity;
+    public float verticalRotation;
     public Transform avatar;
     public Transform groundCheck;
+    public Transform projectileSpawner;
     public LayerMask groundmask;
     public CharacterController controller;
     protected bool[] inputs;
@@ -33,6 +35,7 @@ public abstract class Player
                 avatar.rotation = Quaternion.identity;
                 int childeren = _gameobject.transform.GetChild(0).childCount;
                 groundCheck = _gameobject.transform.GetChild(0).GetChild(childeren - 1);
+                projectileSpawner = _gameobject.GetComponent<ProjectileSpawnerAllocater>().projectileSpawner;
                 Debug.Log("avatar found");
             }
             catch
@@ -98,7 +101,7 @@ public abstract class Player
         if (inputs[10] && fireTimer < 0)
         {
             fireTimer = FIRETIMER;
-            ServerSend.Projectile(this, projectile, _inputDirection);
+            ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
             Debug.Log("shooting");
         }
         else
@@ -125,10 +128,11 @@ public abstract class Player
         ServerSend.PlayerRotation(this);
     }
 
-    public virtual void SetInput(bool[] _inputs, Quaternion _rotation)
+    public void SetInput(bool[] _inputs, Quaternion _rotation, float _verticalRotation)
     {
         inputs = _inputs;
         avatar.rotation = _rotation;
+        verticalRotation = _verticalRotation;
     }
 }
 

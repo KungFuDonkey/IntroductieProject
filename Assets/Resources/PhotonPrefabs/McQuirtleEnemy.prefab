@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1871171711022259516}
   - component: {fileID: 6224983280969054193}
   - component: {fileID: 3982412801713517751}
+  - component: {fileID: 8615649389889612182}
   m_Layer: 0
   m_Name: McQuirtleEnemy
   m_TagString: Avatar
@@ -95,10 +96,23 @@ CharacterController:
   m_Height: 2.6
   m_Radius: 0.8
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0.3}
+--- !u!114 &8615649389889612182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518545851598542097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 311533217613979655}
 --- !u!1 &643722889201825969
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class playerLook : MonoBehaviour
     public float sensitivity = 100f;
     public float clampAngle = 85f;
 
-    protected float verticalRotation;
+    public float verticalRotation;
     protected float horizontalRotation;
 
     public Transform playerbody;

@@ -19,19 +19,4 @@ public class Charmandolphin : Player
             false
         };
     }
-
-    public override void UpdatePlayer()
-    {
-        base.UpdatePlayer();
-    }
-    protected override void Move(Vector3 _inputDirection, float moveSpeed)
-    {
-        base.Move(_inputDirection, moveSpeed);
-    }
-    
-    public override void SetInput(bool[] _inputs, Quaternion _rotation)
-    {
-        base.SetInput(_inputs, _rotation);
-    }
- 
 }

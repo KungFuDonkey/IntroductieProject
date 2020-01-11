@@ -33,6 +33,7 @@ public class ServerHandle
         }
         //UnityEngine.Debug.LogError($"recieved package in { stopwatches[_fromClient - 1].Elapsed.TotalMilliseconds}ms from { _fromClient}");
         Quaternion _rotation = _packet.ReadQuaternion();
-        Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
+        float _verticalRotation = _packet.ReadFloat();
+        Server.clients[_fromClient].player.SetInput(_inputs, _rotation, _verticalRotation);
     }
 }

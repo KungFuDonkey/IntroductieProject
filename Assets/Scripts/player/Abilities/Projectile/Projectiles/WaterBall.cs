@@ -24,16 +24,17 @@ public class WaterBall : Projectile
         float distance = Vector3.Distance(spawnPosition, position);
         if (distance > maxDistance)
         {
-            destroy();
+            DestroyProjectile();
         }
         if (!destroyed)
         {
-            position += (rotation * Vector3.forward * speed + startDirection * 20) * Time.deltaTime;
+            position += (rotation * Vector3.forward * speed + startDirection) * Time.deltaTime;
         }
         base.UpdateProjectile();
     }
-    public void destroy()
+    public override void DestroyProjectile()
     {
         destroyed = true;
+        base.DestroyProjectile();
     }
 }

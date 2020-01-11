@@ -14,4 +14,9 @@ public class Projectile
     {
         ServerSend.ProjectileMove(this);
     }
+    public virtual void DestroyProjectile()
+    {
+        ServerSend.DestroyProjectile(this);
+        ServerStart.destroyId.Add(id);
+    }
 }

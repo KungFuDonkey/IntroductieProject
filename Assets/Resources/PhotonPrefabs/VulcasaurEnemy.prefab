@@ -1570,10 +1570,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 46.77887
-  m_Height: 93.55774
+  m_Radius: 37.14
+  m_Height: 57.14
   m_Direction: 1
-  m_Center: {x: 0, y: 33.78721, z: 9.601702}
+  m_Center: {x: 0, y: 34.3, z: 9.601702}
 --- !u!1 &6389479154584230734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1741,7 @@ GameObject:
   - component: {fileID: 5385572916197257801}
   - component: {fileID: 898008755205497338}
   - component: {fileID: 4670140030146914787}
+  - component: {fileID: 8396441823814499821}
   m_Layer: 0
   m_Name: VulcasaurEnemy
   m_TagString: Avatar
@@ -1775,12 +1776,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 1.6
+  m_Radius: 1.3
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0.3}
+  m_Center: {x: 0, y: 1.2, z: 0.3}
 --- !u!114 &4670140030146914787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1798,6 +1799,19 @@ MonoBehaviour:
   selectedCharacter: 0
   yRotation: 0
   playerAnimator: {fileID: 3334680224187508098}
+--- !u!114 &8396441823814499821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524392177103977800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 6320018280230502724}
 --- !u!1 &6787769453721700681
 GameObject:
   m_ObjectHideFlags: 0

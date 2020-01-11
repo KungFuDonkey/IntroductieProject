@@ -989,10 +989,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 46.77887
-  m_Height: 93.55774
+  m_Radius: 39.14
+  m_Height: 57.14
   m_Direction: 1
-  m_Center: {x: 0, y: 33.78721, z: 9.601702}
+  m_Center: {x: 0, y: 34.3, z: 9.601702}
 --- !u!114 &6465048772004040621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,6 +1112,7 @@ GameObject:
   - component: {fileID: 1290718478177067670}
   - component: {fileID: 8711004377289849737}
   - component: {fileID: 3772400194338960272}
+  - component: {fileID: -8042446308503898690}
   m_Layer: 0
   m_Name: VulcasaurAvatar
   m_TagString: Avatar
@@ -1149,6 +1150,7 @@ MonoBehaviour:
   player: {fileID: 3772400194338960272}
   sensitivity: 100
   clampAngle: 85
+  verticalRotation: 0
   playerbody: {fileID: 4478984211883878458}
   Head: {fileID: 928170931994395084}
   avatarcamera: {fileID: 7512653112228467478}
@@ -1166,12 +1168,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 1.6
+  m_Radius: 1.3
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0.3}
+  m_Center: {x: 0, y: 1.2, z: 0.3}
 --- !u!114 &3772400194338960272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,6 +1191,19 @@ MonoBehaviour:
   selectedCharacter: 0
   yRotation: 0
   playerAnimator: {fileID: 6544508294180536305}
+--- !u!114 &-8042446308503898690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323276637181814587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 2531266276405304119}
 --- !u!1 &3352191594160721073
 GameObject:
   m_ObjectHideFlags: 0

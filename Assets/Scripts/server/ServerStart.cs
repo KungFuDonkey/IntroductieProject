@@ -9,7 +9,7 @@ public class ServerStart : MonoBehaviour
     public static ServerStart instance;
     Text content;
     GameObject serverLog;
-
+    public static List<int> destroyId = new List<int>();
     private void Awake()
     {
         if (instance == null)
@@ -45,6 +45,16 @@ public class ServerStart : MonoBehaviour
         foreach(Projectile _projectile in Server.projectiles.Values)
         {
             _projectile.UpdateProjectile();
+        }
+        bool reset = false;
+        foreach(int i in destroyId)
+        {
+            Server.projectiles.Remove(i);
+            reset = true;
+        }
+        if (reset)
+        {
+            destroyId = new List<int>();
         }
         if (Input.GetKey(KeyCode.P))
         {
