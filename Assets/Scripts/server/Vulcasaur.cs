@@ -19,4 +19,57 @@ public class Vulcasaur : Player
             false
         };
     }
+    public override void UpdatePlayer()
+    {
+        base.UpdatePlayer();
+        if (inputs[10] && fireTimer < 0)
+        {
+            basicAttack();
+        }
+        else
+        {
+            fireTimer -= Time.deltaTime;
+        }
+
+        if (inputs[6] && qTimer < 0)
+        {
+            qAttack();
+        }
+        else
+        {
+            qTimer -= Time.deltaTime;
+        }
+
+        if (inputs[7] && eTimer < 0)
+        {
+            eAttack();
+        }
+        else
+        {
+            eTimer -= Time.deltaTime;
+        }
+
+
+    }
+
+    public void basicAttack()
+    {
+        fireTimer = FIRETIMER;
+        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Debug.Log("shooting");
+    }
+
+    public void qAttack()
+    {
+        qTimer = QTIMER;
+        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Debug.Log("shooting");
+    }
+
+    public void eAttack()
+    {
+        eTimer = ETIMER;
+        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Debug.Log("shooting");
+    }
 }

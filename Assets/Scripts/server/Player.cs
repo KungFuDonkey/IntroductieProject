@@ -17,8 +17,9 @@ public abstract class Player
     public LayerMask groundmask;
     public CharacterController controller;
     protected bool[] inputs;
+    protected Vector3 _inputDirection;
     public bool[] animationValues;
-    public float fireTimer = 0f, FIRETIMER = 2f, walkSpeed = 20f, runSpeed = 40f;
+    public float fireTimer = 0f, FIRETIMER = 2f, qTimer, QTIMER, eTimer, ETIMER, walkSpeed = 20f, runSpeed = 40f;
     
 
     //update the player by checking his inputs and acting on them
@@ -57,7 +58,7 @@ public abstract class Player
                 gravity = -2;
             }
         }
-        Vector3 _inputDirection = Vector3.zero;
+        _inputDirection = Vector3.zero;
         if (inputs[0])
         {
             _inputDirection += avatar.forward;
@@ -98,16 +99,6 @@ public abstract class Player
             animationValues[3] = true;
         }
         gravity -= 7 * Time.deltaTime;
-        if (inputs[10] && fireTimer < 0)
-        {
-            fireTimer = FIRETIMER;
-            ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
-            Debug.Log("shooting");
-        }
-        else
-        {
-            fireTimer -= Time.deltaTime;
-        }
         _inputDirection.y = gravity;
         if (inputs[5])
         {
