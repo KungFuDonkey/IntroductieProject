@@ -491,7 +491,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4744990210481192868}
   - component: {fileID: 4328009629818369733}
-  - component: {fileID: 5830480691968735659}
   - component: {fileID: 3451904487096225982}
   m_Layer: 11
   m_Name: McQuirtle
@@ -540,20 +539,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &5830480691968735659
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107373906631295526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 16.020536
-  m_Height: 49.297962
-  m_Direction: 1
-  m_Center: {x: 0, y: 21.815987, z: 6.3037395}
 --- !u!114 &3451904487096225982
 MonoBehaviour:
   m_ObjectHideFlags: 0

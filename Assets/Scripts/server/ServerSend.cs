@@ -136,6 +136,7 @@ public class ServerSend
 
             _packet.Write(_rotation);
             _packet.Write(_projectile);
+            _packet.Write(_player.id);
             SendTCPDataToAll(_packet);
         }
     }
@@ -158,6 +159,16 @@ public class ServerSend
         {
             _packet.Write(_projectile.id);
             SendTCPDataToAll(_packet);
+        }
+    }
+
+    public static void Damage(int _playerID, float _damage, int _type)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.Damage))
+        {
+            _packet.Write(_damage);
+            _packet.Write(_type);
+            SendTCPData(_playerID, _packet);
         }
     }
     #endregion

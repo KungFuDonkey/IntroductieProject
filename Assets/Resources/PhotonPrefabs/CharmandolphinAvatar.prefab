@@ -721,7 +721,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1128923936724814145}
   - component: {fileID: 6668910900259913925}
-  - component: {fileID: 384538613148337113}
   - component: {fileID: 6864814907167230075}
   m_Layer: 11
   m_Name: Charmandolphin
@@ -768,20 +767,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &384538613148337113
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2291684216144090217}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 18.29439
-  m_Height: 71.24765
-  m_Direction: 1
-  m_Center: {x: 0, y: 30.684467, z: 0}
 --- !u!114 &6864814907167230075
 MonoBehaviour:
   m_ObjectHideFlags: 0

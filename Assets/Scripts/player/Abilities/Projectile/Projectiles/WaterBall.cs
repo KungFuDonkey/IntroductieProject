@@ -6,9 +6,6 @@ public class WaterBall : Projectile
 {
     protected bool destroyed = false;
     Vector3 spawnPosition;
-    static float speed = 10;
-    static float maxDistance = 150;
-    static float damage = 8;
     static string type = "Water";
     static int projectileType = 1;
     public WaterBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection)
@@ -18,6 +15,7 @@ public class WaterBall : Projectile
         rotation = _rotation;
         startDirection = _startDirection;
         spawnPosition = _spawnPosition;
+        damage = 8;
     }
     public override void UpdateProjectile()
     {

@@ -932,7 +932,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3630679230349592520}
   - component: {fileID: 6544508294180536305}
-  - component: {fileID: 4625681295682066573}
   - component: {fileID: 6465048772004040621}
   m_Layer: 11
   m_Name: Vulcasaur
@@ -979,20 +978,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &4625681295682066573
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 39.14
-  m_Height: 57.14
-  m_Direction: 1
-  m_Center: {x: 0, y: 34.3, z: 9.601702}
 --- !u!114 &6465048772004040621
 MonoBehaviour:
   m_ObjectHideFlags: 0
