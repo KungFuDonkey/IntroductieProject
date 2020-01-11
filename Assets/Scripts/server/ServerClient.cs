@@ -195,15 +195,15 @@ public class ServerClient
     {
         if (selectedCharacter == 1)
         {
-            player = new Charmandolphin(id, _playerName);
+            player = new Charmandolphin(id, _playerName, selectedCharacter);
         }
         else if (selectedCharacter == 2)
         {
-            player = new Vulcasaur(id, _playerName);
+            player = new Vulcasaur(id, _playerName, selectedCharacter);
         }
         else
         {
-            player = new McQuirtle(id, _playerName);
+            player = new McQuirtle(id, _playerName, selectedCharacter);
         }
         Vector3 spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
         foreach (ServerClient _client in Server.clients.Values)

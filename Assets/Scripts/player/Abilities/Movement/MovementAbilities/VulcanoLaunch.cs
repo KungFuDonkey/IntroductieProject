@@ -24,7 +24,7 @@ public class VulcanoLaunch : MovementBehaviour
     }
     public void VulcanoJump()
     {
-        fakemonBehaviour fakemonBehaviour = transform.parent.GetComponentInChildren<Vulcasaur>();
-        fakemonBehaviour.AddSpeed(new Vector3(0, LaunchSpeed, 0));
+        //fakemonBehaviour fakemonBehaviour = transform.parent.GetComponentInChildren<Vulcasaur>();
+        //fakemonBehaviour.AddSpeed(new Vector3(0, LaunchSpeed, 0));
     }
 }

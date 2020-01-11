@@ -7,6 +7,7 @@ public abstract class Player
 {
     public int id;
     public int projectile;
+    public int selectedCharacter;
     public string username;
     public float gravity;
     public Transform avatar;

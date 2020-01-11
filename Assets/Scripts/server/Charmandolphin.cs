@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Charmandolphin : Player
 {
-    public Charmandolphin(int id, string username)
+    public Charmandolphin(int _id, string _username, int _selectedCharacter)
     {
-        this.id = id;
-        this.username = username;
-        this.groundmask = GameManager.instance.groundMask;
+        id = _id;
+        username = _username;
+        selectedCharacter = _selectedCharacter;
+        groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
         animationValues = new bool[4]
         {
