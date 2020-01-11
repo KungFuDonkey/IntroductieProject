@@ -81,26 +81,6 @@ MonoBehaviour:
   selectedCharacter: 0
   yRotation: 0
   playerAnimator: {fileID: 2002783854533474899}
---- !u!114 &3025319228235755248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518545851598542097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f4c34e6d4b9c6e4d97f004b32ece368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 6224983280969054193}
-  sensitivity: 100
-  clampAngle: 85
-  playerbody: {fileID: 1871171711022259516}
-  Head: {fileID: 4947564606277509454}
-  avatarcamera: {fileID: 0}
-  projectileSpawner: {fileID: 311533217613979655}
-  avatar: {fileID: 518545851598542097}
 --- !u!143 &3982412801713517751
 CharacterController:
   m_ObjectHideFlags: 0
@@ -115,7 +95,7 @@ CharacterController:
   m_Height: 2.6
   m_Radius: 0.8
   m_SlopeLimit: 45
-  m_StepOffset: 0.03
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0.3}

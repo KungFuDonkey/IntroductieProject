@@ -28,7 +28,7 @@ public class ServerStart : MonoBehaviour
         serverLog = (GameObject)Instantiate(Resources.Load("ServerLog"));
         serverLog.SetActive(false);
         content = serverLog.transform.GetChild(0).GetChild(0).GetChild(0).GetComponentInChildren<Text>();
-        Server.Start(50, 26950);
+        Server.Start(25, 26950);
     }
 
 
@@ -57,6 +57,6 @@ public class ServerStart : MonoBehaviour
     }
     public void DebugServer(string message)
     {
-        content.text += message + "\n"; 
+        content.text += message + "\n";
     }
 }

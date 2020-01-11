@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
@@ -47,7 +48,6 @@ public class ServerClient
             receiveBuffer = new byte[dataBufferSize];
 
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
-
             ServerSend.Welcome(id, "Welcome to the server!");
         }
 
@@ -194,6 +194,15 @@ public class ServerClient
     public void SendIntoGame(string _playerName, int selectedCharacter)
     {
         player = new Player(id, _playerName, selectedCharacter);
+        Vector3 spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
+        foreach (ServerClient _client in Server.clients.Values)
+        {
+            if (_client.player != null)
+            {
+                ServerSend.SpawnPlayer(_client.id, player, spawnpoint);
+                Thread.Sleep(100);
+            }
+        }
 
         foreach (ServerClient _client in Server.clients.Values)
         {
@@ -201,18 +210,13 @@ public class ServerClient
             {
                 if (_client.id != id)
                 {
-                    ServerSend.SpawnPlayer(id, _client.player);
+                    ServerSend.SpawnPlayer(id, _client.player, spawnpoint);
+                    Thread.Sleep(100);
                 }
             }
         }
 
-        foreach (ServerClient _client in Server.clients.Values)
-        {
-            if (_client.player != null)
-            {
-                ServerSend.SpawnPlayer(_client.id, player);
-            }
-        }
+
     }
 
     private void Disconnect()

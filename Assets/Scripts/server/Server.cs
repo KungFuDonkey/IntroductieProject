@@ -14,7 +14,8 @@ public class Server
     public static Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>();
     public delegate void PacketHandler(int _fromClient, ServerPacket _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
-
+    public static System.Random rand = new System.Random();
+    public static Dictionary<int, Vector3> spawnPoints = new Dictionary<int, Vector3>();
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
     public static void Start(int _maxPlayers, int _port)
@@ -41,12 +42,12 @@ public class Server
         TcpClient _client = tcpListener.EndAcceptTcpClient(_result);
         tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
         Debug.Log($"Incoming connection from {_client.Client.RemoteEndPoint}...");
-        ServerStart.instance.DebugServer($"Incoming connection from {_client.Client.RemoteEndPoint}...");
-
+        //ServerStart.instance.DebugServer($"Incoming connection from {_client.Client.RemoteEndPoint}...");
         for (int i = 1; i <= MaxPlayers; i++)
         {
             if (clients[i].tcp.socket == null)
             {
+
                 clients[i].tcp.Connect(_client);
                 return;
             }
@@ -124,6 +125,15 @@ public class Server
                 { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
             };
+
+        for (int i = 0; i <= MaxPlayers; i++)
+        {
+            for(int j = 0; j <= MaxPlayers; j++)
+            {
+                //spawnpoints 10 steps off the wall and 15 high
+                spawnPoints.Add((MaxPlayers + 1) * i + j, new Vector3(i * (280 / MaxPlayers) - 290,15, j * (280 / MaxPlayers) - 290));
+            }
+        }
         Debug.Log("Initialized packets.");
         ServerStart.instance.DebugServer("Initialized packets.");
     }

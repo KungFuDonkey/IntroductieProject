@@ -44,7 +44,6 @@ public class Player
                 GameObject _gameobject = GameObject.Find(id.ToString());
                 controller = _gameobject.GetComponent<CharacterController>();
                 avatar = _gameobject.transform;
-                avatar.position = Vector3.zero; //spawnposition 
                 avatar.rotation = Quaternion.identity;
                 int childeren = _gameobject.transform.GetChild(0).childCount;
                 groundCheck = _gameobject.transform.GetChild(0).GetChild(childeren - 1);

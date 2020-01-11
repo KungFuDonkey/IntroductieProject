@@ -26,8 +26,9 @@ public class ClientHandle : MonoBehaviour
         int _id = _packet.ReadInt();
         string _username = _packet.ReadString();
         int _selectedCharacter = _packet.ReadInt();
-
-        GameManager.instance.SpawnPlayer(_id, _username, _selectedCharacter, Vector3.zero, Quaternion.identity);
+        Vector3 _spawnPoint = _packet.ReadVector3();
+        Debug.Log($"{_spawnPoint.x} {_spawnPoint.y} {_spawnPoint.z}");
+        GameManager.instance.SpawnPlayer(_id, _username, _selectedCharacter, _spawnPoint, Quaternion.identity);
     }
 
     public static void PlayerPosition(Packet _packet)

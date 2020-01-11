@@ -72,17 +72,17 @@ public class ServerSend
         }
     }
 
-    public static void SpawnPlayer(int _toClient, Player _player)
+    public static void SpawnPlayer(int _toClient, Player _player, Vector3 _spawnPoint)
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.spawnPlayer))
         {
             _packet.Write(_player.id);
             _packet.Write(_player.username);
             _packet.Write(_player.selectedCharacter);
-
+            _packet.Write(_spawnPoint);
             SendTCPData(_toClient, _packet);
-            Debug.Log($"spawning {_player.selectedCharacter} to id {_player.id}");
-            ServerStart.instance.DebugServer($"spawning {_player.selectedCharacter} to id {_player.id}");
+            Debug.Log($"spawning {_player.selectedCharacter} to id {_toClient}");
+            ServerStart.instance.DebugServer($"spawning {_player.selectedCharacter} to id {_toClient}");
         }
     }
 
@@ -90,10 +90,9 @@ public class ServerSend
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerPosition))
         {
-            //UnityEngine.Debug.Log($"sending position to {_player.id} in {stopwatches[_player.id - 1].Elapsed.TotalMilliseconds}ms");
             _packet.Write(_player.id);
             _packet.Write(_player.avatar.position);
-            SendUDPDataToAll(_packet);
+            SendUDPDataToAll(Client.instance.myId,_packet);
         }
     }
 
