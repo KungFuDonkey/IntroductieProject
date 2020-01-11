@@ -108,7 +108,7 @@ public abstract class Player
         {
             Move(_inputDirection, walkSpeed);
         }
-
+        _inputDirection.y = 0; //for projectiles
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     protected virtual void Move(Vector3 _inputDirection, float moveSpeed)
