@@ -171,5 +171,24 @@ public class ServerSend
             SendTCPData(_playerID, _packet);
         }
     }
+
+    public static void LoadMenu(int menuNumber)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.LoadMenu))
+        {
+            if(menuNumber == 2)
+            {
+                foreach(ServerClient client in Server.clients.Values)
+                {
+                    if (client.connected)
+                    {
+                        client.SendIntoGame();
+                    }
+                }
+            }
+            _packet.Write(menuNumber);
+            SendTCPDataToAll(_packet);
+        }
+    }
     #endregion
 }

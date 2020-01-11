@@ -35,10 +35,6 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
-        if(ip == "127.0.0.1")
-        {
-            host = true;
-        }
         tcp = new TCP();
         udp = new UDP();
     }
@@ -265,7 +261,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.projectileMove, ClientHandle.ProjectileMove },
             { (int)ServerPackets.projectileDestroy, ClientHandle.ProjectileDestroy },
             { (int)ServerPackets.Damage, ClientHandle.Damage },
-            { (int)ServerPackets.playerAnimation, ClientHandle.PlayerAnimation }
+            { (int)ServerPackets.playerAnimation, ClientHandle.PlayerAnimation },
+            { (int)ServerPackets.LoadMenu, ClientHandle.LoadMenu }
         };
         Debug.Log("Initialized packets.");
     }

@@ -25,6 +25,7 @@ public class ServerStart : MonoBehaviour
     }
     void Start()
     {
+        Client.instance.host = true;
         serverLog = (GameObject)Instantiate(Resources.Load("ServerLog"));
         serverLog.SetActive(false);
         content = serverLog.transform.GetChild(0).GetChild(0).GetChild(0).GetComponentInChildren<Text>();

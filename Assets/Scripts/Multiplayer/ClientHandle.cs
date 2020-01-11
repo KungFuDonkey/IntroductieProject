@@ -93,4 +93,11 @@ public class ClientHandle : MonoBehaviour
         int type = _packet.ReadInt();
         Debug.Log(damage);
     }
+
+    public static void LoadMenu(Packet _packet)
+    {
+        int menu = _packet.ReadInt();
+        Debug.Log(menu);
+        UIManager.instance.LoadMenu(menu);
+    }
 }

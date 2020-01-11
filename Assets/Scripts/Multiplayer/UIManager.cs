@@ -8,10 +8,14 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public int selectedCharacter = 1;
-    public GameObject startMenu;
+    public bool startCounter = false;
+    public float timer = 10f;
+    public GameObject mainCamera;
+    public GameObject startMenu, lobby, characterSelection;
     public GameObject server;
     public InputField usernameField;
     public InputField ipAdress;
+    public Text serverInfo;
     private void Awake()
     {
         if (instance == null)
@@ -24,21 +28,22 @@ public class UIManager : MonoBehaviour
             Destroy(this);
         }
     }
+
     public void SelectMyCharacter(int n)
     {
-        selectedCharacter = n; 
+        ClientSend.ChoosePlayer(n);
     }
 
     public void ConnectToServer()
     {
         startMenu.SetActive(false);
+        lobby.SetActive(true);
         usernameField.interactable = false;
         if(ipAdress.text != "")
         {
             Client.instance.ip = ipAdress.text;
         }
         Client.instance.ConnectToServer();
-        Destroy(GameObject.Find("Main Camera"));
     }
 
     public void CreateServer()
@@ -49,9 +54,39 @@ public class UIManager : MonoBehaviour
             Destroy(currentserver);
         }
         Instantiate(server);
+        Client.instance.ConnectToServer();
+        startMenu.SetActive(false);
+        lobby.SetActive(true);
     }
-    public void GoToScene(int scene)
+
+    public void startCharacterSelection()
     {
-        SceneManager.LoadScene(scene);
+        ServerSend.LoadMenu(1);
+    }
+
+    public void LoadMenu(int menu)
+    {
+        if(menu == 1)
+        {
+            lobby.SetActive(false);
+            characterSelection.SetActive(true);
+            startCounter = true;
+        }
+        else if(menu == 2){
+            gameObject.SetActive(false);
+            Destroy(mainCamera);
+        }
+    }
+
+    private void Update()
+    {
+        if (startCounter)
+        {
+            timer -= Time.deltaTime;
+            if(timer < 0 && Client.instance.host)
+            {
+                ServerSend.LoadMenu(2);
+            }
+        }
     }
 }

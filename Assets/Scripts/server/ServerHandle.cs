@@ -9,9 +9,6 @@ public class ServerHandle
     {
         int _clientIdCheck = _packet.ReadInt();
         string _username = _packet.ReadString();
-        int selectedCharacter = _packet.ReadInt();
-
-
 
         Debug.Log($"{Server.clients[_fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {_fromClient}.");
         ServerStart.instance.DebugServer($"{Server.clients[_fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {_fromClient}.");
@@ -20,10 +17,19 @@ public class ServerHandle
             Debug.Log($"Player \"{_username}\" (ID: {_fromClient}) has assumed the wrong client ID ({_clientIdCheck})!");
             ServerStart.instance.DebugServer($"Player \"{_username}\" (ID: {_fromClient}) has assumed the wrong client ID ({_clientIdCheck})!");
         }
-        Server.clients[_fromClient].SendIntoGame(_username, selectedCharacter);
-
+        Server.clients[_fromClient].username = _username;
+        Server.clients[_fromClient].connected = true;
     }
-    //hanle playermovement in the game
+    public static void MousePosition(int _fromClient, ServerPacket _packet)
+    {
+        
+    }
+
+    public static void ChoosePlayer(int _fromClient, ServerPacket _packet)
+    {
+        Server.clients[_fromClient].selectedCharacter = _packet.ReadInt();
+    }
+    //handle playermovement in the game
     public static void PlayerMovement(int _fromClient, ServerPacket _packet)
     {
         bool[] _inputs = new bool[_packet.ReadInt()];

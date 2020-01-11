@@ -15,14 +15,17 @@ public enum ServerPackets
     projectile,
     projectileMove,
     projectileDestroy,
-    Damage
+    Damage,
+    LoadMenu
 }
 
 /// <summary>Sent from client to server.</summary>
 public enum ClientPackets
 {
     welcomeReceived = 1,
-    playerMovement
+    playerMovement,
+    mousePosition,
+    ChoosePlayer
 }
 
 public class Packet : IDisposable

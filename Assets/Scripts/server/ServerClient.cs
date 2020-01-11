@@ -11,9 +11,12 @@ public class ServerClient
     public static int dataBufferSize = 4096;
 
     public int id;
+    public int selectedCharacter;
+    public string username;
     public Player player;
     public TCP tcp;
     public UDP udp;
+    public bool connected = false;
 
     public ServerClient(int _clientId)
     {
@@ -191,19 +194,19 @@ public class ServerClient
         }
     }
 
-    public void SendIntoGame(string _playerName, int selectedCharacter)
+    public void SendIntoGame()
     {
         if (selectedCharacter == 1)
         {
-            player = new Charmandolphin(id, _playerName, selectedCharacter);
+            player = new Charmandolphin(id, username, selectedCharacter);
         }
         else if (selectedCharacter == 2)
         {
-            player = new Vulcasaur(id, _playerName, selectedCharacter);
+            player = new Vulcasaur(id, username, selectedCharacter);
         }
         else
         {
-            player = new McQuirtle(id, _playerName, selectedCharacter);
+            player = new McQuirtle(id, username, selectedCharacter);
         }
         Vector3 spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
         foreach (ServerClient _client in Server.clients.Values)

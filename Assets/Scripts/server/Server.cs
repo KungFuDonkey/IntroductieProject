@@ -124,6 +124,8 @@ public class Server
             {
                 { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
+                { (int)ClientPackets.mousePosition, ServerHandle.MousePosition},
+                { (int)ClientPackets.ChoosePlayer, ServerHandle.ChoosePlayer}
             };
 
         for (int i = 0; i <= MaxPlayers; i++)
