@@ -16,7 +16,7 @@ public class Player
     public CharacterController controller;
     private bool[] inputs;
     public bool[] animationValues;
-    public float fireTimer = 0f, FIRETIMER = 2f;
+    public float fireTimer = 0f, FIRETIMER = 2f, walkSpeed = 20f, runSpeed = 40f;
     public Player(int _id, string _username, int _selectedCharacter)
     {
         id = _id;
@@ -99,6 +99,11 @@ public class Player
                 animationValues[1] = false;
             }
         }
+        else
+        {
+            animationValues[0] = false;
+            animationValues[1] = false;
+        }
         if (inputs[10] || inputs[6] || inputs[7])
         {
             animationValues[3] = true;
@@ -115,12 +120,20 @@ public class Player
             fireTimer -= Time.deltaTime;
         }
         _inputDirection.y = gravity;
-        Move(_inputDirection);
+        if (inputs[5])
+        {
+            Move(_inputDirection, runSpeed);
+        }
+        else
+        {
+            Move(_inputDirection, walkSpeed);
+        }
+
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
-    private void Move(Vector3 _inputDirection)
+    private void Move(Vector3 _inputDirection, float moveSpeed)
     {
-        controller.Move(_inputDirection * Time.deltaTime * 20);
+        controller.Move(_inputDirection * Time.deltaTime * moveSpeed);
         ServerSend.PlayerPosition(this);
         ServerSend.PlayerAnimation(this);
         ServerSend.PlayerRotation(this);
