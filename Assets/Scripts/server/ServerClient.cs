@@ -193,7 +193,18 @@ public class ServerClient
 
     public void SendIntoGame(string _playerName, int selectedCharacter)
     {
-        player = new Player(id, _playerName, selectedCharacter);
+        if (selectedCharacter == 1)
+        {
+            player = new Charmandolphin(id, _playerName);
+        }
+        else if (selectedCharacter == 2)
+        {
+            player = new Vulcasaur(id, _playerName);
+        }
+        else
+        {
+            player = new McQuirtle(id, _playerName);
+        }
         Vector3 spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
         foreach (ServerClient _client in Server.clients.Values)
         {

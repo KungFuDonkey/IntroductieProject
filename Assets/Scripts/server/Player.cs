@@ -3,38 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class Player
+public abstract class Player
 {
     public int id;
     public int projectile;
     public string username;
-    public int selectedCharacter;
     public float gravity;
     public Transform avatar;
     public Transform groundCheck;
     public LayerMask groundmask;
     public CharacterController controller;
-    private bool[] inputs;
+    protected bool[] inputs;
     public bool[] animationValues;
     public float fireTimer = 0f, FIRETIMER = 2f, walkSpeed = 20f, runSpeed = 40f;
-    public Player(int _id, string _username, int _selectedCharacter)
-    {
-        id = _id;
-        username = _username;
-        selectedCharacter = _selectedCharacter;
-        groundmask = GameManager.instance.groundMask;
-        inputs = new bool[11];
-        animationValues = new bool[4]
-        {
-            false,
-            false,
-            false,
-            false
-        };
-    }
+    
 
     //update the player by checking his inputs and acting on them
-    public void UpdatePlayer()
+    public virtual void UpdatePlayer()
     {
         //find the player in the game of the masterclient, otherwise it can't move
         if(controller == null)
@@ -131,7 +116,7 @@ public class Player
 
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
-    private void Move(Vector3 _inputDirection, float moveSpeed)
+    protected virtual void Move(Vector3 _inputDirection, float moveSpeed)
     {
         controller.Move(_inputDirection * Time.deltaTime * moveSpeed);
         ServerSend.PlayerPosition(this);
@@ -139,7 +124,7 @@ public class Player
         ServerSend.PlayerRotation(this);
     }
 
-    public void SetInput(bool[] _inputs, Quaternion _rotation)
+    public virtual void SetInput(bool[] _inputs, Quaternion _rotation)
     {
         inputs = _inputs;
         avatar.rotation = _rotation;
