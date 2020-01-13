@@ -20,14 +20,12 @@ public abstract class Player
     protected bool[] inputs;
     protected Vector3 _inputDirection;
     public bool[] animationValues;
-    public float fireTimer = 0f, FIRETIMER = 2f, qTimer, QTIMER, eTimer, ETIMER, walkSpeed = 20f, runSpeed = 40f;
+    public float fireTimer = 0f, FIRETIMER = 2f, qTimer = 0f, QTIMER = 2f, eTimer = 0f, ETIMER = 2f, walkSpeed = 20f, runSpeed = 40f;
     public static Player instance;
     void Awake()
     {
         instance = this;
     }
-    
-
 
     //update the player by checking his inputs and acting on them
     public virtual void UpdatePlayer()
