@@ -18,7 +18,8 @@ public enum ServerPackets
     Damage,
     LoadMenu,
     UsernameList,
-    mousePosition
+    mousePosition,
+    SetWalls
 }
 
 /// <summary>Sent from client to server.</summary>

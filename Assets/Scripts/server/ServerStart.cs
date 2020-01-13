@@ -56,6 +56,7 @@ public class ServerStart : MonoBehaviour
                 Server.projectiles.Remove(i);
                 reset = true;
             }
+            Walls.UpdateWalls();
         }
         else if (!Server.joinable)
         {

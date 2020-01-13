@@ -115,4 +115,11 @@ public class ClientHandle : MonoBehaviour
         Vector2 _position = _packet.ReadVector2();
         UIManager.instance.mousePointers[_id].ChangePosition(_position);
     }
+    public static void SetWalls(Packet _packet)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            GameManager.instance.walls[i].transform.position = _packet.ReadVector3();
+        }
+    }
 }

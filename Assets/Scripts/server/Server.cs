@@ -19,6 +19,7 @@ public class Server
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
     public static bool joinable = true;
+
     public static void Start(int _maxPlayers, int _port)
     {
         MaxPlayers = _maxPlayers;
@@ -149,6 +150,11 @@ public class Server
         }
         Debug.Log("Initialized packets.");
         ServerStart.instance.DebugServer("Initialized packets.");
+
+        for (int i = 0; i < 4; i++)
+        {
+            Walls.walls[i] = GameManager.instance.walls[i].transform;
+        }
     }
 
 

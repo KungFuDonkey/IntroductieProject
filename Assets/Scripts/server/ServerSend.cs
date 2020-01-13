@@ -237,5 +237,16 @@ public class ServerSend
             SendUDPDataToAll(id, _packet);
         }
     }
+    public static void SetWalls()
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.SetWalls))
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                _packet.Write(Walls.walls[i]);
+            }
+            SendUDPDataToAll(Client.instance.myId, _packet);
+        }
+    }
     #endregion
 }

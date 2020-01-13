@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject McQuirtleEnemy;
     public GameObject VulcasaurEnemy;
     public GameObject WaterProjectile;
+    public GameObject[] walls;
 
     
     private void Awake()
