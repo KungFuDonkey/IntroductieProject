@@ -86,6 +86,7 @@ public class UIManager : MonoBehaviour
             if(timer < 0 && Client.instance.host)
             {
                 ServerSend.LoadMenu(2);
+                timer = 100f;
             }
         }
     }

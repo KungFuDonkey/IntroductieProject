@@ -182,6 +182,13 @@ public class ServerSend
                 {
                     if (client.connected)
                     {
+                        client.SetCharacter();
+                    }
+                }
+                foreach(ServerClient client in Server.clients.Values)
+                {
+                    if (client.connected)
+                    {
                         client.SendIntoGame();
                     }
                 }

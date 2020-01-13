@@ -12,6 +12,7 @@ public class ServerClient
 
     public int id;
     public int selectedCharacter;
+    Vector3 spawnpoint;
     public string username;
     public Player player;
     public TCP tcp;
@@ -196,6 +197,17 @@ public class ServerClient
 
     public void SendIntoGame()
     {
+        foreach(ServerClient _client in Server.clients.Values)
+        {
+            if (_client.connected)
+            {
+                ServerSend.SpawnPlayer(id, _client.player, _client.spawnpoint);
+            }
+        }
+    }
+
+    public void SetCharacter()
+    {
         if (selectedCharacter == 1)
         {
             player = new Charmandolphin(id, username, selectedCharacter);
@@ -208,29 +220,7 @@ public class ServerClient
         {
             player = new McQuirtle(id, username, selectedCharacter);
         }
-        Vector3 spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
-        foreach (ServerClient _client in Server.clients.Values)
-        {
-            if (_client.player != null)
-            {
-                ServerSend.SpawnPlayer(_client.id, player, spawnpoint);
-                Thread.Sleep(100);
-            }
-        }
-
-        foreach (ServerClient _client in Server.clients.Values)
-        {
-            if (_client.player != null)
-            {
-                if (_client.id != id)
-                {
-                    ServerSend.SpawnPlayer(id, _client.player, spawnpoint);
-                    Thread.Sleep(100);
-                }
-            }
-        }
-
-
+        spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
     }
 
     private void Disconnect()
