@@ -123,20 +123,18 @@ public class ServerSend
         }
     }
 
-    public static void Projectile(Player _player, int _projectile, Vector3 _inputDirection, float _verticalRotation)
+    public static void Projectile(Player _player, int _moveIndex, Projectile projectile)
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
         {
-            Quaternion _rotation = Quaternion.Euler(_verticalRotation, _player.avatar.rotation.eulerAngles.y, _player.avatar.rotation.eulerAngles.z);
-            Server.projectiles.Add((int)GameManager.projectileNumber, new WaterBall((int)GameManager.projectileNumber, _player.projectileSpawner.position, _rotation, _inputDirection));
+            Server.projectiles.Add((int)GameManager.projectileNumber, projectile);
             _packet.Write(GameManager.projectileNumber);
             GameManager.projectileNumber++;
 
             _packet.Write(_player.projectileSpawner.position);
+            _packet.Write(projectile.rotation);
+            _packet.Write(_moveIndex);
 
-            _packet.Write(_rotation);
-            _packet.Write(_projectile);
-            _packet.Write(_player.id);
             SendTCPDataToAll(_packet);
         }
     }

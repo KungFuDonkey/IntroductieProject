@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject CharmandolphinEnemy;
     public GameObject McQuirtleEnemy;
     public GameObject VulcasaurEnemy;
+    public GameObject[] playerObject;
     public GameObject WaterProjectile;
     public GameObject[] walls;
 
@@ -80,14 +81,13 @@ public class GameManager : MonoBehaviour
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
 
-    public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int _projectileType, int owner)
+    public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int moveIndex)
     {
         GameObject _projectile;
         //todo : different projectiles
-        _projectile = Instantiate(WaterProjectile,_position,_rotation);
+        _projectile = Instantiate(playerObject[moveIndex], _position, _rotation);
         _projectile.GetComponent<ProjectileManager>().id = _id;
-        _projectile.GetComponent<ProjectileManager>().projectileType = _projectileType;
-        _projectile.GetComponent<ProjectileManager>().owner = owner;
         projectiles.Add(_id, _projectile.GetComponent<ProjectileManager>());
+        
     }
 }

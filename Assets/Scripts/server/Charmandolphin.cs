@@ -56,21 +56,23 @@ public class Charmandolphin : Player
     public void basicAttack()
     {
         fireTimer = FIRETIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed * 0.2f, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 
     public void qAttack()
     {
         qTimer = QTIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 5, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 
     public void eAttack()
     {
-        eTimer = ETIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 6, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 }

@@ -8,13 +8,14 @@ public class WaterBall : Projectile
     Vector3 spawnPosition;
     static string type = "Water";
     static int projectileType = 1;
-    public WaterBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection)
+    public WaterBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;
         position = _spawnPosition;
         rotation = _rotation;
         startDirection = _startDirection;
         spawnPosition = _spawnPosition;
+        owner = _owner;
         damage = 8;
     }
     public override void UpdateProjectile()

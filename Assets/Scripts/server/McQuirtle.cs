@@ -54,21 +54,24 @@ public class McQuirtle : Player
     public void basicAttack()
     {
         fireTimer = FIRETIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 8, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 
     public void qAttack()
     {
         qTimer = QTIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 9, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 
     public void eAttack()
     {
         eTimer = ETIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 10, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 }

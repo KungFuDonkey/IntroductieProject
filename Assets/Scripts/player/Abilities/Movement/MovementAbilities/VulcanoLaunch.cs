@@ -11,6 +11,7 @@ public class VulcanoLaunch : MovementBehaviour
 
     protected override void Start()
     {
+        if(Client.instance.host)
         animator = GetComponent<Animator>();
         animator.SetTrigger("Launch");
         StartRotation = FreezeBone.transform.eulerAngles;
@@ -19,12 +20,15 @@ public class VulcanoLaunch : MovementBehaviour
 
     public void LateUpdate()
     {
-        FreezeBone.transform.eulerAngles = StartRotation;
-        FreezeBone.transform.position = StartPosition;
+        //FreezeBone.transform.eulerAngles = StartRotation;
+        //FreezeBone.transform.position = StartPosition;
     }
     public void VulcanoJump()
     {
-        //fakemonBehaviour fakemonBehaviour = transform.parent.GetComponentInChildren<Vulcasaur>();
-        //fakemonBehaviour.AddSpeed(new Vector3(0, LaunchSpeed, 0));
+        if (Client.instance.host)
+        {
+            Server.clients[Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].owner].player.gravity = LaunchSpeed;
+        }
     }
 }
+

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : Projectile
+public class Vines : Projectile
 {
     protected bool destroyed = false;
     Vector3 spawnPosition;
     static string type = "Fire";
     static int projectileType = 1;
-    public FireBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
+    public Vines(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;
         position = _spawnPosition;
@@ -16,21 +16,16 @@ public class FireBall : Projectile
         startDirection = _startDirection;
         spawnPosition = _spawnPosition;
         owner = _owner;
-        damage = 8;
     }
+
     public override void UpdateProjectile()
     {
-        float distance = Vector3.Distance(spawnPosition, position);
-        if (distance > maxDistance)
-        {
-            DestroyProjectile();
-        }
-        if (!destroyed)
-        {
-            position += (rotation * Vector3.forward * speed + startDirection) * Time.deltaTime;
-        }
+
+        position = Server.clients[owner].player.avatar.position;
+        rotation = Server.clients[owner].player.avatar.rotation;
         base.UpdateProjectile();
     }
+
     public override void DestroyProjectile()
     {
         destroyed = true;

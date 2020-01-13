@@ -197,9 +197,8 @@ GameObject:
   - component: {fileID: 171845576850446724}
   - component: {fileID: 7038919317633099485}
   - component: {fileID: 4008884263621979040}
-  - component: {fileID: 5578058816753629236}
-  - component: {fileID: 3186689742480089486}
-  - component: {fileID: 403746546538117488}
+  - component: {fileID: -668652347482429250}
+  - component: {fileID: 4331144620606158014}
   m_Layer: 0
   m_Name: FireProjectile
   m_TagString: Untagged
@@ -252,7 +251,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5578058816753629236
+--- !u!114 &-668652347482429250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,20 +260,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7901789765541069245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Script: {fileID: 11500000, guid: b2657155388dd6542b72796c773c0741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 3186689742480089486}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &3186689742480089486
+  id: 0
+  projectileType: 0
+  owner: 0
+--- !u!114 &4331144620606158014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,21 +275,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7901789765541069245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
---- !u!114 &403746546538117488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7901789765541069245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f45b1f124ac57ba46b6a3713aebab69f, type: 3}
+  m_Script: {fileID: 11500000, guid: 494dc3c97e890ed4bacadf0aa29db548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

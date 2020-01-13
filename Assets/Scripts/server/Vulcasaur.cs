@@ -55,21 +55,24 @@ public class Vulcasaur : Player
     public void basicAttack()
     {
         fireTimer = FIRETIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 0, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 
     public void qAttack()
     {
         qTimer = QTIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 1, new Vines((int)GameManager.projectileNumber, avatar.position, avatar.rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 
     public void eAttack()
     {
         eTimer = ETIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        Quaternion rotation = Quaternion.Euler(17.34f, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        ServerSend.Projectile(this, 2, new Vulcano((int)GameManager.projectileNumber, groundCheck.position, rotation, _inputDirection * runSpeed, id));
         Debug.Log("shooting");
     }
 }

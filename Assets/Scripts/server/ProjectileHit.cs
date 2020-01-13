@@ -16,7 +16,7 @@ public class ProjectileHit : MonoBehaviour
         PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
         if(playerManager != null)
         {
-            if(playerManager.id != gameObject.GetComponent<ProjectileManager>().owner)
+            if(playerManager.id != Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].owner)
             {
                 Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].Hit(playerManager.id, gameObject.GetComponent<ProjectileManager>().id);
             }
