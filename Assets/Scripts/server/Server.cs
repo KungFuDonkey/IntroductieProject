@@ -18,6 +18,7 @@ public class Server
     public static Dictionary<int, Vector3> spawnPoints = new Dictionary<int, Vector3>();
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
+    public static bool joinable = true;
     public static void Start(int _maxPlayers, int _port)
     {
         MaxPlayers = _maxPlayers;
@@ -43,16 +44,24 @@ public class Server
         tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
         Debug.Log($"Incoming connection from {_client.Client.RemoteEndPoint}...");
         //ServerStart.instance.DebugServer($"Incoming connection from {_client.Client.RemoteEndPoint}...");
-        for (int i = 1; i <= MaxPlayers; i++)
+        if (joinable)
         {
-            if (clients[i].tcp.socket == null)
+            for (int i = 1; i <= MaxPlayers; i++)
             {
+                if (clients[i].tcp.socket == null)
+                {
 
-                clients[i].tcp.Connect(_client);
-                return;
+                    clients[i].tcp.Connect(_client);
+                    return;
+                }
             }
         }
-
+        else
+        {
+            Debug.Log($"{_client.Client.RemoteEndPoint} failed to connect: Server already in a game");
+            ServerStart.instance.DebugServer($"{_client.Client.RemoteEndPoint} failed to connect: Server already in a game");
+            return;
+        }
         Debug.Log($"{_client.Client.RemoteEndPoint} failed to connect: Server full!");
         ServerStart.instance.DebugServer($"{_client.Client.RemoteEndPoint} failed to connect: Server full!");
     }

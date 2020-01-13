@@ -9,6 +9,7 @@ public class ServerStart : MonoBehaviour
     public static ServerStart instance;
     Text content;
     GameObject serverLog;
+    public static bool started = false;
     public static List<int> destroyId = new List<int>();
     private void Awake()
     {
@@ -36,22 +37,25 @@ public class ServerStart : MonoBehaviour
     //let the server run on fixed ticks
     void FixedUpdate()
     {
-        foreach (ServerClient _client in Server.clients.Values)
-        {
-            if (_client.player != null)
-            {
-                _client.player.UpdatePlayer();
-            }
-        }
-        foreach(Projectile _projectile in Server.projectiles.Values)
-        {
-            _projectile.UpdateProjectile();
-        }
         bool reset = false;
-        foreach(int i in destroyId)
+        if (started)
         {
-            Server.projectiles.Remove(i);
-            reset = true;
+            foreach (ServerClient _client in Server.clients.Values)
+            {
+                if (_client.player != null)
+                {
+                    _client.player.UpdatePlayer();
+                }
+            }
+            foreach (Projectile _projectile in Server.projectiles.Values)
+            {
+                _projectile.UpdateProjectile();
+            }
+            foreach (int i in destroyId)
+            {
+                Server.projectiles.Remove(i);
+                reset = true;
+            }
         }
         if (reset)
         {

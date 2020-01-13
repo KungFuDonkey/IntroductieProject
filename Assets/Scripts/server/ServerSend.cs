@@ -192,7 +192,9 @@ public class ServerSend
                         client.SendIntoGame();
                     }
                 }
+                ServerStart.started = true;
             }
+            Server.joinable = false;
             _packet.Write(menuNumber);
             SendTCPDataToAll(_packet);
         }
