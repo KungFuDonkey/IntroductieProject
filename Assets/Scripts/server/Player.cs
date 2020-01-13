@@ -62,7 +62,7 @@ public abstract class Player
             }
             else
             {
-                gravity = -2;
+                //gravity = -2;
             }
         }
         _inputDirection = Vector3.zero;
@@ -115,7 +115,15 @@ public abstract class Player
         {
             Move(_inputDirection, walkSpeed);
         }
-        _inputDirection.y = 0; //for projectiles
+
+        if (isGrounded)  //for projectiles
+        {
+            _inputDirection.y = 0;
+        }
+        else
+        {
+            _inputDirection.y *= 0.2f;
+        }
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     protected virtual void Move(Vector3 _inputDirection, float moveSpeed)

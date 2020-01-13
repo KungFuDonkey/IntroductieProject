@@ -6,6 +6,6 @@ public class OnlineMousePointer : MonoBehaviour
 {
     public void ChangePosition(Vector2 _position)
     {
-        transform.localPosition = _position;
+        transform.position = _position;
     }
 }

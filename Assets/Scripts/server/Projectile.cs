@@ -8,7 +8,7 @@ public class Projectile
     public Vector3 position;
     public Vector3 startDirection;
     public Quaternion rotation;
-    protected float speed = 10;
+    protected float speed = 50;
     protected float maxDistance = 150;
     public float damage;
     public int owner;

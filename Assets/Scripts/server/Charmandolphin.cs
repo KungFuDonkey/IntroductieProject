@@ -56,7 +56,7 @@ public class Charmandolphin : Player
     public void basicAttack()
     {
         fireTimer = FIRETIMER;
-        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed, verticalRotation);
+        ServerSend.Projectile(this, projectile, _inputDirection * runSpeed * 0.2f, verticalRotation);
         Debug.Log("shooting");
     }
 
