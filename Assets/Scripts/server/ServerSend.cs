@@ -199,5 +199,33 @@ public class ServerSend
             SendTCPDataToAll(_packet);
         }
     }
+
+    public static void SendUsernameList()
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.UsernameList))
+        {
+            string list = "";
+            int playercount = 0;
+            foreach(ServerClient client in Server.clients.Values)
+            {
+                if (client.connected)
+                {
+                    playercount++;
+                    list += client.username;
+                    if (client.ready)
+                    {
+                        list += " (ready)\n";
+                    }
+                    else
+                    {
+                        list += " (not ready)\n";
+                    }
+                }
+            }
+            _packet.Write(playercount);
+            _packet.Write(list);
+            SendTCPDataToAll(_packet);
+        }
+    }
     #endregion
 }

@@ -19,6 +19,13 @@ public class ServerHandle
         }
         Server.clients[_fromClient].username = _username;
         Server.clients[_fromClient].connected = true;
+        ServerSend.SendUsernameList();
+    }
+
+    public static void changeReady(int _fromClient, ServerPacket _packet)
+    {
+        Server.clients[_fromClient].ready = !Server.clients[_fromClient].ready;
+        ServerSend.SendUsernameList();
     }
     public static void MousePosition(int _fromClient, ServerPacket _packet)
     {

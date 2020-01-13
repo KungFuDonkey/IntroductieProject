@@ -18,6 +18,7 @@ public class ServerClient
     public TCP tcp;
     public UDP udp;
     public bool connected = false;
+    public bool ready = false;
 
     public ServerClient(int _clientId)
     {

@@ -52,5 +52,13 @@ public class ClientSend : MonoBehaviour
             SendUDPData(_packet);
         }
     }
+
+    public static void Ready()
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.ready))
+        {
+            SendTCPData(_packet);
+        }
+    }
     #endregion
 }

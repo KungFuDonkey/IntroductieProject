@@ -15,7 +15,8 @@ public class UIManager : MonoBehaviour
     public GameObject server;
     public InputField usernameField;
     public InputField ipAdress;
-    public Text serverInfo;
+    public Text serverInfo, playerCount;
+    public Text UsernameList;
     private void Awake()
     {
         if (instance == null)
@@ -76,6 +77,21 @@ public class UIManager : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(mainCamera);
         }
+    }
+
+    public void SetUsernameList(string list)
+    {
+        UsernameList.text = list;
+    }
+
+    public void SetPlayerCount(int playercount)
+    {
+        playerCount.text = playercount.ToString();
+    }
+
+    public void ChangeReady()
+    {
+        ClientSend.Ready();
     }
 
     private void Update()

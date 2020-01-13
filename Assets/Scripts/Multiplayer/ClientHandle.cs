@@ -100,4 +100,12 @@ public class ClientHandle : MonoBehaviour
         Debug.Log(menu);
         UIManager.instance.LoadMenu(menu);
     }
+
+    public static void UsernameList(Packet _packet)
+    {
+        int playercount = _packet.ReadInt();
+        string list = _packet.ReadString();
+        UIManager.instance.SetPlayerCount(playercount);
+        UIManager.instance.SetUsernameList(list);
+    }
 }

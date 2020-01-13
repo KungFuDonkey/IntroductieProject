@@ -182,6 +182,7 @@ public class Client : MonoBehaviour
         {
             int _localPort = ((IPEndPoint)instance.tcp.socket.Client.LocalEndPoint).Port;
             socket = new UdpClient(_localPort);
+            endPoint = new IPEndPoint(IPAddress.Parse(instance.ip), instance.port);
             socket.Connect(endPoint);
             Debug.Log(endPoint.Address);
             Debug.Log(endPoint.Port);
@@ -262,7 +263,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.projectileDestroy, ClientHandle.ProjectileDestroy },
             { (int)ServerPackets.Damage, ClientHandle.Damage },
             { (int)ServerPackets.playerAnimation, ClientHandle.PlayerAnimation },
-            { (int)ServerPackets.LoadMenu, ClientHandle.LoadMenu }
+            { (int)ServerPackets.LoadMenu, ClientHandle.LoadMenu },
+            { (int)ServerPackets.UsernameList, ClientHandle.UsernameList}
         };
         Debug.Log("Initialized packets.");
     }
