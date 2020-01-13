@@ -5,19 +5,30 @@ using UnityEngine;
 public class Walls
 {
     public static Transform[] walls = new Transform[4];
-    protected float wallsWait;
-    protected float wallsMove;
-    public static Vector3 circlePosition = new Vector3(Random.Range(-200,200), 20, Random.Range(-200, 200));
-    void Start()
+    protected static float wallsWait = 10;
+    protected static float wallsMove = 10;
+    public static Vector3 circlePosition;
+    public static Vector3[] distances = new Vector3[4];
+    static bool started = false;
+    public static void Start()
     {
-        Debug.Log(circlePosition.ToString());
+        
     }
     public static void UpdateWalls()
     {
+        if (!started)
+        {
+            started = true;
+            circlePosition = new Vector3(Random.Range(-250, 250), 20, Random.Range(-250, 250));
+            Debug.Log(circlePosition.ToString());
+            for (int i = 0; i < 4; i++)
+            {
+                distances[i] = circlePosition - walls[i].position;
+            }
+        }
         for (int i = 0; i < 4; i++)
         {
-            float distance = Vector3.Distance(circlePosition, walls[i].position);
-            walls[i].position += new Vector3(0,0,1) * Time.deltaTime;
+            walls[i].position += distances[i] * Time.deltaTime / 60;
         }
 
         ServerSend.SetWalls();
