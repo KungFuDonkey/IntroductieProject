@@ -14,6 +14,7 @@ public class ServerClient
     public int selectedCharacter;
     Vector3 spawnpoint;
     public string username;
+    public Vector2 mousePosition;
     public Player player;
     public TCP tcp;
     public UDP udp;

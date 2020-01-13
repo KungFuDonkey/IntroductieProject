@@ -29,7 +29,7 @@ public class ServerHandle
     }
     public static void MousePosition(int _fromClient, ServerPacket _packet)
     {
-        
+        Server.clients[_fromClient].mousePosition = _packet.ReadVector2();
     }
 
     public static void ChoosePlayer(int _fromClient, ServerPacket _packet)

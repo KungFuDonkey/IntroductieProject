@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public InputField ipAdress;
     public Text serverInfo, playerCount;
     public Text UsernameList;
+    public Dictionary<int, OnlineMousePointer> mousePointers = new Dictionary<int, OnlineMousePointer>();
     private void Awake()
     {
         if (instance == null)
@@ -71,6 +72,19 @@ public class UIManager : MonoBehaviour
         {
             lobby.SetActive(false);
             characterSelection.SetActive(true);
+            for(int i = 1; i <= int.Parse(playerCount.text); i++)
+            {
+                if(i != Client.instance.myId)
+                {
+                    GameObject onlineCursor = (GameObject)Instantiate(Resources.Load("OnlineCursor"),characterSelection.transform);
+                    OnlineMousePointer mp = onlineCursor.GetComponent<OnlineMousePointer>();
+                    mousePointers.Add(i, mp);
+                }
+                else
+                {
+                    GameObject myCursor = (GameObject)Instantiate(Resources.Load("Cursor"), characterSelection.transform);
+                }
+            }
             startCounter = true;
         }
         else if(menu == 2){

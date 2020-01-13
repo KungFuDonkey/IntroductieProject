@@ -302,6 +302,11 @@ public class ServerPacket : IDisposable
         }
     }
 
+    public Vector2 ReadVector2(bool _moveReadPos = true)
+    {
+        return new Vector2(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
+    }
+
     public Vector3 ReadVector3(bool _moveReadPos = true)
     {
         return new Vector3(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));

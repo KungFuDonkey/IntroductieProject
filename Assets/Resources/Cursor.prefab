@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 4390864790539908869}
   - component: {fileID: 4390864790539908987}
   - component: {fileID: 4390864790539908986}
-  - component: {fileID: 4390864790539908985}
-  - component: {fileID: 4390864790539908984}
-  - component: {fileID: 9155516835581799813}
+  - component: {fileID: 3212935015999787901}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -77,7 +75,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4390864790539908985
+--- !u!114 &3212935015999787901
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,49 +84,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4390864790539908868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Script: {fileID: 11500000, guid: 68d795d51bcf6864a990f3c106daf51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 9155516835581799813}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &4390864790539908984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390864790539908868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267718b3a90d5ee40aa619003b2bbd1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  widthDiff: 0
-  heightDiff: 0
-  nickname: {fileID: 7548636287627359358}
---- !u!114 &9155516835581799813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390864790539908868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!1 &8303978743551329778
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,4 +163,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: hi
+  m_Text: 

@@ -57,6 +57,16 @@ public class ServerStart : MonoBehaviour
                 reset = true;
             }
         }
+        else if (!Server.joinable)
+        {
+            foreach(ServerClient _client in Server.clients.Values)
+            {
+                if (_client.connected)
+                {
+                    ServerSend.SendMousePosition(_client.id, _client.mousePosition);
+                }
+            }
+        }
         if (reset)
         {
             destroyId = new List<int>();

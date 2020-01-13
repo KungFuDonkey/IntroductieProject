@@ -69,5 +69,14 @@ public class ClientSend : MonoBehaviour
             SendTCPData(_packet);
         }
     }
+
+    public static void MousePosition(Vector2 _position)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.mousePosition))
+        {
+            _packet.Write(_position);
+            SendUDPData(_packet);
+        }
+    }
     #endregion
 }

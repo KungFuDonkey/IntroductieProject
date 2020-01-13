@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class MousePointer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float widthDiff = 0;
-    public float heightDiff = 0;
-    protected virtual void Start()
+    private void Start()
     {
         Cursor.visible = false;
     }
-
-    // Update is called once per frame
-    protected virtual void Update()
+    void FixedUpdate()
     {
-        transform.position = new Vector3(Input.mousePosition.x + 12, Input.mousePosition.y - 26, Input.mousePosition.z);
+        transform.position = new Vector2(Input.mousePosition.x + 12, Input.mousePosition.y - 26);
+        ClientSend.MousePosition(Input.mousePosition);
     }
 }

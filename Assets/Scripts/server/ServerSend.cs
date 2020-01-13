@@ -227,5 +227,15 @@ public class ServerSend
             SendTCPDataToAll(_packet);
         }
     }
+
+    public static void SendMousePosition(int id, Vector2 position)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.mousePosition))
+        {
+            _packet.Write(id);
+            _packet.Write(position);
+            SendUDPDataToAll(id, _packet);
+        }
+    }
     #endregion
 }

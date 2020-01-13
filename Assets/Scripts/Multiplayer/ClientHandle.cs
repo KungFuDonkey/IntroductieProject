@@ -108,4 +108,11 @@ public class ClientHandle : MonoBehaviour
         UIManager.instance.SetPlayerCount(playercount);
         UIManager.instance.SetUsernameList(list);
     }
+
+    public static void GetMousePosition(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        Vector2 _position = _packet.ReadVector2();
+        
+    }
 }
