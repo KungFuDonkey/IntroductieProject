@@ -113,6 +113,6 @@ public class ClientHandle : MonoBehaviour
     {
         int _id = _packet.ReadInt();
         Vector2 _position = _packet.ReadVector2();
-        
+        UIManager.instance.mousePointers[_id].ChangePosition(_position);
     }
 }

@@ -264,7 +264,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.Damage, ClientHandle.Damage },
             { (int)ServerPackets.playerAnimation, ClientHandle.PlayerAnimation },
             { (int)ServerPackets.LoadMenu, ClientHandle.LoadMenu },
-            { (int)ServerPackets.UsernameList, ClientHandle.UsernameList}
+            { (int)ServerPackets.UsernameList, ClientHandle.UsernameList},
+            { (int)ServerPackets.mousePosition, ClientHandle.GetMousePosition }
         };
         Debug.Log("Initialized packets.");
     }

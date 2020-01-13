@@ -130,12 +130,13 @@ public class Server
         }
 
         packetHandlers = new Dictionary<int, PacketHandler>()
-        { { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
-                { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
-                { (int)ClientPackets.mousePosition, ServerHandle.MousePosition},
-                { (int)ClientPackets.ChoosePlayer, ServerHandle.ChoosePlayer},
-                { (int)ClientPackets.UseItem, ServerHandle.UseItem },
-             { (int)ClientPackets.ready, ServerHandle.changeReady}
+        { 
+            { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
+            { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
+            { (int)ClientPackets.mousePosition, ServerHandle.MousePosition},
+            { (int)ClientPackets.ChoosePlayer, ServerHandle.ChoosePlayer},
+            { (int)ClientPackets.UseItem, ServerHandle.UseItem },
+            { (int)ClientPackets.ready, ServerHandle.changeReady}
         };
 
         for (int i = 0; i <= MaxPlayers; i++)

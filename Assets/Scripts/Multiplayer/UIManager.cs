@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
                     GameObject myCursor = (GameObject)Instantiate(Resources.Load("Cursor"), characterSelection.transform);
                 }
             }
-            startCounter = true;
+            //startCounter = true;
         }
         else if(menu == 2){
             gameObject.SetActive(false);
