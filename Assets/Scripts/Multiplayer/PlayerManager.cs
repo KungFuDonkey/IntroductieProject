@@ -9,6 +9,13 @@ public class PlayerManager : MonoBehaviour
     public int selectedCharacter;
     public int yRotation;
     public Animator playerAnimator;
+    [SerializeField] public GameObject invisible;
+
+    public static PlayerManager instance;
+    void Awake()
+    {
+        instance = this;
+    }
 
     public void SetAnimations(bool[] animationValues)
     {

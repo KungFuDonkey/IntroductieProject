@@ -12,7 +12,6 @@ public class HealthBar : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public Image visualHealth;
-    fakemonBehaviour AvatarBehaviour;
 
     public static HealthBar instance;
 

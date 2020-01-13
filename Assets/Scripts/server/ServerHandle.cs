@@ -49,4 +49,11 @@ public class ServerHandle
         float _verticalRotation = _packet.ReadFloat();
         Server.clients[_fromClient].player.SetInput(_inputs, _rotation, _verticalRotation);
     }
+
+    public static void UseItem(int _fromClient, ServerPacket _packet)
+    {
+        Debug.Log("bahbah");
+        Server.clients[_fromClient].player.UseItem(_packet.ReadInt());
+    }
+
 }

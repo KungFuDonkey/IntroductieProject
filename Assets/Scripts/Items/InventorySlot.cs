@@ -12,6 +12,7 @@ public class InventorySlot : MonoBehaviour
     [SerializeField] private GameObject tekst2;
     [SerializeField] private GameObject tekst;
     [SerializeField] private GameObject Tekstmaxhealth;
+    [SerializeField] private GameObject tekst3;
 
 
     void Awake()
@@ -86,15 +87,14 @@ public class InventorySlot : MonoBehaviour
 
     public void Speedy()
     {
+        ClientSend.UseItem(3);
         tekst2.SetActive(false);
         inventory.instance.Remove(Item);
        // Player.instance.speedboost /= 3;
     }
     public void WaitSpeed()
     {
-       
-      //  Player.instance.speedboost *= 3;
-        
+        ClientSend.UseItem(2);
         tekst2.SetActive(true);
         TextCounterSpeed.instance.Start();
         TextCounterSpeed.instance.Update();
@@ -103,23 +103,51 @@ public class InventorySlot : MonoBehaviour
 
     public void Jumpy()
     {
-
-        //fakemonBehaviour.instance.jumpspeed /= 3f;
+        ClientSend.UseItem(1);
         tekst.SetActive(false);
         inventory.instance.Remove(Item);
 
     }
     public void WaitJump()
     {
-        //fakemonBehaviour.instance.jumpspeed *= 3f;
-        
+        ClientSend.UseItem(0);
         tekst.SetActive(true);
         TextCounterJump.instance.Start();
         TextCounterJump.instance.Update();
         Invoke("Jumpy", seconds);
     }
 
+    public void Invy()
+    {
+        ClientSend.UseItem(5);
+        tekst3.SetActive(false);
+        inventory.instance.Remove(Item);
 
+    }
+    public void WaitInvisible()
+    {
+        ClientSend.UseItem(4);
+        tekst3.SetActive(true);
+        TextCounterInvisible.instance.Start();
+        TextCounterInvisible.instance.Update();
+        Invoke("Invy", seconds);
+    }
+
+    public void GetHealth()
+    {
+        if (HealthBar.instance.CurrentHealth >= 100)
+        {
+            WaitMaxHealth();
+            return;
+        }
+        else
+        {
+            HealthBar.instance.CurrentHealth += 20;
+            if (HealthBar.instance.CurrentHealth >= 100)
+                HealthBar.instance.CurrentHealth = 100;
+            inventory.instance.Remove(Item);
+        }
+    }
 
 
     public virtual void UseItem()
@@ -138,19 +166,11 @@ public class InventorySlot : MonoBehaviour
             }
             else if (Item.name == "Oran Berry")
             {
-                if (HealthBar.instance.CurrentHealth >= 100)
-                {
-                    WaitMaxHealth();
-                    return;
-                }
-                else
-                {
-                    HealthBar.instance.CurrentHealth += 20;
-                    if (HealthBar.instance.CurrentHealth >= 100)
-                        HealthBar.instance.CurrentHealth = 100;
-                    inventory.instance.Remove(Item);
-                }
-
+                GetHealth();
+            }
+            else if (Item.name == "Pokeball")
+            {
+                WaitInvisible();
             }
 
             Item.Use();

@@ -27,7 +27,9 @@ public enum ClientPackets
     playerMovement,
     ready,
     mousePosition,
-    ChoosePlayer
+    ChoosePlayer,
+    setHealth,
+    UseItem
 }
 
 public class Packet : IDisposable

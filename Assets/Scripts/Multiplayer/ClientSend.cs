@@ -29,6 +29,15 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    public static void UseItem(int _itemIndex)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.UseItem))
+        {
+            _packet.Write(_itemIndex);
+            SendTCPData(_packet);
+        }
+    }
+
     public static void ChoosePlayer(int _character)
     {
         using (Packet _packet = new Packet((int)ClientPackets.ChoosePlayer))

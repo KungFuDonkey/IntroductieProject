@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Item : ScriptableObject
 {
-   
+
     public static Item instance;
 
     void Awake()
@@ -23,12 +23,7 @@ public class Item : ScriptableObject
 
     public virtual void Use()
     {
-         if (name == "Pokeball")
-        {
-            inventory.instance.Remove(this);
-        }
-
-         else if (name == "Pecha Berry")
+        if (name == "Pecha Berry")
         {
             inventory.instance.Remove(this);
         }
