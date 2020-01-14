@@ -9,7 +9,6 @@ public class PlayerManager : MonoBehaviour
     public int selectedCharacter;
     public int yRotation;
     public Animator playerAnimator;
-    public Transform player;
     [SerializeField] public GameObject invisible;
 
     public static PlayerManager instance;

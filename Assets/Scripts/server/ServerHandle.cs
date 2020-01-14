@@ -53,7 +53,7 @@ public class ServerHandle
     public static void UseItem(int _fromClient, ServerPacket _packet)
     {
         Debug.Log("bahbah");
-        Server.clients[_fromClient].player.UseItem(_packet.ReadInt());
+        //Server.clients[_fromClient].player.UseItem(_packet.ReadInt());
     }
 
 }
