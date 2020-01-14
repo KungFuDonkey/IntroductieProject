@@ -39,6 +39,14 @@ public class ClientHandle : MonoBehaviour
         GameManager.players[_id].transform.position = _position;
     }
 
+    public static void UseItem(Packet _packet)
+    {
+        Debug.Log("bahbah");
+        int _id = _packet.ReadInt();
+        int _itemIndex = _packet.ReadInt();
+        GameManager.players[_id].playert.UseItem(_packet.ReadInt());
+    }
+
     public static void PlayerAnimation(Packet _packet)
     {
         int _id = _packet.ReadInt();

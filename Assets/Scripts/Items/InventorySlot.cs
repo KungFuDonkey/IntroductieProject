@@ -90,7 +90,6 @@ public class InventorySlot : MonoBehaviour
         ClientSend.UseItem(3);
         tekst2.SetActive(false);
         inventory.instance.Remove(Item);
-       // Player.instance.speedboost /= 3;
     }
     public void WaitSpeed()
     {
@@ -160,22 +159,18 @@ public class InventorySlot : MonoBehaviour
             }
             else if (Item.name == "Lum Berry")
             {
-             
                 WaitSpeed();
-               
             }
             else if (Item.name == "Oran Berry")
             {
                 GetHealth();
             }
-            else if (Item.name == "Pokeball")
+            else if (Item.name == "Pokeball" || Item.name == "Pokeball2")
             {
                 WaitInvisible();
             }
 
             Item.Use();
-
-            //Item.RemoveItemFromInventory();
         }
     }
  
