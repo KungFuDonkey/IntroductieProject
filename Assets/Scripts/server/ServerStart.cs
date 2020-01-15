@@ -62,7 +62,6 @@ public class ServerStart : MonoBehaviour
         {
             foreach(ServerClient _client in Server.clients.Values)
             {
-                //Debug.Log("hi");
                 if (_client.connected)
                 {
                     ServerSend.SendMousePosition(_client.id, _client.mousePosition);

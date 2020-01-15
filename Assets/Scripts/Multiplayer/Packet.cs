@@ -17,6 +17,7 @@ public enum ServerPackets
     projectileDestroy,
     Damage,
     LoadMenu,
+    UseItem,
     UsernameList,
     mousePosition,
     SetWalls

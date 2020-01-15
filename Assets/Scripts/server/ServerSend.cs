@@ -96,6 +96,17 @@ public class ServerSend
         }
     }
 
+
+    public static void UseItem(Player _player, int _itemIndex)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.UseItem))
+        {
+            _packet.Write(_player.id);
+            _packet.Write(_itemIndex);
+            SendUDPDataToAll(_itemIndex, _packet);
+        }
+    }
+
     public static void PlayerAnimation(Player _player)
     {
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerAnimation))
