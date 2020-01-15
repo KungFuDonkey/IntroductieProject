@@ -13,9 +13,8 @@ public abstract class Player
     public Transform avatar;
     public Transform projectileSpawner;
     public CharacterController controller;
-    protected bool[] inputs;
-    protected Vector3 _inputDirection;
     public static Player instance;
+    public bool[] inputs;
 
     void Awake()
     {
@@ -27,42 +26,15 @@ public abstract class Player
     {
         SetupPlayer();
         status.Update(inputs);
-        _inputDirection = Vector3.zero;
-        if (inputs[0])
-        {
-            _inputDirection += avatar.forward;
-        }
-        if (inputs[1])
-        {
-            _inputDirection -= avatar.forward;
-        }
-        if (inputs[2])
-        {
-            _inputDirection -= avatar.right;
-        }
-        if (inputs[3])
-        {
-            _inputDirection += avatar.right;
-        }
-
-        
-        _inputDirection.y = status.gravity;
-        if (inputs[5])
-        {
-            Move(_inputDirection, status.runSpeed);
-        }
-        else
-        {
-            Move(_inputDirection, status.walkSpeed);
-        }
+        Move(status.inputDirection);
 
         if (status.isGrounded)  //for projectiles
         {
-            _inputDirection.y = 0;
+            status.inputDirection.y = 0;
         }
         else
         {
-            _inputDirection.y *= 0.2f;
+            status.inputDirection.y *= 0.2f;
         }
     }
 
@@ -77,6 +49,7 @@ public abstract class Player
                 GameObject _gameobject = GameObject.Find(id.ToString());
                 controller = _gameobject.GetComponent<CharacterController>();
                 avatar = _gameobject.transform;
+                status.avatar = _gameobject.transform;
                 avatar.rotation = Quaternion.identity;
                 int childeren = _gameobject.transform.GetChild(0).childCount;
                 status.groundCheck = _gameobject.transform.GetChild(0).GetChild(childeren - 1);
@@ -91,9 +64,9 @@ public abstract class Player
         }
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
-    protected virtual void Move(Vector3 _inputDirection, float moveSpeed)
+    protected virtual void Move(Vector3 _inputDirection)
     {
-        controller.Move(_inputDirection * Time.deltaTime * moveSpeed);
+        controller.Move(_inputDirection * Time.deltaTime);
         ServerSend.PlayerPosition(this);
         ServerSend.PlayerAnimation(this);
         ServerSend.PlayerRotation(this);

@@ -10,6 +10,7 @@ public class Charmandolphin : Player
         username = _username;
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
+        status.defaultStatus = new Effect(45f, 22f, 100f, 2f, 2f, 2f);
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
         status.animationValues = new bool[4]
@@ -58,7 +59,7 @@ public class Charmandolphin : Player
     {
         status.fireTimer = status.FIRETIMER;
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * status.runSpeed, id));
+        ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
     }
 
@@ -66,7 +67,7 @@ public class Charmandolphin : Player
     {
         status.qTimer = status.QTIMER;
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 5, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * status.runSpeed, id));
+        ServerSend.Projectile(this, 5, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
     }
 
@@ -74,7 +75,7 @@ public class Charmandolphin : Player
     {
         status.eTimer = status.ETIMER;
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 6, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, _inputDirection * status.runSpeed, id));
+        ServerSend.Projectile(this, 6, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
     }
 }
