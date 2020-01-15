@@ -262,7 +262,7 @@ public class ServerSend
     
     public static void UpdateHUD(Player _player)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.UpdateUI))
+        using (Packet _packet = new Packet((int)ServerPackets.UpdateHUD))
         {
             _packet.Write(_player.id);
             _packet.Write(_player.status.health);

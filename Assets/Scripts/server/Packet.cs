@@ -18,6 +18,7 @@ public enum ServerPackets
     UseItem,
     UsernameList,
     mousePosition,
+    UpdateHUD,
     SetWalls
 }
 
