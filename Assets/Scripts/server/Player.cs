@@ -27,7 +27,6 @@ public abstract class Player
         SetupPlayer();
         status.Update(inputs);
         Move(status.inputDirection);
-
         if (status.isGrounded)  //for projectiles
         {
             status.inputDirection.y = 0;
@@ -36,6 +35,8 @@ public abstract class Player
         {
             status.inputDirection.y *= 0.2f;
         }
+        ServerSend.UpdateHUD(this);
+
     }
 
 

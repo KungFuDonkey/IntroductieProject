@@ -259,5 +259,17 @@ public class ServerSend
             SendUDPDataToAll(Client.instance.myId, _packet);
         }
     }
+    
+    public static void UpdateHUD(Player _player)
+    {
+        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.UpdateUI))
+        {
+            _packet.Write(_player.id);
+            _packet.Write(_player.status.health);
+            
+
+            SendUDPDataToAll(Client.instance.myId, _packet);
+        }
+    }
     #endregion
 }

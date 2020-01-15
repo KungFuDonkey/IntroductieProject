@@ -10,8 +10,7 @@ public class PlayerManager : MonoBehaviour
     public int yRotation;
     public float lastPacketTime = 0f;
     public Animator playerAnimator;
-    public Transform player;
-    public Player playert;
+    public HUD playerHUD;
     [SerializeField] public GameObject invisible;
 
     public static PlayerManager instance;
@@ -29,5 +28,10 @@ public class PlayerManager : MonoBehaviour
             playerAnimator.SetTrigger("Attack");
         }
 
+    }
+
+    public void UpdateHUD(float health)
+    {
+        playerHUD.healthBar.currentHealth = health;
     }
 }

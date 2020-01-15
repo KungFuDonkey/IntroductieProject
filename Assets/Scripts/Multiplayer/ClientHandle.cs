@@ -49,7 +49,7 @@ public class ClientHandle : MonoBehaviour
         Debug.Log("bahbah");
         int _id = _packet.ReadInt();
         int _itemIndex = _packet.ReadInt();
-        GameManager.players[_id].playert.UseItem(_packet.ReadInt());
+        //GameManager.players[_id].playert.UseItem(_packet.ReadInt());
     }
 
     public static void PlayerAnimation(Packet _packet)
@@ -138,5 +138,11 @@ public class ClientHandle : MonoBehaviour
         {
             GameManager.instance.walls[i].transform.position = _packet.ReadVector3();
         }
+    }
+    public static void UpdateHUD(Packet _packet)
+    {
+        int id = _packet.ReadInt();
+        float health = _packet.ReadFloat();
+        GameManager.players[id].UpdateHUD(health);
     }
 }
