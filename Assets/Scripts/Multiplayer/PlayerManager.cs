@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public string username;
     public int selectedCharacter;
     public int yRotation;
+    public float lastPacketTime = 0f;
     public Animator playerAnimator;
     public Transform player;
     public Player playert;

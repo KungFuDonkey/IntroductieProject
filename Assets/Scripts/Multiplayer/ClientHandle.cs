@@ -32,11 +32,16 @@ public class ClientHandle : MonoBehaviour
 
     public static void PlayerPosition(Packet _packet)
     {
+        float time = _packet.ReadFloat();
         int _id = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
-        PingReply reply = ping.Send(Client.instance.ip, 1000);
-        Debug.Log(reply.RoundtripTime.ToString());
-        GameManager.players[_id].transform.position = _position;
+        if(time > GameManager.players[_id].lastPacketTime)
+        {
+            GameManager.players[_id].lastPacketTime = time;
+            PingReply reply = ping.Send(Client.instance.ip, 1000);
+            Debug.Log(reply.RoundtripTime.ToString());
+            GameManager.players[_id].transform.position = _position;
+        }
     }
 
     public static void UseItem(Packet _packet)
@@ -79,12 +84,17 @@ public class ClientHandle : MonoBehaviour
 
     public static void ProjectileMove(Packet _packet)
     {
+        float time = _packet.ReadFloat();
         int _id = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
         Quaternion _rotation = _packet.ReadQuaternion();
-
-        GameManager.projectiles[_id].transform.rotation = _rotation;
-        GameManager.projectiles[_id].transform.position = _position;
+        if(time > GameManager.projectiles[_id].lastPacketTime)
+        {
+            ProjectileManager projectile = GameManager.projectiles[_id];
+            projectile.lastPacketTime = time;
+            projectile.transform.rotation = _rotation;
+            projectile.transform.position = _position;
+        }
     }
 
     public static void ProjectileDestroy(Packet _packet)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ServerHandle
 {
     //handle the welcome message and character spawining
-    public static void WelcomeReceived(int _fromClient, ServerPacket _packet)
+    public static void WelcomeReceived(int _fromClient, Packet _packet)
     {
         int _clientIdCheck = _packet.ReadInt();
         string _username = _packet.ReadString();
@@ -22,22 +22,22 @@ public class ServerHandle
         ServerSend.SendUsernameList();
     }
 
-    public static void changeReady(int _fromClient, ServerPacket _packet)
+    public static void changeReady(int _fromClient, Packet _packet)
     {
         Server.clients[_fromClient].ready = !Server.clients[_fromClient].ready;
         ServerSend.SendUsernameList();
     }
-    public static void MousePosition(int _fromClient, ServerPacket _packet)
+    public static void MousePosition(int _fromClient, Packet _packet)
     {
         Server.clients[_fromClient].mousePosition = _packet.ReadVector2();
     }
 
-    public static void ChoosePlayer(int _fromClient, ServerPacket _packet)
+    public static void ChoosePlayer(int _fromClient, Packet _packet)
     {
         Server.clients[_fromClient].selectedCharacter = _packet.ReadInt();
     }
     //handle playermovement in the game
-    public static void PlayerMovement(int _fromClient, ServerPacket _packet)
+    public static void PlayerMovement(int _fromClient, Packet _packet)
     {
         bool[] _inputs = new bool[_packet.ReadInt()];
         for (int i = 0; i < _inputs.Length; i++)
@@ -50,7 +50,7 @@ public class ServerHandle
         Server.clients[_fromClient].player.SetInput(_inputs, _rotation, _verticalRotation);
     }
 
-    public static void UseItem(int _fromClient, ServerPacket _packet)
+    public static void UseItem(int _fromClient, Packet _packet)
     {
         Debug.Log("bahbah");
         //Server.clients[_fromClient].player.UseItem(_packet.ReadInt());

@@ -6,19 +6,19 @@ using System;
 public class ServerSend 
 {
     //functions for sending TCP or UDP data to different clients
-    private static void SendTCPData(int _toClient, ServerPacket _packet)
+    private static void SendTCPData(int _toClient, Packet _packet)
     {
         _packet.WriteLength();
         Server.clients[_toClient].tcp.SendData(_packet);
     }
 
-    private static void SendUDPData(int _toClient, ServerPacket _packet)
+    private static void SendUDPData(int _toClient, Packet _packet)
     {
         _packet.WriteLength();
         Server.clients[_toClient].udp.SendData(_packet);
     }
 
-    private static void SendTCPDataToAll(ServerPacket _packet)
+    private static void SendTCPDataToAll(Packet _packet)
     {
         _packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
@@ -26,7 +26,7 @@ public class ServerSend
             Server.clients[i].tcp.SendData(_packet);
         }
     }
-    private static void SendTCPDataToAll(int _exceptClient, ServerPacket _packet)
+    private static void SendTCPDataToAll(int _exceptClient, Packet _packet)
     {
         _packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
@@ -38,7 +38,7 @@ public class ServerSend
         }
     }
 
-    private static void SendUDPDataToAll(ServerPacket _packet)
+    private static void SendUDPDataToAll(Packet _packet)
     {
         _packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
@@ -46,7 +46,7 @@ public class ServerSend
             Server.clients[i].udp.SendData(_packet);
         }
     }
-    private static void SendUDPDataToAll(int _exceptClient, ServerPacket _packet)
+    private static void SendUDPDataToAll(int _exceptClient, Packet _packet)
     {
         _packet.WriteLength();
         for (int i = 1; i <= Server.MaxPlayers; i++)
@@ -63,7 +63,7 @@ public class ServerSend
     //the different packets in which you can send the server data to the clients
     public static void Welcome(int _toClient, string _msg)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.welcome))
+        using (Packet _packet = new Packet((int)ServerPackets.welcome))
         {
             _packet.Write(_msg);
             _packet.Write(_toClient);
@@ -74,7 +74,7 @@ public class ServerSend
 
     public static void SpawnPlayer(int _toClient, Player _player, Vector3 _spawnPoint)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.spawnPlayer))
+        using (Packet _packet = new Packet((int)ServerPackets.spawnPlayer))
         {
             _packet.Write(_player.id);
             _packet.Write(_player.username);
@@ -88,8 +88,9 @@ public class ServerSend
 
     public static void PlayerPosition(Player _player)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerPosition))
+        using (Packet _packet = new Packet((int)ServerPackets.playerPosition))
         {
+            _packet.Write(Time.time);
             _packet.Write(_player.id);
             _packet.Write(_player.avatar.position);
             SendUDPDataToAll(Client.instance.myId,_packet);
@@ -99,7 +100,7 @@ public class ServerSend
 
     public static void UseItem(Player _player, int _itemIndex)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.UseItem))
+        using (Packet _packet = new Packet((int)ServerPackets.UseItem))
         {
             _packet.Write(_player.id);
             _packet.Write(_itemIndex);
@@ -109,7 +110,7 @@ public class ServerSend
 
     public static void PlayerAnimation(Player _player)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerAnimation))
+        using (Packet _packet = new Packet((int)ServerPackets.playerAnimation))
         {
             _packet.Write(_player.id);
             _packet.Write(_player.status.animationValues.Length);
@@ -126,7 +127,7 @@ public class ServerSend
 
     public static void PlayerRotation(Player _player)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerRotation))
+        using (Packet _packet = new Packet((int)ServerPackets.playerRotation))
         {
             _packet.Write(_player.id);
             _packet.Write(_player.avatar.rotation);
@@ -136,7 +137,7 @@ public class ServerSend
 
     public static void Projectile(Player _player, int _moveIndex, Projectile projectile)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectile))
+        using (Packet _packet = new Packet((int)ServerPackets.projectile))
         {
             Server.projectiles.Add((int)GameManager.projectileNumber, projectile);
             _packet.Write(GameManager.projectileNumber);
@@ -152,8 +153,9 @@ public class ServerSend
     
     public static void ProjectileMove(Projectile _projectile)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectileMove))
+        using (Packet _packet = new Packet((int)ServerPackets.projectileMove))
         {
+            _packet.Write(Time.time);
             _packet.Write(_projectile.id);
             _packet.Write(_projectile.position);
             _packet.Write(_projectile.rotation);
@@ -164,7 +166,7 @@ public class ServerSend
 
     public static void DestroyProjectile(Projectile _projectile)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.projectileDestroy))
+        using (Packet _packet = new Packet((int)ServerPackets.projectileDestroy))
         {
             _packet.Write(_projectile.id);
             SendTCPDataToAll(_packet);
@@ -173,7 +175,7 @@ public class ServerSend
 
     public static void Damage(int _playerID, float _damage, int _type)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.Damage))
+        using (Packet _packet = new Packet((int)ServerPackets.Damage))
         {
             _packet.Write(_damage);
             _packet.Write(_type);
@@ -183,7 +185,7 @@ public class ServerSend
 
     public static void LoadMenu(int menuNumber)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.LoadMenu))
+        using (Packet _packet = new Packet((int)ServerPackets.LoadMenu))
         {
             if(menuNumber == 2)
             {
@@ -211,7 +213,7 @@ public class ServerSend
 
     public static void SendUsernameList()
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.UsernameList))
+        using (Packet _packet = new Packet((int)ServerPackets.UsernameList))
         {
             string list = "";
             int playercount = 0;
@@ -239,7 +241,7 @@ public class ServerSend
 
     public static void SendMousePosition(int id, Vector2 position)
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.mousePosition))
+        using (Packet _packet = new Packet((int)ServerPackets.mousePosition))
         {
             _packet.Write(id);
             _packet.Write(position);
@@ -248,7 +250,7 @@ public class ServerSend
     }
     public static void SetWalls()
     {
-        using (ServerPacket _packet = new ServerPacket((int)ServerPackets.SetWalls))
+        using (Packet _packet = new Packet((int)ServerPackets.SetWalls))
         {
             for (int i = 0; i < 4; i++)
             {
