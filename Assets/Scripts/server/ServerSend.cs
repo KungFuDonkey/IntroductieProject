@@ -112,8 +112,8 @@ public class ServerSend
         using (ServerPacket _packet = new ServerPacket((int)ServerPackets.playerAnimation))
         {
             _packet.Write(_player.id);
-            _packet.Write(_player.animationValues.Length);
-            foreach (bool _animationValue in _player.animationValues)
+            _packet.Write(_player.status.animationValues.Length);
+            foreach (bool _animationValue in _player.status.animationValues)
             {
                 _packet.Write(_animationValue);
             }

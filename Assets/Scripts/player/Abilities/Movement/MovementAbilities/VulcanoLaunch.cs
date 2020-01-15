@@ -27,7 +27,7 @@ public class VulcanoLaunch : MovementBehaviour
     {
         if (Client.instance.host)
         {
-            Server.clients[Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].owner].player.gravity = LaunchSpeed;
+            Server.clients[Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].owner].player.status.gravity = LaunchSpeed;
         }
     }
 }
