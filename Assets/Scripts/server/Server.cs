@@ -12,7 +12,7 @@ public class Server
     public static int Port { get; private set; }
     public static Dictionary<int, ServerClient> clients = new Dictionary<int, ServerClient>();
     public static Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>();
-    public delegate void PacketHandler(int _fromClient, ServerPacket _packet);
+    public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
     public static System.Random rand = new System.Random();
     public static Dictionary<int, Vector3> spawnPoints = new Dictionary<int, Vector3>();
@@ -80,7 +80,7 @@ public class Server
                 return;
             }
 
-            using (ServerPacket _packet = new ServerPacket(_data))
+            using (Packet _packet = new Packet(_data))
             {
                 int _clientId = _packet.ReadInt();
 
@@ -107,7 +107,7 @@ public class Server
             ServerStart.instance.DebugServer($"Error receiving UDP data: {_ex}");
         }
     }
-    public static void SendUDPData(IPEndPoint _clientEndPoint, ServerPacket _packet)
+    public static void SendUDPData(IPEndPoint _clientEndPoint, Packet _packet)
     {
         try
         {

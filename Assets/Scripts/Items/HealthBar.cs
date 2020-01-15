@@ -9,8 +9,8 @@ public class HealthBar : MonoBehaviour
     private float minXValue;
     public RectTransform healthTransform;
     private float cachedY;
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
     public Image visualHealth;
 
     public static HealthBar instance;
@@ -63,7 +63,7 @@ public class HealthBar : MonoBehaviour
         return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
 
-    public int CurrentHealth
+    public float CurrentHealth
     {
         get { return currentHealth; }
         set
