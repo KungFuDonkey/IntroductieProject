@@ -122,6 +122,7 @@ public class ClientHandle : MonoBehaviour
     {
         int playercount = _packet.ReadInt();
         string list = _packet.ReadString();
+        bool start = _packet.ReadBool();
         UIManager.instance.SetPlayerCount(playercount);
         UIManager.instance.SetUsernameList(list);
     }

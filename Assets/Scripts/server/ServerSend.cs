@@ -217,24 +217,31 @@ public class ServerSend
         {
             string list = "";
             int playercount = 0;
+            bool start = true;
             foreach(ServerClient client in Server.clients.Values)
             {
                 if (client.connected)
                 {
                     playercount++;
                     list += client.username;
-                    if (client.ready)
+                    if(client.id == Client.instance.myId)
+                    {
+                        list += " (master client)";
+                    }
+                    else if (client.ready)
                     {
                         list += " (ready)\n";
                     }
                     else
                     {
                         list += " (not ready)\n";
+                        start = false;
                     }
                 }
             }
             _packet.Write(playercount);
             _packet.Write(list);
+            _packet.Write(start);
             SendTCPDataToAll(_packet);
         }
     }

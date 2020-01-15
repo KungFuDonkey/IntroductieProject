@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject mainCamera;
     public GameObject startMenu, lobby, characterSelection;
     public GameObject server;
+    public GameObject startButton;
     public InputField usernameField;
     public InputField ipAdress;
     public Text serverInfo, playerCount;
@@ -106,6 +107,18 @@ public class UIManager : MonoBehaviour
     public void ChangeReady()
     {
         ClientSend.Ready();
+    }
+
+    public void StartButton(bool ready)
+    {
+        if (ready)
+        {
+            startButton.SetActive(true);
+        }
+        else
+        {
+            startButton.SetActive(false);
+        }
     }
 
     private void Update()
