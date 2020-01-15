@@ -44,7 +44,7 @@ public class ClientHandle : MonoBehaviour
         Debug.Log("bahbah");
         int _id = _packet.ReadInt();
         int _itemIndex = _packet.ReadInt();
-        GameManager.players[_id].playert.UseItem(_packet.ReadInt());
+        //GameManager.players[_id].playert.UseItem(_packet.ReadInt());
     }
 
     public static void PlayerAnimation(Packet _packet)
