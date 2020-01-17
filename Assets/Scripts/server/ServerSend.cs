@@ -220,7 +220,7 @@ public class ServerSend
                     list += client.username;
                     if(client.id == Client.instance.myId)
                     {
-                        list += " (master client)";
+                        list += " (master client)\n";
                     }
                     else if (client.ready)
                     {
@@ -256,7 +256,7 @@ public class ServerSend
         {
             for (int i = 0; i < 4; i++)
             {
-                _packet.Write(Walls.walls[i]);
+                _packet.Write(Walls.walls[i].position);
             }
             SendUDPDataToAll(Client.instance.myId, _packet);
         }
