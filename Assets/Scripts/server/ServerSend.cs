@@ -96,9 +96,6 @@ public class ServerSend
         }
     }
 
-
-  
-
     public static void PlayerAnimation(Player _player)
     {
         using (Packet _packet = new Packet((int)ServerPackets.playerAnimation))
@@ -333,6 +330,15 @@ public class ServerSend
         using(Packet _packet = new Packet((int)ServerPackets.Reset))
         {
             SendTCPDataToAll(_packet);
+        }
+    }
+
+    public static void Evolve(Player player)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.Evolve))
+        {
+            _packet.Write(player.id);
+            SendTCPDataToAll(Client.instance.myId, _packet);
         }
     }
     #endregion

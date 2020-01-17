@@ -26,7 +26,8 @@ public enum ServerPackets
     SetWalls,
     Reset,
     SetInvis,
-    Damage
+    Damage,
+    Evolve
 
 }
 

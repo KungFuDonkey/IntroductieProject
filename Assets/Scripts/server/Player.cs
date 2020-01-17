@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -61,6 +61,14 @@ public abstract class Player
         }
         ServerSend.UpdateHUD(this);
 
+        if (inputs[9] && status.evolveTimer < 0)
+        {
+            Evolve();
+        }
+        else
+        {
+            status.evolveTimer -= Time.deltaTime;
+        }
     }
 
 
@@ -133,6 +141,12 @@ public abstract class Player
             status.defaultStatus.dhealth -= remainingDamage;
             status.defaultStatus.dshield = 0;
         }
+    }
+    public void Evolve()
+    {
+        status.evolveTimer = status.EVOLVETIMER;
+        ServerSend.Evolve(this);
+        Debug.Log("evolving");
     }
 
 }

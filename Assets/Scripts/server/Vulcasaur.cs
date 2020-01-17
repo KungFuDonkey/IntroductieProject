@@ -12,7 +12,7 @@ public class Vulcasaur : Player
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
         Effect defaultEffect = new Effect();
-        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 80f);
+        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 10f, 80f);
         status.defaultStatus = defaultEffect;
         Debug.Log("values are Set");
         status.groundmask = GameManager.instance.groundMask;

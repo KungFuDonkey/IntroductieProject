@@ -6,11 +6,11 @@ public class Effect
 {
     public int priority;
     public float duration;
-    public float dgravity = 1f, djumpspeed = 1f;
-    public float dverticalRotation = 1f;
-    public float dFIRETIMER = 1f, dQTIMER = 1f, dETIMER = 1f, dmovementSpeed = 1f, drunMultiplier = 1f;
+    public float dgravity = 1, djumpspeed = 1;
+    public float dverticalRotation = 1;
+    public float dFIRETIMER = 1, dQTIMER = 1, dETIMER = 1, dEVOLVETIMER, dmovementSpeed = 1, drunMultiplier = 1;
     public bool dmovable, dsilenced, dinvisible;
-    public float dhealth = 1f, dshield = 1f;
+    public float dhealth = 1, dshield = 1;
     public Type dType;
 
     public virtual void UpdateEffect()
@@ -18,14 +18,15 @@ public class Effect
         duration -= Time.deltaTime;
     }
 
-    public void SetValues(float _dgravity, float _djumpspeed, float _dhealth, float _dFIRETIMER, float _dQTIMER, float _dETIMER, float _dmovementSpeed)
+    public void SetValues(float _dgravity, float _djumpspeed, float _dhealth, float _dFIRETIMER, float _dQTIMER, float _dETIMER, float _dEVOLVETIMER, float _dmovementSpeed)
     {
         dgravity = _dgravity;
         djumpspeed = _djumpspeed;
         dhealth = _dhealth;
         dFIRETIMER = _dFIRETIMER;
         dQTIMER = _dQTIMER;
-        dETIMER = _dQTIMER;
+        dETIMER = _dETIMER;
+        dEVOLVETIMER = _dEVOLVETIMER;
         dmovementSpeed = _dmovementSpeed;
     }
 }

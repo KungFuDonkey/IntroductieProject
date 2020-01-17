@@ -170,4 +170,9 @@ public class ClientHandle : MonoBehaviour
         UIManager.instance.setMenuStatus(true);
         UIManager.instance.LoadMenu(1);
     }
+    public static void Evolve(Packet _packet)
+    {
+        bool evo = _packet.ReadBool();
+        bool charac = _packet.ReadBool();
+    }
 }

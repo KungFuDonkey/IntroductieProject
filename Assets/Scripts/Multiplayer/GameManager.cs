@@ -99,4 +99,9 @@ public class GameManager : MonoBehaviour
         players[_id].invisible = invis;
         Debug.Log("Gamemanager Invis");
     }
+
+    public void evolve()
+    {
+
+    }
 }

@@ -7,13 +7,13 @@ public class PlayerStatus
 {
     public Effect defaultStatus;
     public float ySpeed;
-    public float gravity = 15f;
-    public float health = 100f, shield = 0f, jumpspeed = 3f, damageBoost = 1f;
+    public float gravity = 15;
+    public float health = 100, shield = 0, jumpspeed = 3, damageBoost = 1;
     public bool[] animationValues;
     public Transform groundCheck;
     public LayerMask groundmask;
     public Transform avatar;
-    public float fireTimer = 0f, FIRETIMER = 2f, qTimer = 0f, QTIMER = 2f, eTimer = 0f, ETIMER = 2f, movementSpeed = 20f, runMultiplier = 2;
+    public float fireTimer = 0, FIRETIMER = 2, qTimer = 0, QTIMER = 2, eTimer = 0, ETIMER = 2, evolveTimer = 5, EVOLVETIMER = 10, movementSpeed = 20, runMultiplier = 2;
     public bool isGrounded, movable, silenced, invisible, alive = true;
     public Vector3 inputDirection;
     public Type type;

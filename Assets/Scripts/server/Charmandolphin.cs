@@ -11,7 +11,7 @@ public class Charmandolphin : Player
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
         Effect defaultEffect = new Effect();
-        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 20f);
+        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 10f, 20f);
         status.defaultStatus = defaultEffect;
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
@@ -35,7 +35,6 @@ public class Charmandolphin : Player
         {
             status.fireTimer -= Time.deltaTime;
             status.animationValues[2] = false;
-
         }
 
         if (inputs[6] && status.qTimer < 0)
@@ -46,7 +45,6 @@ public class Charmandolphin : Player
         {
             status.qTimer -= Time.deltaTime;
             status.animationValues[2] = false;
-
         }
 
         if (inputs[7] && status.eTimer < 0)
@@ -58,9 +56,7 @@ public class Charmandolphin : Player
         {
             status.eTimer -= Time.deltaTime;
             status.animationValues[2] = false;
-
         }
-
 
     }
 
@@ -91,6 +87,5 @@ public class Charmandolphin : Player
         ServerSend.Projectile(this, 6, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
         status.animationValues[2] = true;
-
     }
 }
