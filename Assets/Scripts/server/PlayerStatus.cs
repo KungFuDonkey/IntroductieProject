@@ -9,7 +9,6 @@ public class PlayerStatus
     public float ySpeed;
     public float gravity = 15f;
     public float health = 100f, shield = 0f, jumpspeed = 3f, damageBoost = 1f;
-    public float verticalRotation;
     public bool[] animationValues;
     public Transform groundCheck;
     public LayerMask groundmask;
@@ -57,7 +56,6 @@ public class PlayerStatus
         gravity *= effect.dgravity;
         jumpspeed *= effect.djumpspeed;
         health *= effect.dhealth;
-        verticalRotation *= effect.dverticalRotation;
         FIRETIMER *= effect.dFIRETIMER;
         QTIMER *= effect.dQTIMER;
         ETIMER *= effect.dETIMER;
@@ -73,7 +71,6 @@ public class PlayerStatus
         gravity = effect.dgravity;
         jumpspeed = effect.djumpspeed;
         health = effect.dhealth;
-        verticalRotation = effect.dverticalRotation;
         FIRETIMER = effect.dFIRETIMER;
         QTIMER = effect.dQTIMER;
         ETIMER = effect.dETIMER;

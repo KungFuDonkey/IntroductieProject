@@ -24,6 +24,7 @@ public abstract class Player
     public CharacterController controller;
     public static Player instance;
     public bool[] inputs;
+    public float verticalRotation;
 
     void Awake()
     {
@@ -97,7 +98,7 @@ public abstract class Player
     {
         inputs = _inputs;
         avatar.rotation = _rotation;
-        status.verticalRotation = _verticalRotation;
+        verticalRotation = _verticalRotation;
     }
 
     public void Hit(Projectile projectile)
