@@ -8,7 +8,7 @@ public class PlayerStatus
     public Effect defaultStatus;
     public float ySpeed;
     public float gravity = 15f;
-    public float health = 100f, jumpspeed = 3f, shield = 0f;
+    public float health = 100f, shield = 0f, jumpspeed = 3f, damageBoost = 1f;
     public float verticalRotation;
     public bool[] animationValues;
     public Transform groundCheck;
@@ -17,6 +17,7 @@ public class PlayerStatus
     public float fireTimer = 0f, FIRETIMER = 2f, qTimer = 0f, QTIMER = 2f, eTimer = 0f, ETIMER = 2f, movementSpeed = 20f, runMultiplier = 2;
     public bool isGrounded, movable, silenced, alive = true;
     public Vector3 inputDirection;
+    public Type type;
     public List<Effect> effects = new List<Effect>();
 
     public void Update(bool[] inputs)
@@ -78,6 +79,7 @@ public class PlayerStatus
         ETIMER = effect.dETIMER;
         movementSpeed = effect.dmovementSpeed;
         runMultiplier = effect.drunMultiplier;
+        type = effect.dType;
         if (effect.dmovable)
             movable = false;
         if (effect.dsilenced)

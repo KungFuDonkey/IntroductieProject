@@ -6,8 +6,7 @@ public class FireBall : Projectile
 {
     protected bool destroyed = false;
     Vector3 spawnPosition;
-    static string type = "Fire";
-    static int projectileType = 1;
+
     public FireBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;
@@ -17,6 +16,7 @@ public class FireBall : Projectile
         spawnPosition = _spawnPosition;
         owner = _owner;
         damage = 8;
+        type = Type.fire;
     }
     public override void UpdateProjectile()
     {

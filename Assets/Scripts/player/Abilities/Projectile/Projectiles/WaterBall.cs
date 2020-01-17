@@ -6,8 +6,7 @@ public class WaterBall : Projectile
 {
     protected bool destroyed = false;
     Vector3 spawnPosition;
-    static string type = "Water";
-    static int projectileType = 1;
+
     public WaterBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;
@@ -17,6 +16,7 @@ public class WaterBall : Projectile
         spawnPosition = _spawnPosition;
         owner = _owner;
         damage = 8;
+        type = Type.water;
     }
     public override void UpdateProjectile()
     {

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+
+public enum Type
+{
+    water,
+    grass,
+    fire,
+    noType
+}
+
 public abstract class Player
 {
     public int id;
@@ -91,15 +100,35 @@ public abstract class Player
         status.verticalRotation = _verticalRotation;
     }
 
-    public void SetHealth(int health)
-    {
-
-    }
-
     public void Hit(Projectile projectile)
     {
-
-
+        float damageMultiplier = 1f;
+        if (status.type + 1 == Type.noType)
+        {
+            if (Type.water == projectile.type)
+            {
+                damageMultiplier = 1.5f;
+            }
+        }
+        else if (status.type + 1 == projectile.type)
+        {
+            damageMultiplier = 1.5f;
+        }
+        else if (status.type == projectile.type)
+        {
+            damageMultiplier = 1.5f;
+        }
+        else
+        {
+            damageMultiplier = 0.6667f;
+        }
+        status.defaultStatus.dshield -= projectile.damage * damageMultiplier * status.damageBoost;
+        if (status.defaultStatus.dshield <= 0)
+        {
+            float remainingDamage = Mathf.Abs(status.defaultStatus.dshield);
+            status.defaultStatus.dhealth -= remainingDamage;
+            status.defaultStatus.dshield = 0;
+        }
     }
 
 }

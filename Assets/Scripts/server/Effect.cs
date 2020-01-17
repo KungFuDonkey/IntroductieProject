@@ -7,12 +7,13 @@ public class Effect
     public int priority;
     public float duration;
     public float dgravity, djumpspeed = 1f;
-    public float dhealth = 1f;
+    public float dhealth = 1f, dshield = 1f;
     public float dverticalRotation = 1f;
     public float dFIRETIMER = 1f, dQTIMER = 1f, dETIMER = 1f, dmovementSpeed = 1f, drunMultiplier = 1f;
     public bool dmovable, dsilenced;
+    public Type dType;
 
-    public Effect(float _dgravity, float _djumpspeed, float _dhealth, float _dFIRETIMER, float _dQTIMER, float _dETIMER, float _dmovementSpeed, float _drunMultiplier)
+    public Effect(float _dgravity, float _djumpspeed, float _dhealth, float _dFIRETIMER, float _dQTIMER, float _dETIMER, float _dmovementSpeed, float _drunMultiplier, Type _dType)
     {
         djumpspeed = _djumpspeed;
         dgravity = _dgravity;
@@ -22,6 +23,7 @@ public class Effect
         dETIMER = _dETIMER;
         dmovementSpeed = _dmovementSpeed;
         drunMultiplier = _drunMultiplier;
+        dType = _dType;
     }
 
     public virtual void UpdateEffect()
@@ -32,17 +34,17 @@ public class Effect
  
     public static Effect Charmandolphin
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f); }
+        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.water); }
     }
 
     public static Effect Vulcasaur
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f); }
+        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.fire); }
     }
 
 
     public static Effect McQuirtle
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f); }
+        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.grass); }
     }
 }

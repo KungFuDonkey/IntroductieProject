@@ -6,8 +6,7 @@ public class Vulcano : Projectile
 {
     protected bool destroyed = false;
     Vector3 spawnPosition;
-    static string type = "Fire";
-    static int projectileType = 1;
+
     public Vulcano(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;
@@ -16,6 +15,7 @@ public class Vulcano : Projectile
         startDirection = _startDirection;
         spawnPosition = _spawnPosition;
         owner = _owner;
+        type = Type.fire;
     }
 
     public override void DestroyProjectile()
