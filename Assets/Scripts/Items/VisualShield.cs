@@ -32,19 +32,6 @@ public class VisualShield : MonoBehaviour
         currentShield = maxShield;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey("y") && currentShield > 0)
-        {
-            CurrentHealth -= 1;
-        }
-        if (Input.GetKey("u") && currentShield < maxShield)
-        {
-            CurrentHealth += 1;
-        }
-    }
-
     public void HandleHealth()
     {
         float currentXValue = MapValues(currentShield, 0, maxShield, minXValue, maxXValue);
@@ -65,7 +52,7 @@ public class VisualShield : MonoBehaviour
         return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
 
-    public float CurrentHealth
+    public float CurrentShield
     {
         get { return currentShield; }
         set

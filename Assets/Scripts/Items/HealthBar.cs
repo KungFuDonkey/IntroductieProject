@@ -29,19 +29,6 @@ public class HealthBar : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey("r") && currentHealth > 0)
-        {
-            CurrentHealth -= 1;
-        }
-        if (Input.GetKey("t") && currentHealth < maxHealth)
-        {
-            CurrentHealth += 1;
-        }
-    }
-
     public void HandleHealth()
     {
         float currentXValue = MapValues(currentHealth, 0, maxHealth, minXValue, maxXValue);

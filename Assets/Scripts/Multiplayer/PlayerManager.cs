@@ -31,8 +31,8 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateHUD(float health, float shield)
     {
-        playerHUD.healthBar.currentHealth = health;
-        playerHUD.shieldBar.currentShield = shield;
+        playerHUD.healthBar.CurrentHealth = health;
+        playerHUD.shieldBar.CurrentShield = shield;
     }
 
     public void UpdatePlayerCount(int alive)
@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
+        Cursor.visible = true;
         if(screen == 0)
         {
             playerHUD.Deathscreen.SetActive(true);
