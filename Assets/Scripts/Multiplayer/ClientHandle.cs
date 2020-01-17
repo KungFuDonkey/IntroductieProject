@@ -45,13 +45,7 @@ public class ClientHandle : MonoBehaviour
         }
     }
 
-    public static void UseItem(Packet _packet)
-    {
-        Debug.Log("bahbah");
-        int _id = _packet.ReadInt();
-        int _itemIndex = _packet.ReadInt();
-        //GameManager.players[_id].playert.UseItem(_packet.ReadInt());
-    }
+ 
 
     public static void PlayerAnimation(Packet _packet)
     {
@@ -103,6 +97,22 @@ public class ClientHandle : MonoBehaviour
         int _id = _packet.ReadInt();
         GameManager.projectiles[_id].DestroyProjectile();
         GameManager.projectiles.Remove(_id);
+    }
+
+    public static void Damage(Packet _packet)
+    {
+        float damage = _packet.ReadFloat();
+        int type = _packet.ReadInt();
+        Debug.Log(damage);
+    }
+
+    public static void SetInvis(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        bool _invis = _packet.ReadBool();
+        GameManager.players[Client.instance.myId].Invisible();
+        Debug.Log("ClientHandle invis");
+
     }
 
     public static void LoadMenu(Packet _packet)

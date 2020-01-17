@@ -11,7 +11,10 @@ public class Vulcasaur : Player
         username = _username;
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
-        status.defaultStatus = Effect.Vulcasaur;
+        Effect defaultEffect = new Effect();
+        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 80f);
+        status.defaultStatus = defaultEffect;
+        Debug.Log("values are Set");
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
         status.animationValues = new bool[4]
@@ -50,6 +53,7 @@ public class Vulcasaur : Player
         if (inputs[7] && status.eTimer < 0)
         {
             eAttack();
+            status.animationValues[2] = false;
         }
         else
         {

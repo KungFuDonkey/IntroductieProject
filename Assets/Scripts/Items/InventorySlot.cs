@@ -87,13 +87,12 @@ public class InventorySlot : MonoBehaviour
 
     public void Speedy()
     {
-        ClientSend.UseItem(3);
         tekst2.SetActive(false);
         inventory.instance.Remove(Item);
     }
     public void WaitSpeed()
     {
-        ClientSend.UseItem(2);
+        ClientSend.AddEffects(3);
         tekst2.SetActive(true);
         TextCounterSpeed.instance.Start();
         TextCounterSpeed.instance.Update();
@@ -102,14 +101,13 @@ public class InventorySlot : MonoBehaviour
 
     public void Jumpy()
     {
-        ClientSend.UseItem(1);
         tekst.SetActive(false);
         inventory.instance.Remove(Item);
 
     }
     public void WaitJump()
     {
-        ClientSend.UseItem(0);
+        ClientSend.AddEffects(1);
         tekst.SetActive(true);
         TextCounterJump.instance.Start();
         TextCounterJump.instance.Update();
@@ -118,14 +116,14 @@ public class InventorySlot : MonoBehaviour
 
     public void Invy()
     {
-        ClientSend.UseItem(5);
+        ServerSend.SetInvis(Player.instance.id, true);
         tekst3.SetActive(false);
         inventory.instance.Remove(Item);
 
     }
     public void WaitInvisible()
     {
-        ClientSend.UseItem(4);
+        ServerSend.SetInvis(Player.instance.id, false);
         tekst3.SetActive(true);
         TextCounterInvisible.instance.Start();
         TextCounterInvisible.instance.Update();

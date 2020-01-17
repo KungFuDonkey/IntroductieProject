@@ -267,10 +267,10 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.mousePosition, ClientHandle.GetMousePosition },
             { (int)ServerPackets.SetWalls, ClientHandle.SetWalls },
             { (int)ServerPackets.UpdateHUD, ClientHandle.UpdateHUD},
+            { (int)ServerPackets.SetInvis, ClientHandle.SetInvis },
             { (int)ServerPackets.UpdatePlayerCount, ClientHandle.UpdatePlayerCount },
             { (int)ServerPackets.Win, ClientHandle.RecieveWinScreen },
             { (int)ServerPackets.Death, ClientHandle.RecieveDeathScreen },
-            { (int)ServerPackets.UseItem, ClientHandle.UseItem },
             { (int)ServerPackets.Reset, ClientHandle.Reset}
         };
         Debug.Log("Initialized packets.");

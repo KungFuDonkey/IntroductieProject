@@ -628,14 +628,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eb21c5a50b1bb4aa6ae46288971351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Allparts: {fileID: 4276987460938667239}
   id: 0
   username: 
   selectedCharacter: 0
   lastPacketTime: 0
-  head: {fileID: 7165855197232016856}
+  head: {fileID: 0}
   playerAnimator: {fileID: 4328009629818369733}
   playerHUD: {fileID: 3012691550940244032}
-  invisible: {fileID: 4276987460938667239}
+  invisible: 0
 --- !u!114 &1019901836288025190
 MonoBehaviour:
   m_ObjectHideFlags: 0

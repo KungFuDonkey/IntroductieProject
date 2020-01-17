@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField] public GameObject Allparts;
     public int id;
     public string username;
     public int selectedCharacter;
     public float lastPacketTime = 0f;
     public Animator playerAnimator;
     public HUD playerHUD;
-    [SerializeField] public GameObject invisible;
+   public bool invisible;
 
     public static PlayerManager instance;
     void Awake()
@@ -29,6 +30,15 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public void Invisible()
+    {
+        if (invisible == false)
+        {
+            Allparts.SetActive(false);
+        }
+    }
+
+ 
     public void UpdateHUD(float health, float shield)
     {
         playerHUD.healthBar.CurrentHealth = health;

@@ -6,12 +6,13 @@ public class McQuirtle : Player
 {
     public McQuirtle(int _id, string _username, int _selectedCharacter)
     {
-
         id = _id;
         username = _username;
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
-        status.defaultStatus = Effect.McQuirtle;
+        Effect defaultEffect = new Effect();
+        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 20f);
+        status.defaultStatus = defaultEffect;
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
         status.animationValues = new bool[4]

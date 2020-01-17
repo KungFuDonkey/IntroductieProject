@@ -136,8 +136,8 @@ public class Server
             { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
             { (int)ClientPackets.mousePosition, ServerHandle.MousePosition},
             { (int)ClientPackets.ChoosePlayer, ServerHandle.ChoosePlayer},
-            { (int)ClientPackets.UseItem, ServerHandle.UseItem },
-            { (int)ClientPackets.ready, ServerHandle.changeReady}
+            { (int)ClientPackets.ready, ServerHandle.changeReady},
+            { (int)ClientPackets.AddEffects, ServerHandle.AddEffects}
         };
 
         for (int i = 0; i <= MaxPlayers; i++)

@@ -33,7 +33,7 @@ public class spawnObject : MonoBehaviour
 
     public void SpawnItem()
     {
-        Vector3 pos = new Vector3(this.transform.position.x + Random.Range(-300, 300), this.transform.position.y, this.transform.position.z + Random.Range(-300, 300)) ;
+        Vector3 pos = new Vector3(this.transform.position.x + Random.Range(-300, 300), 1, this.transform.position.z + Random.Range(-300, 300)) ;
         GameObject clone;
         clone = Instantiate(CandyItem, pos, Quaternion.identity);
         CandyItemTarget = clone;
@@ -42,11 +42,10 @@ public class spawnObject : MonoBehaviour
 
         if (Physics.Raycast(CandyItemTarget.transform.position, - Vector3.up, out hit))
         {
-            Debug.Log("poep");
             CandyItemTarget.transform.position = new Vector3(CandyItemTarget.transform.position.x, hit.point.y + 5, CandyItemTarget.transform.position.z);
         }
 
-        Vector3 pos2 = new Vector3(this.transform.position.x + Random.Range(-300, 300), this.transform.position.y, this.transform.position.z + Random.Range(-300, 300));
+        Vector3 pos2 = new Vector3(this.transform.position.x + Random.Range(-300, 300), 1, this.transform.position.z + Random.Range(-300, 300));
         GameObject clone2;
         clone2 = Instantiate(CandyItem2, pos2, Quaternion.identity);
         CandyItemTarget2 = clone2;
@@ -55,11 +54,10 @@ public class spawnObject : MonoBehaviour
 
         if (Physics.Raycast(CandyItemTarget2.transform.position, -Vector3.up, out hit2))
         {
-            Debug.Log("poep2");
             CandyItemTarget2.transform.position = new Vector3(CandyItemTarget2.transform.position.x, hit2.point.y + 5, CandyItemTarget2.transform.position.z);
         }
 
-        Vector3 pos3 = new Vector3(this.transform.position.x + Random.Range(-300, 300), this.transform.position.y, this.transform.position.z + Random.Range(-300, 300));
+        Vector3 pos3 = new Vector3(this.transform.position.x + Random.Range(-300, 300), 1, this.transform.position.z + Random.Range(-300, 300));
         GameObject clone3;
         clone3 = Instantiate(LumBerryItem, pos3, Quaternion.identity);
         LumBerryItemTarget = clone3;
@@ -68,11 +66,10 @@ public class spawnObject : MonoBehaviour
 
         if (Physics.Raycast(LumBerryItemTarget.transform.position, -Vector3.up, out hit3))
         {
-            Debug.Log("poep3");
             LumBerryItemTarget.transform.position = new Vector3(LumBerryItemTarget.transform.position.x, hit3.point.y + 5, LumBerryItemTarget.transform.position.z);
         }
 
-        Vector3 pos4 = new Vector3(this.transform.position.x + Random.Range(-300, 300), this.transform.position.y, this.transform.position.z + Random.Range(-300, 300));
+        Vector3 pos4 = new Vector3(this.transform.position.x + Random.Range(-300, 300), 1, this.transform.position.z + Random.Range(-300, 300));
         GameObject clone4;
         clone4 = Instantiate(PokeballItem, pos4, Quaternion.identity);
         PokeballItemTarget = clone4;
@@ -81,11 +78,10 @@ public class spawnObject : MonoBehaviour
 
         if (Physics.Raycast(PokeballItemTarget.transform.position, -Vector3.up, out hit4))
         {
-            Debug.Log("poep4");
             PokeballItemTarget.transform.position = new Vector3(PokeballItemTarget.transform.position.x, hit4.point.y + 5, PokeballItemTarget.transform.position.z);
         }
 
-        Vector3 pos5 = new Vector3(this.transform.position.x + Random.Range(-300, 300), this.transform.position.y, this.transform.position.z + Random.Range(-300, 300));
+        Vector3 pos5 = new Vector3(this.transform.position.x + Random.Range(-300, 300), 1, this.transform.position.z + Random.Range(-300, 300));
         GameObject clone5;
         clone5 = Instantiate(BandanaItem, pos5, Quaternion.identity);
         BandanaItemTarget = clone5;
@@ -94,11 +90,10 @@ public class spawnObject : MonoBehaviour
 
         if (Physics.Raycast(BandanaItemTarget.transform.position, -Vector3.up, out hit5))
         {
-            Debug.Log("poep5");
             BandanaItemTarget.transform.position = new Vector3(BandanaItemTarget.transform.position.x, hit5.point.y + 5, BandanaItemTarget.transform.position.z);
         }
 
-        Vector3 pos6 = new Vector3(this.transform.position.x + Random.Range(-300, 300), this.transform.position.y, this.transform.position.z + Random.Range(-300, 300));
+        Vector3 pos6 = new Vector3(this.transform.position.x + Random.Range(-300, 300), 1, this.transform.position.z + Random.Range(-300, 300));
         GameObject clone6;
         clone6 = Instantiate(OranBerryItem, pos6, Quaternion.identity);
         OranBerryItemTarget = clone6;
@@ -107,11 +102,10 @@ public class spawnObject : MonoBehaviour
 
         if (Physics.Raycast(OranBerryItemTarget.transform.position, -Vector3.up, out hit6))
         {
-            Debug.Log("poep6");
             OranBerryItemTarget.transform.position = new Vector3(OranBerryItemTarget.transform.position.x, hit6.point.y + 5, OranBerryItemTarget.transform.position.z);
         }
 
-        Vector3 pos7 = new Vector3(this.transform.position.x + Random.Range(-300, 300), this.transform.position.y, this.transform.position.z + Random.Range(-300, 300));
+        Vector3 pos7 = new Vector3(this.transform.position.x + Random.Range(-300, 300), 1, this.transform.position.z + Random.Range(-300, 300));
         GameObject clone7;
         clone7 = Instantiate(PechaBerryItem, pos7, Quaternion.identity);
         PechaBerryItemTarget = clone7;
@@ -120,7 +114,6 @@ public class spawnObject : MonoBehaviour
 
         if (Physics.Raycast(PechaBerryItemTarget.transform.position, -Vector3.up, out hit7))
         {
-            Debug.Log("poep7");
             PechaBerryItemTarget.transform.position = new Vector3(PechaBerryItemTarget.transform.position.x, hit7.point.y + 5, PechaBerryItemTarget.transform.position.z);
         }
     }

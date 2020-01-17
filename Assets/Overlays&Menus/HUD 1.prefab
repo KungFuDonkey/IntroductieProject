@@ -1759,6 +1759,7 @@ MonoBehaviour:
   healthBar: {fileID: 1392987186781764409}
   shieldBar: {fileID: 3701323717412005680}
   Deathscreen: {fileID: 5069119548992733500}
+  Winscreen: {fileID: 0}
   itemsParent: {fileID: 4404293693164075585}
   gearParent: {fileID: 513201719660227619}
   jinventoryUI: {fileID: 7029354334434363330}
@@ -1792,7 +1793,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2841406216601272882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3998,10 +3999,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8498fb228bacc1940bce2c5fa3c4ef91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthTransform: {fileID: 723963500356726529}
-  maxHealth: 100
-  currentHealth: 0
-  visualHealth: {fileID: 6967121509100999715}
+  shieldTransform: {fileID: 723963500356726529}
+  maxShield: 0
+  currentShield: 0
+  visualShield: {fileID: 6967121509100999715}
 --- !u!222 &9129768152458166131
 CanvasRenderer:
   m_ObjectHideFlags: 0

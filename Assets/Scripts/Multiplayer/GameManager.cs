@@ -93,4 +93,10 @@ public class GameManager : MonoBehaviour
             players[owner].playerAnimator.SetTrigger("Attack");
         }
     }
+
+    public void InvisiblePlayer(int _id, bool invis)
+    {
+        players[_id].invisible = invis;
+        Debug.Log("Gamemanager Invis");
+    }
 }

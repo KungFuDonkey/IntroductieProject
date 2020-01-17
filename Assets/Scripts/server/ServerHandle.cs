@@ -50,10 +50,25 @@ public class ServerHandle
         Server.clients[_fromClient].player.SetInput(_inputs, _rotation, _verticalRotation);
     }
 
-    public static void UseItem(int _fromClient, Packet _packet)
+    public static void AddEffects(int _fromClient, Packet _packet)
     {
-        Debug.Log("bahbah");
-        //Server.clients[_fromClient].player.UseItem(_packet.ReadInt());
+        Debug.Log("Addeffects");
+        int item = _packet.ReadInt();
+        if(item == 1)
+        {
+            Debug.Log("if item 1");
+            Server.clients[_fromClient].player.status.effects.Add(new JumpBoost(10, 3f, 4));
+        }
+        else if (item == 2)
+        {
+            Debug.Log("if item 2");
+            Server.clients[_fromClient].player.status.effects.Add(new Invisible(10, false, 2));
+        }
+        else if (item == 3)
+        {
+            Debug.Log("if item 3");
+            Server.clients[_fromClient].player.status.effects.Add(new SpeedBoost(10, 3f, 1));
+        }
     }
 
     public static void Reset(Packet _packet)

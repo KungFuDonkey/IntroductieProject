@@ -14,7 +14,7 @@ public class PlayerStatus
     public LayerMask groundmask;
     public Transform avatar;
     public float fireTimer = 0f, FIRETIMER = 2f, qTimer = 0f, QTIMER = 2f, eTimer = 0f, ETIMER = 2f, movementSpeed = 20f, runMultiplier = 2;
-    public bool isGrounded, movable, silenced, alive = true;
+    public bool isGrounded, movable, silenced, invisible, alive = true;
     public Vector3 inputDirection;
     public Type type;
     public List<Effect> effects = new List<Effect>();
@@ -40,8 +40,10 @@ public class PlayerStatus
             effects = effects.OrderBy(x => x.priority).ToList();
             foreach (Effect effect in effects)
             {
+                Debug.Log(effect.priority);
                 if (highestPriority == effect.priority)
                 {
+                    Debug.Log("Playerstatus prior");
                     UpdateStatus(effect);
                 }
                 else
@@ -53,6 +55,7 @@ public class PlayerStatus
     }
     public void UpdateStatus(Effect effect)
     {
+        Debug.Log("Playerstatus");
         gravity *= effect.dgravity;
         jumpspeed *= effect.djumpspeed;
         health *= effect.dhealth;
@@ -64,7 +67,12 @@ public class PlayerStatus
         if (effect.dmovable) 
             movable = false;
         if (effect.dsilenced)
-            silenced = true;   
+            silenced = true;
+        if (effect.dinvisible)
+        {
+            invisible = !invisible;
+        }
+        
     }
     public void SetStatus(Effect effect)
     {
@@ -81,6 +89,8 @@ public class PlayerStatus
             movable = false;
         if (effect.dsilenced)
             silenced = true;
+        if (effect.dinvisible)
+            invisible = true;
     }
 
     public void SetUpMovement(bool[] inputs)

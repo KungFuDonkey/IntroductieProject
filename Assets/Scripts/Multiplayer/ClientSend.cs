@@ -29,11 +29,12 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void UseItem(int _itemIndex)
+    public static void AddEffects(int _item)
     {
-        using (Packet _packet = new Packet((int)ClientPackets.UseItem))
+        using (Packet _packet = new Packet((int)ClientPackets.AddEffects))
         {
-            _packet.Write(_itemIndex);
+            Debug.Log("ClientSend Effects");
+            _packet.Write(_item);
             SendTCPData(_packet);
         }
     }
