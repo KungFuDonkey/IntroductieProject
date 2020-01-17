@@ -32,6 +32,8 @@ public class Charmandolphin : Player
         else
         {
             status.fireTimer -= Time.deltaTime;
+            status.animationValues[2] = false;
+
         }
 
         if (inputs[6] && status.qTimer < 0)
@@ -41,6 +43,8 @@ public class Charmandolphin : Player
         else
         {
             status.qTimer -= Time.deltaTime;
+            status.animationValues[2] = false;
+
         }
 
         if (inputs[7] && status.eTimer < 0)
@@ -50,6 +54,8 @@ public class Charmandolphin : Player
         else
         {
             status.eTimer -= Time.deltaTime;
+            status.animationValues[2] = false;
+
         }
 
 

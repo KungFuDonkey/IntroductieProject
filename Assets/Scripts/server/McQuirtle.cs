@@ -33,24 +33,32 @@ public class McQuirtle : Player
         else
         {
             status.fireTimer -= Time.deltaTime;
+            status.animationValues[2] = false;
         }
 
         if (inputs[6] && status.qTimer < 0)
         {
             qAttack();
+
         }
         else
         {
             status.qTimer -= Time.deltaTime;
+            status.animationValues[2] = false;
+
         }
 
         if (inputs[7] && status.eTimer < 0)
         {
             eAttack();
+            status.animationValues[2] = false;
+
         }
         else
         {
             status.eTimer -= Time.deltaTime;
+            status.animationValues[2] = false;
+
         }
 
 
