@@ -70,4 +70,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void setYRotation(float rotation)
+    {
+        yRotation = rotation;
+    }
 }
