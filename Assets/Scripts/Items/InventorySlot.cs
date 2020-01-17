@@ -132,16 +132,16 @@ public class InventorySlot : MonoBehaviour
 
     public void GetHealth()
     {
-        if (HealthBar.instance.CurrentHealth >= 100)
+        if (HealthBar.instance.currentHealth >= 100)
         {
             WaitMaxHealth();
             return;
         }
         else
         {
-            HealthBar.instance.CurrentHealth += 20;
-            if (HealthBar.instance.CurrentHealth >= 100)
-                HealthBar.instance.CurrentHealth = 100;
+            HealthBar.instance.currentHealth += 20;
+            if (HealthBar.instance.currentHealth >= 100)
+                HealthBar.instance.currentHealth = 100;
             inventory.instance.Remove(Item);
         }
     }

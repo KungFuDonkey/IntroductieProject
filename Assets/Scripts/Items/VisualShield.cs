@@ -9,9 +9,10 @@ public class VisualShield : MonoBehaviour
     private float maxXValue;
     private float minXValue;
     public RectTransform shieldTransform;
+    Vector3 position;
     private float cachedY;
     public float maxShield;
-
+    float stepOffset;
     public float currentShield;
     public Image visualShield;
    
@@ -27,38 +28,18 @@ public class VisualShield : MonoBehaviour
     void Start()
     {
         cachedY = shieldTransform.position.y;
+        position = shieldTransform.position;
         maxXValue = shieldTransform.position.x;
         minXValue = shieldTransform.position.x - shieldTransform.rect.width;
         currentShield = maxShield;
+        stepOffset = shieldTransform.rect.width / maxShield;
+        visualShield.color = new Color32(0, 0, 255, 255);
     }
 
-    public void HandleHealth()
+    private void Update()
     {
-        float currentXValue = MapValues(currentShield, 0, maxShield, minXValue, maxXValue);
-
-        shieldTransform.position = new Vector3(currentXValue, cachedY);
-
-        if (currentShield == 0)
-        {
-            visualShield.color = new Color32(255, 255, 255, 255);
-        }
-        else
-        {
-            visualShield.color = new Color32(0, 0, 255, 255);        }
-    }
-
-    public float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
-    {
-        return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-    }
-
-    public float CurrentShield
-    {
-        get { return currentShield; }
-        set
-        {
-            currentShield = value;
-            HandleHealth();
-        }
+        float currentXValue = currentShield * stepOffset + minXValue;
+        position.x = currentXValue;
+        shieldTransform.position = position;
     }
 }

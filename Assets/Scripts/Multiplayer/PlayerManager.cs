@@ -41,8 +41,8 @@ public class PlayerManager : MonoBehaviour
  
     public void UpdateHUD(float health, float shield)
     {
-        playerHUD.healthBar.CurrentHealth = health;
-        playerHUD.shieldBar.CurrentShield = shield;
+        playerHUD.healthBar.currentHealth = health;
+        playerHUD.shieldBar.currentShield = shield;
     }
 
     public void UpdatePlayerCount(int alive)

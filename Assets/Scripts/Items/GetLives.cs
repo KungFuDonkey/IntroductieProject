@@ -104,16 +104,16 @@ public class GetLives : MonoBehaviour
     {
         if (other.CompareTag("Avatar") && bandana == true)
         {
-               Bandana.SetActive(false);
-               BandanaTrigger.SetActive(false);
+            Bandana.SetActive(false);
+            BandanaTrigger.SetActive(false);
             //Player.instance.speedboost *= 3;
 
             EquipmentInventory.instance.Add(item);
-            VisualShield.instance.CurrentShield += 20;
-               if (VisualShield.instance.CurrentShield >= 100)
-               {
-                   VisualShield.instance.CurrentShield = 100;
-               }
+            VisualShield.instance.currentShield += 20;
+            if (VisualShield.instance.currentShield>= 100)
+            {
+                VisualShield.instance.currentShield = 100;
+            }
         }
 
         else if (other.CompareTag("Avatar") && bracelet == true)
@@ -121,13 +121,4 @@ public class GetLives : MonoBehaviour
             
         }
     }
-
-
-
-
-
-
-
-
-
 }
