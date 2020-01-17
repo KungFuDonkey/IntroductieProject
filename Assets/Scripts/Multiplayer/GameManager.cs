@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public enum Characters
+{
+    Vulcasaur,
+    Charmandolphin,
+    McQuirtle
+}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static uint projectileNumber = 0;
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
-
     public LayerMask groundMask;
     public GameObject Charmandolphin;
     public GameObject McQuirtle;
@@ -41,7 +46,7 @@ public class GameManager : MonoBehaviour
         GameObject _player;
         Debug.Log(_selectedCharacter);
 
-        if (_selectedCharacter == 1)
+        if (_selectedCharacter == (int)Characters.Charmandolphin)
         {
             if (_id == Client.instance.myId)
             {
@@ -52,7 +57,7 @@ public class GameManager : MonoBehaviour
                 _player = Instantiate(CharmandolphinEnemy, _position, _rotation);
             }
         }
-        else if (_selectedCharacter == 2)
+        else if (_selectedCharacter == (int)Characters.Vulcasaur)
         {
             if (_id == Client.instance.myId)
             {

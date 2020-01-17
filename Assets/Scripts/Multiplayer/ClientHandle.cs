@@ -70,7 +70,6 @@ public class ClientHandle : MonoBehaviour
         Quaternion _rotation = _packet.ReadQuaternion();
         float yrotation = _packet.ReadFloat();
         GameManager.players[_id].transform.rotation = _rotation;
-        GameManager.players[_id].yRotation = yrotation;
     }
 
     public static void Projectile(Packet _packet)
