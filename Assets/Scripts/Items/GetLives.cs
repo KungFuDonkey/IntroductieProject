@@ -109,10 +109,10 @@ public class GetLives : MonoBehaviour
             //Player.instance.speedboost *= 3;
 
             EquipmentInventory.instance.Add(item);
-            VisualShield.instance.CurrentHealth += 20;
-               if (VisualShield.instance.CurrentHealth >= 100)
+            VisualShield.instance.CurrentShield += 20;
+               if (VisualShield.instance.CurrentShield >= 100)
                {
-                   VisualShield.instance.CurrentHealth = 100;
+                   VisualShield.instance.CurrentShield = 100;
                }
         }
 
