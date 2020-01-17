@@ -318,5 +318,13 @@ public class ServerSend
             SendTCPData(player.id, _packet);
         }
     }
+
+    public static void Reset()
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.Reset))
+        {
+            SendTCPDataToAll(_packet);
+        }
+    }
     #endregion
 }

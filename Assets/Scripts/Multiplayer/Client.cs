@@ -271,7 +271,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.UpdatePlayerCount, ClientHandle.UpdatePlayerCount },
             { (int)ServerPackets.Win, ClientHandle.RecieveWinScreen },
             { (int)ServerPackets.Death, ClientHandle.RecieveDeathScreen },
-            { (int)ServerPackets.UseItem, ClientHandle.UseItem }
+            { (int)ServerPackets.UseItem, ClientHandle.UseItem },
+            { (int)ServerPackets.Reset, ClientHandle.Reset}
         };
         Debug.Log("Initialized packets.");
     }

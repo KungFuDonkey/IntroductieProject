@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
             startCounter = true;
         }
         else if(menu == 2){
-            gameObject.SetActive(false);
+            setMenuStatus(false);
             Destroy(mainCamera);
         }
     }
@@ -132,5 +132,9 @@ public class UIManager : MonoBehaviour
                 timer = 100f;
             }
         }
+    }
+    public void setMenuStatus(bool setStatus)
+    {
+        gameObject.SetActive(setStatus);
     }
 }
