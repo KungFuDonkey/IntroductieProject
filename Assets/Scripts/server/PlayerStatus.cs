@@ -125,7 +125,7 @@ public class PlayerStatus
             }
             else
             {
-                //ySpeed = -2;
+                ySpeed = -2f;
             }
         }
         ySpeed -= gravity * Time.deltaTime;
