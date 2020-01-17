@@ -108,11 +108,11 @@ public class PlayerStatus
 
         if (inputs[5])
         {
-            inputDirection *= movementSpeed * runMultiplier;
+            inputDirection *= movementSpeed * runMultiplier * Time.deltaTime;
         }
         else
         {
-            inputDirection *= movementSpeed;
+            inputDirection *= movementSpeed * Time.deltaTime;
         }
 
 
