@@ -80,47 +80,16 @@ public abstract class Player
         status.verticalRotation = _verticalRotation;
     }
 
-    //public void UseItem(int itemIndex)
-    //{
-    //   if (itemIndex == 0)
-    //    {
-    //        jumpspeed *= 3;
-    //    }
-    //   else if (itemIndex == 1)
-    //    {
-    //        jumpspeed /= 3;
-    //    }
-    //   else if (itemIndex == 2)
-    //    {
-    //        walkSpeed *= 3;
-    //        runSpeed *= 3;
-    //    }
-    //    else if (itemIndex == 3)
-    //    {
-    //        walkSpeed /= 3;
-    //        runSpeed /= 3;
-    //    }
-    //    else if (itemIndex == 4)
-    //    {
-    //        PlayerManager.instance.invisible.SetActive(false);
-    //    }
-    //    else if (itemIndex == 5)
-    //    {
-    //        PlayerManager.instance.invisible.SetActive(true);
-    //    }
-    //   else if (itemIndex == 6)
-    //    {
-
-    //    }
-    //   else if (itemIndex == 7)
-    //    {
-
-    //    }
-    //}
-
     public void SetHealth(int health)
     {
 
     }
+
+    public void Hit(Projectile projectile)
+    {
+
+
+    }
+
 }
 

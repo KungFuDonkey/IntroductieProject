@@ -30,8 +30,14 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    public void UpdateHUD(float health)
+    public void UpdateHUD(float health, bool alive, int alivePlayers)
     {
         playerHUD.healthBar.currentHealth = health;
+        if (!alive)
+        {
+            playerHUD.Deathscreen.SetActive(true);
+        }
+        playerHUD.AlivePlayers.text = "" + alivePlayers;
+        Debug.Log(alivePlayers);
     }
 }

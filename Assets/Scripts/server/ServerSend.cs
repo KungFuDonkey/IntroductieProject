@@ -93,7 +93,7 @@ public class ServerSend
             _packet.Write(Time.time);
             _packet.Write(_player.id);
             _packet.Write(_player.avatar.position);
-            SendUDPDataToAll(Client.instance.myId,_packet);
+            SendUDPDataToAll(Client.instance.myId, _packet);
         }
     }
 
@@ -104,7 +104,7 @@ public class ServerSend
         {
             _packet.Write(_player.id);
             _packet.Write(_itemIndex);
-            SendUDPDataToAll(_itemIndex, _packet);
+            SendUDPDataToAll(_packet);
         }
     }
 
@@ -170,16 +170,6 @@ public class ServerSend
         {
             _packet.Write(_projectile.id);
             SendTCPDataToAll(_packet);
-        }
-    }
-
-    public static void Damage(int _playerID, float _damage, int _type)
-    {
-        using (Packet _packet = new Packet((int)ServerPackets.Damage))
-        {
-            _packet.Write(_damage);
-            _packet.Write(_type);
-            SendTCPData(_playerID, _packet);
         }
     }
 
@@ -255,6 +245,7 @@ public class ServerSend
             SendUDPDataToAll(id, _packet);
         }
     }
+
     public static void SetWalls()
     {
         using (Packet _packet = new Packet((int)ServerPackets.SetWalls))
@@ -273,9 +264,12 @@ public class ServerSend
         {
             _packet.Write(_player.id);
             _packet.Write(_player.status.health);
-            
+            _packet.Write(_player.status.shield);
+            _packet.Write(_player.status.alive);
 
-            SendUDPDataToAll(Client.instance.myId, _packet);
+            _packet.Write(ServerStart.instance.alivePlayers);
+
+            SendUDPDataToAll(_packet);
         }
     }
     #endregion

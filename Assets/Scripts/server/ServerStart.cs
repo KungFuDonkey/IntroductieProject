@@ -11,6 +11,7 @@ public class ServerStart : MonoBehaviour
     GameObject serverLog;
     public static bool started = false;
     public static List<int> destroyId = new List<int>();
+    public int alivePlayers = 0;
     private void Awake()
     {
         if (instance == null)
@@ -40,11 +41,17 @@ public class ServerStart : MonoBehaviour
         bool reset = false;
         if (started)
         {
+            alivePlayers = 0;
             foreach (ServerClient _client in Server.clients.Values)
             {
                 if (_client.player != null)
                 {
                     _client.player.UpdatePlayer();
+                    if (_client.player.status.alive)
+                    {
+                        alivePlayers += 1;
+                        DebugServer("" + alivePlayers);
+                    }
                 }
             }
             foreach (Projectile _projectile in Server.projectiles.Values)

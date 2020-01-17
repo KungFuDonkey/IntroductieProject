@@ -8,12 +8,12 @@ public class VisualShield : MonoBehaviour
 
     private float maxXValue;
     private float minXValue;
-    public RectTransform healthTransform;
+    public RectTransform shieldTransform;
     private float cachedY;
-    public int maxHealth;
+    public float maxShield;
 
-    public int currentHealth;
-    public Image visualHealth;
+    public float currentShield;
+    public Image visualShield;
    
 
     public static VisualShield instance;
@@ -26,20 +26,20 @@ public class VisualShield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cachedY = healthTransform.position.y;
-        maxXValue = healthTransform.position.x;
-        minXValue = healthTransform.position.x - healthTransform.rect.width;
-        currentHealth = maxHealth;
+        cachedY = shieldTransform.position.y;
+        maxXValue = shieldTransform.position.x;
+        minXValue = shieldTransform.position.x - shieldTransform.rect.width;
+        currentShield = maxShield;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("y") && currentHealth > 0)
+        if (Input.GetKey("y") && currentShield > 0)
         {
             CurrentHealth -= 1;
         }
-        if (Input.GetKey("u") && currentHealth < maxHealth)
+        if (Input.GetKey("u") && currentShield < maxShield)
         {
             CurrentHealth += 1;
         }
@@ -47,17 +47,17 @@ public class VisualShield : MonoBehaviour
 
     public void HandleHealth()
     {
-        float currentXValue = MapValues(currentHealth, 0, maxHealth, minXValue, maxXValue);
+        float currentXValue = MapValues(currentShield, 0, maxShield, minXValue, maxXValue);
 
-        healthTransform.position = new Vector3(currentXValue, cachedY);
+        shieldTransform.position = new Vector3(currentXValue, cachedY);
 
-        if (currentHealth == 0)
+        if (currentShield == 0)
         {
-            visualHealth.color = new Color32(255, 255, 255, 255);
+            visualShield.color = new Color32(255, 255, 255, 255);
         }
         else
         {
-            visualHealth.color = new Color32(0, 0, 255, 255);        }
+            visualShield.color = new Color32(0, 0, 255, 255);        }
     }
 
     public float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
@@ -65,12 +65,12 @@ public class VisualShield : MonoBehaviour
         return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
 
-    public int CurrentHealth
+    public float CurrentHealth
     {
-        get { return currentHealth; }
+        get { return currentShield; }
         set
         {
-            currentHealth = value;
+            currentShield = value;
             HandleHealth();
         }
     }

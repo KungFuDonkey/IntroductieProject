@@ -11,7 +11,7 @@ public class McQuirtle : Player
         username = _username;
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
-        status.defaultStatus = new Effect(45f, 22f, 100f, 2f, 2f, 2f);
+        status.defaultStatus = Effect.McQuirtle;
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
         status.animationValues = new bool[4]

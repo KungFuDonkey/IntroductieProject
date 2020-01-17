@@ -1174,8 +1174,9 @@ MonoBehaviour:
   username: 
   selectedCharacter: 0
   yRotation: 0
+  lastPacketTime: 0
   playerAnimator: {fileID: 6544508294180536305}
-  player: {fileID: 4478984211883878458}
+  playerHUD: {fileID: 8094205697504519879}
   invisible: {fileID: 5296251222838008623}
 --- !u!114 &-8042446308503898690
 MonoBehaviour:
@@ -3253,3 +3254,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5485195138291246771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8094205697504519879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4344626571017945204, guid: 452643bdf55bbc44bbf3917d2d76be61,
+    type: 3}
+  m_PrefabInstance: {fileID: 5485195138291246771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5246125be6e84eb4bab3fa8163f640a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

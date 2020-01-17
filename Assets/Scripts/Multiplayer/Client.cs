@@ -267,6 +267,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.UsernameList, ClientHandle.UsernameList},
             { (int)ServerPackets.mousePosition, ClientHandle.GetMousePosition },
             { (int)ServerPackets.SetWalls, ClientHandle.SetWalls },
+            { (int)ServerPackets.UpdateHUD, ClientHandle.UpdateHUD},
             { (int)ServerPackets.UseItem, ClientHandle.UseItem }
         };
         Debug.Log("Initialized packets.");

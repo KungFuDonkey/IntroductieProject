@@ -11,7 +11,7 @@ public class Projectile
     protected float speed = 50;
     protected float maxDistance = 150;
     public float damage;
-    public int owner;
+    public int owner, type;
     public virtual void UpdateProjectile()
     {
         ServerSend.ProjectileMove(this);
@@ -25,7 +25,7 @@ public class Projectile
 
     public virtual void Hit(int _id, int _type)
     {
-        ServerSend.Damage(_id, damage, _type);
+        Server.clients[_id].player.Hit(this);
         DestroyProjectile();
     }
 }

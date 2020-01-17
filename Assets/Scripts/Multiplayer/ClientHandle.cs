@@ -144,6 +144,10 @@ public class ClientHandle : MonoBehaviour
     {
         int id = _packet.ReadInt();
         float health = _packet.ReadFloat();
-        GameManager.players[id].UpdateHUD(health);
+        float shield = _packet.ReadFloat();
+        bool alive = _packet.ReadBool();
+        int alivePlayers = _packet.ReadInt();
+
+        GameManager.players[id].UpdateHUD(health, alive, alivePlayers);
     }
 }
