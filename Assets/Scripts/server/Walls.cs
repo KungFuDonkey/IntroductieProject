@@ -5,7 +5,7 @@ using UnityEngine;
 public class Walls
 {
     public static Transform[] walls = new Transform[4];
-    protected static float wallsWait, WALLSWAIT = 10, wallsMove, WALLSMOVE = 10, mapSize = 600, startTimer = 5;
+    protected static float wallsWait, WALLSWAIT = 30, wallsMove = 30, mapSize = 600, startTimer = 5;
     public static Vector3 circlePosition;
     public static Vector3[] distances = new Vector3[4];
     static bool started = false, waiting = false;
@@ -24,14 +24,10 @@ public class Walls
             }
         }
 
-        if (!allWallsStop)
-        {
-            wallsMove -= Time.deltaTime;
-            
-        }
-        else
+        if (allWallsStop)
         {
             wallsWait -= Time.deltaTime;
+
         }
 
         if (allWallsStop && !waiting)
@@ -50,7 +46,6 @@ public class Walls
             {
                 wallMoving[i] = true;
             }
-            wallsMove = WALLSMOVE;
             waiting = false;
         }
 
@@ -67,7 +62,7 @@ public class Walls
         {
             if (Vector3.Distance(circlePosition, walls[i].position) > mapSize * 0.5f)
             {
-                walls[i].position += distances[i] * Time.deltaTime / 10;
+                walls[i].position += distances[i] * Time.deltaTime / wallsMove;
             }
             else
             {
