@@ -150,9 +150,5 @@ public class PlayerStatus
             animationValues[0] = false;
             animationValues[1] = false;
         }
-        if (inputs[10] || inputs[6] || inputs[7])
-        {
-            animationValues[3] = true;
-        }
     }
 }

@@ -61,6 +61,7 @@ public class Vulcasaur : Player
         status.fireTimer = status.FIRETIMER; 
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 0, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
+        status.animationValues[3] = true;
         Debug.Log("shooting");
     }
 
@@ -70,6 +71,8 @@ public class Vulcasaur : Player
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 1, new Vines((int)GameManager.projectileNumber, avatar.position, avatar.rotation, status.inputDirection, id));
         Debug.Log("shooting");
+        status.animationValues[3] = true;
+
     }
 
     public void eAttack()
@@ -78,5 +81,7 @@ public class Vulcasaur : Player
         Quaternion rotation = Quaternion.Euler(17.34f, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 2, new Vulcano((int)GameManager.projectileNumber, status.groundCheck.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
+        status.animationValues[3] = true;
+
     }
 }

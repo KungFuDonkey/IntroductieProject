@@ -62,6 +62,8 @@ public class McQuirtle : Player
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 8, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
+        status.animationValues[3] = true;
+
     }
 
     public void qAttack()
@@ -70,6 +72,8 @@ public class McQuirtle : Player
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 9, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
+        status.animationValues[3] = true;
+
     }
 
     public void eAttack()
@@ -78,5 +82,7 @@ public class McQuirtle : Player
         Quaternion rotation = Quaternion.Euler(status.verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 10, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
+        status.animationValues[3] = true;
+
     }
 }
