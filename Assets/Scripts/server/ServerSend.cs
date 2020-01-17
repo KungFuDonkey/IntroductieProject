@@ -127,7 +127,6 @@ public class ServerSend
         {
             _packet.Write(_player.id);
             _packet.Write(_player.avatar.rotation);
-            _packet.Write(_player.verticalRotation);
             SendUDPDataToAll(_player.id, _packet);
         }
     }
