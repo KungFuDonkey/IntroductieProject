@@ -68,8 +68,9 @@ public class ClientHandle : MonoBehaviour
     {
         int _id = _packet.ReadInt();
         Quaternion _rotation = _packet.ReadQuaternion();
-
+        Quaternion headRotation = Quaternion.Euler(_packet.ReadFloat(), _rotation.y, _rotation.z);
         GameManager.players[_id].transform.rotation = _rotation;
+        GameManager.players[_id].head.rotation = headRotation;
     }
 
     public static void Projectile(Packet _packet)

@@ -1783,7 +1783,10 @@ MonoBehaviour:
   username: 
   selectedCharacter: 0
   yRotation: 0
+  lastPacketTime: 0
   playerAnimator: {fileID: 3334680224187508098}
+  playerHUD: {fileID: 0}
+  invisible: {fileID: 0}
 --- !u!114 &8396441823814499821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,6 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawner: {fileID: 6320018280230502724}
+  Head: {fileID: 8679682142555577279}
 --- !u!1 &6787769453721700681
 GameObject:
   m_ObjectHideFlags: 0

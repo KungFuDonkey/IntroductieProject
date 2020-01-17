@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileSpawnerAllocater : MonoBehaviour
+public class PlayerObjectsAllocater : MonoBehaviour
 {
     public Transform projectileSpawner;
+    public Transform Head;
 }

@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public int selectedCharacter;
     public int yRotation;
     public float lastPacketTime = 0f;
+    public Transform head;
     public Animator playerAnimator;
     public HUD playerHUD;
     [SerializeField] public GameObject invisible;
@@ -18,7 +19,10 @@ public class PlayerManager : MonoBehaviour
     {
         instance = this;
     }
-
+    private void Start()
+    {
+        head = GetComponent<PlayerObjectsAllocater>().Head;
+    }
     public void SetAnimations(bool[] animationValues)
     {
         playerAnimator.SetBool("IsWalking", animationValues[0]);
