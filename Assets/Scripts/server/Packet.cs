@@ -22,7 +22,8 @@ public enum ServerPackets
     UpdatePlayerCount,
     Win,
     Death,
-    SetWalls
+    SetWalls,
+    Reset
 }
 
 /// <summary>Sent from client to server.</summary>

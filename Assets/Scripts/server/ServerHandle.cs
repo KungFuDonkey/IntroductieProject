@@ -56,4 +56,15 @@ public class ServerHandle
         //Server.clients[_fromClient].player.UseItem(_packet.ReadInt());
     }
 
+    public static void Reset(Packet _packet)
+    {
+        foreach(ServerClient client in Server.clients.Values)
+        {
+            if (client.connected)
+            {
+                client.player = null;
+            }
+        }
+        ServerSend.Reset();
+    }
 }

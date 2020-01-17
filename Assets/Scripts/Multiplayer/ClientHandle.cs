@@ -8,6 +8,7 @@ using UnityEngine;
 public class ClientHandle : MonoBehaviour
 {
     static System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
+    [SerializeField]static UnityEngine.Object mainCamera;
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -16,7 +17,7 @@ public class ClientHandle : MonoBehaviour
         Debug.Log($"Message from server: {_msg}");
         Client.instance.myId = _myId;
         ClientSend.WelcomeReceived();
-
+        
         Client.instance.udp.Connect();
     }
 
@@ -158,5 +159,12 @@ public class ClientHandle : MonoBehaviour
     public static void RecieveDeathScreen(Packet _packet)
     {
         GameManager.players[Client.instance.myId].Screen(0);
+    }
+    public static void Reset(Packet _packet)
+    {
+        GameObject cam = (GameObject)Instantiate(mainCamera);
+        cam.transform.position = new Vector3(12, -6, 20);
+        UIManager.instance.setMenuStatus(true);
+        UIManager.instance.LoadMenu(1);
     }
 }
