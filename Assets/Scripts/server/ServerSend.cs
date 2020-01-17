@@ -199,6 +199,10 @@ public class ServerSend
             _packet.Write(menuNumber);
             SendTCPDataToAll(_packet);
         }
+        if(menuNumber == 2)
+        {
+            UpdatePlayerCount();
+        }
     }
 
     public static void SendUsernameList()
@@ -262,14 +266,56 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.UpdateHUD))
         {
-            _packet.Write(_player.id);
             _packet.Write(_player.status.health);
             _packet.Write(_player.status.shield);
-            _packet.Write(_player.status.alive);
+            SendUDPData(_player.id,_packet);
+        }
+    }
 
-            _packet.Write(ServerStart.instance.alivePlayers);
+    public static void UpdatePlayerCount()
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.UpdatePlayerCount))
+        {
+            int alive = 0;
+            foreach(ServerClient client in Server.clients.Values)
+            {
+                if(client.player != null)
+                {
+                    if (client.player.status.alive)
+                    {
+                        alive++;
+                    }
+                }
+            }
+            _packet.Write(alive);
+            SendTCPDataToAll(_packet);
+            if (alive == 1)
+            {
+                SendWinScreen();
+            }
+        }
+    }
+    
+    public static void SendWinScreen()
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.Win))
+        {
+            foreach(ServerClient client in Server.clients.Values)
+            {
+                if (client.player.status.alive)
+                {
+                    SendTCPData(client.id, _packet);
+                    return;
+                }
+            }
+        }
+    }
 
-            SendUDPDataToAll(_packet);
+    public static void SendDeathScreen(Player player)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.Death))
+        {
+            SendTCPData(player.id, _packet);
         }
     }
     #endregion

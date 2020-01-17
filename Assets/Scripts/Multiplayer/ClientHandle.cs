@@ -114,7 +114,6 @@ public class ClientHandle : MonoBehaviour
     public static void LoadMenu(Packet _packet)
     {
         int menu = _packet.ReadInt();
-        Debug.Log(menu);
         UIManager.instance.LoadMenu(menu);
     }
 
@@ -142,12 +141,22 @@ public class ClientHandle : MonoBehaviour
     }
     public static void UpdateHUD(Packet _packet)
     {
-        int id = _packet.ReadInt();
         float health = _packet.ReadFloat();
         float shield = _packet.ReadFloat();
-        bool alive = _packet.ReadBool();
-        int alivePlayers = _packet.ReadInt();
-
-        GameManager.players[id].UpdateHUD(health, alive, alivePlayers);
+        GameManager.players[Client.instance.myId].UpdateHUD(health, shield);
+    }
+    public static void UpdatePlayerCount(Packet _packet)
+    {
+        int alive = _packet.ReadInt();
+        Debug.Log(alive);
+        GameManager.players[Client.instance.myId].UpdatePlayerCount(alive);
+    }
+    public static void RecieveWinScreen(Packet _packet)
+    {
+        GameManager.players[Client.instance.myId].Screen(1);
+    }
+    public static void RecieveDeathScreen(Packet _packet)
+    {
+        GameManager.players[Client.instance.myId].Screen(0);
     }
 }

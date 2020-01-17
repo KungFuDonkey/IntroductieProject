@@ -16,11 +16,10 @@ public class HUD : MonoBehaviour
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
     public VisualShield shieldBar;
-    public GameObject Deathscreen;
+    public GameObject Deathscreen, Winscreen;
     public Transform itemsParent;
     public Transform gearParent;
     public GameObject jinventoryUI;
-   
     public GameObject Spectator;
     public Text AlivePlayers;
 

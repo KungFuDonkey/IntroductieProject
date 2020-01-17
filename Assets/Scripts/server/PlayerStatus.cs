@@ -8,14 +8,14 @@ public class PlayerStatus
     public Effect defaultStatus;
     public float ySpeed;
     public float gravity = 15f;
-    public float health = 100f, jumpspeed = 3f;
+    public float health = 100f, jumpspeed = 3f, shield = 0f;
     public float verticalRotation;
     public bool[] animationValues;
     public Transform groundCheck;
     public LayerMask groundmask;
     public Transform avatar;
     public float fireTimer = 0f, FIRETIMER = 2f, qTimer = 0f, QTIMER = 2f, eTimer = 0f, ETIMER = 2f, movementSpeed = 20f, runMultiplier = 2;
-    public bool isGrounded, movable, silenced, alive = true, shield;
+    public bool isGrounded, movable, silenced, alive = true;
     public Vector3 inputDirection;
     public List<Effect> effects = new List<Effect>();
 

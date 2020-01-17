@@ -257,8 +257,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1649462414279201258}
-  - component: {fileID: 1160319810900941436}
-  - component: {fileID: 6647789093569518998}
   m_Layer: 11
   m_Name: ProjectileSpawner
   m_TagString: Untagged
@@ -280,43 +278,6 @@ Transform:
   m_Father: {fileID: 5164993996653377781}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1160319810900941436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541217456330410430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: 0
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 6647789093569518998}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &6647789093569518998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541217456330410430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!1 &1614786369730469691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,7 +1854,9 @@ MonoBehaviour:
   username: 
   selectedCharacter: 0
   yRotation: 0
+  lastPacketTime: 0
   playerAnimator: {fileID: 6668910900259913925}
+  playerHUD: {fileID: 7971853734396626795}
   invisible: {fileID: 6763903927391440214}
 --- !u!114 &5818656512481178635
 MonoBehaviour:
@@ -3492,3 +3455,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5974729026658010911}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7971853734396626795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4344626571017945204, guid: 452643bdf55bbc44bbf3917d2d76be61,
+    type: 3}
+  m_PrefabInstance: {fileID: 5974729026658010911}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5246125be6e84eb4bab3fa8163f640a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

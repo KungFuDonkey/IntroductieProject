@@ -19,6 +19,9 @@ public enum ServerPackets
     UsernameList,
     mousePosition,
     UpdateHUD,
+    UpdatePlayerCount,
+    Win,
+    Death,
     SetWalls
 }
 

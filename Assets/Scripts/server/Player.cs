@@ -26,6 +26,17 @@ public abstract class Player
     {
         SetupPlayer();
         status.Update(inputs);
+        if(status.health <= 0 && status.alive)
+        {
+            status.alive = false;
+            ServerSend.SendDeathScreen(this);
+            ServerSend.UpdatePlayerCount();
+            return;
+        }
+        else if (!status.alive)
+        {
+            return;
+        }
         Move(status.inputDirection);
         if (status.isGrounded)  //for projectiles
         {
