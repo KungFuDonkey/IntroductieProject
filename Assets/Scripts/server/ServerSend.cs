@@ -58,7 +58,6 @@ public class ServerSend
         }
     }
 
-
     #region Packets
     //the different packets in which you can send the server data to the clients
     public static void Welcome(int _toClient, string _msg)
@@ -118,10 +117,7 @@ public class ServerSend
             {
                 _packet.Write(_animationValue);
             }
-
             SendUDPDataToAll(_player.id, _packet);
-
-
         }
     }
 

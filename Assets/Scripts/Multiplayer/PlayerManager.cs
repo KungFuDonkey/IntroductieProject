@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
     public int id;
     public string username;
     public int selectedCharacter;
-    public int yRotation;
+    public float yRotation;
     public float lastPacketTime = 0f;
     public Transform head;
     public Animator playerAnimator;
@@ -22,6 +22,11 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         head = GetComponent<PlayerObjectsAllocater>().Head;
+    }
+
+    private void LateUpdate()
+    {
+        head.rotation = Quaternion.Euler(yRotation, transform.rotation.y, transform.rotation.z);
     }
     public void SetAnimations(bool[] animationValues)
     {

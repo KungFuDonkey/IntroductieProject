@@ -13,7 +13,6 @@ public enum ServerPackets
     projectile,
     projectileMove,
     projectileDestroy,
-    Damage,
     LoadMenu,
     UseItem,
     UsernameList,
