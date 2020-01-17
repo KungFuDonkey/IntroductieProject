@@ -62,7 +62,7 @@ public class McQuirtle : Player
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 8, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
-        status.animationValues[3] = true;
+        status.animationValues[2] = true;
 
     }
 
@@ -72,7 +72,7 @@ public class McQuirtle : Player
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 9, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
-        status.animationValues[3] = true;
+        status.animationValues[2] = true;
 
     }
 
@@ -82,7 +82,7 @@ public class McQuirtle : Player
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 10, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
-        status.animationValues[3] = true;
+        status.animationValues[2] = true;
 
     }
 }

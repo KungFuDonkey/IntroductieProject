@@ -144,6 +144,7 @@ public class ServerSend
             GameManager.projectileNumber++;
 
             _packet.Write(_player.projectileSpawner.position);
+            _packet.Write(_player.id);
             _packet.Write(projectile.rotation);
             _packet.Write(_moveIndex);
 

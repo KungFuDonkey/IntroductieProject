@@ -81,13 +81,16 @@ public class GameManager : MonoBehaviour
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
 
-    public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int moveIndex)
+    public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int moveIndex, int owner)
     {
         GameObject _projectile;
         //todo : different projectiles
         _projectile = Instantiate(playerObject[moveIndex], _position, _rotation);
         _projectile.GetComponent<ProjectileManager>().id = _id;
         projectiles.Add(_id, _projectile.GetComponent<ProjectileManager>());
-        
+        if (Client.instance.myId == owner)
+        {
+            players[owner].playerAnimator.SetTrigger("Attack");
+        }
     }
 }

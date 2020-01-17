@@ -27,10 +27,6 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("IsWalking", false);
             playerAnimator.SetBool("IsRunning", false);
         }
-        if (_inputs[10] || _inputs[6] || _inputs[7])
-        {
-            playerAnimator.SetTrigger("Attack");
-        }
     }
 
     private void SendInputToServer()

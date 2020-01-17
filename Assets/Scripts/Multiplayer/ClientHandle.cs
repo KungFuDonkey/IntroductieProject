@@ -78,9 +78,10 @@ public class ClientHandle : MonoBehaviour
         int something = _packet.ReadInt();
         Debug.Log(something);
         Vector3 _position = _packet.ReadVector3();
+        int owner = _packet.ReadInt();
         Quaternion _rotation = _packet.ReadQuaternion();
         int moveIndex = _packet.ReadInt();
-        GameManager.instance.SpawnProjectile(_id, _position, _rotation, moveIndex);
+        GameManager.instance.SpawnProjectile(_id, _position, _rotation, moveIndex, owner);
     }
 
     public static void ProjectileMove(Packet _packet)

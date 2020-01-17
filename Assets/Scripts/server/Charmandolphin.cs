@@ -61,7 +61,7 @@ public class Charmandolphin : Player
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
-        status.animationValues[3] = true;
+        status.animationValues[2] = true;
 
     }
 
@@ -71,7 +71,7 @@ public class Charmandolphin : Player
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 5, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
-        status.animationValues[3] = true;
+        status.animationValues[2] = true;
 
     }
 
@@ -81,7 +81,7 @@ public class Charmandolphin : Player
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 6, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
         Debug.Log("shooting");
-        status.animationValues[3] = true;
+        status.animationValues[2] = true;
 
     }
 }
