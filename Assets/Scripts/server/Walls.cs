@@ -8,7 +8,7 @@ public class Walls
     protected static float wallsWait, WALLSWAIT = 30, wallsMove = 30, mapSize = 600, startTimer = 5;
     public static Vector3 circlePosition;
     public static Vector3[] distances = new Vector3[4];
-    public static Vector3[] startingPos;
+    public static Vector3[] startingPos = new Vector3[4];
     static bool started = false, waiting = false;
     static bool[] wallMoving = new bool[4];
     static int smaller;

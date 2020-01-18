@@ -167,6 +167,7 @@ public class ClientHandle : MonoBehaviour
         GameManager.instance.ResetGame();
         GameObject cam = (GameObject)Instantiate(Resources.Load("Main Camera"));
         cam.transform.position = new Vector3(12, -6, 20);
+        cam.name = "Main Camera";
         UIManager.instance.setMenuStatus(true);
         UIManager.instance.LoadMenu(0);
     }

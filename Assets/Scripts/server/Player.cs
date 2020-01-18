@@ -34,7 +34,26 @@ public abstract class Player
     //update the player by checking his inputs and acting on them
     public virtual void UpdatePlayer()
     {
-        SetupPlayer();
+        if (controller == null)
+        {
+            try
+            {
+                GameObject _gameobject = GameObject.Find(id.ToString());
+                controller = _gameobject.GetComponent<CharacterController>();
+                avatar = _gameobject.transform;
+                status.avatar = _gameobject.transform;
+                avatar.rotation = Quaternion.identity;
+                int childeren = _gameobject.transform.GetChild(0).childCount;
+                status.groundCheck = _gameobject.transform.GetChild(0).GetChild(childeren - 1);
+                projectileSpawner = _gameobject.GetComponent<PlayerObjectsAllocater>().projectileSpawner;
+                Debug.Log("avatar found");
+            }
+            catch
+            {
+                Debug.Log($"failed to find {id}");
+                return;
+            }
+        }
         status.Update(inputs);
         if(status.health <= 0 && status.alive)
         {
@@ -61,32 +80,6 @@ public abstract class Player
         }
         ServerSend.UpdateHUD(this);
 
-    }
-
-
-    //find the player in the game of the masterclient, otherwise it can't move
-    private void SetupPlayer()
-    {
-        if (controller == null)
-        {
-            try
-            {
-                GameObject _gameobject = GameObject.Find(id.ToString());
-                controller = _gameobject.GetComponent<CharacterController>();
-                avatar = _gameobject.transform;
-                status.avatar = _gameobject.transform;
-                avatar.rotation = Quaternion.identity;
-                int childeren = _gameobject.transform.GetChild(0).childCount;
-                status.groundCheck = _gameobject.transform.GetChild(0).GetChild(childeren - 1);
-                projectileSpawner = _gameobject.GetComponent<PlayerObjectsAllocater>().projectileSpawner;
-                Debug.Log("avatar found");
-            }
-            catch
-            {
-                Debug.Log($"failed to find {id}");
-                return;
-            }
-        }
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     protected virtual void Move(Vector3 _inputDirection)

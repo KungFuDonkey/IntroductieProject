@@ -72,7 +72,7 @@ public class ServerStart : MonoBehaviour
         {
             destroyId = new List<int>();
         }
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKey(KeyCode.I))
         {
             serverLog.SetActive(true);
         }

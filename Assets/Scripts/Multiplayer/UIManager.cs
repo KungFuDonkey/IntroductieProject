@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     public int selectedCharacter = 1;
     public bool startCounter = false;
     public float timer = 10f;
-    public GameObject mainCamera;
     public GameObject startMenu, lobby, characterSelection;
     public GameObject server;
     public GameObject startButton;
@@ -95,7 +94,8 @@ public class UIManager : MonoBehaviour
         }
         else if(menu == 2){
             setMenuStatus(false);
-            Destroy(mainCamera);
+            Destroy(GameObject.Find("Main Camera"));
+            GameManager.instance.freezeInput = false;
         }
     }
 

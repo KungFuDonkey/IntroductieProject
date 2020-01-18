@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log($"Destroying: {players[i].gameObject.name}");
             Destroy(players[i].gameObject);
+            players.Remove(i);
         }
     }
 }
