@@ -204,7 +204,7 @@ public class ServerClient
             if (_client.connected)
             {
                 ServerSend.SpawnPlayer(id, _client.player, _client.spawnpoint);
-                Thread.Sleep(10);
+                Thread.Sleep(100);
             }
         }
     }
