@@ -31,21 +31,24 @@ public class PlayerController : MonoBehaviour
 
     private void SendInputToServer()
     {
-        _inputs = new bool[]
+        if (!GameManager.instance.freezeInput)
         {
-            Input.GetKey(KeyCode.W),
-            Input.GetKey(KeyCode.S),
-            Input.GetKey(KeyCode.A),
-            Input.GetKey(KeyCode.D),
-            Input.GetKey(KeyCode.Space),
-            Input.GetKey(KeyCode.LeftShift),
-            Input.GetKey(KeyCode.Q),
-            Input.GetKey(KeyCode.E),
-            Input.GetKey(KeyCode.P),
-            Input.GetKey(KeyCode.V),
-            Input.GetMouseButton(0)
-        };
-        
-        ClientSend.PlayerMovement(_inputs);
+            _inputs = new bool[]
+            {
+                Input.GetKey(KeyCode.W),
+                Input.GetKey(KeyCode.S),
+                Input.GetKey(KeyCode.A),
+                Input.GetKey(KeyCode.D),
+                Input.GetKey(KeyCode.Space),
+                Input.GetKey(KeyCode.LeftShift),
+                Input.GetKey(KeyCode.Q),
+                Input.GetKey(KeyCode.E),
+                Input.GetKey(KeyCode.P),
+                Input.GetKey(KeyCode.V),
+                Input.GetMouseButton(0)
+            };
+
+            ClientSend.PlayerMovement(_inputs);
+        }
     }
 }

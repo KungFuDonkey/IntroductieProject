@@ -34,12 +34,21 @@ public class playerLook : MonoBehaviour
     // Update is called once per frame
     protected virtual void LateUpdate()
     {
-
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = -Input.GetAxis("Mouse Y");
-
+        float mouseX;
+        float mouseY;
+        if (!GameManager.instance.freezeInput)
+        {
+            mouseX = Input.GetAxis("Mouse X");
+            mouseY = -Input.GetAxis("Mouse Y");
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            mouseX = 0;
+            mouseY = 0;
+        }
         verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
-
         verticalRotation += mouseY * sensitivity * Time.deltaTime;
         horizontalRotation += mouseX * sensitivity * Time.deltaTime;
         playerbody.localRotation = Quaternion.Euler(0f, horizontalRotation, 0f);

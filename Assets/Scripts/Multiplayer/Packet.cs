@@ -39,7 +39,8 @@ public enum ClientPackets
     mousePosition,
     ChoosePlayer,
     setHealth,
-    AddEffects
+    AddEffects,
+    Reset
 }
 
 public class Packet : IDisposable

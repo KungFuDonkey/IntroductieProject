@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
-        Cursor.visible = true;
+        GameManager.instance.freezeInput = true;
         if(screen == 0)
         {
             playerHUD.Deathscreen.SetActive(true);

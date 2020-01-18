@@ -71,7 +71,7 @@ public class ServerHandle
         }
     }
 
-    public static void Reset(Packet _packet)
+    public static void Reset(int _fromClient, Packet _packet)
     {
         foreach(ServerClient client in Server.clients.Values)
         {
@@ -80,6 +80,9 @@ public class ServerHandle
                 client.player = null;
             }
         }
+        Server.joinable = true;
+        ServerStart.started = false;
+        Walls.Reset();
         ServerSend.Reset();
     }
 }

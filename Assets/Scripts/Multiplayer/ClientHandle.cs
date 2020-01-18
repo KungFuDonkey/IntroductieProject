@@ -8,7 +8,6 @@ using UnityEngine;
 public class ClientHandle : MonoBehaviour
 {
     static System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
-    [SerializeField]static UnityEngine.Object mainCamera;
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -165,9 +164,10 @@ public class ClientHandle : MonoBehaviour
     }
     public static void Reset(Packet _packet)
     {
-        GameObject cam = (GameObject)Instantiate(mainCamera);
+        GameManager.instance.ResetGame();
+        GameObject cam = (GameObject)Instantiate(Resources.Load("Main Camera"));
         cam.transform.position = new Vector3(12, -6, 20);
         UIManager.instance.setMenuStatus(true);
-        UIManager.instance.LoadMenu(1);
+        UIManager.instance.LoadMenu(0);
     }
 }

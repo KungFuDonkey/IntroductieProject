@@ -79,5 +79,13 @@ public class ClientSend : MonoBehaviour
             SendUDPData(_packet);
         }
     }
+
+    public static void ResetGame()
+    {
+        using(Packet _packet = new Packet((int)ClientPackets.Reset))
+        {
+            SendTCPData(_packet);
+        }
+    }
     #endregion
 }

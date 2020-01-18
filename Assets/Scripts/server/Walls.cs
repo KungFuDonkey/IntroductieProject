@@ -8,6 +8,7 @@ public class Walls
     protected static float wallsWait, WALLSWAIT = 30, wallsMove = 30, mapSize = 600, startTimer = 5;
     public static Vector3 circlePosition;
     public static Vector3[] distances = new Vector3[4];
+    public static Vector3[] startingPos;
     static bool started = false, waiting = false;
     static bool[] wallMoving = new bool[4];
     static int smaller;
@@ -80,5 +81,9 @@ public class Walls
         distances[2] = circlePosition - walls[2].position + new Vector3(0, 0, -half);
         distances[3] = circlePosition - walls[3].position + new Vector3(0, 0, half);
         Debug.Log(circlePosition.ToString());
+    }
+    public static void Reset()
+    {
+
     }
 }
