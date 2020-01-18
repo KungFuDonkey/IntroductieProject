@@ -52,14 +52,14 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
-        GameManager.instance.freezeInput = true;
+        //GameManager.instance.freezeInput = true;
         if(screen == 0)
         {
             playerHUD.Deathscreen.SetActive(true);
         }
         else
         {
-            playerHUD.Winscreen.SetActive(true);
+            //playerHUD.Winscreen.SetActive(true);
         }
     }
 }

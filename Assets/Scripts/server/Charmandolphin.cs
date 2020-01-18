@@ -11,7 +11,7 @@ public class Charmandolphin : Player
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
         Effect defaultEffect = new Effect();
-        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 10f, 20f);
+        defaultEffect.SetValues(45f, 22f, 100f, 2f, 5f, 2f, 10f, 20f);
         status.defaultStatus = defaultEffect;
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
@@ -64,7 +64,7 @@ public class Charmandolphin : Player
     {
         status.fireTimer = status.FIRETIMER;
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
+        ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
         Debug.Log("shooting");
         status.animationValues[2] = true;
 
@@ -74,7 +74,7 @@ public class Charmandolphin : Player
     {
         status.qTimer = status.QTIMER;
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 5, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
+        ServerSend.Projectile(this, 5, new AquaPulse((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
         Debug.Log("shooting");
         status.animationValues[2] = true;
 
@@ -84,7 +84,7 @@ public class Charmandolphin : Player
     {
         status.eTimer = status.ETIMER;
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 6, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection, id));
+        ServerSend.Projectile(this, 6, new Wave((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
         Debug.Log("shooting");
         status.animationValues[2] = true;
     }

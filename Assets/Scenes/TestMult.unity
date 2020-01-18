@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -246,7 +246,6 @@ MonoBehaviour:
   selectedCharacter: 1
   startCounter: 0
   timer: 10
-  mainCamera: {fileID: 1441960860}
   startMenu: {fileID: 1546412373}
   lobby: {fileID: 1484838421}
   characterSelection: {fileID: 1870793833}
@@ -1687,9 +1686,9 @@ MonoBehaviour:
   - {fileID: 4517102322477787491, guid: b3ab243db76e1e44891d226f55b9c427, type: 3}
   - {fileID: 5720280929937296556, guid: 84379495697b2b34696b6e10a152fed8, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 883455592496434515, guid: b7d4f8ce74582bd469bf67c6eb4c338c, type: 3}
+  - {fileID: 883455592496434515, guid: b7d4f8ce74582bd469bf67c6eb4c338c, type: 3}
+  - {fileID: 883455592496434515, guid: b7d4f8ce74582bd469bf67c6eb4c338c, type: 3}
   - {fileID: 0}
   WaterProjectile: {fileID: 0}
   walls:
@@ -2691,7 +2690,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9998759}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2813,7 +2812,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1308078267}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9998759
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2931,12 +2930,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386115385}
   m_CullTransparentMesh: 0
---- !u!1 &1441960860 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 580845647483053353, guid: 82ecbcd6f09ec7a4ca7a7ec0feeffcfb,
-    type: 3}
-  m_PrefabInstance: {fileID: 580845646055847605}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1484838421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3768,7 +3761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1870793834
 MonoBehaviour:
   m_ObjectHideFlags: 0

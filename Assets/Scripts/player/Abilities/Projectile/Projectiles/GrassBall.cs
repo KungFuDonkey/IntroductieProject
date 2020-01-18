@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AquaPulse : Projectile
+public class GrassBall : Projectile
 {
     protected bool destroyed = false;
     Vector3 spawnPosition;
 
-    public AquaPulse(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
+    public GrassBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;
         position = _spawnPosition;
@@ -15,8 +15,8 @@ public class AquaPulse : Projectile
         startDirection = _startDirection;
         spawnPosition = _spawnPosition;
         owner = _owner;
-        damage = 15;
-        type = Type.water;
+        damage = 8;
+        type = Type.grass;
     }
     public override void UpdateProjectile()
     {

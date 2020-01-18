@@ -154,7 +154,7 @@ public class Server
         for (int i = 0; i < 4; i++)
         {
             Walls.walls[i] = GameManager.instance.walls[i].transform;
-            Walls.startingPos[i] = Walls.walls[i].position;
+            //Walls.startingPos[i] = Walls.walls[i].position;
         }
     }
 

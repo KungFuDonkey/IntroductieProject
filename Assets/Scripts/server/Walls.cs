@@ -11,7 +11,7 @@ public class Walls
     static bool waiting = false;
     static bool[] wallMoving = new bool[4];
     static int smaller;
-    public static Vector3[] startingPos = new Vector3[4];
+    //public static Vector3[] startingPos = new Vector3[4];
 
     public static void UpdateWalls()
     {
