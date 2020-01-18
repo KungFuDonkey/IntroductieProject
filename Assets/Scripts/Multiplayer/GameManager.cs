@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] playerObject;
     public GameObject WaterProjectile;
     public GameObject[] walls;
-
+    public bool freezeInput = false;
     
     private void Awake()
     {
@@ -98,6 +98,16 @@ public class GameManager : MonoBehaviour
     {
         players[_id].invisible = invis;
         Debug.Log("Gamemanager Invis");
+    }
+
+    public void ResetGame()
+    {
+        for(int i = 1; i < players.Count+1; i++)
+        {
+            Debug.Log($"Destroying: {players[i].gameObject.name}");
+            Destroy(players[i].gameObject);
+            players.Remove(i);
+        }
     }
 
     public void evolve()

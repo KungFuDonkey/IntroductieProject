@@ -102,4 +102,9 @@ public class HUD : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
 
+    public void ResetGame()
+    {
+        ClientSend.ResetGame();
+    }
+
 }

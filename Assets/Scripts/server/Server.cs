@@ -137,7 +137,8 @@ public class Server
             { (int)ClientPackets.mousePosition, ServerHandle.MousePosition},
             { (int)ClientPackets.ChoosePlayer, ServerHandle.ChoosePlayer},
             { (int)ClientPackets.ready, ServerHandle.changeReady},
-            { (int)ClientPackets.AddEffects, ServerHandle.AddEffects}
+            { (int)ClientPackets.AddEffects, ServerHandle.AddEffects},
+            { (int)ClientPackets.Reset, ServerHandle.Reset }
         };
 
         for (int i = 0; i <= MaxPlayers; i++)
@@ -150,10 +151,10 @@ public class Server
         }
         Debug.Log("Initialized packets.");
         ServerStart.instance.DebugServer("Initialized packets.");
-
         for (int i = 0; i < 4; i++)
         {
             Walls.walls[i] = GameManager.instance.walls[i].transform;
+            Walls.startingPos[i] = Walls.walls[i].position;
         }
     }
 

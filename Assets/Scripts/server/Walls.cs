@@ -81,4 +81,8 @@ public class Walls
         distances[3] = circlePosition - walls[3].position + new Vector3(0, 0, half);
         Debug.Log(circlePosition.ToString());
     }
+    public static void Reset()
+    {
+
+    }
 }

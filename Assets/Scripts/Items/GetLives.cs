@@ -106,7 +106,6 @@ public class GetLives : MonoBehaviour
         {
             Bandana.SetActive(false);
             BandanaTrigger.SetActive(false);
-            //Player.instance.speedboost *= 3;
 
             EquipmentInventory.instance.Add(item);
             VisualShield.instance.currentShield += 20;
