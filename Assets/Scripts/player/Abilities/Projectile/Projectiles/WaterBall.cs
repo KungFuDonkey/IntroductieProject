@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class WaterBall : Projectile
 {
-    protected bool destroyed = false;
-    Vector3 spawnPosition;
-
     public WaterBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;

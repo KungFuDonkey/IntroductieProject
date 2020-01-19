@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int moveIndex, int owner)
     {
+        Debug.Log(_position);
         GameObject _projectile;
         //todo : different projectiles
         _projectile = Instantiate(playerObject[moveIndex], _position, _rotation);

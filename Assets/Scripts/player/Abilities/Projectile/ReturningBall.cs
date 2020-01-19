@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ReturningBall : Projectile
 {
-    protected bool destroyed = false, returning = false;
-    Vector3 spawnPosition;
+    protected bool returning = false;
 
     public ReturningBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
@@ -17,6 +16,7 @@ public class ReturningBall : Projectile
         owner = _owner;
         damage = 8;
         type = Type.water;
+        speed = 60;
     }
     public override void UpdateProjectile()
     {

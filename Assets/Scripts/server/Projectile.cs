@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Projectile
 {
-    public int id;
-    public Vector3 position;
-    public Vector3 startDirection;
+    public int id, owner;
+    public Vector3 position, startDirection, spawnPosition;
     public Quaternion rotation;
     public Type type;
-    protected float speed = 50;
-    protected float maxDistance = 150;
+    protected float speed = 50, maxDistance = 150;
     public float damage;
-    public int owner;
+    protected bool destroyed = false;
     public virtual void UpdateProjectile()
     {
         ServerSend.ProjectileMove(this);

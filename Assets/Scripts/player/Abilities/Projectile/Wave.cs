@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Wave : Projectile
 {
-    protected bool destroyed = false;
-    Vector3 spawnPosition;
-
     public Wave(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;
@@ -17,7 +14,7 @@ public class Wave : Projectile
         owner = _owner;
         damage = 20;
         type = Type.water;
-        //speed = 20;
+        speed = 20;
     }
     public override void UpdateProjectile()
     {

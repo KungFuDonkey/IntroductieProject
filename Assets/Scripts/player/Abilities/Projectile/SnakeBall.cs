@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class SnakeBall : Projectile
 {
-    protected bool destroyed = false, returning = false;
-    Vector3 spawnPosition;
-    float snakeTimer;
+    protected bool returning = false;
+    float snakeTimer, sin;
 
     public SnakeBall(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
@@ -30,12 +29,16 @@ public class SnakeBall : Projectile
         if (!destroyed)
         {
             position += (rotation * Vector3.forward * speed + startDirection) * Time.deltaTime;
-            snakeTimer += (Time.deltaTime / 2);
-            if (snakeTimer > 0)
+            snakeTimer += Time.deltaTime;
+            if (snakeTimer < 0.25)
             {
-                float sin = Mathf.Sin(snakeTimer * 360) * 15;
-                position += (rotation * Vector3.right * sin + startDirection) * Time.deltaTime;
+                sin = Mathf.Sin(snakeTimer * 360) * 10;
             }
+            else
+            {
+                sin = Mathf.Sin(snakeTimer * 360) * 20;
+            }
+            position += (rotation * Vector3.right * sin + startDirection) * Time.deltaTime;
         }
         base.UpdateProjectile();
     }
