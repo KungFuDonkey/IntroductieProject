@@ -98,12 +98,6 @@ public class ClientHandle : MonoBehaviour
         GameManager.projectiles.Remove(_id);
     }
 
-    public static void Damage(Packet _packet)
-    {
-        float damage = _packet.ReadFloat();
-        int type = _packet.ReadInt();
-        Debug.Log(damage);
-    }
 
     public static void SetInvis(Packet _packet)
     {
@@ -154,13 +148,21 @@ public class ClientHandle : MonoBehaviour
         Debug.Log(alive);
         GameManager.players[Client.instance.myId].UpdatePlayerCount(alive);
     }
-    public static void RecieveWinScreen(Packet _packet)
+    public static void ReceiveWinScreen(Packet _packet)
     {
         GameManager.players[Client.instance.myId].Screen(1);
     }
-    public static void RecieveDeathScreen(Packet _packet)
+    public static void ReceiveDeathScreen(Packet _packet)
     {
-        GameManager.players[Client.instance.myId].Screen(0);
+        int id = _packet.ReadInt();
+        if (id == Client.instance.myId)
+        {
+            GameManager.players[Client.instance.myId].Screen(0);
+        }
+        else
+        {
+            GameManager.players[id].Die();
+        }
     }
     public static void Reset(Packet _packet)
     {

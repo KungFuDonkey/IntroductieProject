@@ -269,8 +269,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.UpdateHUD, ClientHandle.UpdateHUD},
             { (int)ServerPackets.SetInvis, ClientHandle.SetInvis },
             { (int)ServerPackets.UpdatePlayerCount, ClientHandle.UpdatePlayerCount },
-            { (int)ServerPackets.Win, ClientHandle.RecieveWinScreen },
-            { (int)ServerPackets.Death, ClientHandle.RecieveDeathScreen },
+            { (int)ServerPackets.Win, ClientHandle.ReceiveWinScreen },
+            { (int)ServerPackets.Death, ClientHandle.ReceiveDeathScreen },
             { (int)ServerPackets.Reset, ClientHandle.Reset},
             { (int)ServerPackets.Evolve, ClientHandle.Evolve}
         };

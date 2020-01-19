@@ -633,7 +633,6 @@ MonoBehaviour:
   username: 
   selectedCharacter: 0
   lastPacketTime: 0
-  head: {fileID: 0}
   playerAnimator: {fileID: 4328009629818369733}
   playerHUD: {fileID: 3012691550940244032}
   invisible: 0
@@ -1243,7 +1242,6 @@ Transform:
   - {fileID: 2478874717066855401}
   - {fileID: 5588338994811597833}
   - {fileID: 8660998398662002032}
-  - {fileID: 1622374622053186488}
   m_Father: {fileID: 2011252041308526513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1311,6 +1309,7 @@ Transform:
   - {fileID: 8545575450972282246}
   - {fileID: 7014203791902975486}
   - {fileID: 3482228832161221736}
+  - {fileID: 1622374622053186488}
   m_Father: {fileID: 1703383529694044681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1400,13 +1399,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4862693044327066214}
-  m_LocalRotation: {x: 0.9654544, y: -0, z: -0, w: -0.2605723}
-  m_LocalPosition: {x: -0.33868408, y: 0.4019514, z: 9.798645}
-  m_LocalScale: {x: 87.076454, y: 87.0765, z: 87.0765}
+  m_LocalRotation: {x: 0.9654544, y: -0, z: -0, w: -0.26057222}
+  m_LocalPosition: {x: 0.00010528564, y: 0.01568839, z: 0.014663441}
+  m_LocalScale: {x: 17.41529, y: 17.415302, z: 17.415302}
   m_Children:
   - {fileID: 2732073154442446875}
-  m_Father: {fileID: 2235650289270778107}
-  m_RootOrder: 5
+  m_Father: {fileID: 1817791980399938408}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 210.20801, y: 0, z: 0}
 --- !u!33 &2160713575317655503
 MeshFilter:
@@ -2570,6 +2569,11 @@ PrefabInstance:
     - target: {fileID: 1097856588585134652, guid: 452643bdf55bbc44bbf3917d2d76be61,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809061581174215902, guid: 452643bdf55bbc44bbf3917d2d76be61,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2074519958615775621, guid: 452643bdf55bbc44bbf3917d2d76be61,

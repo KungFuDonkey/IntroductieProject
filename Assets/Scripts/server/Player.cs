@@ -62,10 +62,6 @@ public abstract class Player
             ServerSend.UpdatePlayerCount();
             return;
         }
-        else if (!status.alive)
-        {
-            return;
-        }
         Move(status.inputDirection);
         ServerSend.SetInvis(id, status.invisible);
 

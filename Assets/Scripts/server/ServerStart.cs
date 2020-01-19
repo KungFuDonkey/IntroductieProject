@@ -45,6 +45,10 @@ public class ServerStart : MonoBehaviour
                 if (_client.player != null)
                 {
                     _client.player.UpdatePlayer();
+                    if (!_client.player.status.alive)
+                    {
+                        _client.player = null;
+                    }
                 }
             }
             foreach (Projectile _projectile in Server.projectiles.Values)

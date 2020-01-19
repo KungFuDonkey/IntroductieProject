@@ -159,15 +159,6 @@ public class ServerSend
         }
     }
 
-    public static void Damage(int _playerID, float _damage, int _type)
-    {
-        using (Packet _packet = new Packet((int)ServerPackets.Damage))
-        {
-            _packet.Write(_damage);
-            _packet.Write(_type);
-            SendTCPData(_playerID, _packet);
-        }
-    }
 
     public static void LoadMenu(int menuNumber)
     {
@@ -198,6 +189,7 @@ public class ServerSend
         if(menuNumber == 2)
         {
             UpdatePlayerCount();
+            UIManager.instance.LoadMenu(2);
         }
     }
 
@@ -305,7 +297,10 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.Win))
         {
-            foreach(ServerClient client in Server.clients.Values)
+            GameManager.players[Client.instance.myId].playerHUD.Resetscreen.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            foreach (ServerClient client in Server.clients.Values)
             {
                 if (client.player.status.alive)
                 {
@@ -313,14 +308,18 @@ public class ServerSend
                     return;
                 }
             }
+
         }
     }
 
+ 
     public static void SendDeathScreen(Player player)
     {
         using(Packet _packet = new Packet((int)ServerPackets.Death))
         {
-            SendTCPData(player.id, _packet);
+            _packet.Write(player.id);
+            SendTCPDataToAll(_packet);
+
         }
             
     }

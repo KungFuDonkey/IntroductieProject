@@ -27,6 +27,7 @@ public enum ServerPackets
     Reset,
     SetInvis,
     Damage,
+    SendResetScreen,
     Evolve
 
 }

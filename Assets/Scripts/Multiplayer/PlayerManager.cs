@@ -27,7 +27,6 @@ public class PlayerManager : MonoBehaviour
         {
             playerAnimator.SetTrigger("Attack");
         }
-
     }
 
     public void Invisible()
@@ -52,14 +51,21 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
-        //GameManager.instance.freezeInput = true;
-        if(screen == 0)
+        GameManager.instance.freezeInput = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (screen == 0)
         {
+            Die();
             playerHUD.Deathscreen.SetActive(true);
         }
         else
         {
             //playerHUD.Winscreen.SetActive(true);
         }
+    }
+    public void Die()
+    {
+        playerAnimator.SetTrigger("Die");
     }
 }
