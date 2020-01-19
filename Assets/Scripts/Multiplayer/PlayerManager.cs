@@ -51,9 +51,9 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
-        GameManager.instance.freezeInput = true;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //GameManager.instance.freezeInput = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
         if (screen == 0)
         {
             Die();

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3640971728645271244}
-  - component: {fileID: 6488196608394809035}
+  - component: {fileID: 8887623927414488853}
   - component: {fileID: 3637931287273426385}
   - component: {fileID: -4999426058739489762}
   - component: {fileID: 307726898280577131}
@@ -35,8 +35,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6488196608394809035
-SphereCollider:
+--- !u!65 &8887623927414488853
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -46,8 +46,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.7666779, y: 2.2790718, z: 3.74905}
+  m_Center: {x: -0.03617382, y: 0.43408775, z: 0.04662454}
 --- !u!54 &3637931287273426385
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105,17 +105,17 @@ PrefabInstance:
     - target: {fileID: 8735255850442849983, guid: 84379495697b2b34696b6e10a152fed8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15966167
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8735255850442849983, guid: 84379495697b2b34696b6e10a152fed8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.011660695
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8735255850442849983, guid: 84379495697b2b34696b6e10a152fed8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.026909074
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8735255850442849983, guid: 84379495697b2b34696b6e10a152fed8,
         type: 3}
@@ -160,7 +160,17 @@ PrefabInstance:
     - target: {fileID: 8735255850442849983, guid: 84379495697b2b34696b6e10a152fed8,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735255850442849983, guid: 84379495697b2b34696b6e10a152fed8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735255850442849983, guid: 84379495697b2b34696b6e10a152fed8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84379495697b2b34696b6e10a152fed8, type: 3}

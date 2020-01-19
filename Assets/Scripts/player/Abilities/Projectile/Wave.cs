@@ -9,6 +9,7 @@ public class Wave : Projectile
         id = _id;
         position = _spawnPosition;
         rotation = _rotation;
+        rotation.eulerAngles += new Vector3(0, -90, 0);
         startDirection = _startDirection;
         spawnPosition = _spawnPosition;
         owner = _owner;
@@ -25,7 +26,7 @@ public class Wave : Projectile
         }
         if (!destroyed)
         {
-            position += (rotation * Vector3.forward * speed + startDirection) * Time.deltaTime;
+            position += (rotation * Vector3.right * speed + startDirection) * Time.deltaTime;
         }
         base.UpdateProjectile();
     }
