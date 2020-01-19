@@ -113,15 +113,11 @@ public class PlayerStatus
             inputDirection += avatar.right;
         }
 
+        inputDirection *= movementSpeed * Time.deltaTime * 60;
         if (inputs[5])
         {
-            inputDirection *= movementSpeed * runMultiplier * Time.deltaTime * 60;
+            inputDirection *= runMultiplier;
         }
-        else
-        {
-            inputDirection *= movementSpeed * Time.deltaTime * 60;
-        }
-
 
         isGrounded = Physics.CheckSphere(groundCheck.position, 2f, groundmask);
         if (isGrounded && ySpeed < 0)

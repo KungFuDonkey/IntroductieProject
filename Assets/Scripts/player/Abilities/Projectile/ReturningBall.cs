@@ -29,7 +29,6 @@ public class ReturningBall : Projectile
         {
             if (distance > maxDistance * 0.66 && !returning)
             {
-                Debug.Log("return");
                 returning = true;
             }
 
