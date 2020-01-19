@@ -96,7 +96,7 @@ public class ServerStart : MonoBehaviour
         for (int i = 0; i < 20; i++)
         {
             Vector3 pos = new Vector3(Random.Range(-300, 300), 1, Random.Range(-300, 300));
-            int item = Random.Range(0, 8);
+            int item = Random.Range(0, 7);
             GameManager.gameItems.Add(i, Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity));
             RaycastHit hit;
             if (Physics.Raycast(GameManager.gameItems[i].transform.position, -Vector3.up, out hit))

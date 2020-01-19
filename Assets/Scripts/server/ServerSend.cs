@@ -321,9 +321,7 @@ public class ServerSend
         {
             _packet.Write(player.id);
             SendTCPDataToAll(_packet);
-
         }
-            
     }
 
     public static void Reset()

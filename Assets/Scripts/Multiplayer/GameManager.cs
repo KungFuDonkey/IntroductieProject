@@ -109,6 +109,12 @@ public class GameManager : MonoBehaviour
             Destroy(players[i].gameObject);
             players.Remove(i);
         }
+        for(int i = 0; i < gameItems.Count; i++)
+        {
+            Debug.Log($"Destroying: {gameItems[i].gameObject.name}");
+            Destroy(gameItems[i].gameObject);
+            gameItems.Remove(i);
+        }
     }
 
     public void evolve()

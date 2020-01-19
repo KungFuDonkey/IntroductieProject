@@ -272,7 +272,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.Win, ClientHandle.ReceiveWinScreen },
             { (int)ServerPackets.Death, ClientHandle.ReceiveDeathScreen },
             { (int)ServerPackets.Reset, ClientHandle.Reset},
-            { (int)ServerPackets.Evolve, ClientHandle.Evolve}
+            { (int)ServerPackets.Evolve, ClientHandle.Evolve},
+            { (int)ServerPackets.SpawnItem, ClientHandle.spawnItem }
         };
         Debug.Log("Initialized packets.");
     }
