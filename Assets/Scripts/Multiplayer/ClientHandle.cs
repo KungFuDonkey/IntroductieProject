@@ -67,8 +67,6 @@ public class ClientHandle : MonoBehaviour
     public static void Projectile(Packet _packet)
     {
         int _id = _packet.ReadInt();
-        int something = _packet.ReadInt();
-        Debug.Log(something);
         Vector3 _position = _packet.ReadVector3();
         int owner = _packet.ReadInt();
         Quaternion _rotation = _packet.ReadQuaternion();

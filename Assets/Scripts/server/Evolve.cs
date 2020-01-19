@@ -10,7 +10,7 @@ public class Evolve
     bool started = false, ended = false;
     float evolveTime = 4f, interPolation;
     PlayerStatus status;
-    String evo, character;
+    string evo, character;
 
     /*
     public void UpdateEvolve()

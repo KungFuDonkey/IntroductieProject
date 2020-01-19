@@ -490,8 +490,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4744990210481192868}
+  - component: {fileID: 3604718023209373649}
   - component: {fileID: 4328009629818369733}
-  - component: {fileID: 3451904487096225982}
   m_Layer: 11
   m_Name: McQuirtle
   m_TagString: Avatar
@@ -515,6 +515,27 @@ Transform:
   m_Father: {fileID: 4480167247736476074}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3604718023209373649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107373906631295526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4c34e6d4b9c6e4d97f004b32ece368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8194556593517771623}
+  sensitivity: 100
+  clampAngle: 85
+  verticalRotation: 0
+  playerbody: {fileID: 4480167247736476074}
+  Head: {fileID: 7165855197232016856}
+  avatarcamera: {fileID: 1415527100695386992}
+  projectileSpawner: {fileID: 2560777225738415249}
+  avatar: {fileID: 2371499428266203527}
 --- !u!95 &4328009629818369733
 Animator:
   serializedVersion: 3
@@ -534,19 +555,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3451904487096225982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107373906631295526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba0819b11b34d2459f43ff4cb72ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 4328009629818369733}
 --- !u!1 &2189596152404652067
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,10 +597,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4480167247736476074}
-  - component: {fileID: 8194556593517771623}
-  - component: {fileID: 1019901836288025190}
   - component: {fileID: 1197715375346415649}
+  - component: {fileID: 8194556593517771623}
   - component: {fileID: 7534946313039059886}
+  - component: {fileID: 5331854903529907767}
   m_Layer: 0
   m_Name: McQuirtleAvatar
   m_TagString: Avatar
@@ -616,6 +624,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &1197715375346415649
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371499428266203527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.6
+  m_Radius: 0.8
+  m_SlopeLimit: 45
+  m_StepOffset: 0.7
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0.3}
 --- !u!114 &8194556593517771623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,45 +662,6 @@ MonoBehaviour:
   playerAnimator: {fileID: 4328009629818369733}
   playerHUD: {fileID: 3012691550940244032}
   invisible: 0
---- !u!114 &1019901836288025190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371499428266203527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f4c34e6d4b9c6e4d97f004b32ece368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 8194556593517771623}
-  sensitivity: 100
-  clampAngle: 85
-  verticalRotation: 0
-  playerbody: {fileID: 4480167247736476074}
-  Head: {fileID: 7165855197232016856}
-  avatarcamera: {fileID: 1415527100695386992}
-  projectileSpawner: {fileID: 2560777225738415249}
-  avatar: {fileID: 2371499428266203527}
---- !u!143 &1197715375346415649
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371499428266203527}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2.6
-  m_Radius: 0.8
-  m_SlopeLimit: 45
-  m_StepOffset: 0.7
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0.3}
 --- !u!114 &7534946313039059886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,6 +676,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawner: {fileID: 2560777225738415249}
   Head: {fileID: 7165855197232016856}
+--- !u!114 &5331854903529907767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371499428266203527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba0819b11b34d2459f43ff4cb72ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 4328009629818369733}
 --- !u!1 &2836805677688220514
 GameObject:
   m_ObjectHideFlags: 0

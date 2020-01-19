@@ -931,8 +931,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3630679230349592520}
+  - component: {fileID: 3439890226976961808}
   - component: {fileID: 6544508294180536305}
-  - component: {fileID: 6465048772004040621}
   m_Layer: 11
   m_Name: Vulcasaur
   m_TagString: Avatar
@@ -957,6 +957,27 @@ Transform:
   m_Father: {fileID: 4478984211883878458}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3439890226976961808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178852972991044904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3772400194338960272}
+  sensitivity: 100
+  clampAngle: 85
+  verticalRotation: 0
+  playerbody: {fileID: 4478984211883878458}
+  Head: {fileID: 928170931994395084}
+  avatarcamera: {fileID: 7512653112228467478}
+  projectileSpawner: {fileID: 2531266276405304119}
+  avatar: {fileID: 3323276637181814587}
 --- !u!95 &6544508294180536305
 Animator:
   serializedVersion: 3
@@ -976,19 +997,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6465048772004040621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178852972991044904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba0819b11b34d2459f43ff4cb72ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 6544508294180536305}
 --- !u!1 &3188010945302266173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,10 +1100,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4478984211883878458}
-  - component: {fileID: 1290718478177067670}
   - component: {fileID: 8711004377289849737}
   - component: {fileID: 3772400194338960272}
   - component: {fileID: -8042446308503898690}
+  - component: {fileID: 4471940557974132543}
   m_Layer: 0
   m_Name: VulcasaurAvatar
   m_TagString: Avatar
@@ -1119,27 +1127,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1290718478177067670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3323276637181814587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f61e7ce9d41d44da1b43cc43b72774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3772400194338960272}
-  sensitivity: 100
-  clampAngle: 85
-  verticalRotation: 0
-  playerbody: {fileID: 4478984211883878458}
-  Head: {fileID: 928170931994395084}
-  avatarcamera: {fileID: 7512653112228467478}
-  projectileSpawner: {fileID: 2531266276405304119}
-  avatar: {fileID: 3323276637181814587}
 --- !u!143 &8711004377289849737
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1192,6 +1179,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawner: {fileID: 2531266276405304119}
   Head: {fileID: 928170931994395084}
+--- !u!114 &4471940557974132543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323276637181814587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba0819b11b34d2459f43ff4cb72ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 6544508294180536305}
 --- !u!1 &3352191594160721073
 GameObject:
   m_ObjectHideFlags: 0

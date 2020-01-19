@@ -681,8 +681,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1128923936724814145}
+  - component: {fileID: 1543229728361712644}
   - component: {fileID: 6668910900259913925}
-  - component: {fileID: 6864814907167230075}
   m_Layer: 11
   m_Name: Charmandolphin
   m_TagString: Avatar
@@ -707,6 +707,27 @@ Transform:
   m_Father: {fileID: 1702386895201921736}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543229728361712644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291684216144090217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85c96a0d2295594998a87944bf234af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6915441576916980476}
+  sensitivity: 100
+  clampAngle: 85
+  verticalRotation: 0
+  playerbody: {fileID: 1702386895201921736}
+  Head: {fileID: 5164993996653377781}
+  avatarcamera: {fileID: 5855834769566638795}
+  projectileSpawner: {fileID: 1649462414279201258}
+  avatar: {fileID: 6424692634623431867}
 --- !u!95 &6668910900259913925
 Animator:
   serializedVersion: 3
@@ -726,19 +747,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6864814907167230075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2291684216144090217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba0819b11b34d2459f43ff4cb72ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 6668910900259913925}
 --- !u!1 &2379973864674612475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,10 +1780,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1702386895201921736}
-  - component: {fileID: 2794935838943076817}
-  - component: {fileID: 3684201068923077309}
+  - component: {fileID: 5093293535806056521}
   - component: {fileID: 6915441576916980476}
   - component: {fileID: 5818656512481178635}
+  - component: {fileID: 2429079192261157943}
   m_Layer: 0
   m_Name: CharmandolphinAvatar
   m_TagString: Avatar
@@ -1799,28 +1807,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2794935838943076817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6424692634623431867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85c96a0d2295594998a87944bf234af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 6915441576916980476}
-  sensitivity: 100
-  clampAngle: 85
-  verticalRotation: 0
-  playerbody: {fileID: 1702386895201921736}
-  Head: {fileID: 5164993996653377781}
-  avatarcamera: {fileID: 5855834769566638795}
-  projectileSpawner: {fileID: 1649462414279201258}
-  avatar: {fileID: 6424692634623431867}
---- !u!143 &3684201068923077309
+--- !u!143 &5093293535806056521
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1872,6 +1859,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawner: {fileID: 1649462414279201258}
   Head: {fileID: 5164993996653377781}
+--- !u!114 &2429079192261157943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424692634623431867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba0819b11b34d2459f43ff4cb72ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 6668910900259913925}
 --- !u!1 &6542100540776073630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,6 +3131,11 @@ PrefabInstance:
     - target: {fileID: 1097856588585134652, guid: 452643bdf55bbc44bbf3917d2d76be61,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809061581174215902, guid: 452643bdf55bbc44bbf3917d2d76be61,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2074519958615775621, guid: 452643bdf55bbc44bbf3917d2d76be61,
