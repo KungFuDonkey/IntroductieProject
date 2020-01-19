@@ -140,7 +140,6 @@ public class Server
             { (int)ClientPackets.AddEffects, ServerHandle.AddEffects},
             { (int)ClientPackets.Reset, ServerHandle.Reset }
         };
-
         for (int i = 0; i <= MaxPlayers; i++)
         {
             for(int j = 0; j <= MaxPlayers; j++)
@@ -154,9 +153,7 @@ public class Server
         for (int i = 0; i < 4; i++)
         {
             Walls.walls[i] = GameManager.instance.walls[i].transform;
-            //Walls.startingPos[i] = Walls.walls[i].position;
+            Walls.startingPos[i] = Walls.walls[i].position;
         }
     }
-
-
 }
