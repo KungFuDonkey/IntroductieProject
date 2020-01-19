@@ -6,10 +6,11 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static uint projectileNumber = 0;
+    public static int projectileNumber = 0;
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
-
+    public GameObject[] Items = new GameObject[7];
+    public static Dictionary<int, GameObject> gameItems = new Dictionary<int, GameObject>();
     public LayerMask groundMask;
     public GameObject Charmandolphin;
     public GameObject McQuirtle;

@@ -180,7 +180,9 @@ public class ServerSend
                         client.SendIntoGame();
                     }
                 }
+                Debug.Log("starting");
                 ServerStart.started = true;
+                ServerStart.SpawnItem();
             }
             Server.joinable = false;
             _packet.Write(menuNumber);
@@ -337,6 +339,16 @@ public class ServerSend
         using(Packet _packet = new Packet((int)ServerPackets.Evolve))
         {
             _packet.Write(player.id);
+            SendTCPDataToAll(Client.instance.myId, _packet);
+        }
+    }
+
+    public static void SpawnItem(int item, Vector3 position)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.SpawnItem))
+        {
+            _packet.Write(item);
+            _packet.Write(position);
             SendTCPDataToAll(Client.instance.myId, _packet);
         }
     }
