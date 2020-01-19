@@ -73,7 +73,7 @@ public class Charmandolphin : Player
     public void qAttack()
     {
         status.qTimer = status.QTIMER;
-        Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y, -verticalRotation);
+        Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, -verticalRotation);
         ServerSend.Projectile(this, 5, new AquaPulse((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
         Debug.Log("shooting");
         status.animationValues[2] = true;
@@ -83,7 +83,7 @@ public class Charmandolphin : Player
     public void eAttack()
     {
         status.eTimer = status.ETIMER;
-        Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+        Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 6, new Wave((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
         Debug.Log("shooting");
         status.animationValues[2] = true;

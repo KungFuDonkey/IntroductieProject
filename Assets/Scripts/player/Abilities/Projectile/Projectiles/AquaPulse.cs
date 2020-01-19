@@ -9,7 +9,6 @@ public class AquaPulse : Projectile
         id = _id;
         position = _spawnPosition;
         rotation = _rotation;
-        rotation.eulerAngles += new Vector3(0, -90, 0);
         startDirection = _startDirection;
         spawnPosition = _spawnPosition;
         owner = _owner;

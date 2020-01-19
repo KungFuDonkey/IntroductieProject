@@ -80,7 +80,7 @@ public class Walls
         distances[1] = circlePosition - walls[1].position + new Vector3(-half, 0, 0);
         distances[2] = circlePosition - walls[2].position + new Vector3(0, 0, -half);
         distances[3] = circlePosition - walls[3].position + new Vector3(0, 0, half);
-        Debug.Log(circlePosition.ToString());
+        Debug.Log("New middle = " + circlePosition.ToString());
     }
     public static void Reset()
     {
