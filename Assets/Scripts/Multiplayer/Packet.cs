@@ -28,7 +28,8 @@ public enum ServerPackets
     SetInvis,
     Damage,
     SendResetScreen,
-    Evolve
+    Evolve,
+    SpawnItem
 
 }
 

@@ -178,4 +178,10 @@ public class ClientHandle : MonoBehaviour
         bool evo = _packet.ReadBool();
         bool charac = _packet.ReadBool();
     }
+    public static void spawnItem(Packet _packet)
+    {
+        int item = _packet.ReadInt();
+        Vector3 pos = _packet.ReadVector3();
+        Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity);
+    }
 }
