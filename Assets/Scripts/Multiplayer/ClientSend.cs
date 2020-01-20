@@ -94,7 +94,6 @@ public class ClientSend : MonoBehaviour
         {
             _packet.Write(id);
             _packet.Write(itemNumber);
-            Debug.Log("picking up item");
             SendTCPData(_packet);
         }
     }

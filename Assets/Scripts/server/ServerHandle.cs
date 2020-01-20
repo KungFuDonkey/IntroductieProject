@@ -72,7 +72,6 @@ public class ServerHandle
     }
     public static void pickupItem(int _fromClient, Packet _packet)
     {
-        Debug.Log("pickup recieved");
         int id = _packet.ReadInt();
         int itemNumber = _packet.ReadInt();
         if (GameManager.instance.gameItems[id] != null)

@@ -361,7 +361,6 @@ public class ServerSend
     {
         using(Packet _packet = new Packet((int)ServerPackets.RemoveItem))
         {
-            Debug.Log("send removing");
             _packet.Write(id);
             SendTCPDataToAll(_packet);
         }

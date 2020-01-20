@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
 {
-    static System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -38,8 +37,6 @@ public class ClientHandle : MonoBehaviour
         if(time > GameManager.instance.players[_id].lastPacketTime)
         {
             GameManager.instance.players[_id].lastPacketTime = time;
-            PingReply reply = ping.Send(Client.instance.ip, 1000);
-            Debug.Log(reply.RoundtripTime.ToString());
             GameManager.instance.players[_id].transform.position = _position;
         }
     }
@@ -102,8 +99,6 @@ public class ClientHandle : MonoBehaviour
         int _id = _packet.ReadInt();
         bool _invis = _packet.ReadBool();
         GameManager.instance.players[Client.instance.myId].Invisible();
-        Debug.Log("ClientHandle invis");
-
     }
 
     public static void LoadMenu(Packet _packet)
@@ -210,9 +205,12 @@ public class ClientHandle : MonoBehaviour
     public static void RemoveItem(Packet _packet)
     {
         int id = _packet.ReadInt();
-        Debug.Log(id);
-        Debug.Log($"removing: {GameManager.instance.gameItems[id].name}");
         Destroy(GameManager.instance.gameItems[id]);
         GameManager.instance.gameItems[id] = null;
     }
+    /*
+      
+                  PingReply reply = ping.Send(Client.instance.ip, 1000);
+            Debug.Log(reply.RoundtripTime.ToString());
+    */
 }
