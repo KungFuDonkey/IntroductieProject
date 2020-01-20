@@ -10,8 +10,7 @@ public class Charmandolphin : Player
         username = _username;
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
-        Effect defaultEffect = new Effect();
-        defaultEffect.SetValues(45f, 22f, 100f, 2f, 5f, 2f, 10f, 20f);
+        Effect defaultEffect = Effect.Charmandolphin;
         status.defaultStatus = defaultEffect;
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
