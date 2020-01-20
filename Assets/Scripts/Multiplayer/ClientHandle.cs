@@ -184,6 +184,35 @@ public class ClientHandle : MonoBehaviour
         int item = _packet.ReadInt();
         Vector3 pos = _packet.ReadVector3();
         GameObject prop = Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity);
+        gameItem thisItem = prop.GetComponentInChildren<gameItem>();
+        thisItem.id = key;
         GameManager.instance.gameItems[key] = prop;
+    }
+    public static void Item(Packet _packet)
+    {
+        int id = _packet.ReadInt();
+        int itemNumber = _packet.ReadInt();
+        gameItem item = GameManager.instance.gameItems[id].GetComponentInChildren<gameItem>();
+        if (itemNumber < 6)
+        {
+            inventory.instance.Add(item.item);
+        }
+        else
+        {
+            EquipmentInventory.instance.Add(item.item);
+            VisualShield.instance.currentShield += 20;
+            if (VisualShield.instance.currentShield >= 100)
+            {
+                VisualShield.instance.currentShield = 100;
+            }
+        }
+    }
+    public static void RemoveItem(Packet _packet)
+    {
+        int id = _packet.ReadInt();
+        Debug.Log(id);
+        Debug.Log($"removing: {GameManager.instance.gameItems[id].name}");
+        Destroy(GameManager.instance.gameItems[id]);
+        GameManager.instance.gameItems[id] = null;
     }
 }

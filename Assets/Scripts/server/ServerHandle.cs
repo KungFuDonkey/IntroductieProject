@@ -70,6 +70,25 @@ public class ServerHandle
             Server.clients[_fromClient].player.status.effects.Add(new SpeedBoost(10, 3f, 1));
         }
     }
+    public static void pickupItem(int _fromClient, Packet _packet)
+    {
+        Debug.Log("pickup recieved");
+        int id = _packet.ReadInt();
+        int itemNumber = _packet.ReadInt();
+        if (GameManager.instance.gameItems[id] != null)
+        {
+            gameItem item = GameManager.instance.gameItems[id].GetComponentInChildren<gameItem>();
+            if (item.pickup)
+            {
+                item.pickup = false;
+                ServerSend.Item(id, itemNumber, _fromClient);
+            }
+        }
+        else
+        {
+            ServerSend.RemoveItem(id);
+        }
+    }
 
     public static void Reset(int _fromClient, Packet _packet)
     {

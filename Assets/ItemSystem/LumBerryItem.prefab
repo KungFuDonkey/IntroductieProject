@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8251311242592409166}
   - component: {fileID: 5612648612950357855}
   - component: {fileID: 1445658546378620990}
-  - component: {fileID: 7109594828954595724}
   m_Layer: 0
   m_Name: LumBerryItem
   m_TagString: Untagged
@@ -81,20 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &7109594828954595724
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762688819856259681}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7281343643065610693
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +171,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.025
+  m_Radius: 0.2
   m_Height: 0.2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -202,29 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8701fb5193c774346903ae236e4ec2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  itemNumber: 2
+  pickup: 1
   item: {fileID: 11400000, guid: f5fe337a73fd2f34299e28e668c29ab5, type: 2}
-  gear: {fileID: 0}
-  candyItem: {fileID: 0}
-  candyTrigger: {fileID: 0}
-  candy: 0
-  pokeballItem: {fileID: 0}
-  pokeballTrigger: {fileID: 0}
-  pokebal: 0
-  pechaBerryItem: {fileID: 0}
-  pechaBerryTrigger: {fileID: 0}
-  pechaBerry: 0
-  oranBerryItem: {fileID: 0}
-  oranBerryTrigger: {fileID: 0}
-  oranBerry: 0
-  lumBerryItem: {fileID: 4762688819856259681}
-  lumBerryTrigger: {fileID: 7281343643065610693}
-  lumBerry: 1
-  Bandana: {fileID: 0}
-  BandanaTrigger: {fileID: 0}
-  bandana: 0
-  Bracelet: {fileID: 0}
-  BraceletTrigger: {fileID: 0}
-  bracelet: 0
-  Pin: {fileID: 0}
-  PinTrigger: {fileID: 0}
-  pin: 0

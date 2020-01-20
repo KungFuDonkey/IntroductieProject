@@ -98,6 +98,8 @@ public class ServerStart : MonoBehaviour
             Vector3 pos = new Vector3(Random.Range(-300, 300), 1, Random.Range(-300, 300));
             int item = Random.Range(0, 7);
             GameObject prop = Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity);
+            gameItem thisItem = prop.GetComponentInChildren<gameItem>();
+            thisItem.id = i;
             GameManager.instance.gameItems[i] = prop;
             Thread.Sleep(10);
             RaycastHit hit;

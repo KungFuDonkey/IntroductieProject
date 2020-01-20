@@ -250,7 +250,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6091465969870466707
 MonoBehaviour:
@@ -264,32 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8701fb5193c774346903ae236e4ec2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  itemNumber: 5
+  pickup: 1
   item: {fileID: 11400000, guid: cdfcaef8a55cb7241af40d25db8158b9, type: 2}
-  gear: {fileID: 0}
-  candyItem: {fileID: 0}
-  candyTrigger: {fileID: 0}
-  candy: 0
-  pokeballItem: {fileID: 9052146342450037669}
-  pokeballTrigger: {fileID: 3779261649839164547}
-  pokebal: 1
-  pechaBerryItem: {fileID: 0}
-  pechaBerryTrigger: {fileID: 0}
-  pechaBerry: 0
-  oranBerryItem: {fileID: 0}
-  oranBerryTrigger: {fileID: 0}
-  oranBerry: 0
-  lumBerryItem: {fileID: 0}
-  lumBerryTrigger: {fileID: 0}
-  lumBerry: 0
-  Bandana: {fileID: 0}
-  BandanaTrigger: {fileID: 0}
-  bandana: 0
-  Bracelet: {fileID: 0}
-  BraceletTrigger: {fileID: 0}
-  bracelet: 0
-  Pin: {fileID: 0}
-  PinTrigger: {fileID: 0}
-  pin: 0
 --- !u!1 &5588017536914945710
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +516,6 @@ GameObject:
   - component: {fileID: 48759720378363620}
   - component: {fileID: 8625616113319384332}
   - component: {fileID: 1870551419452141277}
-  - component: {fileID: 5512899706682191657}
   m_Layer: 0
   m_Name: Pokeball3
   m_TagString: Untagged
@@ -613,16 +590,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &5512899706682191657
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9052146342450037669}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

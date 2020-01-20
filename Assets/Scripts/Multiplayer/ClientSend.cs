@@ -87,5 +87,16 @@ public class ClientSend : MonoBehaviour
             SendTCPData(_packet);
         }
     }
+
+    public static void pickupItem(int id, int itemNumber)
+    {
+        using(Packet _packet = new Packet((int)ClientPackets.pickupItem))
+        {
+            _packet.Write(id);
+            _packet.Write(itemNumber);
+            Debug.Log("picking up item");
+            SendTCPData(_packet);
+        }
+    }
     #endregion
 }

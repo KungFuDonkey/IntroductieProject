@@ -29,8 +29,9 @@ public enum ServerPackets
     Damage,
     SendResetScreen,
     Evolve,
-    SpawnItem
-
+    SpawnItem,
+    Item,
+    RemoveItem
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -43,6 +44,7 @@ public enum ClientPackets
     ChoosePlayer,
     setHealth,
     AddEffects,
+    pickupItem,
     Reset
 }
 

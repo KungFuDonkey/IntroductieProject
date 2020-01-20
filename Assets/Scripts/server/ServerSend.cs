@@ -347,5 +347,24 @@ public class ServerSend
             SendTCPDataToAll(Client.instance.myId, _packet);
         }
     }
+    public static void Item(int id, int itemNumber, int toClient)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.Item))
+        {
+            _packet.Write(id);
+            _packet.Write(itemNumber);
+            SendTCPData(toClient, _packet);
+        }
+        RemoveItem(id);
+    }
+    public static void RemoveItem(int id)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.RemoveItem))
+        {
+            Debug.Log("send removing");
+            _packet.Write(id);
+            SendTCPDataToAll(_packet);
+        }
+    }
     #endregion
 }

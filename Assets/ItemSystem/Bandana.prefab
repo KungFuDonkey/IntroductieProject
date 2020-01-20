@@ -89,7 +89,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530025518072095479}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.25
@@ -186,7 +186,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4397392294643904084
 MonoBehaviour:
@@ -200,29 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8701fb5193c774346903ae236e4ec2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  itemNumber: 6
+  pickup: 1
   item: {fileID: 11400000, guid: 3b6e537ab130a8e4d8fa503ff54905c4, type: 2}
-  gear: {fileID: 0}
-  candyItem: {fileID: 0}
-  candyTrigger: {fileID: 0}
-  candy: 0
-  pokeballItem: {fileID: 0}
-  pokeballTrigger: {fileID: 0}
-  pokebal: 0
-  pechaBerryItem: {fileID: 0}
-  pechaBerryTrigger: {fileID: 0}
-  pechaBerry: 0
-  oranBerryItem: {fileID: 0}
-  oranBerryTrigger: {fileID: 0}
-  oranBerry: 0
-  lumBerryItem: {fileID: 0}
-  lumBerryTrigger: {fileID: 0}
-  lumBerry: 0
-  Bandana: {fileID: 530025518072095479}
-  BandanaTrigger: {fileID: 2611211303078206277}
-  bandana: 1
-  Bracelet: {fileID: 0}
-  BraceletTrigger: {fileID: 0}
-  bracelet: 0
-  Pin: {fileID: 0}
-  PinTrigger: {fileID: 0}
-  pin: 0
