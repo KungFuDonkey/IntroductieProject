@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 4744990210481192868}
   - component: {fileID: 3604718023209373649}
   - component: {fileID: 4328009629818369733}
-  - component: {fileID: 322168395035826779}
+  - component: {fileID: 73815030274028199}
   m_Layer: 11
   m_Name: McQuirtle
   m_TagString: Avatar
@@ -513,6 +513,7 @@ Transform:
   m_Children:
   - {fileID: 2235650289270778107}
   - {fileID: 2011252041308526513}
+  - {fileID: 2235650289270778107}
   - {fileID: 3739885913562200113}
   m_Father: {fileID: 4480167247736476074}
   m_RootOrder: 1
@@ -557,7 +558,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &322168395035826779
+--- !u!114 &73815030274028199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1244,7 +1245,7 @@ Transform:
   - {fileID: 5588338994811597833}
   - {fileID: 8660998398662002032}
   m_Father: {fileID: 4744990210481192868}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4318303425317660254
 GameObject:
