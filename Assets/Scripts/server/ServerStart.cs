@@ -101,8 +101,12 @@ public class ServerStart : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(GameManager.gameItems[i].transform.position, -Vector3.up, out hit))
             {
-                pos.y = hit.point.y + 5;
+                pos.y = hit.point.y + 1;
                 GameManager.gameItems[i].transform.position = pos;
+            }
+            else if (Physics.Raycast(GameManager.gameItems[i].transform.position, Vector3.up, out hit))
+            {
+                pos.y = hit.point.y - 1;
             }
             ServerSend.SpawnItem(item, GameManager.gameItems[i].transform.position);
             Thread.Sleep(100);
