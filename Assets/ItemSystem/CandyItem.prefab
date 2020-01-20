@@ -91,8 +91,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.025
+  m_Height: 0.2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &973012647037493695
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 7950954474182035525}
   - component: {fileID: 6706771909825274443}
   - component: {fileID: 3336992829636519201}
-  - component: {fileID: 4753326483668856526}
+  - component: {fileID: 7165120013369095893}
   m_Layer: 0
   m_Name: CandyItem
   m_TagString: Untagged
@@ -214,7 +214,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &4753326483668856526
+--- !u!136 &7165120013369095893
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,9 +222,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480504776033350190}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.025220538
+  m_Height: 0.2045248
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

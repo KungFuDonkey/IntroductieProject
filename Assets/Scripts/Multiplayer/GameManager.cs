@@ -89,5 +89,6 @@ public class GameManager : MonoBehaviour
                 gameItems[i] = null;
             }
         }
+        projectileNumber = 0;
     }
 }
