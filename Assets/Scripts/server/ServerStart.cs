@@ -106,7 +106,7 @@ public class ServerStart : MonoBehaviour
                 pos.y = hit.point.y + 1;
                 GameManager.instance.gameItems[i].transform.position = pos;
             }
-            else if (Physics.Raycast(GameManager.gameItems[i].transform.position, Vector3.up, out hit))
+            else if (Physics.Raycast(GameManager.instance.gameItems[i].transform.position, Vector3.up, out hit))
             {
                 pos.y = hit.point.y - 1;
             }

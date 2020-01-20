@@ -211,18 +211,7 @@ public class ServerClient
 
     public void SetCharacter()
     {
-        if (selectedCharacter == 0)
-        {
-            player = new Charmandolphin(id, username, selectedCharacter);
-        }
-        else if (selectedCharacter == 1)
-        {
-            player = new McQuirtle(id, username, selectedCharacter);
-        }
-        else
-        {
-            player = new Vulcasaur(id, username, selectedCharacter);
-        }
+        player = Server.characters[selectedCharacter](id, username, selectedCharacter);
         spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
     }
 
