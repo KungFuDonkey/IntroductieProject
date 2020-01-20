@@ -133,9 +133,9 @@ public class UIManager : MonoBehaviour
             timer -= Time.deltaTime;
             if(timer < 0 && Client.instance.host)
             {
+                timer = 10f;
                 startCounter = false;
                 ServerSend.LoadMenu(2);
-                timer = 10f;
             }
         }
     }

@@ -97,19 +97,21 @@ public class ServerStart : MonoBehaviour
         {
             Vector3 pos = new Vector3(Random.Range(-300, 300), 1, Random.Range(-300, 300));
             int item = Random.Range(0, 7);
-            GameManager.gameItems.Add(i, Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity));
+            GameObject prop = Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity);
+            GameManager.instance.gameItems[i] = prop;
+            Thread.Sleep(10);
             RaycastHit hit;
-            if (Physics.Raycast(GameManager.gameItems[i].transform.position, -Vector3.up, out hit))
+            if (Physics.Raycast(GameManager.instance.gameItems[i].transform.position, -Vector3.up, out hit))
             {
                 pos.y = hit.point.y + 1;
-                GameManager.gameItems[i].transform.position = pos;
+                GameManager.instance.gameItems[i].transform.position = pos;
             }
             else if (Physics.Raycast(GameManager.gameItems[i].transform.position, Vector3.up, out hit))
             {
                 pos.y = hit.point.y - 1;
             }
-            ServerSend.SpawnItem(item, GameManager.gameItems[i].transform.position);
-            Thread.Sleep(100);
+            ServerSend.SpawnItem(i, item, GameManager.instance.gameItems[i].transform.position);
+            Thread.Sleep(10);
         }
     }
 }

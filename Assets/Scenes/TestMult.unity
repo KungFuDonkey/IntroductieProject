@@ -1598,6 +1598,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb5fad5b424b8d439d3598a20615c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Items:
   - {fileID: 7518219477689635630, guid: 34e9dc39a0d12bd4dbaa912fb4840c18, type: 3}
   - {fileID: 8070804119239245380, guid: 7eb12908fee40784dbb3c7196fe0f4ff, type: 3}
@@ -1606,21 +1632,38 @@ MonoBehaviour:
   - {fileID: 2232791723457171353, guid: f2756426e41e92245b879f25a67fd1a4, type: 3}
   - {fileID: 5713202240441753373, guid: ad7b93fdda9dfe348b131d0598464332, type: 3}
   - {fileID: 1391058996048342079, guid: 160e1773e098cb44a97804b32df1ed6e, type: 3}
+  gameItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  Charmandolphin: {fileID: 6424692634623431867, guid: f8c21e6a918f1704da75716186f8b4bd,
-    type: 3}
-  McQuirtle: {fileID: 2371499428266203527, guid: d743b3f26a697c245a85d949d8535e54,
-    type: 3}
-  Vulcasaur: {fileID: 3323276637181814587, guid: 78b3ada0e440374479d99f5887a7f284,
-    type: 3}
-  CharmandolphinEnemy: {fileID: 6487350444574394446, guid: 16faebdf2c5d6db49be694aeaa911709,
-    type: 3}
-  McQuirtleEnemy: {fileID: 518545851598542097, guid: 1fcacc04aea0456468eed002008d6006,
-    type: 3}
-  VulcasaurEnemy: {fileID: 6524392177103977800, guid: 41baa7e45ed5d9d4d8963c2a9a12d469,
-    type: 3}
+  characters:
+  - {fileID: 6424692634623431867, guid: f8c21e6a918f1704da75716186f8b4bd, type: 3}
+  - {fileID: 2371499428266203527, guid: d743b3f26a697c245a85d949d8535e54, type: 3}
+  - {fileID: 3323276637181814587, guid: 78b3ada0e440374479d99f5887a7f284, type: 3}
+  enemies:
+  - {fileID: 6487350444574394446, guid: 16faebdf2c5d6db49be694aeaa911709, type: 3}
+  - {fileID: 518545851598542097, guid: 1fcacc04aea0456468eed002008d6006, type: 3}
+  - {fileID: 6524392177103977800, guid: 41baa7e45ed5d9d4d8963c2a9a12d469, type: 3}
   playerObject:
   - {fileID: 7901789765541069245, guid: f5874fd60bf395d438695eaa3eb9e003, type: 3}
   - {fileID: 6654324100090383075, guid: fd7ce4ae5af00654582508c4c3372991, type: 3}
@@ -1634,7 +1677,6 @@ MonoBehaviour:
   - {fileID: 883455592496434515, guid: b7d4f8ce74582bd469bf67c6eb4c338c, type: 3}
   - {fileID: 883455592496434515, guid: b7d4f8ce74582bd469bf67c6eb4c338c, type: 3}
   - {fileID: 0}
-  WaterProjectile: {fileID: 0}
   walls:
   - {fileID: 6159601}
   - {fileID: 2016833749}
@@ -3646,7 +3688,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4479,7 +4521,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

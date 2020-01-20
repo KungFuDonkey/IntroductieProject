@@ -57,8 +57,8 @@ public class ClientSend : MonoBehaviour
             {
                 _packet.Write(_input);
             }
-            _packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
-            _packet.Write(GameManager.players[Client.instance.myId].GetComponent<playerLook>().verticalRotation);
+            _packet.Write(GameManager.instance.players[Client.instance.myId].transform.rotation);
+            _packet.Write(GameManager.instance.players[Client.instance.myId].GetComponent<playerLook>().verticalRotation);
             SendUDPData(_packet);
         }
     }

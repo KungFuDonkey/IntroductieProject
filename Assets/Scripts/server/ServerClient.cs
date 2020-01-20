@@ -211,17 +211,17 @@ public class ServerClient
 
     public void SetCharacter()
     {
-        if (selectedCharacter == 1)
+        if (selectedCharacter == 0)
         {
             player = new Charmandolphin(id, username, selectedCharacter);
         }
-        else if (selectedCharacter == 2)
+        else if (selectedCharacter == 1)
         {
-            player = new Vulcasaur(id, username, selectedCharacter);
+            player = new McQuirtle(id, username, selectedCharacter);
         }
         else
         {
-            player = new McQuirtle(id, username, selectedCharacter);
+            player = new Vulcasaur(id, username, selectedCharacter);
         }
         spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
     }
@@ -236,4 +236,5 @@ public class ServerClient
         tcp.Disconnect();
         udp.Disconnect();
     }
+
 }
