@@ -22,7 +22,7 @@ public class ServerHandle
         ServerSend.SendUsernameList();
     }
 
-    public static void changeReady(int _fromClient, Packet _packet)
+    public static void ChangeReady(int _fromClient, Packet _packet)
     {
         Server.clients[_fromClient].ready = !Server.clients[_fromClient].ready;
         ServerSend.SendUsernameList();

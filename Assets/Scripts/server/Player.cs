@@ -137,6 +137,5 @@ public abstract class Player
         ServerSend.Evolve(this);
         Debug.Log("evolving");
     }
-
 }
 

@@ -6,7 +6,7 @@ public class Wave : Projectile
 {
     Transform groundCheck;
     LayerMask groundMask;
-    Vector3 groundCheckLift = new Vector3(0, 0.2f, 0);
+    Vector3 groundCheckLift = new Vector3(0, 0.3f, 0);
     public Wave(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
         id = _id;

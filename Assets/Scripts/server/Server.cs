@@ -136,7 +136,7 @@ public class Server
             { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
             { (int)ClientPackets.mousePosition, ServerHandle.MousePosition},
             { (int)ClientPackets.ChoosePlayer, ServerHandle.ChoosePlayer},
-            { (int)ClientPackets.ready, ServerHandle.changeReady},
+            { (int)ClientPackets.ready, ServerHandle.ChangeReady},
             { (int)ClientPackets.AddEffects, ServerHandle.AddEffects},
             { (int)ClientPackets.Reset, ServerHandle.Reset }
         };

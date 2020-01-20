@@ -336,7 +336,7 @@ public class ServerSend
         using(Packet _packet = new Packet((int)ServerPackets.Evolve))
         {
             _packet.Write(player.id);
-            SendTCPDataToAll(Client.instance.myId, _packet);
+            SendTCPDataToAll(_packet);
         }
     }
 

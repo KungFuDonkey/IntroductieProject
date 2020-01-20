@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public float lastPacketTime = 0f;
     public Animator playerAnimator;
     public HUD playerHUD;
-   public bool invisible;
+    public bool invisible;
 
     public static PlayerManager instance;
     void Awake()
@@ -67,5 +67,22 @@ public class PlayerManager : MonoBehaviour
     public void Die()
     {
         playerAnimator.SetTrigger("Die");
+    }
+    public void InterpolateEvolve()
+    {
+        string evo;
+        if (selectedCharacter == 1)
+        {
+            evo = "VulcasaurEvolution";
+        }
+        else if (selectedCharacter == 2)
+        {
+            evo = "McQuirtleEvolution";
+        }
+        else
+        {
+            evo = "CharmandolphinEvolution";
+        }
+        GameManager.instance.SpawnEvolution(evo, id);
     }
 }

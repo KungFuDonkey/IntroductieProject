@@ -117,8 +117,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void evolve()
+    public void SpawnEvolution(String evolution, int id)
     {
-
+        PlayerManager player = GameManager.players[id];
+        Destroy(player.transform.GetChild(1).gameObject);
+        GameObject evolutionObject = Instantiate(Resources.Load<GameObject>("PhotonPrefabs/" + evolution), player.transform);
+        player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+        player.GetComponentInChildren<CharmandolphinLook>().player = player;
+        player.GetComponentInChildren<CharmandolphinLook>().playerbody = player.transform;
+        player.GetComponentInChildren<CharmandolphinLook>().avatar = player.transform.gameObject;
+        player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>();
     }
 }

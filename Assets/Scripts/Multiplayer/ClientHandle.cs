@@ -173,8 +173,9 @@ public class ClientHandle : MonoBehaviour
     }
     public static void Evolve(Packet _packet)
     {
-        bool evo = _packet.ReadBool();
-        bool charac = _packet.ReadBool();
+        Debug.Log("evolve on server");
+        int id = _packet.ReadInt();
+        GameManager.players[id].InterpolateEvolve();
     }
     public static void spawnItem(Packet _packet)
     {

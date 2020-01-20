@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4744990210481192868}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &399445383264842993
 GameObject:
@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 4744990210481192868}
   - component: {fileID: 3604718023209373649}
   - component: {fileID: 4328009629818369733}
+  - component: {fileID: 322168395035826779}
   m_Layer: 11
   m_Name: McQuirtle
   m_TagString: Avatar
@@ -510,10 +511,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
+  - {fileID: 2235650289270778107}
   - {fileID: 2011252041308526513}
   - {fileID: 3739885913562200113}
   m_Father: {fileID: 4480167247736476074}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3604718023209373649
 MonoBehaviour:
@@ -555,6 +557,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &322168395035826779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107373906631295526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 2560777225738415249}
+  Head: {fileID: 7165855197232016856}
 --- !u!1 &2189596152404652067
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +602,7 @@ Transform:
   - {fileID: 3743878673954273197}
   - {fileID: 272268685093230736}
   m_Father: {fileID: 2011252041308526513}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2371499428266203527
 GameObject:
@@ -599,7 +615,6 @@ GameObject:
   - component: {fileID: 4480167247736476074}
   - component: {fileID: 1197715375346415649}
   - component: {fileID: 8194556593517771623}
-  - component: {fileID: 7534946313039059886}
   - component: {fileID: 5331854903529907767}
   m_Layer: 0
   m_Name: McQuirtleAvatar
@@ -619,8 +634,8 @@ Transform:
   m_LocalPosition: {x: 70.88258, y: 1.2213054, z: 31.839878}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4744990210481192868}
   - {fileID: 4005506537552536217}
+  - {fileID: 4744990210481192868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -662,20 +677,6 @@ MonoBehaviour:
   playerAnimator: {fileID: 4328009629818369733}
   playerHUD: {fileID: 3012691550940244032}
   invisible: 0
---- !u!114 &7534946313039059886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371499428266203527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawner: {fileID: 2560777225738415249}
-  Head: {fileID: 7165855197232016856}
 --- !u!114 &5331854903529907767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,16 +1234,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4276987460938667239}
-  m_LocalRotation: {x: -0.000000081460335, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0678421, y: 0.11060938, z: -1.9377289}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.78421, y: 11.06097, z: -193.77289}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 6783182256851435986}
   - {fileID: 5500667910525404760}
   - {fileID: 2478874717066855401}
   - {fileID: 5588338994811597833}
   - {fileID: 8660998398662002032}
-  m_Father: {fileID: 2011252041308526513}
+  m_Father: {fileID: 4744990210481192868}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4318303425317660254
@@ -2026,10 +2027,9 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
-  - {fileID: 2235650289270778107}
   - {fileID: 5847096163634286513}
   m_Father: {fileID: 4744990210481192868}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7470541809416300913
 GameObject:
@@ -2649,7 +2649,7 @@ PrefabInstance:
     - target: {fileID: 2455138139726957229, guid: 452643bdf55bbc44bbf3917d2d76be61,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2455138139726957229, guid: 452643bdf55bbc44bbf3917d2d76be61,
         type: 3}

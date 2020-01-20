@@ -29,11 +29,9 @@ public class XPSystem : MonoBehaviour
     public void XPUpdate(int xp)
     {
         XP += xp;
-        //Debug.Log(XP);
         int level = (int)(0.1f * Mathf.Sqrt(XP));
         string levelCount = level.ToString();
         LevelCountText.text = levelCount;
-        //Debug.Log(level);
         
         if (level != CurrentLevel)
         {
