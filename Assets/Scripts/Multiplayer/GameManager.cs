@@ -7,19 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static int projectileNumber = 0;
-    public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
+    public PlayerManager[] players = new PlayerManager[Server.MaxPlayers];
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
     public GameObject[] Items = new GameObject[7];
-    public static Dictionary<int, GameObject> gameItems = new Dictionary<int, GameObject>();
+    public GameObject[] gameItems = new GameObject[20];
     public LayerMask groundMask;
-    public GameObject Charmandolphin;
-    public GameObject McQuirtle;
-    public GameObject Vulcasaur;
-    public GameObject CharmandolphinEnemy;
-    public GameObject McQuirtleEnemy;
-    public GameObject VulcasaurEnemy;
+    public GameObject[] characters = new GameObject[3];
+    public GameObject[] enemies = new GameObject[3];
     public GameObject[] playerObject;
-    public GameObject WaterProjectile;
     public GameObject[] walls;
     public bool freezeInput = false;
     
@@ -41,45 +36,18 @@ public class GameManager : MonoBehaviour
     {
         GameObject _player;
         Debug.Log(_selectedCharacter);
-
-        if (_selectedCharacter == 1)
+        if (_id == Client.instance.myId)
         {
-            if (_id == Client.instance.myId)
-            {
-                _player = Instantiate(Charmandolphin, _position, _rotation);
-            }
-            else
-            {
-                _player = Instantiate(CharmandolphinEnemy, _position, _rotation);
-            }
-        }
-        else if (_selectedCharacter == 2)
-        {
-            if (_id == Client.instance.myId)
-            {
-                _player = Instantiate(Vulcasaur, _position, _rotation);
-            }
-            else
-            {
-                _player = Instantiate(VulcasaurEnemy, _position, _rotation);
-            }
+            _player = Instantiate(characters[_selectedCharacter], _position, _rotation);
         }
         else
         {
-            if (_id == Client.instance.myId)
-            {
-                _player = Instantiate(McQuirtle, _position, _rotation);
-            }
-            else
-            {
-                _player = Instantiate(McQuirtleEnemy, _position, _rotation);
-            }
+            _player = Instantiate(enemies[_selectedCharacter], _position, _rotation);
         }
-
         _player.GetComponent<PlayerManager>().id = _id;
         _player.GetComponent<PlayerManager>().username = _username;
         _player.name = _id.ToString();
-        players.Add(_id, _player.GetComponent<PlayerManager>());
+        players[_id] = _player.GetComponent<PlayerManager>();
     }
 
     public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int moveIndex, int owner)
@@ -103,18 +71,37 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        for(int i = 1; i < players.Count+1; i++)
+        for(int i = 1; i < players.Length; i++)
         {
-            Debug.Log($"Destroying: {players[i].gameObject.name}");
-            Destroy(players[i].gameObject);
-            players.Remove(i);
+            if(players[i] != null)
+            {
+                Debug.Log($"Destroying: {players[i].gameObject.name}");
+                Destroy(players[i].gameObject);
+                players[i] = null;
+            }
         }
-        for(int i = 0; i < gameItems.Count; i++)
+        int[] remove = new int[projectiles.Count];
+        int a = 0;
+        foreach(ProjectileManager p in projectiles.Values)
         {
-            Debug.Log($"Destroying: {gameItems[i].gameObject.name}");
-            Destroy(gameItems[i].gameObject);
-            gameItems.Remove(i);
+            remove[a] = p.id;
+            a++;
         }
+        for(int i = 0; i < a; i++)
+        {
+            Destroy(projectiles[remove[i]].gameObject);
+            projectiles.Remove(remove[i]);
+        }
+        for(int i = 0; i < gameItems.Length; i++)
+        {
+            if(gameItems[i] != null)
+            {
+                Debug.Log($"Destroying: {gameItems[i].gameObject.name}");
+                Destroy(gameItems[i].gameObject);
+                gameItems[i] = null;
+            }
+        }
+        projectileNumber = 0;
     }
 
     public void SpawnEvolution(String evolution, int id)

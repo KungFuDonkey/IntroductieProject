@@ -273,7 +273,9 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.Death, ClientHandle.ReceiveDeathScreen },
             { (int)ServerPackets.Reset, ClientHandle.Reset},
             { (int)ServerPackets.Evolve, ClientHandle.Evolve},
-            { (int)ServerPackets.SpawnItem, ClientHandle.spawnItem }
+            { (int)ServerPackets.SpawnItem, ClientHandle.spawnItem },
+            { (int)ServerPackets.Item, ClientHandle.Item },
+            { (int)ServerPackets.RemoveItem, ClientHandle.RemoveItem }
         };
         Debug.Log("Initialized packets.");
     }

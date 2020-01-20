@@ -124,7 +124,7 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.projectile))
         {
-            Server.projectiles.Add((int)GameManager.projectileNumber, projectile);
+            Server.projectiles.Add(GameManager.projectileNumber, projectile);
             _packet.Write(GameManager.projectileNumber);
             GameManager.projectileNumber++;
 
@@ -294,12 +294,11 @@ public class ServerSend
             }
         }
     }
-    
     public static void SendWinScreen()
     {
         using (Packet _packet = new Packet((int)ServerPackets.Win))
         {
-            GameManager.players[Client.instance.myId].playerHUD.Resetscreen.SetActive(true);
+            GameManager.instance.players[Client.instance.myId].playerHUD.Resetscreen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             foreach (ServerClient client in Server.clients.Values)
@@ -312,8 +311,6 @@ public class ServerSend
             }
         }
     }
-
- 
     public static void SendDeathScreen(Player player)
     {
         using(Packet _packet = new Packet((int)ServerPackets.Death))
@@ -340,13 +337,32 @@ public class ServerSend
         }
     }
 
-    public static void SpawnItem(int item, Vector3 position)
+    public static void SpawnItem(int key, int item, Vector3 position)
     {
         using(Packet _packet = new Packet((int)ServerPackets.SpawnItem))
         {
+            _packet.Write(key);
             _packet.Write(item);
             _packet.Write(position);
             SendTCPDataToAll(Client.instance.myId, _packet);
+        }
+    }
+    public static void Item(int id, int itemNumber, int toClient)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.Item))
+        {
+            _packet.Write(id);
+            _packet.Write(itemNumber);
+            SendTCPData(toClient, _packet);
+        }
+        RemoveItem(id);
+    }
+    public static void RemoveItem(int id)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.RemoveItem))
+        {
+            _packet.Write(id);
+            SendTCPDataToAll(_packet);
         }
     }
     #endregion
