@@ -411,8 +411,9 @@ GameObject:
   - component: {fileID: 1136272451563043138}
   - component: {fileID: 1304614183162530714}
   - component: {fileID: 7454822834219516283}
+  - component: {fileID: 2925431719724235740}
   m_Layer: 11
-  m_Name: Vulcasaur
+  m_Name: VulcasaurEvolution
   m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,6 +476,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2925431719724235740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277781699602228130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 2199664289018160573}
+  Head: {fileID: 3550979230609506118}
 --- !u!1 &1371802189178065779
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,5 +127,6 @@ public class GameManager : MonoBehaviour
         player.GetComponentInChildren<CharmandolphinLook>().playerbody = player.transform;
         player.GetComponentInChildren<CharmandolphinLook>().avatar = player.transform.gameObject;
         player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>();
+        Debug.Log(player.GetComponent<PlayerController>().playerAnimator.ToString());
     }
 }

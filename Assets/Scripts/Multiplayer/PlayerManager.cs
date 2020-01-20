@@ -83,6 +83,7 @@ public class PlayerManager : MonoBehaviour
         {
             evo = "CharmandolphinEvolution";
         }
+        selectedCharacter = (selectedCharacter + 1) % 3;
         GameManager.instance.SpawnEvolution(evo, id);
     }
 }
