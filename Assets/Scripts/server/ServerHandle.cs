@@ -89,7 +89,7 @@ public class ServerHandle
         }
     }
 
-    public static void Reset(int _fromClient, Packet _packet)
+    public static void Reset()
     {
         foreach(ServerClient client in Server.clients.Values)
         {

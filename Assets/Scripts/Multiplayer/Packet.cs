@@ -44,8 +44,7 @@ public enum ClientPackets
     ChoosePlayer,
     setHealth,
     AddEffects,
-    pickupItem,
-    Reset
+    pickupItem
 }
 
 public class Packet : IDisposable

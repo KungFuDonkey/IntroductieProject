@@ -108,6 +108,6 @@ public class HUD : MonoBehaviour
 
     public void ResetGame()
     {
-        ClientSend.ResetGame();
+        ServerHandle.Reset();
     }
 }

@@ -80,6 +80,18 @@ public class GameManager : MonoBehaviour
                 players[i] = null;
             }
         }
+        int[] remove = new int[projectiles.Count];
+        int a = 0;
+        foreach(ProjectileManager p in projectiles.Values)
+        {
+            remove[a] = p.id;
+            a++;
+        }
+        for(int i = 0; i < a; i++)
+        {
+            Destroy(projectiles[remove[i]].gameObject);
+            projectiles.Remove(remove[i]);
+        }
         for(int i = 0; i < gameItems.Length; i++)
         {
             if(gameItems[i] != null)
