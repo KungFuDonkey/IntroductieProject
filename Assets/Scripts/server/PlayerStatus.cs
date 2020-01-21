@@ -102,11 +102,9 @@ public class PlayerStatus
     public void SetUpMovement(bool[] inputs, Effect effect)
     {
         inputDirection = effect.SetUpMovement(this, inputs);
-        Debug.Log(inputDirection);
         if (inputDirection == Vector3.back)
         {
             inputDirection = Vector3.up;
-            Debug.Log("removing");
             effects.Remove(effect);
         }
         animationValues = effect.SetUpAnimations(this, inputs);

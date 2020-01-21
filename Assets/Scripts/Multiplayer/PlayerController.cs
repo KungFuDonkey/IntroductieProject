@@ -58,5 +58,13 @@ public class PlayerController : MonoBehaviour
             _inputs[10] = Input.GetMouseButton(0);
             ClientSend.PlayerMovement(_inputs);
         }
+        else
+        {
+            for(int i = 0; i<11; i++)
+            {
+                _inputs[i] = false;
+            }
+            ClientSend.PlayerMovement(_inputs);
+        }
     }
 }
