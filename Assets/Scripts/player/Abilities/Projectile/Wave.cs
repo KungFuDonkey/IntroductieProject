@@ -5,7 +5,7 @@ public class Wave : Projectile
 {
     Transform groundCheck;
     LayerMask groundMask;
-    bool surfing;
+    public bool surfing, hasSurfed;
     Vector3 groundCheckLift = new Vector3(0, 0.2f, 0);
     Vector3 correctedRotation;
 
@@ -21,8 +21,9 @@ public class Wave : Projectile
         owner = _owner;
         damage = 20;
         type = Type.water;
-        speed = 10;
+        speed = 20;
         surfing = false;
+        hasSurfed = false;
         groundMask = LayerMask.GetMask("Ground");
     }
     public override void UpdateProjectile()
@@ -31,11 +32,10 @@ public class Wave : Projectile
         {
             groundCheck = GameManager.projectiles[id].transform.GetChild(1);
         }
-        float distance = Vector3.Distance(spawnPosition, position);
-        //if (distance > maxDistance)
-        //{
-        //    DestroyProjectile();
-        //}
+        if (position.y < -20)
+        {
+            DestroyProjectile();
+        }
         if (!destroyed)
         {
             if (!surfing)
@@ -67,10 +67,19 @@ public class Wave : Projectile
         base.DestroyProjectile();
     }
 
+    public override void OnEffectRemove()
+    {
+        surfing = false;
+    }
+
     public override void HitSelf()
     {
-        Debug.Log("surfing");
-        surfing = true;
-        Server.clients[owner].player.status.effects.Add(new Surfing(-1));
+        //if (!hasSurfed)
+        //{
+            hasSurfed = true;
+            Debug.Log("surfing");
+            surfing = true;
+            Server.clients[owner].player.status.effects.Add(new Surfing(-1, id));
+        //}
     }
 }

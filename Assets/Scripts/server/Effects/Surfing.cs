@@ -6,12 +6,14 @@ public class Surfing : Effect
 {
     float surfSpeed = 10f;
     float adjPos = 2f;
+    int owner;
     Ray ray = new Ray();
 
 
-    public Surfing(float _duration)
+    public Surfing(float _duration, int _owner)
     {
         duration = _duration;
+        owner = _owner;
     }
 
     public override void UpdateEffect()
@@ -28,7 +30,8 @@ public class Surfing : Effect
         status.inputDirection *= surfSpeed * Time.deltaTime * 60;
         if (inputs[4])
         {
-            return Vector3.negativeInfinity;
+            Server.projectiles[owner].OnEffectRemove();
+            return Vector3.back;
         }
 
 
