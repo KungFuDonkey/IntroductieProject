@@ -264,10 +264,10 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.SetInvis))
         {
+            Debug.Log("sending invis to clients");
             _packet.Write(id);
             _packet.Write(invis);
-            SendTCPDataToAll(Client.instance.myId, _packet);
-
+            SendTCPDataToAll(_packet);
         }
     }
 
@@ -299,6 +299,7 @@ public class ServerSend
         using (Packet _packet = new Packet((int)ServerPackets.Win))
         {
             GameManager.instance.players[Client.instance.myId].playerHUD.Resetscreen.SetActive(true);
+            GameManager.instance.freezeInput = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             foreach (ServerClient client in Server.clients.Values)

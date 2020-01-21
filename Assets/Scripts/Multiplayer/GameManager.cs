@@ -63,19 +63,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void InvisiblePlayer(int _id, bool invis)
-    {
-        players[_id].invisible = invis;
-        Debug.Log("Gamemanager Invis");
-    }
-
     public void ResetGame()
     {
         for(int i = 1; i < players.Length; i++)
         {
             if(players[i] != null)
             {
-                Debug.Log($"Destroying: {players[i].gameObject.name}");
                 Destroy(players[i].gameObject);
                 players[i] = null;
             }
@@ -96,12 +89,10 @@ public class GameManager : MonoBehaviour
         {
             if(gameItems[i] != null)
             {
-                Debug.Log($"Destroying: {gameItems[i].gameObject.name}");
                 Destroy(gameItems[i].gameObject);
                 gameItems[i] = null;
             }
         }
-        projectileNumber = 0;
     }
 
     public void SpawnEvolution(string evolution, int id)

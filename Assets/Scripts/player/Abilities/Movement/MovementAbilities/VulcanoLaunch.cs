@@ -7,6 +7,7 @@ public class VulcanoLaunch : MovementBehaviour
     Animator animator;
     public float LaunchSpeed;
     public GameObject FreezeBone;
+    public float timer = 5f;
     Vector3 StartRotation, StartPosition;
 
     protected override void Start()
@@ -17,7 +18,15 @@ public class VulcanoLaunch : MovementBehaviour
         StartRotation = FreezeBone.transform.eulerAngles;
         StartPosition = FreezeBone.transform.position;
     }
-
+    protected override void Update()
+    {
+        timer -= Time.deltaTime;
+        if(timer < 0)
+        {
+            Destroy(this.gameObject);
+        }
+        base.Update();
+    }
     public void LateUpdate()
     {
         //FreezeBone.transform.eulerAngles = StartRotation;

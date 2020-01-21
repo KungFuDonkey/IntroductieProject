@@ -11,9 +11,9 @@ public class Vulcasaur : Player
         username = _username;
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
-        Effect defaultEffect = new Effect();
-        defaultEffect.SetValues(45f, 22f, 100f, 2f, 2f, 2f, 10f, 80f);
+        Effect defaultEffect = Effect.Vulcasaur;
         status.defaultStatus = defaultEffect;
+        status.effects.Add(defaultEffect);
         Debug.Log("values are Set");
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
@@ -77,21 +77,34 @@ public class Vulcasaur : Player
 
     public void qAttack()
     {
-        status.qTimer = status.QTIMER;
-        Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 1, new Vines((int)GameManager.projectileNumber, avatar.position, avatar.rotation, status.inputDirection * 0.2f, id));
-        Debug.Log("shooting");
-        status.animationValues[2] = true;
-
+        if (XPSystem.instance.CurrentLevel >= 5)
+        {
+            status.qTimer = status.QTIMER;
+            Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+            ServerSend.Projectile(this, 1, new Vines((int)GameManager.projectileNumber, avatar.position, avatar.rotation, status.inputDirection * 0.2f, id));
+            Debug.Log("shooting");
+            status.animationValues[2] = true;
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void eAttack()
     {
-        status.eTimer = status.ETIMER;
-        Quaternion rotation = Quaternion.Euler(17.34f, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 2, new Vulcano((int)GameManager.projectileNumber, status.groundCheck.position, rotation, status.inputDirection * 0.2f, id));
-        Debug.Log("shooting");
-        status.animationValues[2] = true;
+        if (XPSystem.instance.CurrentLevel >= 3)
+        {
+            status.eTimer = status.ETIMER;
+            Quaternion rotation = Quaternion.Euler(17.34f, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
+            ServerSend.Projectile(this, 2, new Vulcano((int)GameManager.projectileNumber, status.groundCheck.position, rotation, status.inputDirection * 0.2f, id));
+            Debug.Log("shooting");
+            status.animationValues[2] = true;
+        }
+        else
+        {
+            return;
+        }
 
     }
 }

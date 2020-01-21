@@ -52,7 +52,6 @@ public class ServerHandle
 
     public static void AddEffects(int _fromClient, Packet _packet)
     {
-        Debug.Log("Addeffects");
         int item = _packet.ReadInt();
         if(item == 1)
         {
@@ -88,7 +87,11 @@ public class ServerHandle
             ServerSend.RemoveItem(id);
         }
     }
-
+    public static void setInvis(int _fromClient, Packet _packet)
+    {
+        bool invis = _packet.ReadBool();
+        ServerSend.SetInvis(_fromClient, invis);
+    }
     public static void Reset()
     {
         foreach(ServerClient client in Server.clients.Values)
@@ -97,6 +100,16 @@ public class ServerHandle
             {
                 client.player = null;
             }
+        }
+        int[] remove = new int[Server.projectiles.Count];
+        int a = 0;
+        foreach(Projectile p in Server.projectiles.Values)
+        {
+            remove[a] = p.id;
+        }
+        for(int i = 0; i < a; i++)
+        {
+            Server.projectiles.Remove(remove[i]);
         }
         Server.joinable = true;
         ServerStart.started = false;

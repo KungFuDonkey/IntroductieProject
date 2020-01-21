@@ -11,6 +11,8 @@ public class Projectile
     protected float speed = 50, maxDistance = 150;
     public float damage;
     protected bool destroyed = false;
+    public bool reUseAble = false; 
+
     public virtual void UpdateProjectile()
     {
         ServerSend.ProjectileMove(this);
@@ -26,5 +28,14 @@ public class Projectile
     {
         Server.clients[_id].player.Hit(this);
         DestroyProjectile();
+    }
+
+    public virtual void OnEffectRemove()
+    {
+
+    }
+    public virtual void HitSelf()
+    {
+
     }
 }

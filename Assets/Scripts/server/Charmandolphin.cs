@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Charmandolphin : Player
 {
+    public bool surfing;
+    int latestWave;
     public Charmandolphin(int _id, string _username, int _selectedCharacter)
     {
         id = _id;
         username = _username;
         selectedCharacter = _selectedCharacter;
         status = new PlayerStatus();
-        Effect defaultEffect = new Effect();
-        defaultEffect.SetValues(45f, 22f, 100f, 2f, 5f, 2f, 10f, 20f);
+        Effect defaultEffect = Effect.Charmandolphin;
         status.defaultStatus = defaultEffect;
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
@@ -36,7 +37,6 @@ public class Charmandolphin : Player
             status.fireTimer -= Time.deltaTime;
             status.animationValues[2] = false;
         }
-
         if (inputs[6] && status.qTimer < 0)
         {
             qAttack();
@@ -46,8 +46,7 @@ public class Charmandolphin : Player
             status.qTimer -= Time.deltaTime;
             status.animationValues[2] = false;
         }
-
-        if (inputs[7] && status.eTimer < 0)
+        if (inputs[7] && status.eTimer < 0 && !surfing)
         {
             eAttack();
             status.animationValues[2] = false;
@@ -65,9 +64,7 @@ public class Charmandolphin : Player
         status.fireTimer = status.FIRETIMER;
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
         ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
-        Debug.Log("shooting");
         status.animationValues[2] = true;
-
     }
 
     public void qAttack()
@@ -75,18 +72,15 @@ public class Charmandolphin : Player
         status.qTimer = status.QTIMER;
         Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, -verticalRotation);
         ServerSend.Projectile(this, 5, new AquaPulse((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
-        Debug.Log("shooting");
         status.animationValues[2] = true;
-
-
     }
 
     public void eAttack()
     {
         status.eTimer = status.ETIMER;
         Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 6, new Wave((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
-        Debug.Log("shooting");
+        latestWave = GameManager.projectileNumber;
+        ServerSend.Projectile(this, 6, new Wave((int)GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
         status.animationValues[2] = true;
     }
 }

@@ -62,7 +62,7 @@ public class HUD : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ResetGame();
+            ServerSend.UpdatePlayerCount();
         }
     }
 

@@ -33,8 +33,17 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet _packet = new Packet((int)ClientPackets.AddEffects))
         {
-            Debug.Log("ClientSend Effects");
             _packet.Write(_item);
+            SendTCPData(_packet);
+        }
+    }
+
+    public static void SetInvis(bool invis)
+    {
+        using(Packet _packet = new Packet((int)ClientPackets.SetInvis))
+        {
+            Debug.Log("sending invis to server");
+            _packet.Write(invis);
             SendTCPData(_packet);
         }
     }
@@ -57,8 +66,8 @@ public class ClientSend : MonoBehaviour
             {
                 _packet.Write(_input);
             }
-            _packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
-            _packet.Write(GameManager.players[Client.instance.myId].GetComponentInChildren<playerLook>().verticalRotation);
+            _packet.Write(GameManager.instance.players[Client.instance.myId].transform.rotation);
+            _packet.Write(GameManager.instance.players[Client.instance.myId].GetComponentInChildren<playerLook>().verticalRotation);
             SendUDPData(_packet);
         }
     }

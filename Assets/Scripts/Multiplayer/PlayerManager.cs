@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] public GameObject Allparts;
+    public GameObject Allparts;
     public int id;
     public string username;
     public int selectedCharacter;
     public float lastPacketTime = 0f;
     public Animator playerAnimator;
     public HUD playerHUD;
-    public bool invisible;
 
     public static PlayerManager instance;
     void Awake()
@@ -29,11 +28,15 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void Invisible()
+    public void Invisible(bool invisible)
     {
-        if (invisible == false)
+        if (invisible)
         {
             Allparts.SetActive(false);
+        }
+        else
+        {
+            Allparts.SetActive(true);
         }
     }
 
@@ -51,9 +54,9 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
-        //GameManager.instance.freezeInput = true;
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
+        GameManager.instance.freezeInput = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         if (screen == 0)
         {
             Die();
@@ -61,7 +64,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            //playerHUD.Winscreen.SetActive(true);
+            playerHUD.Winscreen.SetActive(true);
         }
     }
     public void Die()
