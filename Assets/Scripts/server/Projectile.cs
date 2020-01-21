@@ -27,4 +27,9 @@ public class Projectile
         Server.clients[_id].player.Hit(this);
         DestroyProjectile();
     }
+
+    public virtual void HitSelf()
+    {
+
+    }
 }
