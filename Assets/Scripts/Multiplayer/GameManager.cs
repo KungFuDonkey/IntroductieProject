@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
         {
             if(players[i] != null)
             {
-                Debug.Log($"Destroying: {players[i].gameObject.name}");
                 Destroy(players[i].gameObject);
                 players[i] = null;
             }
@@ -96,17 +95,15 @@ public class GameManager : MonoBehaviour
         {
             if(gameItems[i] != null)
             {
-                Debug.Log($"Destroying: {gameItems[i].gameObject.name}");
                 Destroy(gameItems[i].gameObject);
                 gameItems[i] = null;
             }
         }
-        projectileNumber = 0;
     }
 
     public void SpawnEvolution(String evolution, int id)
     {
-        PlayerManager player = GameManager.players[id];
+        PlayerManager player = GameManager.instance.players[id];
         Destroy(player.transform.GetChild(1).gameObject);
         GameObject evolutionObject = Instantiate(Resources.Load<GameObject>("PhotonPrefabs/" + evolution), player.transform);
         player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;

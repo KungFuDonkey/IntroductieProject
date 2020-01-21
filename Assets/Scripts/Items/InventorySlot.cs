@@ -8,28 +8,21 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour 
 {
     public static InventorySlot instance;
-
     [SerializeField] private GameObject tekst2;
     [SerializeField] private GameObject tekst;
     [SerializeField] private GameObject Tekstmaxhealth;
     [SerializeField] private GameObject tekst3;
-
-
     void Awake()
     {
         instance = this;
     }
-
-
     public Image picture;
     private Item _item;
     public float seconds;
-
     public void Start()
     {
         seconds = 10;
     }
-
     public Item Item
     {
         get { return _item; }
@@ -43,31 +36,20 @@ public class InventorySlot : MonoBehaviour
             }
         }
     }
-  
-
-
     public Button removebutton;
-
-   
-
-        public void AddItem (Item newItem)
+    public void AddItem (Item newItem)
     {
         Item = newItem;
-
         picture.sprite = Item.icon;
         picture.enabled = true;
         removebutton.interactable = true;
-       
     }
-
     public void ClearSlot()
     {
         Item = null;
-
         picture.sprite = null;
         picture.enabled = false;
         removebutton.interactable = false;
-
     }
     public virtual void OnRemoveButton()
     {
@@ -84,7 +66,6 @@ public class InventorySlot : MonoBehaviour
         Tekstmaxhealth.SetActive(true);
         Invoke("MaxHealth", 2);
     }
-
     public void Speedy()
     {
         tekst2.SetActive(false);
@@ -98,12 +79,10 @@ public class InventorySlot : MonoBehaviour
         TextCounterSpeed.instance.Update();
         Invoke("Speedy", seconds);
     }
-
     public void Jumpy()
     {
         tekst.SetActive(false);
         inventory.instance.Remove(Item);
-
     }
     public void WaitJump()
     {
@@ -113,13 +92,11 @@ public class InventorySlot : MonoBehaviour
         TextCounterJump.instance.Update();
         Invoke("Jumpy", seconds);
     }
-
     public void Invy()
     {
         ServerSend.SetInvis(Player.instance.id, true);
         tekst3.SetActive(false);
         inventory.instance.Remove(Item);
-
     }
     public void WaitInvisible()
     {
@@ -129,7 +106,6 @@ public class InventorySlot : MonoBehaviour
         TextCounterInvisible.instance.Update();
         Invoke("Invy", seconds);
     }
-
     public void GetHealth()
     {
         if (HealthBar.instance.currentHealth >= 100)
@@ -145,8 +121,6 @@ public class InventorySlot : MonoBehaviour
             inventory.instance.Remove(Item);
         }
     }
-
-
     public virtual void UseItem()
     {
         if (Item != null)
@@ -171,8 +145,4 @@ public class InventorySlot : MonoBehaviour
             Item.Use();
         }
     }
- 
-
-    
-    
 }

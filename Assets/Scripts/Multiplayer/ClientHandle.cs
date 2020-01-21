@@ -173,7 +173,7 @@ public class ClientHandle : MonoBehaviour
     {
         Debug.Log("evolve on server");
         int id = _packet.ReadInt();
-        GameManager.players[id].InterpolateEvolve();
+        GameManager.instance.players[id].InterpolateEvolve();
     }
     public static void spawnItem(Packet _packet)
     {
