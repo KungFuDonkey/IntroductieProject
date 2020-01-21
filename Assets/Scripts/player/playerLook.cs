@@ -28,7 +28,7 @@ public class playerLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         animator = playerbody.GetComponent<Animator>();
         avatarTrans = avatar.transform;
-        localTrans = avatarTrans.GetChild(0).transform;
+        localTrans = avatarTrans.GetChild(1).transform;
     }
 
     // Update is called once per frame

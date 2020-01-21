@@ -117,15 +117,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpawnEvolution(String evolution, int id)
+    public void SpawnEvolution(string evolution, int id)
     {
         PlayerManager player = GameManager.players[id];
+        Debug.Log(player.GetComponent<PlayerController>().playerAnimator);
+        int selectedCharacter = player.selectedCharacter;
         Destroy(player.transform.GetChild(1).gameObject);
-        GameObject evolutionObject = Instantiate(Resources.Load<GameObject>("PhotonPrefabs/" + evolution), player.transform);
+        Instantiate(Resources.Load<GameObject>("PhotonPrefabs/" + evolution + "Evolution"), player.transform);
+        if (selectedCharacter == 1)
+        {
+            player.GetComponentInChildren<CharmandolphinLook>().player = player;
+            player.GetComponentInChildren<CharmandolphinLook>().playerbody = player.transform;
+            player.GetComponentInChildren<CharmandolphinLook>().avatar = player.transform.gameObject;
+        }
+        else if (selectedCharacter == 2)
+        {
+            player.GetComponentInChildren<VulcasaurLook>().player = player;
+            player.GetComponentInChildren<VulcasaurLook>().playerbody = player.transform;
+            player.GetComponentInChildren<VulcasaurLook>().avatar = player.transform.gameObject;
+        }
+        else
+        {
+            player.GetComponentInChildren<McQuirtleLook>().player = player;
+            player.GetComponentInChildren<McQuirtleLook>().playerbody = player.transform;
+            player.GetComponentInChildren<McQuirtleLook>().avatar = player.transform.gameObject;
+        }
         player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-        player.GetComponentInChildren<CharmandolphinLook>().player = player;
-        player.GetComponentInChildren<CharmandolphinLook>().playerbody = player.transform;
-        player.GetComponentInChildren<CharmandolphinLook>().avatar = player.transform.gameObject;
-        player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>();
+        player.GetComponent<PlayerManager>().playerAnimator = player.transform.GetChild(1).gameObject.GetComponent<Animator>();
+        player.GetComponent<PlayerController>().playerAnimator = player.transform.GetChild(1).gameObject.GetComponent<Animator>();
+        Debug.Log(player.GetComponent<PlayerController>().playerAnimator);
     }
 }

@@ -73,16 +73,17 @@ public class PlayerManager : MonoBehaviour
         string evo;
         if (selectedCharacter == 1)
         {
-            evo = "VulcasaurEvolution";
+            evo = "Vulcasaur";
         }
         else if (selectedCharacter == 2)
         {
-            evo = "McQuirtleEvolution";
+            evo = "McQuirtle";
         }
         else
         {
-            evo = "CharmandolphinEvolution";
+            evo = "Charmandolphin";
         }
+        selectedCharacter = (selectedCharacter + 1) % 3;
         GameManager.instance.SpawnEvolution(evo, id);
     }
 }
