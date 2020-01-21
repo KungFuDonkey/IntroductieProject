@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         }
         _player.GetComponent<PlayerManager>().id = _id;
         _player.GetComponent<PlayerManager>().username = _username;
+        _player.GetComponent<PlayerManager>().selectedCharacter = _selectedCharacter;
         _player.name = _id.ToString();
         players[_id] = _player.GetComponent<PlayerManager>();
     }
