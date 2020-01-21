@@ -52,7 +52,6 @@ public class ServerHandle
 
     public static void AddEffects(int _fromClient, Packet _packet)
     {
-        Debug.Log("Addeffects");
         int item = _packet.ReadInt();
         if(item == 1)
         {
@@ -88,7 +87,11 @@ public class ServerHandle
             ServerSend.RemoveItem(id);
         }
     }
-
+    public static void setInvis(int _fromClient, Packet _packet)
+    {
+        bool invis = _packet.ReadBool();
+        ServerSend.SetInvis(_fromClient, invis);
+    }
     public static void Reset()
     {
         foreach(ServerClient client in Server.clients.Values)

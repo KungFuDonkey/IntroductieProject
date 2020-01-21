@@ -33,8 +33,17 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet _packet = new Packet((int)ClientPackets.AddEffects))
         {
-            Debug.Log("ClientSend Effects");
             _packet.Write(_item);
+            SendTCPData(_packet);
+        }
+    }
+
+    public static void SetInvis(bool invis)
+    {
+        using(Packet _packet = new Packet((int)ClientPackets.SetInvis))
+        {
+            Debug.Log("sending invis to server");
+            _packet.Write(invis);
             SendTCPData(_packet);
         }
     }

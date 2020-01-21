@@ -34,7 +34,6 @@ public class Effect
 
     public virtual Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
-        Debug.Log("test");
         status.inputDirection = Vector3.zero;
         if (inputs[0])
         {

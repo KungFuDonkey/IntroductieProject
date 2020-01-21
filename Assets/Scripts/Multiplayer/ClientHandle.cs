@@ -92,15 +92,13 @@ public class ClientHandle : MonoBehaviour
         GameManager.projectiles[_id].DestroyProjectile();
         GameManager.projectiles.Remove(_id);
     }
-
-
     public static void SetInvis(Packet _packet)
     {
+        Debug.Log("setting invis");
         int _id = _packet.ReadInt();
         bool _invis = _packet.ReadBool();
-        GameManager.instance.players[Client.instance.myId].Invisible();
+        GameManager.instance.players[_id].Invisible(_invis);
     }
-
     public static void LoadMenu(Packet _packet)
     {
         int menu = _packet.ReadInt();

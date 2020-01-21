@@ -69,12 +69,12 @@ public class InventorySlot : MonoBehaviour
     public void Speedy()
     {
         tekst2.SetActive(false);
-        inventory.instance.Remove(Item);
     }
     public void WaitSpeed()
     {
         ClientSend.AddEffects(3);
         tekst2.SetActive(true);
+        inventory.instance.Remove(Item);
         TextCounterSpeed.instance.Start();
         TextCounterSpeed.instance.Update();
         Invoke("Speedy", seconds);
@@ -82,26 +82,26 @@ public class InventorySlot : MonoBehaviour
     public void Jumpy()
     {
         tekst.SetActive(false);
-        inventory.instance.Remove(Item);
     }
     public void WaitJump()
     {
         ClientSend.AddEffects(1);
         tekst.SetActive(true);
+        inventory.instance.Remove(Item);
         TextCounterJump.instance.Start();
         TextCounterJump.instance.Update();
         Invoke("Jumpy", seconds);
     }
     public void Invy()
     {
-        ServerSend.SetInvis(Player.instance.id, true);
+        ClientSend.SetInvis(false);
         tekst3.SetActive(false);
-        inventory.instance.Remove(Item);
     }
     public void WaitInvisible()
     {
-        ServerSend.SetInvis(Player.instance.id, false);
+        ClientSend.SetInvis(true);
         tekst3.SetActive(true);
+        inventory.instance.Remove(Item);
         TextCounterInvisible.instance.Start();
         TextCounterInvisible.instance.Update();
         Invoke("Invy", seconds);
@@ -141,8 +141,10 @@ public class InventorySlot : MonoBehaviour
             {
                 WaitInvisible();
             }
-
-            Item.Use();
+            else if (Item.name == "Pecha Berry")
+            {
+                inventory.instance.Remove(Item);
+            }
         }
     }
 }

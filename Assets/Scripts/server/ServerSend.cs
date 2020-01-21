@@ -264,10 +264,10 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.SetInvis))
         {
+            Debug.Log("sending invis to clients");
             _packet.Write(id);
             _packet.Write(invis);
-            SendTCPDataToAll(Client.instance.myId, _packet);
-
+            SendTCPDataToAll(_packet);
         }
     }
 

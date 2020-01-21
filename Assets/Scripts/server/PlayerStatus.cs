@@ -23,7 +23,6 @@ public class PlayerStatus
     {
         SetStatus(defaultStatus, _avatar);
         int strongestPriority = 100;
-        Debug.Log(effects.Count);
         if (effects.Count != 0)
         {
             for (int i = effects.Count -1; i >= 0; i--)
@@ -42,14 +41,12 @@ public class PlayerStatus
                     strongestPriority = effects[i].priority;
                 }
             }
-            Debug.Log(strongestPriority);
 
             effects = effects.OrderBy(x => x.priority).ToList();
             foreach (Effect effect in effects)
             {
                 UpdateStatus(effect);
 
-                Debug.Log(effect.priority);
                 if (strongestPriority == effect.priority)
                 {
                     SetUpMovement(inputs, effect);
@@ -61,12 +58,9 @@ public class PlayerStatus
         {
             SetUpMovement(inputs, defaultStatus);
         }
-
-
     }
     public void UpdateStatus(Effect effect)
     {
-        Debug.Log("Playerstatus");
         gravity *= effect.dgravity;
         jumpspeed *= effect.djumpspeed;
         health *= effect.dhealth;

@@ -27,7 +27,7 @@ public class ProjectileHit : MonoBehaviour
         }
         else
         {
-            //Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].DestroyProjectile();
+            Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].DestroyProjectile();
         }
     }
 }

@@ -63,12 +63,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void InvisiblePlayer(int _id, bool invis)
-    {
-        players[_id].invisible = invis;
-        Debug.Log("Gamemanager Invis");
-    }
-
     public void ResetGame()
     {
         for(int i = 1; i < players.Length; i++)
