@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Surfing : Effect
 {
-    float surfSpeed = 10f;
+    float surfSpeed = 40f;
     float adjPos = 2f;
     int owner;
     Ray ray = new Ray();
@@ -39,7 +39,7 @@ public class Surfing : Effect
         ray.origin = status.avatar.position;
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, GameManager.instance.groundMask))
         {
-            status.inputDirection.y = -1 * ((hit.distance) - adjPos);
+            status.inputDirection.y = -3 * ((hit.distance) - adjPos);
         }
         return status.inputDirection;
     }

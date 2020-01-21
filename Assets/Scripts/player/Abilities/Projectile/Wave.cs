@@ -21,7 +21,7 @@ public class Wave : Projectile
         owner = _owner;
         damage = 20;
         type = Type.water;
-        speed = 20;
+        speed = 40f;
         surfing = false;
         hasSurfed = false;
         groundMask = LayerMask.GetMask("Ground");
@@ -70,6 +70,7 @@ public class Wave : Projectile
     public override void OnEffectRemove()
     {
         surfing = false;
+        reUseAble = true;
     }
 
     public override void HitSelf()

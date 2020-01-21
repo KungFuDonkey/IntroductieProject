@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Charmandolphin : Player
 {
+    bool surfing;
+    int latestWave;
     public Charmandolphin(int _id, string _username, int _selectedCharacter)
     {
         id = _id;
@@ -46,7 +48,7 @@ public class Charmandolphin : Player
             status.animationValues[2] = false;
         }
 
-        if (inputs[7] && status.eTimer < 0)
+        if (inputs[7] && status.eTimer < 0 && Server.projectiles[latestWave].reUseAble)
         {
             eAttack();
             status.animationValues[2] = false;
@@ -79,6 +81,7 @@ public class Charmandolphin : Player
     {
         status.eTimer = status.ETIMER;
         Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
+        latestWave = GameManager.projectileNumber;
         ServerSend.Projectile(this, 6, new Wave((int)GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
         status.animationValues[2] = true;
     }
