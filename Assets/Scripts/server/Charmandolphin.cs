@@ -5,7 +5,6 @@ using UnityEngine;
 public class Charmandolphin : Player
 {
     public bool surfing;
-    int latestWave;
     public Charmandolphin(int _id, string _username, int _selectedCharacter)
     {
         id = _id;
@@ -63,7 +62,7 @@ public class Charmandolphin : Player
     {
         status.fireTimer = status.FIRETIMER;
         Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 4, new WaterBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
+        ServerSend.Projectile(this, 4, new WaterBall(GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
         status.animationValues[2] = true;
     }
 
@@ -71,7 +70,7 @@ public class Charmandolphin : Player
     {
         status.qTimer = status.QTIMER;
         Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, -verticalRotation);
-        ServerSend.Projectile(this, 5, new AquaPulse((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
+        ServerSend.Projectile(this, 5, new AquaPulse(GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
         status.animationValues[2] = true;
     }
 
@@ -79,8 +78,7 @@ public class Charmandolphin : Player
     {
         status.eTimer = status.ETIMER;
         Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
-        latestWave = GameManager.projectileNumber;
-        ServerSend.Projectile(this, 6, new Wave((int)GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
+        ServerSend.Projectile(this, 6, new Wave(GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
         status.animationValues[2] = true;
     }
 }

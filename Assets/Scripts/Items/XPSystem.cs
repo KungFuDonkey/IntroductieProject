@@ -13,6 +13,7 @@ public class XPSystem : MonoBehaviour
     public Text LevelCountText;
     public Text LevelText;
     public Text NextText;
+    PlayerManager character;
     int XP;
     public int CurrentLevel;
 
@@ -30,22 +31,42 @@ public class XPSystem : MonoBehaviour
         FireMoveQ.SetActive(false);
         WaterMoveE.SetActive(false);
         WaterMoveQ.SetActive(false);
+        character = GameObject.Find(Client.instance.myId.ToString()).GetComponent<PlayerManager>();
     }
     public void NewLevel()
     {
         TekstLevelUp.SetActive(false);
     }
-
     public void Emove()
     {
-        FireMoveE.SetActive(true);
-   }
+        if(character.selectedCharacter == 0)
+        {
+            WaterMoveE.SetActive(true);
+        }
+        else if(character.selectedCharacter == 1)
+        {
+            //EarthmoveE.SetActive(true);
+        }
+        else
+        {
+            FireMoveE.SetActive(true);
+        }
+    }
     public void Qmove()
     {
-        FireMoveQ.SetActive(true);
+        if (character.selectedCharacter == 0)
+        {
+            WaterMoveQ.SetActive(true);
+        }
+        else if (character.selectedCharacter == 1)
+        {
+            //EarthmoveE.SetActive(true);
+        }
+        else
+        {
+            FireMoveQ.SetActive(true);
+        }
     }
-
-
     public void WaitNewLevel()
     {
         TekstLevelUp.SetActive(true);
@@ -90,14 +111,13 @@ public class XPSystem : MonoBehaviour
 
     public void MovesUpdate()
     {
-            if (CurrentLevel >= 3) 
-            {
-                Emove();
-            }
-         
-            if (CurrentLevel >= 5 )
-            {
-                Qmove();
-            }
+        if (CurrentLevel >= 3) 
+        {
+            Emove();
+        }
+        if (CurrentLevel >= 5 )
+        {
+            Qmove();
+        }
     }
 }

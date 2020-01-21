@@ -101,16 +101,7 @@ public class ServerHandle
                 client.player = null;
             }
         }
-        int[] remove = new int[Server.projectiles.Count];
-        int a = 0;
-        foreach(Projectile p in Server.projectiles.Values)
-        {
-            remove[a] = p.id;
-        }
-        for(int i = 0; i < a; i++)
-        {
-            Server.projectiles.Remove(remove[i]);
-        }
+        Server.projectiles = new Dictionary<int, Projectile>();
         Server.joinable = true;
         ServerStart.started = false;
         Walls.Reset();
