@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
 {
-    static System.Net.NetworkInformation.Ping ping = new System.Net.NetworkInformation.Ping();
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -35,12 +34,10 @@ public class ClientHandle : MonoBehaviour
         float time = _packet.ReadFloat();
         int _id = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
-        if(time > GameManager.players[_id].lastPacketTime)
+        if(time > GameManager.instance.players[_id].lastPacketTime)
         {
-            GameManager.players[_id].lastPacketTime = time;
-            PingReply reply = ping.Send(Client.instance.ip, 1000);
-            Debug.Log(reply.RoundtripTime.ToString());
-            GameManager.players[_id].transform.position = _position;
+            GameManager.instance.players[_id].lastPacketTime = time;
+            GameManager.instance.players[_id].transform.position = _position;
         }
     }
 
@@ -54,14 +51,14 @@ public class ClientHandle : MonoBehaviour
         {
             _animationValues[i] = _packet.ReadBool();
         }
-        GameManager.players[_id].SetAnimations(_animationValues);
+        GameManager.instance.players[_id].SetAnimations(_animationValues);
 
     }
     public static void PlayerRotation(Packet _packet)
     {
         int _id = _packet.ReadInt();
         Quaternion _rotation = _packet.ReadQuaternion();
-        GameManager.players[_id].transform.rotation = _rotation;
+        GameManager.instance.players[_id].transform.rotation = _rotation;
     }
 
     public static void Projectile(Packet _packet)
@@ -101,9 +98,7 @@ public class ClientHandle : MonoBehaviour
     {
         int _id = _packet.ReadInt();
         bool _invis = _packet.ReadBool();
-        GameManager.players[Client.instance.myId].Invisible();
-        Debug.Log("ClientHandle invis");
-
+        GameManager.instance.players[Client.instance.myId].Invisible();
     }
 
     public static void LoadMenu(Packet _packet)
@@ -138,28 +133,28 @@ public class ClientHandle : MonoBehaviour
     {
         float health = _packet.ReadFloat();
         float shield = _packet.ReadFloat();
-        GameManager.players[Client.instance.myId].UpdateHUD(health, shield);
+        GameManager.instance.players[Client.instance.myId].UpdateHUD(health, shield);
     }
     public static void UpdatePlayerCount(Packet _packet)
     {
         int alive = _packet.ReadInt();
         Debug.Log(alive);
-        GameManager.players[Client.instance.myId].UpdatePlayerCount(alive);
+        GameManager.instance.players[Client.instance.myId].UpdatePlayerCount(alive);
     }
     public static void ReceiveWinScreen(Packet _packet)
     {
-        GameManager.players[Client.instance.myId].Screen(1);
+        GameManager.instance.players[Client.instance.myId].Screen(1);
     }
     public static void ReceiveDeathScreen(Packet _packet)
     {
         int id = _packet.ReadInt();
         if (id == Client.instance.myId)
         {
-            GameManager.players[Client.instance.myId].Screen(0);
+            GameManager.instance.players[Client.instance.myId].Screen(0);
         }
         else
         {
-            GameManager.players[id].Die();
+            GameManager.instance.players[id].Die();
         }
     }
     public static void Reset(Packet _packet)
@@ -168,8 +163,11 @@ public class ClientHandle : MonoBehaviour
         GameObject cam = (GameObject)Instantiate(Resources.Load("Main Camera"));
         cam.transform.position = new Vector3(12, -6, 20);
         cam.name = "Main Camera";
+        UIManager.instance.ResetUI();
         UIManager.instance.setMenuStatus(true);
         UIManager.instance.LoadMenu(0);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     public static void Evolve(Packet _packet)
     {
@@ -179,8 +177,42 @@ public class ClientHandle : MonoBehaviour
     }
     public static void spawnItem(Packet _packet)
     {
+        int key = _packet.ReadInt();
         int item = _packet.ReadInt();
         Vector3 pos = _packet.ReadVector3();
-        Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity);
+        GameObject prop = Instantiate(GameManager.instance.Items[item], pos, Quaternion.identity);
+        gameItem thisItem = prop.GetComponentInChildren<gameItem>();
+        thisItem.id = key;
+        GameManager.instance.gameItems[key] = prop;
     }
+    public static void Item(Packet _packet)
+    {
+        int id = _packet.ReadInt();
+        int itemNumber = _packet.ReadInt();
+        gameItem item = GameManager.instance.gameItems[id].GetComponentInChildren<gameItem>();
+        if (itemNumber < 6)
+        {
+            inventory.instance.Add(item.item);
+        }
+        else
+        {
+            EquipmentInventory.instance.Add(item.item);
+            VisualShield.instance.currentShield += 20;
+            if (VisualShield.instance.currentShield >= 100)
+            {
+                VisualShield.instance.currentShield = 100;
+            }
+        }
+    }
+    public static void RemoveItem(Packet _packet)
+    {
+        int id = _packet.ReadInt();
+        Destroy(GameManager.instance.gameItems[id]);
+        GameManager.instance.gameItems[id] = null;
+    }
+    /*
+      
+                  PingReply reply = ping.Send(Client.instance.ip, 1000);
+            Debug.Log(reply.RoundtripTime.ToString());
+    */
 }

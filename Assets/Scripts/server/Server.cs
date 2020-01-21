@@ -14,6 +14,7 @@ public class Server
     public static Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>();
     public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
+    public static Dictionary<int, Func<int,string,int,Player>> characters;
     public static System.Random rand = new System.Random();
     public static Dictionary<int, Vector3> spawnPoints = new Dictionary<int, Vector3>();
     private static TcpListener tcpListener;
@@ -138,7 +139,13 @@ public class Server
             { (int)ClientPackets.ChoosePlayer, ServerHandle.ChoosePlayer},
             { (int)ClientPackets.ready, ServerHandle.ChangeReady},
             { (int)ClientPackets.AddEffects, ServerHandle.AddEffects},
-            { (int)ClientPackets.Reset, ServerHandle.Reset }
+            { (int)ClientPackets.pickupItem, ServerHandle.pickupItem }
+        };
+        characters = new Dictionary<int, Func<int, string, int, Player>>()
+        {
+            { 0, charmandolphin },
+            { 1, mcQuitle },
+            { 2, vulcasaur }
         };
         for (int i = 0; i <= MaxPlayers; i++)
         {
@@ -153,7 +160,19 @@ public class Server
         for (int i = 0; i < 4; i++)
         {
             Walls.walls[i] = GameManager.instance.walls[i].transform;
-            Walls.startingPos[i] = Walls.walls[i].position;
+            Walls.startingPos[i] = GameManager.instance.walls[i].transform.position;
         }
+    }
+    public static Player charmandolphin(int id, string username, int selectedcharacter)
+    {
+        return new Charmandolphin(id, username, selectedcharacter);
+    }
+    public static Player mcQuitle(int id, string username, int selectedcharacter)
+    {
+        return new McQuirtle(id, username, selectedcharacter);
+    }
+    public static Player vulcasaur(int id, string username, int selectedcharacter)
+    {
+        return new Vulcasaur(id, username, selectedcharacter);
     }
 }

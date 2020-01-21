@@ -80,10 +80,12 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void ResetGame()
+    public static void pickupItem(int id, int itemNumber)
     {
-        using(Packet _packet = new Packet((int)ClientPackets.Reset))
+        using(Packet _packet = new Packet((int)ClientPackets.pickupItem))
         {
+            _packet.Write(id);
+            _packet.Write(itemNumber);
             SendTCPData(_packet);
         }
     }

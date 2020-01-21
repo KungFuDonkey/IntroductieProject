@@ -60,6 +60,10 @@ public class HUD : MonoBehaviour
                Cursor.lockState = CursorLockMode.None;
             }
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetGame();
+        }
     }
 
     void UpdateUI()
@@ -104,7 +108,6 @@ public class HUD : MonoBehaviour
 
     public void ResetGame()
     {
-        ClientSend.ResetGame();
+        ServerHandle.Reset();
     }
-
 }

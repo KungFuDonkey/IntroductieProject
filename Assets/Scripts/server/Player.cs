@@ -63,7 +63,6 @@ public abstract class Player
             return;
         }
         Move(status.inputDirection);
-        ServerSend.SetInvis(id, status.invisible);
 
 
         if (status.isGrounded)  //for projectiles

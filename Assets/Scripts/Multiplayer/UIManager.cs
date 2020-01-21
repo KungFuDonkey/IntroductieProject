@@ -133,14 +133,21 @@ public class UIManager : MonoBehaviour
             timer -= Time.deltaTime;
             if(timer < 0 && Client.instance.host)
             {
-                startCounter = false;
                 ServerSend.LoadMenu(2);
-                timer = 10f;
             }
         }
     }
     public void setMenuStatus(bool setStatus)
     {
         gameObject.SetActive(setStatus);
+    }
+    public void ResetUI()
+    {
+        for(int i = mousePointers.Count - 1; i >= -1; i--)
+        {
+            mousePointers.Remove(i);
+        }
+        startCounter = false;
+        timer = 10f;
     }
 }

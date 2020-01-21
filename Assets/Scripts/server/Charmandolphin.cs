@@ -78,6 +78,7 @@ public class Charmandolphin : Player
         Debug.Log("shooting");
         status.animationValues[2] = true;
 
+
     }
 
     public void eAttack()
