@@ -90,16 +90,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpawnEvolution(String evolution, int id)
+    public void SpawnEvolution(int id)
     {
         PlayerManager player = GameManager.instance.players[id];
-        Destroy(player.transform.GetChild(1).gameObject);
-        GameObject evolutionObject = Instantiate(Resources.Load<GameObject>("PhotonPrefabs/" + evolution), player.transform);
-        player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-        player.GetComponentInChildren<CharmandolphinLook>().player = player;
-        player.GetComponentInChildren<CharmandolphinLook>().playerbody = player.transform;
-        player.GetComponentInChildren<CharmandolphinLook>().avatar = player.transform.gameObject;
-        player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>();
-        Debug.Log(player.GetComponent<PlayerController>().playerAnimator.ToString());
+        player.selectedCharacter = (player.selectedCharacter + 1) % 3;
+        if (player.selectedCharacter == 1)
+        {
+            Server.clients[id].player = new McQuirtle(id, player.username, player.selectedCharacter);
+        }
+        else if (player.selectedCharacter == 2)
+        {
+            Server.clients[id].player = new Vulcasaur(id, player.username, player.selectedCharacter);
+        }
+        else //player.selectedCharacter == 0
+        {
+            Server.clients[id].player = new Charmandolphin(id, player.username, player.selectedCharacter);
+        }
+        player.transform.GetChild(player.selectedCharacter + 1).gameObject.SetActive(true);
+        player.transform.GetChild((player.selectedCharacter + 1) % 3 + 1).gameObject.SetActive(false);
+        player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>(false);
+        player.GetComponent<PlayerManager>().playerAnimator = player.GetComponentInChildren<Animator>(false);
+        player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(player.selectedCharacter + 1).GetChild(0).gameObject;
+        XPSystem.instance.MovesUpdate();
+        Debug.Log(player.selectedCharacter);
     }
 }

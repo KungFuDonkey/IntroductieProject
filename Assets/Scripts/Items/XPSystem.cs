@@ -42,14 +42,20 @@ public class XPSystem : MonoBehaviour
         if(character.selectedCharacter == 0)
         {
             WaterMoveE.SetActive(true);
+            FireMoveE.SetActive(false);
+            //GrassMoveE.SetActive(false);
         }
         else if(character.selectedCharacter == 1)
         {
-            //EarthmoveE.SetActive(true);
+            WaterMoveE.SetActive(false);
+            FireMoveE.SetActive(false);
+            //GrassMoveE.SetActive(true);
         }
         else
         {
+            WaterMoveE.SetActive(false);
             FireMoveE.SetActive(true);
+            //GrassMoveE.SetActive(false);
         }
     }
     public void Qmove()
@@ -57,14 +63,20 @@ public class XPSystem : MonoBehaviour
         if (character.selectedCharacter == 0)
         {
             WaterMoveQ.SetActive(true);
+            FireMoveQ.SetActive(false);
+            //GrassMoveQ.SetActive(false);
         }
         else if (character.selectedCharacter == 1)
         {
-            //EarthmoveE.SetActive(true);
+            WaterMoveQ.SetActive(false);
+            FireMoveQ.SetActive(false);
+            //GrassMoveQ.SetActive(true);
         }
         else
         {
+            WaterMoveQ.SetActive(false); 
             FireMoveQ.SetActive(true);
+            //GrassMoveQ.SetActive(false);
         }
     }
     public void WaitNewLevel()
