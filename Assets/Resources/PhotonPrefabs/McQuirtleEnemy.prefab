@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 1871171711022259516}
   - component: {fileID: 6224983280969054193}
   - component: {fileID: 3982412801713517751}
-  - component: {fileID: 8615649389889612182}
   m_Layer: 0
   m_Name: McQuirtleEnemy
   m_TagString: Avatar
@@ -77,14 +76,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eb21c5a50b1bb4aa6ae46288971351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Allparts: {fileID: 0}
   id: 0
   username: 
   selectedCharacter: 0
   lastPacketTime: 0
-  head: {fileID: 4947564606277509454}
   playerAnimator: {fileID: 2002783854533474899}
   playerHUD: {fileID: 0}
-  invisible: {fileID: 0}
+  invisible: 0
 --- !u!143 &3982412801713517751
 CharacterController:
   m_ObjectHideFlags: 0
@@ -103,20 +102,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0.3}
---- !u!114 &8615649389889612182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518545851598542097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawner: {fileID: 311533217613979655}
-  Head: {fileID: 4947564606277509454}
 --- !u!1 &643722889201825969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7350696936321463090}
   - component: {fileID: 2002783854533474899}
+  - component: {fileID: 5188395647888234214}
   m_Layer: 11
   m_Name: McQuirtle
   m_TagString: Avatar
@@ -1245,6 +1231,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5188395647888234214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243967519452188336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 311533217613979655}
+  Head: {fileID: 4947564606277509454}
 --- !u!1 &4435013711128968178
 GameObject:
   m_ObjectHideFlags: 0

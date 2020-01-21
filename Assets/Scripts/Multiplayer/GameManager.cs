@@ -120,31 +120,25 @@ public class GameManager : MonoBehaviour
     public void SpawnEvolution(string evolution, int id)
     {
         PlayerManager player = GameManager.players[id];
-        Debug.Log(player.GetComponent<PlayerController>().playerAnimator);
-        int selectedCharacter = player.selectedCharacter;
-        Destroy(player.transform.GetChild(1).gameObject);
-        Instantiate(Resources.Load<GameObject>("PhotonPrefabs/" + evolution + "Evolution"), player.transform);
-        if (selectedCharacter == 1)
+        player.selectedCharacter = (player.selectedCharacter + 1) % 3;
+        if (player.selectedCharacter == 1)
         {
-            player.GetComponentInChildren<CharmandolphinLook>().player = player;
-            player.GetComponentInChildren<CharmandolphinLook>().playerbody = player.transform;
-            player.GetComponentInChildren<CharmandolphinLook>().avatar = player.transform.gameObject;
+            Server.clients[id].player = new Charmandolphin(id, player.username, player.selectedCharacter);
+            player.transform.GetChild(1).gameObject.SetActive(true);
+            player.transform.GetChild(3).gameObject.SetActive(false);
         }
-        else if (selectedCharacter == 2)
+        else if (player.selectedCharacter == 2)
         {
-            player.GetComponentInChildren<VulcasaurLook>().player = player;
-            player.GetComponentInChildren<VulcasaurLook>().playerbody = player.transform;
-            player.GetComponentInChildren<VulcasaurLook>().avatar = player.transform.gameObject;
+            Server.clients[id].player = new Vulcasaur(id, player.username, player.selectedCharacter);
+            player.transform.GetChild(2).gameObject.SetActive(true);
+            player.transform.GetChild(1).gameObject.SetActive(false);
         }
         else
         {
-            player.GetComponentInChildren<McQuirtleLook>().player = player;
-            player.GetComponentInChildren<McQuirtleLook>().playerbody = player.transform;
-            player.GetComponentInChildren<McQuirtleLook>().avatar = player.transform.gameObject;
+            Server.clients[id].player = new McQuirtle(id, player.username, player.selectedCharacter);
+            player.transform.GetChild(3).gameObject.SetActive(true);
+            player.transform.GetChild(2).gameObject.SetActive(false);
         }
-        player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-        player.GetComponent<PlayerManager>().playerAnimator = player.transform.GetChild(1).gameObject.GetComponent<Animator>();
-        player.GetComponent<PlayerController>().playerAnimator = player.transform.GetChild(1).gameObject.GetComponent<Animator>();
-        Debug.Log(player.GetComponent<PlayerController>().playerAnimator);
+        Debug.Log(player.selectedCharacter);
     }
 }

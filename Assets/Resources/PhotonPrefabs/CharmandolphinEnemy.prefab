@@ -505,6 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 901875942387029428}
   - component: {fileID: 6891103449386130480}
+  - component: {fileID: 1850357393178823963}
   m_Layer: 11
   m_Name: Charmandolphin
   m_TagString: Avatar
@@ -550,6 +551,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1850357393178823963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081533385305180316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 1570265750455733535}
+  Head: {fileID: 4936819983256953856}
 --- !u!1 &2110114557707955797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,7 +1631,6 @@ GameObject:
   - component: {fileID: 1481318064691770941}
   - component: {fileID: 3140591216661301704}
   - component: {fileID: 4830465907272549318}
-  - component: {fileID: 870255041852760616}
   m_Layer: 0
   m_Name: CharmandolphinEnemy
   m_TagString: Avatar
@@ -1651,14 +1665,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eb21c5a50b1bb4aa6ae46288971351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Allparts: {fileID: 0}
   id: 0
   username: 
   selectedCharacter: 0
   lastPacketTime: 0
-  head: {fileID: 4936819983256953856}
   playerAnimator: {fileID: 6891103449386130480}
   playerHUD: {fileID: 0}
-  invisible: {fileID: 0}
+  invisible: 0
 --- !u!143 &4830465907272549318
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1677,20 +1691,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &870255041852760616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487350444574394446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawner: {fileID: 1570265750455733535}
-  Head: {fileID: 4936819983256953856}
 --- !u!1 &6579318399713133061
 GameObject:
   m_ObjectHideFlags: 0
