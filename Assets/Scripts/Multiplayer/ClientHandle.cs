@@ -167,12 +167,6 @@ public class ClientHandle : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-    public static void Evolve(Packet _packet)
-    {
-        Debug.Log("evolve on server");
-        int id = _packet.ReadInt();
-        GameManager.instance.players[id].InterpolateEvolve();
-    }
     public static void spawnItem(Packet _packet)
     {
         int key = _packet.ReadInt();
@@ -207,6 +201,21 @@ public class ClientHandle : MonoBehaviour
         int id = _packet.ReadInt();
         Destroy(GameManager.instance.gameItems[id]);
         GameManager.instance.gameItems[id] = null;
+    }
+    public static void Evolve(Packet _packet)
+    {
+        int id = _packet.ReadInt();
+        int newCharacter = _packet.ReadInt();
+        PlayerManager player = GameManager.instance.players[id];
+        player.transform.GetChild(newCharacter).gameObject.SetActive(true);
+        player.transform.GetChild((newCharacter) % 3 + 1).gameObject.SetActive(false);
+        player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>(false);
+        player.GetComponent<PlayerManager>().playerAnimator = player.GetComponentInChildren<Animator>(false);
+        player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(player.selectedCharacter + 1).GetChild(0).gameObject;
+        if(id == Client.instance.myId)
+        {
+            XPSystem.instance.MovesUpdate();
+        }
     }
     /*
       

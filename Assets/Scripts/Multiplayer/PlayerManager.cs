@@ -17,7 +17,15 @@ public class PlayerManager : MonoBehaviour
     {
         instance = this;
     }
-
+    /*
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ClientSend.Evolve(selectedCharacter);
+        }
+    }
+    */
     public void SetAnimations(bool[] animationValues)
     {
         playerAnimator.SetBool("IsWalking", animationValues[0]);
@@ -70,9 +78,5 @@ public class PlayerManager : MonoBehaviour
     public void Die()
     {
         playerAnimator.SetTrigger("Die");
-    }
-    public void InterpolateEvolve()
-    {
-        GameManager.instance.SpawnEvolution(id);
     }
 }

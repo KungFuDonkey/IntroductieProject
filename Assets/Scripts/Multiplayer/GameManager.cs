@@ -89,29 +89,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    public void SpawnEvolution(int id)
-    {
-        PlayerManager player = GameManager.instance.players[id];
-        player.selectedCharacter = (player.selectedCharacter + 1) % 3;
-        if (player.selectedCharacter == 1)
-        {
-            Server.clients[id].player = new McQuirtle(id, player.username, player.selectedCharacter);
-        }
-        else if (player.selectedCharacter == 2)
-        {
-            Server.clients[id].player = new Vulcasaur(id, player.username, player.selectedCharacter);
-        }
-        else //player.selectedCharacter == 0
-        {
-            Server.clients[id].player = new Charmandolphin(id, player.username, player.selectedCharacter);
-        }
-        player.transform.GetChild(player.selectedCharacter + 1).gameObject.SetActive(true);
-        player.transform.GetChild((player.selectedCharacter + 1) % 3 + 1).gameObject.SetActive(false);
-        player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>(false);
-        player.GetComponent<PlayerManager>().playerAnimator = player.GetComponentInChildren<Animator>(false);
-        player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(player.selectedCharacter + 1).GetChild(0).gameObject;
-        XPSystem.instance.MovesUpdate();
-        Debug.Log(player.selectedCharacter);
-    }
 }

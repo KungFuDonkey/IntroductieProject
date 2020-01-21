@@ -45,7 +45,8 @@ public enum ClientPackets
     setHealth,
     AddEffects,
     pickupItem,
-    SetInvis
+    SetInvis,
+    Evolve
 }
 
 public class Packet : IDisposable

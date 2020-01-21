@@ -140,7 +140,8 @@ public class Server
             { (int)ClientPackets.ready, ServerHandle.ChangeReady},
             { (int)ClientPackets.AddEffects, ServerHandle.AddEffects},
             { (int)ClientPackets.pickupItem, ServerHandle.pickupItem },
-            { (int)ClientPackets.SetInvis, ServerHandle.setInvis }
+            { (int)ClientPackets.SetInvis, ServerHandle.setInvis },
+            { (int)ClientPackets.Evolve, ServerHandle.SpawnEvolution }
         };
         characters = new Dictionary<int, Func<int, string, int, Player>>()
         {
@@ -164,6 +165,7 @@ public class Server
             Walls.startingPos[i] = GameManager.instance.walls[i].transform.position;
         }
     }
+
     public static Player charmandolphin(int id, string username, int selectedcharacter)
     {
         return new Charmandolphin(id, username, selectedcharacter);

@@ -25,6 +25,7 @@ public abstract class Player
     public static Player instance;
     public bool[] inputs;
     public float verticalRotation;
+    public bool evolve = false;
     void Awake()
     {
         instance = this;
@@ -72,15 +73,6 @@ public abstract class Player
             status.inputDirection.y *= 0.2f;
         }
         ServerSend.UpdateHUD(this);
-
-        if (inputs[9] && status.evolveTimer < 0)
-        {
-            Evolve();
-        }
-        else
-        {
-            status.evolveTimer -= Time.deltaTime;
-        }
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     protected virtual void Move(Vector3 _inputDirection)
@@ -127,12 +119,6 @@ public abstract class Player
             status.defaultStatus.dhealth -= remainingDamage;
             status.defaultStatus.dshield = 0;
         }
-    }
-    public void Evolve()
-    {
-        status.evolveTimer = status.EVOLVETIMER;
-        ServerSend.Evolve(this);
-        Debug.Log("evolving");
     }
 }
 

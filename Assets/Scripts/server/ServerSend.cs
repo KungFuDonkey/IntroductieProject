@@ -329,15 +329,6 @@ public class ServerSend
         }
     }
 
-    public static void Evolve(Player player)
-    {
-        using(Packet _packet = new Packet((int)ServerPackets.Evolve))
-        {
-            _packet.Write(player.id);
-            SendTCPDataToAll(_packet);
-        }
-    }
-
     public static void SpawnItem(int key, int item, Vector3 position)
     {
         using(Packet _packet = new Packet((int)ServerPackets.SpawnItem))
@@ -363,6 +354,15 @@ public class ServerSend
         using(Packet _packet = new Packet((int)ServerPackets.RemoveItem))
         {
             _packet.Write(id);
+            SendTCPDataToAll(_packet);
+        }
+    }
+    public static void Evolve(int id, int SelectedCharacter)
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.Evolve))
+        {
+            _packet.Write(id);
+            _packet.Write(SelectedCharacter);
             SendTCPDataToAll(_packet);
         }
     }
