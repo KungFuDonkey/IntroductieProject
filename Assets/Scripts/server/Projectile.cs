@@ -28,6 +28,10 @@ public class Projectile
         DestroyProjectile();
     }
 
+    public virtual void OnEffectRemove()
+    {
+
+    }
     public virtual void HitSelf()
     {
 
