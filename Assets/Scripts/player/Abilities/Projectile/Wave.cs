@@ -53,7 +53,7 @@ public class Wave : Projectile
             else
             {
                 position = GameManager.players[owner].gameObject.transform.position;
-
+                position.y -= 1f;
                 correctedRotation = GameManager.players[owner].gameObject.transform.rotation.eulerAngles;
                 correctedRotation.y -= 90;
                 rotation = Quaternion.Euler(0, correctedRotation.y, 0);

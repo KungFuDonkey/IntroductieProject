@@ -41,7 +41,6 @@ public abstract class Player
                 GameObject _gameobject = GameObject.Find(id.ToString());
                 controller = _gameobject.GetComponent<CharacterController>();
                 avatar = _gameobject.transform;
-                status.avatar = _gameobject.transform;
                 avatar.rotation = Quaternion.identity;
                 int childeren = _gameobject.transform.GetChild(0).childCount;
                 status.groundCheck = _gameobject.transform.GetChild(0).GetChild(childeren - 1);
@@ -54,7 +53,7 @@ public abstract class Player
                 return;
             }
         }
-        status.Update(inputs);
+        status.Update(inputs, avatar);
         if(status.health <= 0 && status.alive)
         {
             status.alive = false;

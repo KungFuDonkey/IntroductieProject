@@ -5,7 +5,10 @@ using UnityEngine;
 public class Surfing : Effect
 {
     float surfSpeed = 10f;
-    
+    float adjPos = 2f;
+    Ray ray = new Ray();
+
+
     public Surfing(float _duration)
     {
         duration = _duration;
@@ -28,14 +31,12 @@ public class Surfing : Effect
             return Vector3.negativeInfinity;
         }
 
-        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 4f, status.groundmask);
-        if (status.isGrounded)
+
+        ray.direction = Vector3.down;
+        ray.origin = status.avatar.position;
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000, GameManager.instance.groundMask))
         {
-            
-        }
-        else
-        {
-            status.ySpeed -= status.gravity * Time.deltaTime;
+            status.inputDirection.y = -1 * ((hit.distance) - adjPos);
         }
         return status.inputDirection;
     }

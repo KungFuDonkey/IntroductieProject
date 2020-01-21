@@ -19,9 +19,9 @@ public class PlayerStatus
     public Type type;
     public List<Effect> effects = new List<Effect>();
 
-    public void Update(bool[] inputs)
+    public void Update(bool[] inputs, Transform _avatar)
     {
-        SetStatus(defaultStatus);
+        SetStatus(defaultStatus, _avatar);
         int strongestPriority = 100;
         Debug.Log(effects.Count);
         if (effects.Count != 0)
@@ -85,7 +85,7 @@ public class PlayerStatus
         }
 
     }
-    public void SetStatus(Effect effect)
+    public void SetStatus(Effect effect, Transform _avatar)
     {
         gravity = effect.dgravity;
         jumpspeed = effect.djumpspeed;
@@ -102,6 +102,7 @@ public class PlayerStatus
             silenced = true;
         if (effect.dinvisible)
             invisible = true;
+        avatar = _avatar;
     }
 
     public void SetUpMovement(bool[] inputs, Effect effect)
