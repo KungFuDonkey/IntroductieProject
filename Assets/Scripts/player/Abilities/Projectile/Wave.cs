@@ -24,6 +24,7 @@ public class Wave : Projectile
         speed = 40f;
         surfing = false;
         hasSurfed = false;
+        reUseAble = true;
         groundMask = LayerMask.GetMask("Ground");
     }
     public override void UpdateProjectile()
@@ -52,6 +53,7 @@ public class Wave : Projectile
             }
             else
             {
+                reUseAble = false;
                 position = GameManager.instance.players[owner].gameObject.transform.position;
                 position.y -= 1f;
                 correctedRotation = GameManager.instance.players[owner].gameObject.transform.rotation.eulerAngles;
