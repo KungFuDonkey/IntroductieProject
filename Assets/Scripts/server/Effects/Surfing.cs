@@ -7,13 +7,17 @@ public class Surfing : Effect
     float surfSpeed = 40f;
     float adjPos = 2f;
     int owner;
+    int id;
     Ray ray = new Ray();
+    Charmandolphin player;
 
-
-    public Surfing(float _duration, int _owner)
+    public Surfing(float _duration, int _owner, int _id)
     {
         duration = _duration;
         owner = _owner;
+        id = _id;
+        player = Server.clients[_owner].player as Charmandolphin;
+        player.surfing = true;
     }
 
     public override void UpdateEffect()
@@ -30,7 +34,8 @@ public class Surfing : Effect
         status.inputDirection *= surfSpeed * Time.deltaTime * 60;
         if (inputs[4])
         {
-            Server.projectiles[owner].OnEffectRemove();
+            player.surfing = false;
+            Server.projectiles[id].OnEffectRemove();
             return Vector3.back;
         }
 

@@ -25,7 +25,6 @@ public abstract class Player
     public static Player instance;
     public bool[] inputs;
     public float verticalRotation;
-
     void Awake()
     {
         instance = this;

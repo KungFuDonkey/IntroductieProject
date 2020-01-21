@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Charmandolphin : Player
 {
-    bool surfing;
+    public bool surfing;
     int latestWave;
     public Charmandolphin(int _id, string _username, int _selectedCharacter)
     {
@@ -37,7 +37,6 @@ public class Charmandolphin : Player
             status.fireTimer -= Time.deltaTime;
             status.animationValues[2] = false;
         }
-
         if (inputs[6] && status.qTimer < 0)
         {
             qAttack();
@@ -47,8 +46,7 @@ public class Charmandolphin : Player
             status.qTimer -= Time.deltaTime;
             status.animationValues[2] = false;
         }
-
-        if (inputs[7] && status.eTimer < 0 && Server.projectiles[latestWave].reUseAble)
+        if (inputs[7] && status.eTimer < 0 && !surfing)
         {
             eAttack();
             status.animationValues[2] = false;

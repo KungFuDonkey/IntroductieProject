@@ -82,7 +82,7 @@ public class Wave : Projectile
             hasSurfed = true;
             Debug.Log("surfing");
             surfing = true;
-            Server.clients[owner].player.status.effects.Add(new Surfing(-1, id));
+            Server.clients[owner].player.status.effects.Add(new Surfing(-1, owner, id));
         //}
     }
 }
