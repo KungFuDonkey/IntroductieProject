@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnEvolution(string evolution, int id)
     {
-        PlayerManager player = GameManager.players[id];
+        PlayerManager player = GameManager.instance.players[id];
         player.selectedCharacter = (player.selectedCharacter + 1) % 3;
         if (player.selectedCharacter == 1)
         {
