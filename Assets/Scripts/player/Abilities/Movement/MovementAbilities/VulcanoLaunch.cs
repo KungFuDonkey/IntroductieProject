@@ -18,6 +18,7 @@ public class VulcanoLaunch : MovementBehaviour
         StartRotation = FreezeBone.transform.eulerAngles;
         StartPosition = FreezeBone.transform.position;
     }
+    /*
     protected override void Update()
     {
         timer -= Time.deltaTime;
@@ -27,6 +28,7 @@ public class VulcanoLaunch : MovementBehaviour
         }
         base.Update();
     }
+    */
     public void LateUpdate()
     {
         //FreezeBone.transform.eulerAngles = StartRotation;
