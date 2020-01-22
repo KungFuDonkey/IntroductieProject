@@ -65,6 +65,7 @@ public class Wave : Projectile
     }
     public override void DestroyProjectile()
     {
+        Debug.Log("destroying wave");
         destroyed = true;
         base.DestroyProjectile();
     }
@@ -77,12 +78,9 @@ public class Wave : Projectile
 
     public override void HitSelf()
     {
-        //if (!hasSurfed)
-        //{
-            hasSurfed = true;
-            Debug.Log("surfing");
-            surfing = true;
-            Server.clients[owner].player.status.effects.Add(new Surfing(-1, owner, id));
-        //}
+        hasSurfed = true;
+        Debug.Log("surfing");
+        surfing = true;
+        Server.clients[owner].player.status.effects.Add(new Surfing(-1, owner, id));
     }
 }
