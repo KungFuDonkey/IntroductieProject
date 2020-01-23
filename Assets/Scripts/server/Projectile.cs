@@ -20,8 +20,9 @@ public class Projectile
 
     public virtual void DestroyProjectile()
     {
-        ServerSend.DestroyProjectile(this);
+        Debug.Log($"queing {id}");
         ServerStart.destroyId.Add(id);
+        ServerSend.DestroyProjectile(this);
     }
 
     public virtual void Hit(int _id, int _type)

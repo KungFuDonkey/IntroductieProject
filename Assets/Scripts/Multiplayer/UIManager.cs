@@ -145,6 +145,7 @@ public class UIManager : MonoBehaviour
     {
         for(int i = mousePointers.Count - 1; i >= -1; i--)
         {
+            Destroy(mousePointers[i].gameObject);
             mousePointers.Remove(i);
         }
         startCounter = false;

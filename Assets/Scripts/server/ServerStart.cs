@@ -64,6 +64,7 @@ public class ServerStart : MonoBehaviour
             }
             foreach (int i in destroyId)
             {
+                Debug.Log($"Destroying: {i}");
                 Server.projectiles.Remove(i);
                 reset = true;
             }
