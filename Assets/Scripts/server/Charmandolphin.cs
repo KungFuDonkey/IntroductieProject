@@ -38,7 +38,7 @@ public class Charmandolphin : Player
         }
         if (inputs[6] && status.qTimer < 0)
         {
-            qAttack();
+            eAttack();
         }
         else
         {
@@ -47,7 +47,7 @@ public class Charmandolphin : Player
         }
         if (inputs[7] && status.eTimer < 0 && !surfing)
         {
-            eAttack();
+            qAttack();
             status.animationValues[2] = false;
         }
         else
