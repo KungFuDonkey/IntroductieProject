@@ -32,7 +32,7 @@ public class VulcanoJumping : Effect
 
         if (duration < startDuration * 0.5f && status.isGrounded)
         {
-            Server.projectiles[id].OnEffectRemove();
+            player.jumping = false;
             duration = 0;
         }
         else

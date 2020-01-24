@@ -28,11 +28,6 @@ public class Vulcano : Projectile
         base.DestroyProjectile();
     }
 
-    public override void OnEffectRemove()
-    {
-        jumping = false;
-    }
-
     public override void HitSelf()
     {
         if (!used)

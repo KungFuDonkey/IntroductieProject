@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 6159605}
   - component: {fileID: 6159604}
   - component: {fileID: 6159603}
+  - component: {fileID: 6159606}
   m_Layer: 0
   m_Name: Wall East
   m_TagString: Untagged
@@ -149,10 +150,10 @@ Transform:
   m_GameObject: {fileID: 6159601}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 300.5, y: 20, z: 0}
-  m_LocalScale: {x: 602, y: 65, z: 1}
+  m_LocalScale: {x: 602, y: 65, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1170770060}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!65 &6159603
 BoxCollider:
@@ -214,6 +215,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6159601}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6159606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113e944c668b6f04ea86de265a06c45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &36374619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1130,7 @@ GameObject:
   - component: {fileID: 289439924}
   - component: {fileID: 289439923}
   - component: {fileID: 289439922}
+  - component: {fileID: 289439925}
   m_Layer: 0
   m_Name: Wall North
   m_TagString: Untagged
@@ -1133,7 +1147,7 @@ Transform:
   m_GameObject: {fileID: 289439920}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 20, z: 300.5}
-  m_LocalScale: {x: 602, y: 65, z: 1}
+  m_LocalScale: {x: 602, y: 65, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1170770060}
   m_RootOrder: 0
@@ -1198,6 +1212,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289439920}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &289439925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289439920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113e944c668b6f04ea86de265a06c45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &359161485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,10 +1890,10 @@ MonoBehaviour:
   - {fileID: 883455592496434515, guid: b7d4f8ce74582bd469bf67c6eb4c338c, type: 3}
   - {fileID: 0}
   walls:
+  - {fileID: 289439920}
+  - {fileID: 1882287587}
   - {fileID: 6159601}
   - {fileID: 2016833749}
-  - {fileID: 1882287587}
-  - {fileID: 289439920}
   freezeInput: 0
 --- !u!4 &753665314
 Transform:
@@ -2622,8 +2648,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 289439921}
-  - {fileID: 6159602}
   - {fileID: 1882287588}
+  - {fileID: 6159602}
   - {fileID: 2016833750}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -4185,6 +4211,7 @@ GameObject:
   - component: {fileID: 1882287591}
   - component: {fileID: 1882287590}
   - component: {fileID: 1882287589}
+  - component: {fileID: 1882287592}
   m_Layer: 0
   m_Name: Wall South
   m_TagString: Untagged
@@ -4201,10 +4228,10 @@ Transform:
   m_GameObject: {fileID: 1882287587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 20, z: -300.5}
-  m_LocalScale: {x: 602, y: 65, z: 1}
+  m_LocalScale: {x: 602, y: 65, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1170770060}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1882287589
 BoxCollider:
@@ -4266,6 +4293,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882287587}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1882287592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882287587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113e944c668b6f04ea86de265a06c45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1883273193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4561,6 +4600,7 @@ GameObject:
   - component: {fileID: 2016833753}
   - component: {fileID: 2016833752}
   - component: {fileID: 2016833751}
+  - component: {fileID: 2016833754}
   m_Layer: 0
   m_Name: Wall West
   m_TagString: Untagged
@@ -4577,7 +4617,7 @@ Transform:
   m_GameObject: {fileID: 2016833749}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -300.5, y: 20, z: 0}
-  m_LocalScale: {x: 602, y: 65, z: 1}
+  m_LocalScale: {x: 602, y: 65, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1170770060}
   m_RootOrder: 3
@@ -4642,6 +4682,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016833749}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2016833754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016833749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113e944c668b6f04ea86de265a06c45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2051615067
 GameObject:
   m_ObjectHideFlags: 0
