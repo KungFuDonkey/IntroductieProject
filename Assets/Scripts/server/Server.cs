@@ -7,9 +7,9 @@ using System;
 
 public class Server
 {
-    // Start is called before the first frame update
     public static int MaxPlayers { get; private set; }
     public static int Port { get; private set; }
+
     public static Dictionary<int, ServerClient> clients = new Dictionary<int, ServerClient>();
     public static Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>();
     public delegate void PacketHandler(int _fromClient, Packet _packet);
@@ -153,7 +153,7 @@ public class Server
             for(int j = 0; j <= MaxPlayers; j++)
             {
                 //spawnpoints 10 steps off the wall and 15 high
-                spawnPoints.Add((MaxPlayers + 1) * i + j, new Vector3(i * (280 / MaxPlayers) - 290,15, j * (280 / MaxPlayers) - 290));
+                spawnPoints.Add((MaxPlayers + 1) * i + j, new Vector3(i * (280 / MaxPlayers) - 290, 15, j * (280 / MaxPlayers) - 290));
             }
         }
         Debug.Log("Initialized packets.");

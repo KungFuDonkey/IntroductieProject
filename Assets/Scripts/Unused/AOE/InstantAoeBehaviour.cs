@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class InstantAoeBehaviour : Ability
 {
-    // Start is called before the first frame update
     protected float radius;
     protected float duration;
     protected float interval, INTERVAL;
     protected override void Start()
     {
-        base.Start();
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
-        base.Update();
         duration -= Time.deltaTime;
         if(duration < 0)
         {

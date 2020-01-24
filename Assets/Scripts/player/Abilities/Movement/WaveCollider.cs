@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileHit : MonoBehaviour
+public class WaveCollider : MonoBehaviour
 {
     void Start()
     {
@@ -15,9 +15,9 @@ public class ProjectileHit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();
-        if(playerManager != null)
+        if (playerManager != null)
         {
-            if(playerManager.id != Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].owner)
+            if (playerManager.id != Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].owner)
             {
                 Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].Hit(playerManager.id, gameObject.GetComponent<ProjectileManager>().id);
             }
@@ -25,10 +25,6 @@ public class ProjectileHit : MonoBehaviour
             {
                 Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].HitSelf();
             }
-        }
-        else
-        {
-            Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].DestroyProjectile();
         }
     }
 }

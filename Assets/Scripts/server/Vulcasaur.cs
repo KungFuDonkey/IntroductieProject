@@ -5,9 +5,9 @@ using UnityEngine;
 public class Vulcasaur : Player
 {
     public bool jumping;
+
     public Vulcasaur(int _id, string _username, int _selectedCharacter)
     {
-
         id = _id;
         username = _username;
         selectedCharacter = _selectedCharacter;
@@ -26,6 +26,7 @@ public class Vulcasaur : Player
             false
         };
     }
+
     public override void UpdatePlayer()
     {
         base.UpdatePlayer();
@@ -37,7 +38,6 @@ public class Vulcasaur : Player
         {
             status.fireTimer -= Time.deltaTime;
             status.animationValues[2] = false;
-
         }
 
         if (inputs[6] && status.qTimer < 0)
@@ -48,7 +48,6 @@ public class Vulcasaur : Player
         {
             status.qTimer -= Time.deltaTime;
             status.animationValues[2] = false;
-
         }
 
         if (inputs[7] && status.eTimer < 0)
@@ -60,11 +59,7 @@ public class Vulcasaur : Player
         {
             status.eTimer -= Time.deltaTime;
             status.animationValues[2] = false;
-
         }
-
-
-
     }
 
     public void basicAttack()
@@ -90,7 +85,6 @@ public class Vulcasaur : Player
         {
             return;
         }
-       
     }
 
     public void eAttack()
@@ -106,6 +100,5 @@ public class Vulcasaur : Player
         {
             return;
         }
-
     }
 }

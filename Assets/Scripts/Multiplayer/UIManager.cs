@@ -18,7 +18,9 @@ public class UIManager : MonoBehaviour
     public InputField ipAdress;
     public Text serverInfo, playerCount;
     public Text UsernameList;
+
     public List<OnlineMousePointer> mousePointers = new List<OnlineMousePointer>();
+
     private void Awake()
     {
         if (instance == null)
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
             mousePointers.Add(null);
         }
     }
+
     public void SelectMyCharacter(int n)
     {
         ClientSend.ChoosePlayer(n);
@@ -145,10 +148,12 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
     public void setMenuStatus(bool setStatus)
     {
         gameObject.SetActive(setStatus);
     }
+
     public void ResetUI()
     {
         for(int i = mousePointers.Count - 1; i >= 0; i--)

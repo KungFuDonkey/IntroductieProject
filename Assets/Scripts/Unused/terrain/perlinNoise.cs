@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class perlinNoise : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int width;
     public int height;
     public float scale = 1.0f;
@@ -22,11 +21,11 @@ public class perlinNoise : MonoBehaviour
         CalcNoise();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
     void CalcNoise()
     {
         float y = 0;

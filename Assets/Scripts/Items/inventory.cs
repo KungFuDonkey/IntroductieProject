@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class inventory : MonoBehaviour
 {
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+    public int space = 20;
+
+    public List<Item> items = new List<Item>();
 
     public static inventory instance;
 
@@ -11,15 +16,6 @@ public class inventory : MonoBehaviour
     {
         instance = this;
     }
-
-   
-
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallback;
-
-    public int space = 20;
-
-    public List<Item> items = new List<Item>();
 
     public void Add (Item item)
     {
@@ -43,5 +39,4 @@ public class inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
     }
-    
 }

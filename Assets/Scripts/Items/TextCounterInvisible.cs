@@ -15,21 +15,13 @@ public class TextCounterInvisible : MonoBehaviour
     public Text TimerText;
     private float starttime;
 
-
-
-
-    // Start is called before the first frame update
     public void Start()
     {
-
         starttime = Time.time;
-
     }
 
-    // Update is called once per frame
     public void Update()
     {
-
         float t = Time.time - starttime;
         /* if (t > 10)
          {
@@ -48,11 +40,7 @@ public class TextCounterInvisible : MonoBehaviour
          {
              ti = ti + 10;
          }*/
-
-
         string timer = ti.ToString("f2");
-
-
         TimerText.text = timer;
 
     }

@@ -22,7 +22,6 @@ public class ThreadManager : MonoBehaviour
             Debug.Log("No action to execute on main thread!");
             return;
         }
-
         lock (executeOnMainThread)
         {
             executeOnMainThread.Add(_action);

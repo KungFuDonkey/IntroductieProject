@@ -10,6 +10,7 @@ public class gameItem: MonoBehaviour
     public int itemNumber;
     public bool pickup = true;
     public Item item;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Avatar"))

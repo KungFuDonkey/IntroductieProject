@@ -8,13 +8,16 @@ using UnityEngine.UI;
 
 public class Item : ScriptableObject
 {
+    new public string name = "New Item";
+    public Sprite icon = null;
+
     public static Item instance;
+
     void Awake()
     {
         instance = this;
     }
-    new public string name = "New Item";
-    public Sprite icon = null;
+
     public virtual void Use()
     {
         if (name == "Pecha Berry")
@@ -22,6 +25,7 @@ public class Item : ScriptableObject
             inventory.instance.Remove(this);
         }
     }
+
     public void RemoveItemFromInventory()
     {
         inventory.instance.Remove(this);

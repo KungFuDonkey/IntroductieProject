@@ -29,6 +29,7 @@ public class Wave : Projectile
         groundMask = LayerMask.GetMask("Ground");
         player = Server.clients[_owner].player as Charmandolphin;
     }
+
     public override void UpdateProjectile()
     {
         if(groundCheck == null)

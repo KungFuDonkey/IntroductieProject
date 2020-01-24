@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class heightgenereation : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int width;
     public int height;
     public float heightModifier;
@@ -14,6 +13,7 @@ public class heightgenereation : MonoBehaviour
     private Renderer renderer;
     Terrain terrain;
     TerrainData data;
+
     void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -22,6 +22,7 @@ public class heightgenereation : MonoBehaviour
         pixelHeight = new float[data.heightmapResolution, data.heightmapResolution];
         CalcNoise();
     }
+
     void CalcNoise()
     {
         float y = 0;

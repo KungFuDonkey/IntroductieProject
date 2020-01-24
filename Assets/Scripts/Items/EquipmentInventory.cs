@@ -6,20 +6,16 @@ public class EquipmentInventory : MonoBehaviour
 {
     public EquipmentType EquipmentType;
     public static EquipmentInventory instance;
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+    public int space = 20;
+
+    public List<Item> items = new List<Item>();
 
     void Awake()
     {
         instance = this;
     }
-
-
-
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallback;
-
-    public int space = 20;
-
-    public List<Item> items = new List<Item>();
 
     public void Add (Item item)
     {

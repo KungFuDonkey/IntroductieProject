@@ -7,14 +7,12 @@ public class Ability : MonoBehaviour
     protected float damage;
     protected string type;
     protected string statusEffect = "none";
-    // Start is called before the first frame update
+
     protected virtual void Start()
     {
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
-        
     }
 }

@@ -11,7 +11,5 @@ public class EquipmentInventorySlot : InventorySlot
     {
         EquipmentInventory.instance.Remove(Item);
     }
-
-
 }
 

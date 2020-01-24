@@ -10,6 +10,7 @@ public class VulcanoJumping : Effect
     float startDuration, headRotation;
     public float LaunchSpeed = 60f;
     Vector3 jumpDirection;
+
     public VulcanoJumping(float _duration, int _owner, int _id, int _key)
     {
         startDuration = _duration;

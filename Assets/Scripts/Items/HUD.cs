@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-
-    public static HUD instance;
-
-    void Awake()
-    {
-        instance = this;
-    }
     public Item item;
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
@@ -25,11 +18,16 @@ public class HUD : MonoBehaviour
 
     public EquipmentInventory jEquipmentInventory;
     public inventory binventory;
- 
-
     InventorySlot[] slots;
     EquipmentInventorySlot[] gearslots;
 
+    public static HUD instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+    
     void Start()
     {
         binventory = inventory.instance;

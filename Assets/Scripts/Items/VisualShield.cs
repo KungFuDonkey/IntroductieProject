@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class VisualShield : MonoBehaviour
 {
-
     private float maxXValue;
     private float minXValue;
     public RectTransform shieldTransform;
@@ -16,7 +15,6 @@ public class VisualShield : MonoBehaviour
     public float currentShield;
     public Image visualShield;
    
-
     public static VisualShield instance;
 
     private void Awake()
@@ -24,7 +22,6 @@ public class VisualShield : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         cachedY = shieldTransform.position.y;

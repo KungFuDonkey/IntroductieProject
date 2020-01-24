@@ -25,23 +25,20 @@ public class Surfing : Effect
 
     public override void UpdateEffect()
     {
-
     }
 
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         status.inputDirection = Vector3.zero;
-
         status.inputDirection += status.avatar.forward;
- 
         status.inputDirection *= surfSpeed * Time.deltaTime * 60;
+
         if (inputs[4])
         {
             player.surfing = false;
             Server.projectiles[id].OnEffectRemove();
             return Vector3.back;
         }
-
 
         ray.direction = Vector3.down;
         ray.origin = status.avatar.position;

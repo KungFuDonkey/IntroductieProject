@@ -10,11 +10,9 @@ public class inventoryUI : MonoBehaviour
 
     EquipmentInventory bEquipmnetInventory;
     inventory binventory;
-
     InventorySlot[] slots;
     EquipmentInventorySlot[] eslots;
     
-    // Start is called before the first frame update
     void Start()
     {
         binventory = inventory.instance;
@@ -27,7 +25,6 @@ public class inventoryUI : MonoBehaviour
         jinventoryUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Inventory"))
@@ -58,7 +55,6 @@ public class inventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
-
         for (int i = 0; i < eslots.Length; i++)
         {
             if (i < bEquipmnetInventory.items.Count)
@@ -70,6 +66,5 @@ public class inventoryUI : MonoBehaviour
                 eslots[i].ClearSlot();
             }
         }
-
     }
 }

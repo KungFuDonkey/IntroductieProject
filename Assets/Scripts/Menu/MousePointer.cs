@@ -8,6 +8,7 @@ public class MousePointer : MonoBehaviour
     {
         Cursor.visible = false;
     }
+
     void FixedUpdate()
     {
         Vector2 pos = new Vector2(Input.mousePosition.x + 12, Input.mousePosition.y - 26);
