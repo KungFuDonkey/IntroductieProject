@@ -66,7 +66,7 @@ public class ServerHandle
         else if (item == 3)
         {
             Debug.Log("if item 3");
-            Server.clients[_fromClient].player.status.effects.Add(new SpeedBoost(10, 35f, 1));
+            Server.clients[_fromClient].player.status.effects.Add(new SpeedBoost(10, 6000f*Time.deltaTime, 1));
         }
     }
     public static void pickupItem(int _fromClient, Packet _packet)
