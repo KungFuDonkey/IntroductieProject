@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
 using UnityEngine;
 
 public class MagmaVines : MeleeBehaviour
@@ -19,20 +18,31 @@ public class MagmaVines : MeleeBehaviour
         Vines = GetComponent<Animator>();
         Vines.SetTrigger("VineAttack");
         playerMask = LayerMask.NameToLayer("ObjectWithLives");
-        transform.rotation = transform.parent.rotation;
     }
     public void VineAttackEnd()
     {
-        PhotonNetwork.Destroy(gameObject);
+        Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].DestroyProjectile();
     }
     public void onAttack()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward * range + transform.up, 2, playerMask);
-        foreach(Collider c in colliders)
+        if (Client.instance.host)
         {
-            PhotonView hitObject = c.gameObject.GetPhotonView();
-            hitObject.RPC("hit", RpcTarget.AllBuffered, new object[] { damage, type });
+            Collider[] colliders = Physics.OverlapSphere(transform.position + transform.forward * range + transform.up, 2, playerMask);
+            foreach (Collider c in colliders)
+            {
+                PlayerManager playerManager = c.gameObject.GetComponent<PlayerManager>();
+                if (playerManager != null)
+                {
+                    if (playerManager.id != Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].owner)
+                    {
+                        Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].Hit(playerManager.id, gameObject.GetComponent<ProjectileManager>().id);
+                    }
+                }
+                else
+                {
+                    Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].DestroyProjectile();
+                }
+            }
         }
-
     }
 }
