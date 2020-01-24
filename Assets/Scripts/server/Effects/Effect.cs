@@ -113,7 +113,6 @@ public class Effect
         get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.fire, 0); }
     }
 
-
     public static Effect McQuirtle
     {
         get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.grass, 0); }

@@ -99,7 +99,7 @@ public class Vulcasaur : Player
         {
             status.eTimer = status.ETIMER;
             Quaternion rotation = Quaternion.Euler(17.34f, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
-            ServerSend.Projectile(this, 2, new Vulcano((int)GameManager.projectileNumber, status.groundCheck.position, rotation, status.inputDirection * 0.2f, id));
+            ServerSend.Projectile(this, 2, new Vulcano((int)GameManager.projectileNumber, status.groundCheck.position, rotation, status.inputDirection * 0.2f, id, 5f));
             Debug.Log("shooting");
         }
         else

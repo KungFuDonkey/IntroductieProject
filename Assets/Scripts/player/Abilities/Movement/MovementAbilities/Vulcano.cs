@@ -6,8 +6,9 @@ public class Vulcano : Projectile
 {
     public bool jumping, used;
     LayerMask groundMask;
+    float timer;
 
-    public Vulcano(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
+    public Vulcano(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner, float _timer)
     {
         id = _id;
         position = new Vector3(_spawnPosition.x, _spawnPosition.y - 4, _spawnPosition.z);
@@ -19,6 +20,17 @@ public class Vulcano : Projectile
         groundMask = LayerMask.GetMask("Ground");
         jumping = false;
         used = false;
+        timer = _timer;
+    }
+
+    public override void UpdateProjectile()
+    {
+        timer -= Time.deltaTime;
+        if(timer < 0)
+        {
+            DestroyProjectile();
+        }
+        base.UpdateProjectile();
     }
 
     public override void DestroyProjectile()
@@ -39,7 +51,9 @@ public class Vulcano : Projectile
         {
             used = true;
             Debug.Log("jumping");
-            Server.clients[owner].player.status.effects.Add(new VulcanoJumping(3, owner, id));
+            int key = Server.clients[owner].player.status.effectcount;
+            Server.clients[owner].player.status.effects.Add(key,new VulcanoJumping(3, owner, id, key));
+            Server.clients[owner].player.status.effectcount++;
         }
     }
 }
