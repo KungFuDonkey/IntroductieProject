@@ -71,6 +71,7 @@ public class ServerStart : MonoBehaviour
             {
                 if (_client.connected)
                 {
+                    Debug.Log(_client.mousePosition);
                     ServerSend.SendMousePosition(_client.id, _client.mousePosition);
                 }
             }

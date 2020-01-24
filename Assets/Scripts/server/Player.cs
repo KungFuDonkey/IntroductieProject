@@ -41,8 +41,7 @@ public abstract class Player
                 controller = _gameobject.GetComponent<CharacterController>();
                 avatar = _gameobject.transform;
                 avatar.rotation = Quaternion.identity;
-                int childeren = _gameobject.transform.GetChild(1).childCount;
-                status.groundCheck = _gameobject.transform.GetChild(1).GetChild(childeren - 1);
+                status.groundCheck = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().groundcheck;
                 projectileSpawner = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner;
                 Debug.Log("avatar found");
             }

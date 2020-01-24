@@ -83,7 +83,6 @@ MonoBehaviour:
   lastPacketTime: 0
   playerAnimator: {fileID: 2002783854533474899}
   playerHUD: {fileID: 0}
-  invisible: 0
 --- !u!143 &3982412801713517751
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1245,6 +1244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawner: {fileID: 311533217613979655}
   Head: {fileID: 4947564606277509454}
+  groundcheck: {fileID: 1458536200465642663}
 --- !u!1 &4435013711128968178
 GameObject:
   m_ObjectHideFlags: 0
