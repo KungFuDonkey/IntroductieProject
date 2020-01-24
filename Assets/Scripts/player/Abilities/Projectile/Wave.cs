@@ -31,7 +31,15 @@ public class Wave : Projectile
     {
         if(groundCheck == null)
         {
-            groundCheck = GameManager.projectiles[id].transform.GetChild(1);
+            try
+            {
+                groundCheck = GameManager.projectiles[id].transform.GetChild(1);
+            }
+            catch
+            {
+                ServerStart.destroyId.Add(id);
+                return;
+            }
         }
         if (position.y < -20)
         {
