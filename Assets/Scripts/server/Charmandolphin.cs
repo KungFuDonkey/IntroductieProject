@@ -66,7 +66,7 @@ public class Charmandolphin : Player
         status.animationValues[2] = true;
     }
 
-    public void qAttack()
+    public void eAttack()
     {
         if (XPSystem.instance.CurrentLevel >= 3)
         {
@@ -82,7 +82,7 @@ public class Charmandolphin : Player
         }
     }
 
-    public void eAttack()
+    public void qAttack()
     {
         if (XPSystem.instance.CurrentLevel >= 5)
         {
