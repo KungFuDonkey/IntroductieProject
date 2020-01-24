@@ -141,7 +141,6 @@ public class Server
             { (int)ClientPackets.AddEffects, ServerHandle.AddEffects},
             { (int)ClientPackets.pickupItem, ServerHandle.pickupItem },
             { (int)ClientPackets.SetInvis, ServerHandle.setInvis },
-            { (int)ClientPackets.Evolve, ServerHandle.SpawnEvolution }
         };
         characters = new Dictionary<int, Func<int, string, int, Player>>()
         {

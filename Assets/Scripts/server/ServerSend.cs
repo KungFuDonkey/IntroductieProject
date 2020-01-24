@@ -356,14 +356,5 @@ public class ServerSend
             SendTCPDataToAll(_packet);
         }
     }
-    public static void Evolve(int id, int SelectedCharacter)
-    {
-        using(Packet _packet = new Packet((int)ServerPackets.Evolve))
-        {
-            _packet.Write(id);
-            _packet.Write(SelectedCharacter);
-            SendTCPDataToAll(_packet);
-        }
-    }
     #endregion
 }

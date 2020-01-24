@@ -91,10 +91,6 @@ public class ServerHandle
         bool invis = _packet.ReadBool();
         ServerSend.SetInvis(_fromClient, invis);
     }
-    public static void SpawnEvolution(int _fromClient, Packet _packet)
-    {
-        Server.clients[_fromClient].player.evolve = true;
-    }
     public static void Reset()
     {
         foreach(ServerClient client in Server.clients.Values)

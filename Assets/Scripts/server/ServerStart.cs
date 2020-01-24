@@ -50,12 +50,6 @@ public class ServerStart : MonoBehaviour
                     {
                         _client.player = null;
                     }
-                    if (_client.player.evolve)
-                    {
-                        int selectedCharacter = _client.player.selectedCharacter + 1 % 3;
-                        _client.player = Server.characters[selectedCharacter](_client.id, Server.clients[_client.id].username, selectedCharacter);
-                        ServerSend.Evolve(_client.id, selectedCharacter);
-                    }
                 }
             }
             foreach (Projectile _projectile in Server.projectiles.Values)

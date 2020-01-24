@@ -201,21 +201,6 @@ public class ClientHandle : MonoBehaviour
         Destroy(GameManager.instance.gameItems[id]);
         GameManager.instance.gameItems[id] = null;
     }
-    public static void Evolve(Packet _packet)
-    {
-        int id = _packet.ReadInt();
-        int newCharacter = _packet.ReadInt();
-        PlayerManager player = GameManager.instance.players[id];
-        player.transform.GetChild(newCharacter).gameObject.SetActive(true);
-        player.transform.GetChild((newCharacter) % 3 + 1).gameObject.SetActive(false);
-        player.GetComponent<PlayerController>().playerAnimator = player.GetComponentInChildren<Animator>(false);
-        player.GetComponent<PlayerManager>().playerAnimator = player.GetComponentInChildren<Animator>(false);
-        player.GetComponent<PlayerManager>().Allparts = player.transform.GetChild(player.selectedCharacter + 1).GetChild(0).gameObject;
-        if(id == Client.instance.myId)
-        {
-            XPSystem.instance.MovesUpdate();
-        }
-    }
     /*
       
                   PingReply reply = ping.Send(Client.instance.ip, 1000);
