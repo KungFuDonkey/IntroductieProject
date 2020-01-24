@@ -8,8 +8,9 @@ public class Wave : Projectile
     public bool surfing, hasSurfed;
     Vector3 groundCheckLift = new Vector3(0, 0.2f, 0);
     Vector3 correctedRotation;
-
-
+    float distance = 0;
+    int effect;
+    Charmandolphin player;
 
     public Wave(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
     {
@@ -26,6 +27,7 @@ public class Wave : Projectile
         hasSurfed = false;
         reUseAble = true;
         groundMask = LayerMask.GetMask("Ground");
+        player = Server.clients[_owner].player as Charmandolphin;
     }
     public override void UpdateProjectile()
     {
@@ -37,7 +39,7 @@ public class Wave : Projectile
             }
             catch
             {
-                ServerStart.destroyId.Add(id);
+                Debug.Log("not found");
                 return;
             }
         }
@@ -69,12 +71,23 @@ public class Wave : Projectile
                 rotation = Quaternion.Euler(0, correctedRotation.y, 0);
             }
         }
+        distance += speed * Time.deltaTime; 
+        if(distance > maxDistance)
+        {
+            DestroyProjectile();
+        }
         base.UpdateProjectile();
     }
     public override void DestroyProjectile()
     {
         Debug.Log("destroying wave");
         destroyed = true;
+        if (surfing)
+        {
+            Debug.Log($"removing effect: {effect}");
+            Server.clients[owner].player.status.effects.Remove(effect);
+            player.surfing = false;
+        }
         base.DestroyProjectile();
     }
 
@@ -86,9 +99,14 @@ public class Wave : Projectile
 
     public override void HitSelf()
     {
-        hasSurfed = true;
-        Debug.Log("surfing");
-        surfing = true;
-        Server.clients[owner].player.status.effects.Add(new Surfing(-1, owner, id));
+        if (!surfing)
+        {
+            hasSurfed = true;
+            Debug.Log("surfing");
+            surfing = true;
+            effect = Server.clients[owner].player.status.effectcount;
+            Server.clients[owner].player.status.effects.Add(effect, new Surfing(-1, owner, id, effect));
+            Server.clients[owner].player.status.effectcount++;
+        }
     }
 }

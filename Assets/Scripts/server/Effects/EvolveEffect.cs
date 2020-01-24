@@ -10,5 +10,6 @@ public class EvolveEffect : Effect
         duration = 4;
         dsilenced = true;
         dmovable = true;
+        name = "evolve";
     }
 }

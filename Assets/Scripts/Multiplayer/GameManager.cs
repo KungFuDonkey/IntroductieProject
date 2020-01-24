@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer(int _id, string _username, int _selectedCharacter, Vector3 _position, Quaternion _rotation)
     {
         GameObject _player;
-        Debug.Log(_selectedCharacter);
         if (_id == Client.instance.myId)
         {
             _player = Instantiate(characters[_selectedCharacter], _position, _rotation);

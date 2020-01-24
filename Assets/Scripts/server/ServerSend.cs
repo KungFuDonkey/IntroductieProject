@@ -180,7 +180,6 @@ public class ServerSend
                         client.SendIntoGame();
                     }
                 }
-                Debug.Log("starting");
                 ServerStart.started = true;
                 ServerStart.SpawnItem();
             }

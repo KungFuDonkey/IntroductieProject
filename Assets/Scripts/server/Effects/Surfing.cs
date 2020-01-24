@@ -11,13 +11,16 @@ public class Surfing : Effect
     Ray ray = new Ray();
     Charmandolphin player;
 
-    public Surfing(float _duration, int _owner, int _id)
+    public Surfing(float _duration, int _owner, int _id, int _key)
     {
         duration = _duration;
         owner = _owner;
         id = _id;
         player = Server.clients[_owner].player as Charmandolphin;
         player.surfing = true;
+        key = _key;
+        priority = 1;
+        name = "surfing";
     }
 
     public override void UpdateEffect()

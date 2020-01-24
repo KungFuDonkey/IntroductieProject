@@ -136,7 +136,6 @@ public class ClientHandle : MonoBehaviour
     public static void UpdatePlayerCount(Packet _packet)
     {
         int alive = _packet.ReadInt();
-        Debug.Log(alive);
         GameManager.instance.players[Client.instance.myId].UpdatePlayerCount(alive);
     }
     public static void ReceiveWinScreen(Packet _packet)
