@@ -5,7 +5,7 @@ using UnityEngine;
 public class Walls
 {
     public static Transform[] walls = new Transform[4];
-    static float wallsWait, WALLSWAIT = 30f, wallsMove = 30f, mapSize = 598f;
+    static float wallsWait, WALLSWAIT = 30f, wallsMove = 30f, mapSize = 600f;
     public static Vector3 circlePosition;
     static Vector3[] distances = new Vector3[4];
     public static Vector3[] startingPos = new Vector3[4];
@@ -54,7 +54,7 @@ public class Walls
         {
             moveWalls();
         }
-        //WallShrink();
+        WallShrink();
 
         ServerSend.SetWalls();
     }
@@ -78,10 +78,10 @@ public class Walls
         float quarter = (mapSize * 0.25f);
         float half = (mapSize * 0.5f);
         circlePosition = new Vector3(Random.Range(x - quarter, x + quarter), 20, Random.Range(z - quarter, z + quarter));
-        distances[0] = circlePosition - walls[2].position + new Vector3(0, 0, -half);
-        distances[1] = circlePosition - walls[3].position + new Vector3(0, 0, half);
-        distances[2] = circlePosition - walls[0].position + new Vector3(half, 0, 0);
-        distances[3] = circlePosition - walls[1].position + new Vector3(-half, 0, 0);
+        distances[0] = circlePosition - walls[0].position + new Vector3(0, 0, half);
+        distances[1] = circlePosition - walls[1].position + new Vector3(0, 0, -half);
+        distances[2] = circlePosition - walls[2].position + new Vector3(half, 0, 0);
+        distances[3] = circlePosition - walls[3].position + new Vector3(-half, 0, 0);
         Debug.Log("New circle: " + circlePosition.ToString());
     }
     public static void Reset()
