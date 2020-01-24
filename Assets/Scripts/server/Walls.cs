@@ -84,6 +84,7 @@ public class Walls
             }
         }
     }
+
     public static void setDistances(float x, float z)
     {
         float quarter = (mapSize * 0.25f);
@@ -95,6 +96,7 @@ public class Walls
         distances[3].x = circlePosition.x - walls[3].position.x - half;
         Debug.Log("New circle: " + circlePosition.ToString());
     }
+
     public static void Reset()
     {
         for(int i = 0; i < 4; i++)

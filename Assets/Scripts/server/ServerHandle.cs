@@ -27,6 +27,7 @@ public class ServerHandle
         Server.clients[_fromClient].ready = !Server.clients[_fromClient].ready;
         ServerSend.SendUsernameList();
     }
+
     public static void MousePosition(int _fromClient, Packet _packet)
     {
         Server.clients[_fromClient].mousePosition = _packet.ReadVector2();
@@ -36,6 +37,7 @@ public class ServerHandle
     {
         Server.clients[_fromClient].selectedCharacter = _packet.ReadInt();
     }
+
     //handle playermovement in the game
     public static void PlayerMovement(int _fromClient, Packet _packet)
     {
@@ -68,6 +70,7 @@ public class ServerHandle
         }
         Server.clients[_fromClient].player.status.effectcount++;
     }
+
     public static void pickupItem(int _fromClient, Packet _packet)
     {
         int id = _packet.ReadInt();
@@ -86,11 +89,13 @@ public class ServerHandle
             ServerSend.RemoveItem(id);
         }
     }
+
     public static void setInvis(int _fromClient, Packet _packet)
     {
         bool invis = _packet.ReadBool();
         ServerSend.SetInvis(_fromClient, invis);
     }
+
     public static void Reset()
     {
         foreach(ServerClient client in Server.clients.Values)

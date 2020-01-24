@@ -15,10 +15,12 @@ public class PlayerManager : MonoBehaviour
     public HUD playerHUD;
 
     public static PlayerManager instance;
+
     void Awake()
     {
         instance = this;
     }
+
     public void SetAnimations(bool[] animationValues)
     {
         playerAnimator.SetBool("IsWalking", animationValues[0]);
@@ -53,7 +55,6 @@ public class PlayerManager : MonoBehaviour
         Allparts.SetActive(!invisible);
     }
 
- 
     public void UpdateHUD(float health, float shield)
     {
         playerHUD.healthBar.currentHealth = health;
@@ -80,6 +81,7 @@ public class PlayerManager : MonoBehaviour
             playerHUD.Winscreen.SetActive(true);
         }
     }
+
     public void Die()
     {
         playerAnimator.SetTrigger("Die");

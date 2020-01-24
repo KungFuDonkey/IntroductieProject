@@ -6,8 +6,8 @@ public class VulcasaurLook : playerLook
 {
     VulcasaurLook()
     {
-
     }
+
     protected override void LateUpdate()
     {
         Head.localRotation = Quaternion.Euler(-1.14f, 17.087f, verticalRotation);

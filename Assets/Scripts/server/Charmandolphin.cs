@@ -5,6 +5,7 @@ using UnityEngine;
 public class Charmandolphin : Player
 {
     public bool surfing;
+
     public Charmandolphin(int _id, string _username, int _selectedCharacter)
     {
         id = _id;
@@ -55,7 +56,6 @@ public class Charmandolphin : Player
             status.eTimer -= Time.deltaTime;
             status.animationValues[2] = false;
         }
-
     }
 
     public void basicAttack()
@@ -75,7 +75,6 @@ public class Charmandolphin : Player
             ServerSend.Projectile(this, 5, new AquaPulse(GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
             status.animationValues[2] = true;
         }
-
         else
         {
             return;

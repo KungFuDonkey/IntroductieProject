@@ -74,7 +74,6 @@ public class Effect
             }
         }
         status.ySpeed -= status.gravity * Time.deltaTime;
-
         status.inputDirection.y = status.ySpeed;
 
         return status.inputDirection;
@@ -117,6 +116,5 @@ public class Effect
     {
         get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.grass, 0); }
     }
-
 }
 

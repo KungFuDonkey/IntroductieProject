@@ -11,9 +11,6 @@ public class SpectateBehaviour : MonoBehaviour
     public float friction;
     public Transform Specatator;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -21,7 +18,6 @@ public class SpectateBehaviour : MonoBehaviour
         controller = GetComponentInParent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
@@ -42,17 +38,8 @@ public class SpectateBehaviour : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         yRotation -= mouseY;
-
-
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
         transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
         Specatator.Rotate(Vector3.up * mouseX);
-
-       
-
-
-
-
-
     }
 }

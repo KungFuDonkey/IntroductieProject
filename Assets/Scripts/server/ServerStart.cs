@@ -13,6 +13,7 @@ public class ServerStart : MonoBehaviour
     public GameObject resetScreen;
     public static bool started = false;
     public static List<int> destroyId = new List<int>();
+
     private void Awake()
     {
         if (instance == null)
@@ -24,8 +25,8 @@ public class ServerStart : MonoBehaviour
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
-        //DontDestroyOnLoad(gameObject);
     }
+
     void Start()
     {
         Client.instance.host = true;
@@ -34,7 +35,6 @@ public class ServerStart : MonoBehaviour
         content = serverLog.transform.GetChild(0).GetChild(0).GetChild(0).GetComponentInChildren<Text>();
         Server.Start(25, 26950);
     }
-
 
     //let the server run on fixed ticks
     void FixedUpdate()
@@ -89,10 +89,12 @@ public class ServerStart : MonoBehaviour
             serverLog.SetActive(false);
         }
     }
+
     public void DebugServer(string message)
     {
         content.text += message + "\n";
     }
+
     public static void SpawnItem()
     {
         for (int i = 0; i < 20; i++)

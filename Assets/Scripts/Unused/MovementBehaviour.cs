@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class MovementBehaviour : Ability
 {
-    int MovementSpeed;
-    
-
     protected override void Start()
     {
-        base.Start();
     }
-
  
     protected override void Update()
     {
-        
     }
 }

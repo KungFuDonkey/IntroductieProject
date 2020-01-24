@@ -10,17 +10,15 @@ public class ProjectileBehavior : Ability
     private bool fired = false;
     protected bool destroyed = false;
     private float firedTimer = 0.1f;
-    // Start is called before the first frame update
+
     protected override void Start()
     {
-        base.Start();
         controller = GetComponent<Rigidbody>();
         controller.velocity = transform.forward * speed;
     }
-    // Update is called once per frame
+
     protected override void Update()
     {
-        base.Update();
         maxDistance -= speed * Time.deltaTime;
         if (maxDistance < 0 && !destroyed)
         {

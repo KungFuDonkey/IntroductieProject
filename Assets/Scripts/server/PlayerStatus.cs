@@ -34,7 +34,6 @@ public class PlayerStatus
                 effect.UpdateEffect();
                 if (effect.duration == -1)
                 {
-
                 }
                 else if (effect.duration <= 0)
                 {
@@ -72,6 +71,7 @@ public class PlayerStatus
             SetUpMovement(inputs, defaultStatus, defaultStatus.key);
         }
     }
+
     public void UpdateStatus(Effect effect)
     {
         gravity *= effect.dgravity;
@@ -90,8 +90,8 @@ public class PlayerStatus
         {
             invisible = !invisible;
         }
-
     }
+
     public void SetStatus(Effect effect, Transform _avatar)
     {
         gravity = effect.dgravity;

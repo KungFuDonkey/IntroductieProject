@@ -40,20 +40,17 @@ public class McQuirtle : Player
         if (inputs[6] && status.qTimer < 0)
         {
             qAttack();
-
         }
         else
         {
             status.qTimer -= Time.deltaTime;
             status.animationValues[2] = false;
-
         }
 
         if (inputs[7] && status.eTimer < 0)
         {
             eAttack();
             status.animationValues[2] = false;
-
         }
         else
         {
@@ -61,8 +58,6 @@ public class McQuirtle : Player
             status.animationValues[2] = false;
 
         }
-
-
     }
 
     public void basicAttack()
@@ -79,8 +74,6 @@ public class McQuirtle : Player
     {
         if (XPSystem.instance.CurrentLevel >= 5)
         {
-
-
             status.qTimer = status.QTIMER;
             Quaternion rotation = Quaternion.Euler(verticalRotation, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
             ServerSend.Projectile(this, 9, new ReturningBall((int)GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
@@ -91,7 +84,6 @@ public class McQuirtle : Player
         {
             return;
         }
-
     }
 
     public void eAttack()

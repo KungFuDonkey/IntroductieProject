@@ -7,7 +7,6 @@ public class playerLook : MonoBehaviour
     public PlayerManager player;
     public float sensitivity = 100f;
     public float clampAngle = 85f;
-
     public float verticalRotation;
     protected float horizontalRotation;
 
@@ -20,7 +19,6 @@ public class playerLook : MonoBehaviour
 
     protected Transform avatarTrans, localTrans;
 
-    // Start is called before the first frame update
     void Start()
     {
         verticalRotation = transform.localEulerAngles.x;
@@ -31,7 +29,6 @@ public class playerLook : MonoBehaviour
         localTrans = avatarTrans.GetChild(1).transform;
     }
 
-    // Update is called once per frame
     protected virtual void LateUpdate()
     {
         float mouseX;
@@ -53,7 +50,6 @@ public class playerLook : MonoBehaviour
         horizontalRotation += mouseX * sensitivity * Time.deltaTime;
         playerbody.localRotation = Quaternion.Euler(0f, horizontalRotation, 0f);
     }
-
 }
 
 

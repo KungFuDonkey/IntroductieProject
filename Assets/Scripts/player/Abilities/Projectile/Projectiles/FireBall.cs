@@ -15,6 +15,7 @@ public class FireBall : Projectile
         damage = 8;
         type = Type.fire;
     }
+
     public override void UpdateProjectile()
     {
         float distance = Vector3.Distance(spawnPosition, position);
@@ -28,6 +29,7 @@ public class FireBall : Projectile
         }
         base.UpdateProjectile();
     }
+
     public override void DestroyProjectile()
     {
         destroyed = true;

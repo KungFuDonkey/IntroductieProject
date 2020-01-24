@@ -160,7 +160,6 @@ public class ServerSend
         }
     }
 
-
     public static void LoadMenu(int menuNumber)
     {
         using (Packet _packet = new Packet((int)ServerPackets.LoadMenu))
@@ -239,6 +238,7 @@ public class ServerSend
             SendUDPDataToAll(id, _packet);
         }
     }
+
     public static void SetWalls()
     {
         using (Packet _packet = new Packet((int)ServerPackets.SetWalls))
@@ -251,6 +251,7 @@ public class ServerSend
             SendUDPDataToAll(Client.instance.myId, _packet);
         }
     }
+
     public static void UpdateHUD(Player _player)
     {
         using (Packet _packet = new Packet((int)ServerPackets.UpdateHUD))
@@ -295,6 +296,7 @@ public class ServerSend
             }
         }
     }
+
     public static void SendWinScreen()
     {
         using (Packet _packet = new Packet((int)ServerPackets.Win))
@@ -313,6 +315,7 @@ public class ServerSend
             }
         }
     }
+
     public static void SendDeathScreen(Player player)
     {
         using(Packet _packet = new Packet((int)ServerPackets.Death))
@@ -340,6 +343,7 @@ public class ServerSend
             SendTCPDataToAll(Client.instance.myId, _packet);
         }
     }
+
     public static void Item(int id, int itemNumber, int toClient)
     {
         using(Packet _packet = new Packet((int)ServerPackets.Item))
@@ -350,6 +354,7 @@ public class ServerSend
         }
         RemoveItem(id);
     }
+
     public static void RemoveItem(int id)
     {
         using(Packet _packet = new Packet((int)ServerPackets.RemoveItem))

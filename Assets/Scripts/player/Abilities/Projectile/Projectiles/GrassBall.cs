@@ -15,6 +15,7 @@ public class GrassBall : Projectile
         damage = 8;
         type = Type.grass;
     }
+
     public override void UpdateProjectile()
     {
         float distance = Vector3.Distance(spawnPosition, position);
@@ -28,6 +29,7 @@ public class GrassBall : Projectile
         }
         base.UpdateProjectile();
     }
+
     public override void DestroyProjectile()
     {
         destroyed = true;

@@ -19,7 +19,6 @@ public class ClientHandle : MonoBehaviour
         Client.instance.udp.Connect();
     }
 
-
     public static void SpawnPlayer(Packet _packet)
     {
         int _id = _packet.ReadInt();
@@ -40,8 +39,6 @@ public class ClientHandle : MonoBehaviour
             GameManager.instance.players[_id].transform.position = _position;
         }
     }
-
- 
 
     public static void PlayerAnimation(Packet _packet)
     {
@@ -94,6 +91,7 @@ public class ClientHandle : MonoBehaviour
         GameManager.projectiles[_id].DestroyProjectile();
         GameManager.projectiles.Remove(_id);
     }
+
     public static void SetInvis(Packet _packet)
     {
         Debug.Log("setting invis");
@@ -101,6 +99,7 @@ public class ClientHandle : MonoBehaviour
         bool _invis = _packet.ReadBool();
         GameManager.instance.players[_id].Invisible(_invis);
     }
+
     public static void LoadMenu(Packet _packet)
     {
         int menu = _packet.ReadInt();
@@ -122,6 +121,7 @@ public class ClientHandle : MonoBehaviour
         Vector2 _position = _packet.ReadVector2();
         UIManager.instance.mousePointers[_id].ChangePosition(_position);
     }
+
     public static void SetWalls(Packet _packet)
     {
         for (int i = 0; i < 4; i++)
@@ -130,21 +130,25 @@ public class ClientHandle : MonoBehaviour
             GameManager.instance.walls[i].transform.localScale = _packet.ReadVector3();
         }
     }
+
     public static void UpdateHUD(Packet _packet)
     {
         float health = _packet.ReadFloat();
         float shield = _packet.ReadFloat();
         GameManager.instance.players[Client.instance.myId].UpdateHUD(health, shield);
     }
+
     public static void UpdatePlayerCount(Packet _packet)
     {
         int alive = _packet.ReadInt();
         GameManager.instance.players[Client.instance.myId].UpdatePlayerCount(alive);
     }
+
     public static void ReceiveWinScreen(Packet _packet)
     {
         GameManager.instance.players[Client.instance.myId].Screen(1);
     }
+
     public static void ReceiveDeathScreen(Packet _packet)
     {
         int id = _packet.ReadInt();
@@ -157,6 +161,7 @@ public class ClientHandle : MonoBehaviour
             GameManager.instance.players[id].Die();
         }
     }
+
     public static void Reset(Packet _packet)
     {
         GameManager.instance.ResetGame();
@@ -170,6 +175,7 @@ public class ClientHandle : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
     public static void spawnItem(Packet _packet)
     {
         int key = _packet.ReadInt();
@@ -180,6 +186,7 @@ public class ClientHandle : MonoBehaviour
         thisItem.id = key;
         GameManager.instance.gameItems[key] = prop;
     }
+
     public static void Item(Packet _packet)
     {
         int id = _packet.ReadInt();
@@ -199,6 +206,7 @@ public class ClientHandle : MonoBehaviour
             }
         }
     }
+
     public static void RemoveItem(Packet _packet)
     {
         int id = _packet.ReadInt();

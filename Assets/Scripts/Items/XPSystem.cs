@@ -19,13 +19,13 @@ public class XPSystem : MonoBehaviour
     int XP;
     public int CurrentLevel;
 
-
     public static XPSystem instance;
 
     private void Awake()
     {
         instance = this;
     }
+
     private void Start()
     {
         TekstLevelUp.SetActive(false);
@@ -37,10 +37,12 @@ public class XPSystem : MonoBehaviour
         GrassMoveQ.SetActive(false);
         character = GameObject.Find(Client.instance.myId.ToString()).GetComponent<PlayerManager>();
     }
+
     public void NewLevel()
     {
         TekstLevelUp.SetActive(false);
     }
+
     public void Emove()
     {
         if(character.selectedCharacter == 0)
@@ -62,6 +64,7 @@ public class XPSystem : MonoBehaviour
             GrassMoveE.SetActive(false);
         }
     }
+
     public void Qmove()
     {
         if (character.selectedCharacter == 0)
@@ -83,6 +86,7 @@ public class XPSystem : MonoBehaviour
             GrassMoveQ.SetActive(false);
         }
     }
+
     public void WaitNewLevel()
     {
         TekstLevelUp.SetActive(true);
@@ -100,15 +104,12 @@ public class XPSystem : MonoBehaviour
         XP += xp;
         int level = (int)(0.1f * Mathf.Sqrt(XP));
         string levelCount = level.ToString();
-        
         if (level != CurrentLevel && level != 1)
         {
             CurrentLevel = level;
             WaitNewLevel();
         }
         int XPForNextLevel = 100 * (CurrentLevel + 1) * (CurrentLevel + 1) ;
-        
-
         int XPDifference = XPForNextLevel - XP;
         string XPNextLevel = XPDifference.ToString();
         if (level == 0 || level == 1)
@@ -116,11 +117,8 @@ public class XPSystem : MonoBehaviour
             levelCount = 1.ToString();
             XPNextLevel = 0.ToString();
         }
-
         LevelCountText.text = levelCount;
         int Difference = XPForNextLevel - (100 * CurrentLevel * CurrentLevel);
-
-       
         LevelText.text = levelCount;
         NextText.text = XPNextLevel;
     }

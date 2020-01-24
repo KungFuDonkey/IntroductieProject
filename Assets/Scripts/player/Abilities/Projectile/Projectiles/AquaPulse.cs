@@ -15,6 +15,7 @@ public class AquaPulse : Projectile
         damage = 15;
         type = Type.water;
     }
+
     public override void UpdateProjectile()
     {
         float distance = Vector3.Distance(spawnPosition, position);
@@ -28,6 +29,7 @@ public class AquaPulse : Projectile
         }
         base.UpdateProjectile();
     }
+
     public override void DestroyProjectile()
     {
         destroyed = true;

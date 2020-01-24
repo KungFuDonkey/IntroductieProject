@@ -23,7 +23,6 @@ public class HealthBar : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         cachedY = healthTransform.position.y;

@@ -5,24 +5,27 @@ using UnityEngine;
 public class MagmaVines : MeleeBehaviour
 {
     public LayerMask playerMask;
+    Animator Vines;
+
     MagmaVines()
     {
         range = 2.5f;
         damage = 10;
         type = "normal";
     }
-    Animator Vines;
-    // Start is called before the first frame update
+
     protected override void Start()
     {
         Vines = GetComponent<Animator>();
         Vines.SetTrigger("VineAttack");
         playerMask = LayerMask.NameToLayer("ObjectWithLives");
     }
+
     public void VineAttackEnd()
     {
         Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].DestroyProjectile();
     }
+
     public void onAttack()
     {
         if (Client.instance.host)

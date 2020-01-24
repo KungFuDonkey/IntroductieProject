@@ -19,6 +19,7 @@ public class SnakeBall : Projectile
         type = Type.water;
         speed = 30;
     }
+
     public override void UpdateProjectile()
     {
         float distance = Vector3.Distance(spawnPosition, position);
@@ -42,6 +43,7 @@ public class SnakeBall : Projectile
         }
         base.UpdateProjectile();
     }
+
     public override void DestroyProjectile()
     {
         destroyed = true;

@@ -83,7 +83,6 @@ public class ServerClient
                     Server.clients[id].Disconnect();
                     return;
                 }
-
                 byte[] _data = new byte[_byteLength];
                 Array.Copy(receiveBuffer, _data, _byteLength);
 
@@ -125,7 +124,6 @@ public class ServerClient
                         Server.packetHandlers[_packetId](id, _packet);
                     }
                 });
-
                 _packetLength = 0;
                 if (receivedData.UnreadLength() >= 4)
                 {
@@ -136,12 +134,10 @@ public class ServerClient
                     }
                 }
             }
-
             if (_packetLength <= 1)
             {
                 return true;
             }
-
             return false;
         }
 
@@ -225,5 +221,4 @@ public class ServerClient
         tcp.Disconnect();
         udp.Disconnect();
     }
-
 }

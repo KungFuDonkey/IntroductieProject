@@ -18,6 +18,7 @@ public class ReturningBall : Projectile
         type = Type.water;
         speed = 60;
     }
+
     public override void UpdateProjectile()
     {
         float distance = Vector3.Distance(spawnPosition, position);
@@ -48,6 +49,7 @@ public class ReturningBall : Projectile
         }
         base.UpdateProjectile();
     }
+
     public override void DestroyProjectile()
     {
         destroyed = true;
