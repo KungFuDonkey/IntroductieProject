@@ -29,11 +29,21 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void UseItem(int _itemIndex)
+    public static void AddEffects(int _item)
     {
-        using (Packet _packet = new Packet((int)ClientPackets.UseItem))
+        using (Packet _packet = new Packet((int)ClientPackets.AddEffects))
         {
-            _packet.Write(_itemIndex);
+            _packet.Write(_item);
+            SendTCPData(_packet);
+        }
+    }
+
+    public static void SetInvis(bool invis)
+    {
+        using(Packet _packet = new Packet((int)ClientPackets.SetInvis))
+        {
+            Debug.Log("sending invis to server");
+            _packet.Write(invis);
             SendTCPData(_packet);
         }
     }
@@ -56,8 +66,8 @@ public class ClientSend : MonoBehaviour
             {
                 _packet.Write(_input);
             }
-            _packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
-            _packet.Write(GameManager.players[Client.instance.myId].GetComponent<playerLook>().verticalRotation);
+            _packet.Write(GameManager.instance.players[Client.instance.myId].transform.rotation);
+            _packet.Write(GameManager.instance.players[Client.instance.myId].GetComponentInChildren<playerLook>().verticalRotation);
             SendUDPData(_packet);
         }
     }
@@ -76,6 +86,24 @@ public class ClientSend : MonoBehaviour
         {
             _packet.Write(_position);
             SendUDPData(_packet);
+        }
+    }
+
+    public static void pickupItem(int id, int itemNumber)
+    {
+        using(Packet _packet = new Packet((int)ClientPackets.pickupItem))
+        {
+            _packet.Write(id);
+            _packet.Write(itemNumber);
+            SendTCPData(_packet);
+        }
+    }
+
+    public static void Evolve(int SelectedCharacter)
+    {
+        using(Packet _packet = new Packet((int)ClientPackets.Evolve))
+        {
+            SendTCPData(_packet);
         }
     }
     #endregion

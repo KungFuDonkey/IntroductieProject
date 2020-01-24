@@ -8,12 +8,13 @@ public class VisualShield : MonoBehaviour
 
     private float maxXValue;
     private float minXValue;
-    public RectTransform healthTransform;
+    public RectTransform shieldTransform;
+    Vector3 position;
     private float cachedY;
-    public int maxHealth;
-
-    public int currentHealth;
-    public Image visualHealth;
+    public float maxShield;
+    float stepOffset;
+    public float currentShield;
+    public Image visualShield;
    
 
     public static VisualShield instance;
@@ -26,52 +27,19 @@ public class VisualShield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cachedY = healthTransform.position.y;
-        maxXValue = healthTransform.position.x;
-        minXValue = healthTransform.position.x - healthTransform.rect.width;
-        currentHealth = maxHealth;
+        cachedY = shieldTransform.position.y;
+        position = shieldTransform.position;
+        maxXValue = shieldTransform.position.x;
+        minXValue = shieldTransform.position.x - shieldTransform.rect.width;
+        currentShield = maxShield;
+        stepOffset = shieldTransform.rect.width / maxShield;
+        visualShield.color = new Color32(0, 0, 255, 255);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKey("y") && currentHealth > 0)
-        {
-            CurrentHealth -= 1;
-        }
-        if (Input.GetKey("u") && currentHealth < maxHealth)
-        {
-            CurrentHealth += 1;
-        }
-    }
-
-    public void HandleHealth()
-    {
-        float currentXValue = MapValues(currentHealth, 0, maxHealth, minXValue, maxXValue);
-
-        healthTransform.position = new Vector3(currentXValue, cachedY);
-
-        if (currentHealth == 0)
-        {
-            visualHealth.color = new Color32(255, 255, 255, 255);
-        }
-        else
-        {
-            visualHealth.color = new Color32(0, 0, 255, 255);        }
-    }
-
-    public float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
-    {
-        return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-    }
-
-    public int CurrentHealth
-    {
-        get { return currentHealth; }
-        set
-        {
-            currentHealth = value;
-            HandleHealth();
-        }
+        float currentXValue = currentShield * stepOffset + minXValue;
+        position.x = currentXValue;
+        shieldTransform.position = position;
     }
 }

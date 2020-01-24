@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public GameObject Allparts;
     public int id;
     public string username;
     public int selectedCharacter;
-    public int yRotation;
+    public float lastPacketTime = 0f;
     public Animator playerAnimator;
-    public Transform player;
-    public Player playert;
-    [SerializeField] public GameObject invisible;
+    public HUD playerHUD;
 
     public static PlayerManager instance;
     void Awake()
     {
         instance = this;
     }
-
+    /*
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ClientSend.Evolve(selectedCharacter);
+        }
+    }
+    */
     public void SetAnimations(bool[] animationValues)
     {
         playerAnimator.SetBool("IsWalking", animationValues[0]);
@@ -27,6 +34,49 @@ public class PlayerManager : MonoBehaviour
         {
             playerAnimator.SetTrigger("Attack");
         }
+    }
 
+    public void Invisible(bool invisible)
+    {
+        if (invisible)
+        {
+            Allparts.SetActive(false);
+        }
+        else
+        {
+            Allparts.SetActive(true);
+        }
+    }
+
+ 
+    public void UpdateHUD(float health, float shield)
+    {
+        playerHUD.healthBar.currentHealth = health;
+        playerHUD.shieldBar.currentShield = shield;
+    }
+
+    public void UpdatePlayerCount(int alive)
+    {
+        playerHUD.AlivePlayers.text = alive.ToString();
+    }
+
+    public void Screen(int screen)
+    {
+        GameManager.instance.freezeInput = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (screen == 0)
+        {
+            Die();
+            playerHUD.Deathscreen.SetActive(true);
+        }
+        else
+        {
+            playerHUD.Winscreen.SetActive(true);
+        }
+    }
+    public void Die()
+    {
+        playerAnimator.SetTrigger("Die");
     }
 }

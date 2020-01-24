@@ -15,12 +15,23 @@ public enum ServerPackets
     projectile,
     projectileMove,
     projectileDestroy,
-    Damage,
     LoadMenu,
     UseItem,
     UsernameList,
     mousePosition,
-    SetWalls
+    UpdateHUD,
+    UpdatePlayerCount,
+    Win,
+    Death,
+    SetWalls,
+    Reset,
+    SetInvis,
+    Damage,
+    SendResetScreen,
+    Evolve,
+    SpawnItem,
+    Item,
+    RemoveItem
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -32,7 +43,10 @@ public enum ClientPackets
     mousePosition,
     ChoosePlayer,
     setHealth,
-    UseItem
+    AddEffects,
+    pickupItem,
+    SetInvis,
+    Evolve
 }
 
 public class Packet : IDisposable

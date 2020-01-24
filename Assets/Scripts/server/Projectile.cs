@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Projectile
 {
-    public int id;
-    public Vector3 position;
-    public Vector3 startDirection;
+    public int id, owner;
+    public Vector3 position, startDirection, spawnPosition;
     public Quaternion rotation;
-    protected float speed = 50;
-    protected float maxDistance = 150;
+    public Type type;
+    protected float speed = 50, maxDistance = 150;
     public float damage;
-    public int owner;
+    protected bool destroyed = false;
+    public bool reUseAble = false; 
+
     public virtual void UpdateProjectile()
     {
         ServerSend.ProjectileMove(this);
@@ -19,13 +20,23 @@ public class Projectile
 
     public virtual void DestroyProjectile()
     {
-        ServerSend.DestroyProjectile(this);
+        Debug.Log($"queing {id}");
         ServerStart.destroyId.Add(id);
+        ServerSend.DestroyProjectile(this);
     }
 
     public virtual void Hit(int _id, int _type)
     {
-        ServerSend.Damage(_id, damage, _type);
+        Server.clients[_id].player.Hit(this);
         DestroyProjectile();
+    }
+
+    public virtual void OnEffectRemove()
+    {
+
+    }
+    public virtual void HitSelf()
+    {
+
     }
 }

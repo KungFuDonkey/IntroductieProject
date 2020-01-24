@@ -20,6 +20,10 @@ public class ProjectileHit : MonoBehaviour
             {
                 Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].Hit(playerManager.id, gameObject.GetComponent<ProjectileManager>().id);
             }
+            else
+            {
+                Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].HitSelf();
+            }
         }
         else
         {

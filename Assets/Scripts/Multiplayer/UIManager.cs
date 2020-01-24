@@ -10,9 +10,9 @@ public class UIManager : MonoBehaviour
     public int selectedCharacter = 1;
     public bool startCounter = false;
     public float timer = 10f;
-    public GameObject mainCamera;
     public GameObject startMenu, lobby, characterSelection;
     public GameObject server;
+    public GameObject startButton;
     public InputField usernameField;
     public InputField ipAdress;
     public Text serverInfo, playerCount;
@@ -68,7 +68,12 @@ public class UIManager : MonoBehaviour
 
     public void LoadMenu(int menu)
     {
-        if(menu == 1)
+        if(menu == 0)
+        {
+            characterSelection.SetActive(false);
+            lobby.SetActive(true);
+        }
+        else if(menu == 1)
         {
             lobby.SetActive(false);
             characterSelection.SetActive(true);
@@ -88,8 +93,9 @@ public class UIManager : MonoBehaviour
             startCounter = true;
         }
         else if(menu == 2){
-            gameObject.SetActive(false);
-            Destroy(mainCamera);
+            setMenuStatus(false);
+            Destroy(GameObject.Find("Main Camera"));
+            GameManager.instance.freezeInput = false;
         }
     }
 
@@ -108,6 +114,18 @@ public class UIManager : MonoBehaviour
         ClientSend.Ready();
     }
 
+    public void StartButton(bool ready)
+    {
+        if (ready)
+        {
+            startButton.SetActive(true);
+        }
+        else
+        {
+            startButton.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         if (startCounter)
@@ -116,8 +134,21 @@ public class UIManager : MonoBehaviour
             if(timer < 0 && Client.instance.host)
             {
                 ServerSend.LoadMenu(2);
-                timer = 100f;
             }
         }
+    }
+    public void setMenuStatus(bool setStatus)
+    {
+        gameObject.SetActive(setStatus);
+    }
+    public void ResetUI()
+    {
+        for(int i = mousePointers.Count - 1; i >= -1; i--)
+        {
+            Destroy(mousePointers[i].gameObject);
+            mousePointers.Remove(i);
+        }
+        startCounter = false;
+        timer = 10f;
     }
 }

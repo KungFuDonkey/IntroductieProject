@@ -5,10 +5,11 @@ using UnityEngine;
 public class Walls
 {
     public static Transform[] walls = new Transform[4];
-    protected static float wallsWait, WALLSWAIT = 10, wallsMove, WALLSMOVE = 10, mapSize = 600, startTimer = 5;
-    public static Vector3 circlePosition;
-    public static Vector3[] distances = new Vector3[4];
-    static bool started = false, waiting = false;
+    static float wallsWait, WALLSWAIT = 30f, wallsMove = 30f, mapSize = 600f;
+    static Vector3 circlePosition;
+    static Vector3[] distances = new Vector3[4];
+    public static Vector3[] startingPos = new Vector3[4];
+    static bool waiting = false;
     static bool[] wallMoving = new bool[4];
     static int smaller;
 
@@ -24,14 +25,10 @@ public class Walls
             }
         }
 
-        if (!allWallsStop)
-        {
-            wallsMove -= Time.deltaTime;
-            
-        }
-        else
+        if (allWallsStop)
         {
             wallsWait -= Time.deltaTime;
+
         }
 
         if (allWallsStop && !waiting)
@@ -50,7 +47,6 @@ public class Walls
             {
                 wallMoving[i] = true;
             }
-            wallsMove = WALLSMOVE;
             waiting = false;
         }
 
@@ -67,7 +63,7 @@ public class Walls
         {
             if (Vector3.Distance(circlePosition, walls[i].position) > mapSize * 0.5f)
             {
-                walls[i].position += distances[i] * Time.deltaTime / 10;
+                walls[i].position += distances[i] * Time.deltaTime / wallsMove;
             }
             else
             {
@@ -84,6 +80,19 @@ public class Walls
         distances[1] = circlePosition - walls[1].position + new Vector3(-half, 0, 0);
         distances[2] = circlePosition - walls[2].position + new Vector3(0, 0, -half);
         distances[3] = circlePosition - walls[3].position + new Vector3(0, 0, half);
-        Debug.Log(circlePosition.ToString());
+    }
+    public static void Reset()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            walls[i].position = startingPos[i];
+        }
+        wallsWait = 0f;
+        WALLSWAIT = 30f;
+        wallsMove = 30f;
+        mapSize = 600f;
+        waiting = false;
+        smaller = 0;
+        ServerSend.SetWalls();
     }
 }

@@ -6,6 +6,24 @@ public class PlayerController : MonoBehaviour
 {
     bool[] _inputs;
     public Animator playerAnimator;
+    KeyCode[] keys;
+
+    private void Start()
+    {
+        keys = new KeyCode[10]{
+            KeyCode.W,
+            KeyCode.S,
+            KeyCode.A,
+            KeyCode.D,
+            KeyCode.Space,
+            KeyCode.LeftShift,
+            KeyCode.Q,
+            KeyCode.E,
+            KeyCode.I,
+            KeyCode.V
+        };
+        _inputs = new bool[11];
+    }
     private void FixedUpdate()
     {
         SendInputToServer();
@@ -27,29 +45,26 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("IsWalking", false);
             playerAnimator.SetBool("IsRunning", false);
         }
-        if (_inputs[10] || _inputs[6] || _inputs[7])
-        {
-            playerAnimator.SetTrigger("Attack");
-        }
     }
 
     private void SendInputToServer()
     {
-        _inputs = new bool[]
+        if (!GameManager.instance.freezeInput)
         {
-            Input.GetKey(KeyCode.W),
-            Input.GetKey(KeyCode.S),
-            Input.GetKey(KeyCode.A),
-            Input.GetKey(KeyCode.D),
-            Input.GetKey(KeyCode.Space),
-            Input.GetKey(KeyCode.LeftShift),
-            Input.GetKey(KeyCode.Q),
-            Input.GetKey(KeyCode.E),
-            Input.GetKey(KeyCode.P),
-            Input.GetKey(KeyCode.V),
-            Input.GetMouseButton(0)
-        };
-        
-        ClientSend.PlayerMovement(_inputs);
+            for(int i = 0; i<10; i++)
+            {
+                _inputs[i] = Input.GetKey(keys[i]);
+            }
+            _inputs[10] = Input.GetMouseButton(0);
+            ClientSend.PlayerMovement(_inputs);
+        }
+        else
+        {
+            for(int i = 0; i<11; i++)
+            {
+                _inputs[i] = false;
+            }
+            ClientSend.PlayerMovement(_inputs);
+        }
     }
 }

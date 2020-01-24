@@ -8,9 +8,12 @@ public class HealthBar : MonoBehaviour
     private float maxXValue;
     private float minXValue;
     public RectTransform healthTransform;
+    Vector3 position;
+    Color32 color;
+    float stepOffset;
     private float cachedY;
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
     public Image visualHealth;
 
     public static HealthBar instance;
@@ -24,52 +27,21 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         cachedY = healthTransform.position.y;
+        position = healthTransform.position;
         maxXValue = healthTransform.position.x;
         minXValue = healthTransform.position.x - healthTransform.rect.width;
+        stepOffset = healthTransform.rect.width / maxHealth;
         currentHealth = maxHealth;
+        color = new Color32(0, 100, 0, 255);
+        visualHealth.color = color;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKey("r") && currentHealth > 0)
-        {
-            CurrentHealth -= 1;
-        }
-        if (Input.GetKey("t") && currentHealth < maxHealth)
-        {
-            CurrentHealth += 1;
-        }
-    }
-
-    public void HandleHealth()
-    {
-        float currentXValue = MapValues(currentHealth, 0, maxHealth, minXValue, maxXValue);
-
-        healthTransform.position = new Vector3(currentXValue, cachedY);
-
-        if (currentHealth > maxHealth / 2)
-        {
-            visualHealth.color = new Color32((byte)MapValues(currentHealth, maxHealth/2, maxHealth, 255, 0), 255, 0, 255);
-        }
-        else
-        {
-            visualHealth.color = new Color32(255, (byte)MapValues(currentHealth, 0, maxHealth / 2, 0, 255), 0, 255);
-        }
-    }
-
-    public float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
-    {
-        return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-    }
-
-    public int CurrentHealth
-    {
-        get { return currentHealth; }
-        set
-        {
-            currentHealth = value;
-            HandleHealth();
-        }
+        float currentXValue = currentHealth * stepOffset + minXValue;
+        color.g = (byte)currentHealth;
+        color.r = (byte)(100 - currentHealth);
+        position.x = currentXValue;
+        healthTransform.position = position;
     }
 }

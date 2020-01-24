@@ -261,13 +261,21 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.projectile, ClientHandle.Projectile },
             { (int)ServerPackets.projectileMove, ClientHandle.ProjectileMove },
             { (int)ServerPackets.projectileDestroy, ClientHandle.ProjectileDestroy },
-            { (int)ServerPackets.Damage, ClientHandle.Damage },
             { (int)ServerPackets.playerAnimation, ClientHandle.PlayerAnimation },
             { (int)ServerPackets.LoadMenu, ClientHandle.LoadMenu },
             { (int)ServerPackets.UsernameList, ClientHandle.UsernameList},
             { (int)ServerPackets.mousePosition, ClientHandle.GetMousePosition },
             { (int)ServerPackets.SetWalls, ClientHandle.SetWalls },
-            { (int)ServerPackets.UseItem, ClientHandle.UseItem }
+            { (int)ServerPackets.UpdateHUD, ClientHandle.UpdateHUD},
+            { (int)ServerPackets.SetInvis, ClientHandle.SetInvis },
+            { (int)ServerPackets.UpdatePlayerCount, ClientHandle.UpdatePlayerCount },
+            { (int)ServerPackets.Win, ClientHandle.ReceiveWinScreen },
+            { (int)ServerPackets.Death, ClientHandle.ReceiveDeathScreen },
+            { (int)ServerPackets.Reset, ClientHandle.Reset},
+            { (int)ServerPackets.SpawnItem, ClientHandle.spawnItem },
+            { (int)ServerPackets.Item, ClientHandle.Item },
+            { (int)ServerPackets.RemoveItem, ClientHandle.RemoveItem },
+            { (int)ServerPackets.Evolve, ClientHandle.Evolve }
         };
         Debug.Log("Initialized packets.");
     }

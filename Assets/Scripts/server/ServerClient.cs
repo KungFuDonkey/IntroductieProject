@@ -34,7 +34,7 @@ public class ServerClient
 
         private readonly int id;
         private NetworkStream stream;
-        private ServerPacket receivedData;
+        private Packet receivedData;
         private byte[] receiveBuffer;
 
         public TCP(int _id)
@@ -50,14 +50,14 @@ public class ServerClient
 
             stream = socket.GetStream();
 
-            receivedData = new ServerPacket();
+            receivedData = new Packet();
             receiveBuffer = new byte[dataBufferSize];
 
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
             ServerSend.Welcome(id, "Welcome to the server!");
         }
 
-        public void SendData(ServerPacket _packet)
+        public void SendData(Packet _packet)
         {
             try
             {
@@ -119,7 +119,7 @@ public class ServerClient
                 byte[] _packetBytes = receivedData.ReadBytes(_packetLength);
                 ThreadManager.ExecuteOnMainThread(() =>
                 {
-                    using (ServerPacket _packet = new ServerPacket(_packetBytes))
+                    using (Packet _packet = new Packet(_packetBytes))
                     {
                         int _packetId = _packet.ReadInt();
                         Server.packetHandlers[_packetId](id, _packet);
@@ -171,19 +171,19 @@ public class ServerClient
             endPoint = _endPoint;
         }
 
-        public void SendData(ServerPacket _packet)
+        public void SendData(Packet _packet)
         {
             Server.SendUDPData(endPoint, _packet);
         }
 
-        public void HandleData(ServerPacket _packetData)
+        public void HandleData(Packet _packetData)
         {
             int _packetLength = _packetData.ReadInt();
             byte[] _packetBytes = _packetData.ReadBytes(_packetLength);
 
             ThreadManager.ExecuteOnMainThread(() =>
             {
-                using (ServerPacket _packet = new ServerPacket(_packetBytes))
+                using (Packet _packet = new Packet(_packetBytes))
                 {
                     int _packetId = _packet.ReadInt();
                     Server.packetHandlers[_packetId](id, _packet);
@@ -204,24 +204,14 @@ public class ServerClient
             if (_client.connected)
             {
                 ServerSend.SpawnPlayer(id, _client.player, _client.spawnpoint);
+                Thread.Sleep(100);
             }
         }
     }
 
     public void SetCharacter()
     {
-        if (selectedCharacter == 1)
-        {
-            player = new Charmandolphin(id, username, selectedCharacter);
-        }
-        else if (selectedCharacter == 2)
-        {
-            player = new Vulcasaur(id, username, selectedCharacter);
-        }
-        else
-        {
-            player = new McQuirtle(id, username, selectedCharacter);
-        }
+        player = Server.characters[selectedCharacter](id, username, selectedCharacter);
         spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
     }
 
@@ -235,4 +225,5 @@ public class ServerClient
         tcp.Disconnect();
         udp.Disconnect();
     }
+
 }

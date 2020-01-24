@@ -1,7 +1,16 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+
+
+public enum Type
+{
+    water,
+    grass,
+    fire,
+    noType
+}
 
 public abstract class Player
 {
@@ -15,7 +24,8 @@ public abstract class Player
     public CharacterController controller;
     public static Player instance;
     public bool[] inputs;
-
+    public float verticalRotation;
+    public bool evolve = false;
     void Awake()
     {
         instance = this;
@@ -24,9 +34,35 @@ public abstract class Player
     //update the player by checking his inputs and acting on them
     public virtual void UpdatePlayer()
     {
-        SetupPlayer();
-        status.Update(inputs);
+        if (controller == null)
+        {
+            try
+            {
+                GameObject _gameobject = GameObject.Find(id.ToString());
+                controller = _gameobject.GetComponent<CharacterController>();
+                avatar = _gameobject.transform;
+                avatar.rotation = Quaternion.identity;
+                int childeren = _gameobject.transform.GetChild(1).childCount;
+                status.groundCheck = _gameobject.transform.GetChild(1).GetChild(childeren - 1);
+                projectileSpawner = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner;
+                Debug.Log("avatar found");
+            }
+            catch
+            {
+                Debug.Log($"failed to find {id}");
+                return;
+            }
+        }
+        status.Update(inputs, avatar);
+        if(status.health <= 0 && status.alive)
+        {
+            status.alive = false;
+            ServerSend.SendDeathScreen(this);
+            ServerSend.UpdatePlayerCount();
+            return;
+        }
         Move(status.inputDirection);
+
 
         if (status.isGrounded)  //for projectiles
         {
@@ -36,32 +72,7 @@ public abstract class Player
         {
             status.inputDirection.y *= 0.2f;
         }
-    }
-
-
-    //find the player in the game of the masterclient, otherwise it can't move
-    private void SetupPlayer()
-    {
-        if (controller == null)
-        {
-            try
-            {
-                GameObject _gameobject = GameObject.Find(id.ToString());
-                controller = _gameobject.GetComponent<CharacterController>();
-                avatar = _gameobject.transform;
-                status.avatar = _gameobject.transform;
-                avatar.rotation = Quaternion.identity;
-                int childeren = _gameobject.transform.GetChild(0).childCount;
-                status.groundCheck = _gameobject.transform.GetChild(0).GetChild(childeren - 1);
-                projectileSpawner = _gameobject.GetComponent<ProjectileSpawnerAllocater>().projectileSpawner;
-                Debug.Log("avatar found");
-            }
-            catch
-            {
-                Debug.Log($"failed to find {id}");
-                return;
-            }
-        }
+        ServerSend.UpdateHUD(this);
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     protected virtual void Move(Vector3 _inputDirection)
@@ -76,50 +87,38 @@ public abstract class Player
     {
         inputs = _inputs;
         avatar.rotation = _rotation;
-        status.verticalRotation = _verticalRotation;
+        verticalRotation = _verticalRotation;
     }
 
-    //public void UseItem(int itemIndex)
-    //{
-    //   if (itemIndex == 0)
-    //    {
-    //        jumpspeed *= 3;
-    //    }
-    //   else if (itemIndex == 1)
-    //    {
-    //        jumpspeed /= 3;
-    //    }
-    //   else if (itemIndex == 2)
-    //    {
-    //        walkSpeed *= 3;
-    //        runSpeed *= 3;
-    //    }
-    //    else if (itemIndex == 3)
-    //    {
-    //        walkSpeed /= 3;
-    //        runSpeed /= 3;
-    //    }
-    //    else if (itemIndex == 4)
-    //    {
-    //        PlayerManager.instance.invisible.SetActive(false);
-    //    }
-    //    else if (itemIndex == 5)
-    //    {
-    //        PlayerManager.instance.invisible.SetActive(true);
-    //    }
-    //   else if (itemIndex == 6)
-    //    {
-
-    //    }
-    //   else if (itemIndex == 7)
-    //    {
-
-    //    }
-    //}
-
-    public void SetHealth(int health)
+    public void Hit(Projectile projectile)
     {
-
+        float damageMultiplier = 1f;
+        if (status.type + 1 == Type.noType)
+        {
+            if (Type.water == projectile.type)
+            {
+                damageMultiplier = 1.5f;
+            }
+        }
+        else if (status.type + 1 == projectile.type)
+        {
+            damageMultiplier = 1.5f;
+        }
+        else if (status.type == projectile.type)
+        {
+            damageMultiplier = 1.5f;
+        }
+        else
+        {
+            damageMultiplier = 0.6667f;
+        }
+        status.defaultStatus.dshield -= projectile.damage * damageMultiplier * status.damageBoost;
+        if (status.defaultStatus.dshield <= 0)
+        {
+            float remainingDamage = Mathf.Abs(status.defaultStatus.dshield);
+            status.defaultStatus.dhealth -= remainingDamage;
+            status.defaultStatus.dshield = 0;
+        }
     }
 }
 

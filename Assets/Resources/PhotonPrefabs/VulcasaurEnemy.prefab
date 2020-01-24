@@ -1514,6 +1514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5113601971473702331}
   - component: {fileID: 3334680224187508098}
+  - component: {fileID: 4242014647065524681}
   m_Layer: 11
   m_Name: Vulcasaur
   m_TagString: Avatar
@@ -1559,6 +1560,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4242014647065524681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379462739175032667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 6320018280230502724}
+  Head: {fileID: 8679682142555577279}
 --- !u!1 &6389479154584230734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1741,6 @@ GameObject:
   - component: {fileID: 5385572916197257801}
   - component: {fileID: 898008755205497338}
   - component: {fileID: 4670140030146914787}
-  - component: {fileID: 8396441823814499821}
   m_Layer: 0
   m_Name: VulcasaurEnemy
   m_TagString: Avatar
@@ -1779,24 +1793,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eb21c5a50b1bb4aa6ae46288971351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Allparts: {fileID: 0}
   id: 0
   username: 
   selectedCharacter: 0
-  yRotation: 0
+  lastPacketTime: 0
   playerAnimator: {fileID: 3334680224187508098}
---- !u!114 &8396441823814499821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6524392177103977800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efda8a2810749b74297c3a676cfded36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawner: {fileID: 6320018280230502724}
+  playerHUD: {fileID: 0}
+  invisible: 0
 --- !u!1 &6787769453721700681
 GameObject:
   m_ObjectHideFlags: 0

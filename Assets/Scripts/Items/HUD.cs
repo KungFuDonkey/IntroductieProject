@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
 
 public class HUD : MonoBehaviour
 {
@@ -17,11 +16,10 @@ public class HUD : MonoBehaviour
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
     public VisualShield shieldBar;
-    public GameObject Deathscreen;
+    public GameObject Deathscreen, Winscreen, Resetscreen;
     public Transform itemsParent;
     public Transform gearParent;
     public GameObject jinventoryUI;
-   
     public GameObject Spectator;
     public Text AlivePlayers;
 
@@ -61,6 +59,10 @@ public class HUD : MonoBehaviour
             {
                Cursor.lockState = CursorLockMode.None;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ServerSend.UpdatePlayerCount();
         }
     }
 
@@ -104,4 +106,8 @@ public class HUD : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
 
+    public void ResetGame()
+    {
+        ServerHandle.Reset();
+    }
 }
