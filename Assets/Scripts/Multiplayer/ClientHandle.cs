@@ -127,6 +127,7 @@ public class ClientHandle : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             GameManager.instance.walls[i].transform.position = _packet.ReadVector3();
+            GameManager.instance.walls[i].transform.localScale = _packet.ReadVector3();
         }
     }
     public static void UpdateHUD(Packet _packet)

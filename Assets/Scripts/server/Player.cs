@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -14,17 +14,16 @@ public enum Type
 
 public abstract class Player
 {
-    public int id;
-    public int projectile;
-    public int selectedCharacter;
+    public int id, projectile, selectedCharacter;
     public string username;
     public PlayerStatus status;
-    public Transform avatar;
-    public Transform projectileSpawner;
+    public Transform avatar, projectileSpawner;
     public CharacterController controller;
     public static Player instance;
     public bool[] inputs;
     public float verticalRotation;
+    float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
+    public bool evolve = false, inStorm;
     void Awake()
     {
         instance = this;
@@ -70,6 +69,7 @@ public abstract class Player
         {
             status.inputDirection.y *= 0.2f;
         }
+        CheckStorm();
         ServerSend.UpdateHUD(this);
     }
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
@@ -120,6 +120,50 @@ public abstract class Player
             float remainingDamage = Mathf.Abs(status.defaultStatus.dshield);
             status.defaultStatus.dhealth -= remainingDamage;
             status.defaultStatus.dshield = 0;
+        }
+    }
+
+    public void Hit(float damage)
+    {
+        status.defaultStatus.dshield -= damage;
+        if (status.defaultStatus.dshield <= 0)
+        {
+            float remainingDamage = Mathf.Abs(status.defaultStatus.dshield);
+            status.defaultStatus.dhealth -= remainingDamage;
+            status.defaultStatus.dshield = 0;
+        }
+    }
+
+    public void CheckStorm()
+    {
+        Vector3 pos = avatar.position;
+        if (pos.z > Walls.walls[0].position.z ||
+            pos.z < Walls.walls[1].position.z ||
+            pos.x > Walls.walls[2].position.x ||
+            pos.x < Walls.walls[3].position.x)
+        {
+            PlayerManager.instance.playerHUD.StormOverlay.SetActive(true);
+            if (!inStorm)
+            {
+                inStorm = true;
+                stormDamage = STORMDAMAGE;
+                stormDamageTimer = 0.1f;
+            }
+            if (stormDamageTimer <= 0)
+            {
+                stormDamageTimer = STORMDAMAGETIMER;
+                Hit(stormDamage);
+                stormDamage += 1f;
+            }
+            else
+            {
+                stormDamageTimer -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            PlayerManager.instance.playerHUD.StormOverlay.SetActive(false);
+            inStorm = false;
         }
     }
 }

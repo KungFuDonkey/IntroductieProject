@@ -246,6 +246,7 @@ public class ServerSend
             for (int i = 0; i < 4; i++)
             {
                 _packet.Write(Walls.walls[i].position);
+                _packet.Write(Walls.walls[i].localScale);
             }
             SendUDPDataToAll(Client.instance.myId, _packet);
         }
