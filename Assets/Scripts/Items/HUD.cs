@@ -105,9 +105,4 @@ public class HUD : MonoBehaviour
         Instantiate(Spectator, transform.position, transform.rotation);
         Destroy(transform.parent.gameObject);
     }
-
-    public void ResetGame()
-    {
-        ServerHandle.Reset();
-    }
 }

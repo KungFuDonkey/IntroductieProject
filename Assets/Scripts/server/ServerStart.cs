@@ -10,6 +10,7 @@ public class ServerStart : MonoBehaviour
     public static ServerStart instance;
     Text content;
     GameObject serverLog;
+    public GameObject resetScreen;
     public static bool started = false;
     public static List<int> destroyId = new List<int>();
     private void Awake()
@@ -115,5 +116,11 @@ public class ServerStart : MonoBehaviour
             ServerSend.SpawnItem(i, item, GameManager.instance.gameItems[i].transform.position);
             Thread.Sleep(10);
         }
+    }
+
+    public void ResetGame()
+    {
+        ServerHandle.Reset();
+        resetScreen.SetActive(false);
     }
 }

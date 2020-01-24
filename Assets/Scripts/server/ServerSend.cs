@@ -297,7 +297,7 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.Win))
         {
-            GameManager.instance.players[Client.instance.myId].playerHUD.Resetscreen.SetActive(true);
+            ServerStart.instance.resetScreen.SetActive(true);
             GameManager.instance.freezeInput = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

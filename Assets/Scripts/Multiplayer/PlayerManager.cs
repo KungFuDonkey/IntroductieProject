@@ -17,15 +17,6 @@ public class PlayerManager : MonoBehaviour
     {
         instance = this;
     }
-    /*
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ClientSend.Evolve(selectedCharacter);
-        }
-    }
-    */
     public void SetAnimations(bool[] animationValues)
     {
         playerAnimator.SetBool("IsWalking", animationValues[0]);
@@ -38,14 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Invisible(bool invisible)
     {
-        if (invisible)
-        {
-            Allparts.SetActive(false);
-        }
-        else
-        {
-            Allparts.SetActive(true);
-        }
+        Allparts.SetActive(!invisible);
     }
 
  
