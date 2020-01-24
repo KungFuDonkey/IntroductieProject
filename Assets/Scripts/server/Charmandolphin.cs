@@ -68,17 +68,32 @@ public class Charmandolphin : Player
 
     public void qAttack()
     {
-        status.qTimer = status.QTIMER;
-        Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, -verticalRotation);
-        ServerSend.Projectile(this, 5, new AquaPulse(GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
-        status.animationValues[2] = true;
+        if (XPSystem.instance.CurrentLevel >= 3)
+        {
+            status.qTimer = status.QTIMER;
+            Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, -verticalRotation);
+            ServerSend.Projectile(this, 5, new AquaPulse(GameManager.projectileNumber, projectileSpawner.position, rotation, status.inputDirection * 0.2f, id));
+            status.animationValues[2] = true;
+        }
+
+        else
+        {
+            return;
+        }
     }
 
     public void eAttack()
     {
-        status.eTimer = status.ETIMER;
-        Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
-        ServerSend.Projectile(this, 6, new Wave(GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
-        status.animationValues[2] = true;
+        if (XPSystem.instance.CurrentLevel >= 5)
+        {
+            status.eTimer = status.ETIMER;
+            Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
+            ServerSend.Projectile(this, 6, new Wave(GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
+            status.animationValues[2] = true;
+        }
+        else
+        {
+            return;
+        }
     }
 }

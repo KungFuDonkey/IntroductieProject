@@ -10,6 +10,8 @@ public class XPSystem : MonoBehaviour
     [SerializeField] private GameObject FireMoveQ;
     [SerializeField] private GameObject WaterMoveE;
     [SerializeField] private GameObject WaterMoveQ;
+    [SerializeField] private GameObject GrassMoveE;
+    [SerializeField] private GameObject GrassMoveQ;
     public Text LevelCountText;
     public Text LevelText;
     public Text NextText;
@@ -31,6 +33,8 @@ public class XPSystem : MonoBehaviour
         FireMoveQ.SetActive(false);
         WaterMoveE.SetActive(false);
         WaterMoveQ.SetActive(false);
+        GrassMoveE.SetActive(false);
+        GrassMoveQ.SetActive(false);
         character = GameObject.Find(Client.instance.myId.ToString()).GetComponent<PlayerManager>();
     }
     public void NewLevel()
@@ -43,19 +47,19 @@ public class XPSystem : MonoBehaviour
         {
             WaterMoveE.SetActive(true);
             FireMoveE.SetActive(false);
-            //GrassMoveE.SetActive(false);
+            GrassMoveE.SetActive(false);
         }
         else if(character.selectedCharacter == 1)
         {
             WaterMoveE.SetActive(false);
             FireMoveE.SetActive(false);
-            //GrassMoveE.SetActive(true);
+            GrassMoveE.SetActive(true);
         }
         else
         {
             WaterMoveE.SetActive(false);
             FireMoveE.SetActive(true);
-            //GrassMoveE.SetActive(false);
+            GrassMoveE.SetActive(false);
         }
     }
     public void Qmove()
@@ -64,19 +68,19 @@ public class XPSystem : MonoBehaviour
         {
             WaterMoveQ.SetActive(true);
             FireMoveQ.SetActive(false);
-            //GrassMoveQ.SetActive(false);
+            GrassMoveQ.SetActive(false);
         }
         else if (character.selectedCharacter == 1)
         {
             WaterMoveQ.SetActive(false);
             FireMoveQ.SetActive(false);
-            //GrassMoveQ.SetActive(true);
+            GrassMoveQ.SetActive(true);
         }
         else
         {
             WaterMoveQ.SetActive(false); 
             FireMoveQ.SetActive(true);
-            //GrassMoveQ.SetActive(false);
+            GrassMoveQ.SetActive(false);
         }
     }
     public void WaitNewLevel()
@@ -102,7 +106,7 @@ public class XPSystem : MonoBehaviour
             CurrentLevel = level;
             WaitNewLevel();
         }
-        int XPForNextLevel = 100 * (CurrentLevel + 1) * (CurrentLevel + 1);
+        int XPForNextLevel = 100 * (CurrentLevel + 1) * (CurrentLevel + 1) ;
         
 
         int XPDifference = XPForNextLevel - XP;

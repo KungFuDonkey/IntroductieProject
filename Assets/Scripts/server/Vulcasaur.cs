@@ -90,6 +90,7 @@ public class Vulcasaur : Player
         {
             return;
         }
+       
     }
 
     public void eAttack()
@@ -100,7 +101,6 @@ public class Vulcasaur : Player
             Quaternion rotation = Quaternion.Euler(17.34f, avatar.rotation.eulerAngles.y, avatar.rotation.eulerAngles.z);
             ServerSend.Projectile(this, 2, new Vulcano((int)GameManager.projectileNumber, status.groundCheck.position, rotation, status.inputDirection * 0.2f, id));
             Debug.Log("shooting");
-            status.animationValues[2] = false;
         }
         else
         {
