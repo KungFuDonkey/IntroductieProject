@@ -6,7 +6,7 @@ public class Walls
 {
     public static Transform[] walls = new Transform[4];
     static float wallsWait, WALLSWAIT = 30f, wallsMove = 30f, mapSize = 600f;
-    static Vector3 circlePosition;
+    public static Vector3 circlePosition;
     static Vector3[] distances = new Vector3[4];
     public static Vector3[] startingPos = new Vector3[4];
     static bool waiting = false;
