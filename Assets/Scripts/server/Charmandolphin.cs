@@ -38,7 +38,7 @@ public class Charmandolphin : Player
         }
         if (inputs[6] && status.qTimer < 0)
         {
-            qAttack();
+            eAttack();
         }
         else
         {
@@ -47,7 +47,7 @@ public class Charmandolphin : Player
         }
         if (inputs[7] && status.eTimer < 0 && !surfing)
         {
-            eAttack();
+            qAttack();
             status.animationValues[2] = false;
         }
         else
@@ -66,7 +66,7 @@ public class Charmandolphin : Player
         status.animationValues[2] = true;
     }
 
-    public void qAttack()
+    public void eAttack()
     {
         if (XPSystem.instance.CurrentLevel >= 3)
         {
@@ -82,7 +82,7 @@ public class Charmandolphin : Player
         }
     }
 
-    public void eAttack()
+    public void qAttack()
     {
         if (XPSystem.instance.CurrentLevel >= 5)
         {

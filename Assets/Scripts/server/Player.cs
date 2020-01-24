@@ -98,6 +98,10 @@ public abstract class Player
             {
                 damageMultiplier = 1.5f;
             }
+            else if (Type.grass == projectile.type)
+            {
+                damageMultiplier = 0.6667f;
+            }
         }
         else if (status.type + 1 == projectile.type)
         {
@@ -105,7 +109,7 @@ public abstract class Player
         }
         else if (status.type == projectile.type)
         {
-            damageMultiplier = 1.5f;
+            damageMultiplier = 1;
         }
         else
         {
