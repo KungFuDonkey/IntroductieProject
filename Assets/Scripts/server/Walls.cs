@@ -5,7 +5,7 @@ using UnityEngine;
 public class Walls
 {
     public static Transform[] walls = new Transform[4];
-    static float wallsWait, WALLSWAIT = 30f, wallsMove = 30f, mapSize = 600f;
+    static float wallsWait, WALLSWAIT = 25f, wallsMove = 26f, mapSize = 600f;
     public static Vector3 circlePosition;
     static Vector3[] distances = new Vector3[4];
     public static Vector3[] startingPos = new Vector3[4];
@@ -28,7 +28,6 @@ public class Walls
         if (allWallsStop)
         {
             wallsWait -= Time.deltaTime;
-
         }
 
         if (allWallsStop && !waiting)
@@ -38,7 +37,8 @@ public class Walls
             wallsWait = WALLSWAIT;
             waiting = true;
             smaller += 1;
-
+            WALLSWAIT -= 1;
+            wallsMove -= 1;
         }
         else if (wallsWait < 0 && allWallsStop && smaller < 13)
         {
@@ -54,8 +54,6 @@ public class Walls
         {
             moveWalls();
         }
-        WallShrink();
-
         ServerSend.SetWalls();
     }
 
@@ -72,16 +70,29 @@ public class Walls
                 wallMoving[i] = false;
             }
         }
+        for (int i = 0; i < 4; i++)
+        {
+            if (i < 2)
+            {
+                walls[i].localScale = new Vector3(walls[2].position.x - walls[3].position.x + 0.01f, 65, 0.01f);
+                walls[i].position = new Vector3((walls[2].position.x + walls[3].position.x) / 2, 20, walls[i].position.z);
+            }
+            else
+            {
+                walls[i].localScale = new Vector3(walls[0].position.z - walls[1].position.z + 0.01f, 65, 0.01f);
+                walls[i].position = new Vector3(walls[i].position.x, 20, (walls[0].position.z + walls[1].position.z) / 2);
+            }
+        }
     }
     public static void setDistances(float x, float z)
     {
         float quarter = (mapSize * 0.25f);
         float half = (mapSize * 0.5f);
         circlePosition = new Vector3(Random.Range(x - quarter, x + quarter), 20, Random.Range(z - quarter, z + quarter));
-        distances[0] = circlePosition - walls[0].position + new Vector3(0, 0, half);
-        distances[1] = circlePosition - walls[1].position + new Vector3(0, 0, -half);
-        distances[2] = circlePosition - walls[2].position + new Vector3(half, 0, 0);
-        distances[3] = circlePosition - walls[3].position + new Vector3(-half, 0, 0);
+        distances[0].z = circlePosition.z - walls[0].position.z + half;
+        distances[1].z = circlePosition.z - walls[1].position.z - half;
+        distances[2].x = circlePosition.x - walls[2].position.x + half;
+        distances[3].x = circlePosition.x - walls[3].position.x - half;
         Debug.Log("New circle: " + circlePosition.ToString());
     }
     public static void Reset()
@@ -91,32 +102,11 @@ public class Walls
             walls[i].position = startingPos[i];
         }
         wallsWait = 0f;
-        WALLSWAIT = 30f;
-        wallsMove = 30f;
+        WALLSWAIT = 25f;
+        wallsMove = 26f;
         mapSize = 600f;
         waiting = false;
         smaller = 0;
         ServerSend.SetWalls();
-    }
-
-    public static void WallShrink()
-    {
-        walls[0].localScale = new Vector3(Mathf.Abs(walls[2].position.x - walls[0].position.x) + Mathf.Abs(walls[3].position.x - walls[0].position.x) + 0.2f, 65, 0.2f);
-        walls[1].localScale = new Vector3(Mathf.Abs(walls[3].position.x - walls[1].position.x) + Mathf.Abs(walls[2].position.x - walls[1].position.x) + 0.2f, 65, 0.2f);
-        walls[2].localScale = new Vector3(Mathf.Abs(walls[0].position.z - walls[2].position.z) + Mathf.Abs(walls[1].position.z - walls[2].position.z) + 0.2f, 65, 0.2f);
-        walls[3].localScale = new Vector3(Mathf.Abs(walls[1].position.z - walls[3].position.z) + Mathf.Abs(walls[0].position.z - walls[3].position.z) + 0.2f, 65, 0.2f);
-        /*
-        for (int i = 0; i < 4; i++)
-        {
-            if (i < 2)
-            {
-                walls[i].localScale = new Vector3(Mathf.Abs(walls[(i + 1) % 4].position.x - walls[i].position.x) + Mathf.Abs(walls[(i + 3) % 4].position.x - walls[i].position.x) + 0.2f, 65, 0.2f);
-            }
-            else
-            {
-                walls[i].localScale = new Vector3(Mathf.Abs(walls[(i + 1) % 4].position.z - walls[i].position.z) + Mathf.Abs(walls[(i + 3) % 4].position.z - walls[i].position.z) + 0.2f, 65, 0.2f);
-            }
-        }
-        */
     }
 }
