@@ -8,7 +8,7 @@ public class VulcanoJumping : Effect
     int id;
     Vulcasaur player;
     float startDuration, headRotation;
-    public float LaunchSpeed = 50f;
+    public float LaunchSpeed = 60f;
     Vector3 jumpDirection;
     public VulcanoJumping(float _duration, int _owner, int _id)
     {
@@ -42,12 +42,13 @@ public class VulcanoJumping : Effect
                 if (!player.jumping)
                 {
                     player.jumping = true;
-                    status.ySpeed = LaunchSpeed;
                     jumpDirection = status.avatar.forward;
-                    headRotation = Mathf.Clamp(status.avatar.GetComponentInChildren<playerLook>().verticalRotation, -40, 40);
-                    headRotation = 80 / (headRotation + 40) * 5 + 7;
+                    headRotation = -Mathf.Clamp(status.avatar.GetComponentInChildren<playerLook>().verticalRotation, -20, 20);
+                    headRotation = ((headRotation + 20) / 40) * 0.5f + 0.5f;
+                    status.ySpeed = LaunchSpeed * headRotation;
+                    Debug.Log(status.ySpeed);
                 }
-                status.inputDirection += jumpDirection * headRotation;
+                status.inputDirection += jumpDirection * (headRotation * 10 + 10);
             }
         }
 
