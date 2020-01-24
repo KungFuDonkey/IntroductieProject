@@ -25,13 +25,5 @@ public class WaveCollider : MonoBehaviour
                 Server.projectiles[gameObject.GetComponent<ProjectileManager>().id].HitSelf();
             }
         }
-        else if (other.gameObject.layer == GameManager.instance.groundMask)
-        {
-
-        }
-        else
-        {
-
-        }
     }
 }

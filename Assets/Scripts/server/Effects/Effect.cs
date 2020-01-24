@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Effect
 {
+    public int key;
+    public string name;
     public int priority = 50;
     public float duration;
     public float dgravity = 1, djumpspeed = 1;
@@ -18,7 +20,7 @@ public class Effect
         duration -= Time.deltaTime;
     }
 
-    public Effect(float _dgravity = 1f, float _djumpspeed = 1f, float _dhealth = 1f, float _dFIRETIMER = 2f, float _dQTIMER = 2f, float _dETIMER = 2f, float _dmovementSpeed = 20f, float _drunMultiplier = 2f, Type _dType = Type.noType)
+    public Effect(float _dgravity = 1f, float _djumpspeed = 1f, float _dhealth = 1f, float _dFIRETIMER = 2f, float _dQTIMER = 2f, float _dETIMER = 2f, float _dmovementSpeed = 20f, float _drunMultiplier = 2f, Type _dType = Type.noType, int _key = -1)
     {
         djumpspeed = _djumpspeed;
         dgravity = _dgravity;
@@ -29,6 +31,8 @@ public class Effect
         dmovementSpeed = _dmovementSpeed;
         drunMultiplier = _drunMultiplier;
         dType = _dType;
+        key = _key;
+        name = "default";
     }
 
     public virtual Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
@@ -101,18 +105,18 @@ public class Effect
 
     public static Effect Charmandolphin
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.water); }
+        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.water, 0); }
     }
 
     public static Effect Vulcasaur
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.fire); }
+        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.fire, 0); }
     }
 
 
     public static Effect McQuirtle
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.grass); }
+        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.grass, 0); }
     }
 
 }

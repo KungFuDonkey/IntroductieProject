@@ -53,21 +53,20 @@ public class ServerHandle
     public static void AddEffects(int _fromClient, Packet _packet)
     {
         int item = _packet.ReadInt();
+        int key = Server.clients[_fromClient].player.status.effectcount;
         if(item == 1)
         {
-            Debug.Log("if item 1");
-            Server.clients[_fromClient].player.status.effects.Add(new JumpBoost(10, 2f, 4));
+            Server.clients[_fromClient].player.status.effects.Add(key,new JumpBoost(10, 3f, 4,key));
         }
         else if (item == 2)
         {
-            Debug.Log("if item 2");
-            Server.clients[_fromClient].player.status.effects.Add(new Invisible(10, false, 2));
+            Server.clients[_fromClient].player.status.effects.Add(key,new Invisible(10, false, 4, key));
         }
-        else if (item == 3)
+        else
         {
-            Debug.Log("if item 3");
-            Server.clients[_fromClient].player.status.effects.Add(new SpeedBoost(10, 35f, 1));
+            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10, 3f, 4, key));
         }
+        Server.clients[_fromClient].player.status.effectcount++;
     }
     public static void pickupItem(int _fromClient, Packet _packet)
     {

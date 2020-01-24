@@ -12,7 +12,7 @@ public class McQuirtle : Player
         status = new PlayerStatus();
         Effect defaultEffect = Effect.McQuirtle;
         status.defaultStatus = defaultEffect;
-        status.effects.Add(defaultEffect);
+        status.effects.Add(0,defaultEffect);
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[11];
         status.animationValues = new bool[4]
