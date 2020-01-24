@@ -13,7 +13,6 @@ public class Effect
     public float dhealth = 1, dshield = 1;
     public Type dType;
 
-
     public virtual void UpdateEffect()
     {
         duration -= Time.deltaTime;
@@ -52,15 +51,11 @@ public class Effect
             status.inputDirection += status.avatar.right;
         }
 
+        status.inputDirection *= dmovementSpeed * Time.deltaTime * 60;
         if (inputs[5])
         {
-            status.inputDirection *= dmovementSpeed * drunMultiplier * Time.deltaTime * 60;
+            status.inputDirection *= drunMultiplier;
         }
-        else
-        {
-            status.inputDirection *= dmovementSpeed * Time.deltaTime * 60;
-        }
-
 
         status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 2f, status.groundmask);
         if (status.isGrounded && status.ySpeed < 0)

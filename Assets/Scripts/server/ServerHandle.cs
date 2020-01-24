@@ -56,7 +56,7 @@ public class ServerHandle
         if(item == 1)
         {
             Debug.Log("if item 1");
-            Server.clients[_fromClient].player.status.effects.Add(new JumpBoost(10, 3f, 4));
+            Server.clients[_fromClient].player.status.effects.Add(new JumpBoost(10, 2f, 4));
         }
         else if (item == 2)
         {
@@ -66,7 +66,7 @@ public class ServerHandle
         else if (item == 3)
         {
             Debug.Log("if item 3");
-            Server.clients[_fromClient].player.status.effects.Add(new SpeedBoost(10, 3f, 1));
+            Server.clients[_fromClient].player.status.effects.Add(new SpeedBoost(10, 35f, 1));
         }
     }
     public static void pickupItem(int _fromClient, Packet _packet)
