@@ -43,5 +43,6 @@ public class HealthBar : MonoBehaviour
         color.r = (byte)(100 - currentHealth);
         position.x = currentXValue;
         healthTransform.position = position;
+        visualHealth.color = color;
     }
 }

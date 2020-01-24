@@ -22,7 +22,6 @@ public class HUD : MonoBehaviour
     public GameObject jinventoryUI;
     public GameObject Spectator;
     public Text AlivePlayers;
-
     public EquipmentInventory jEquipmentInventory;
     public inventory binventory;
  
@@ -103,7 +102,6 @@ public class HUD : MonoBehaviour
     public void Spectate()
     {
         Instantiate(Spectator, transform.position, transform.rotation);
-        Destroy(transform.parent.gameObject);
     }
 
     public void ResetGame()

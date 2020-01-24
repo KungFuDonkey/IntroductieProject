@@ -55,7 +55,7 @@ public class Effect
         {
             status.inputDirection += status.avatar.right;
         }
-
+        status.inputDirection = status.inputDirection.normalized;
         if (inputs[5])
         {
             status.inputDirection *= dmovementSpeed * drunMultiplier * Time.deltaTime * 60;
