@@ -103,6 +103,11 @@ public class InventorySlot : MonoBehaviour
         Invoke("Jumpy", seconds);
     }
 
+    public void Shield()
+    {
+        ClientSend.AddEffects(4);
+    }
+
     public void Invy()
     {
         ClientSend.SetInvis(false);
@@ -128,7 +133,7 @@ public class InventorySlot : MonoBehaviour
         }
         else
         {
-            HealthBar.instance.currentHealth += 20;
+            ClientSend.AddEffects(5);
             if (HealthBar.instance.currentHealth >= 100)
                 HealthBar.instance.currentHealth = 100;
             inventory.instance.Remove(Item);
@@ -158,6 +163,10 @@ public class InventorySlot : MonoBehaviour
             else if (Item.name == "Pecha Berry")
             {
                 inventory.instance.Remove(Item);
+            }
+            else if (Item.name == "Bandana")
+            {
+                Shield();
             }
         }
     }

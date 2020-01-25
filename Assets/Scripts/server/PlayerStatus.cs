@@ -76,7 +76,8 @@ public class PlayerStatus
     {
         gravity *= effect.dgravity;
         jumpspeed *= effect.djumpspeed;
-        health *= effect.dhealth;
+        health += effect.dhealth;
+        shield += effect.dshield;
         FIRETIMER *= effect.dFIRETIMER;
         QTIMER *= effect.dQTIMER;
         ETIMER *= effect.dETIMER;
@@ -97,6 +98,7 @@ public class PlayerStatus
         gravity = effect.dgravity;
         jumpspeed = effect.djumpspeed;
         health = effect.dhealth;
+        shield = effect.dshield;
         FIRETIMER = effect.dFIRETIMER;
         QTIMER = effect.dQTIMER;
         ETIMER = effect.dETIMER;

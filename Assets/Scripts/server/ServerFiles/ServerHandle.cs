@@ -64,10 +64,19 @@ public class ServerHandle
         {
             Server.clients[_fromClient].player.status.effects.Add(key,new Invisible(10, false, 4, key));
         }
-        else
+        else if (item == 3)
         {
             Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10, 3f, 4, key));
         }
+        else if (item == 4)
+        {
+            Server.clients[_fromClient].player.status.effects.Add(key, new ShieldBoost(1000, 25f, 4, key));
+        }
+        else if (item == 5)
+        {
+            Server.clients[_fromClient].player.status.effects.Add(key, new HealthBoost(1000, 25f, 4, key));
+        }
+
         Server.clients[_fromClient].player.status.effectcount++;
     }
 
