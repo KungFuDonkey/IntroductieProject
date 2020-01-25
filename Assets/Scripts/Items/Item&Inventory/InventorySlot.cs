@@ -164,10 +164,6 @@ public class InventorySlot : MonoBehaviour
             {
                 inventory.instance.Remove(Item);
             }
-            else if (Item.name == "Bandana")
-            {
-                Shield();
-            }
         }
     }
 }

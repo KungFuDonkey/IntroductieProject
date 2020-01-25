@@ -10,6 +10,6 @@ public class HealthBoost : Effect
         dhealth = _dhealth;
         priority = _priority;
         key = _key;
-        name = "jump";
+        name = "health";
     }
 }

@@ -10,6 +10,6 @@ public class ShieldBoost : Effect
         dshield = _dshield;
         priority = _priority;
         key = _key;
-        name = "jump";
+        name = "shield";
     }
 }
