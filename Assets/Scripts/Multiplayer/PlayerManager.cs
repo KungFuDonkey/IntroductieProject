@@ -8,24 +8,19 @@ public class PlayerManager : MonoBehaviour
     public int id;
     public string username;
     public int selectedCharacter;
+    public Transform head;
+    public static float yRotation;
     public float lastPacketTime = 0f;
     public Animator playerAnimator;
     public HUD playerHUD;
 
     public static PlayerManager instance;
+
     void Awake()
     {
         instance = this;
     }
-    /*
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ClientSend.Evolve(selectedCharacter);
-        }
-    }
-    */
+
     public void SetAnimations(bool[] animationValues)
     {
         playerAnimator.SetBool("IsWalking", animationValues[0]);
@@ -36,19 +31,30 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void Invisible(bool invisible)
+    private void LateUpdate()
     {
-        if (invisible)
+        if (id != Client.instance.myId)
         {
-            Allparts.SetActive(false);
-        }
-        else
-        {
-            Allparts.SetActive(true);
+            if (selectedCharacter == 0)
+            {
+                head.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+            }
+            else if (selectedCharacter == 1)
+            {
+                head.localRotation = Quaternion.Euler(yRotation, 17.974f, 0f);
+            }
+            else if (selectedCharacter == 2)
+            {
+                head.localRotation = Quaternion.Euler(-1.14f, 17.087f, yRotation);
+            }
         }
     }
 
- 
+    public void Invisible(bool invisible)
+    {
+        Allparts.SetActive(!invisible);
+    }
+
     public void UpdateHUD(float health, float shield)
     {
         playerHUD.healthBar.currentHealth = health;
@@ -75,8 +81,14 @@ public class PlayerManager : MonoBehaviour
             playerHUD.Winscreen.SetActive(true);
         }
     }
+
     public void Die()
     {
         playerAnimator.SetTrigger("Die");
+    }
+
+    public void setYRotation(float rotation)
+    {
+        yRotation = rotation;
     }
 }

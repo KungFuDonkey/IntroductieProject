@@ -21,7 +21,6 @@ public class Vines : Projectile
 
     public override void UpdateProjectile()
     {
-
         position = Server.clients[owner].player.avatar.position;
         rotation = Server.clients[owner].player.avatar.rotation;
         base.UpdateProjectile();

@@ -11,34 +11,34 @@ public class Surfing : Effect
     Ray ray = new Ray();
     Charmandolphin player;
 
-    public Surfing(float _duration, int _owner, int _id)
+    public Surfing(float _duration, int _owner, int _id, int _key)
     {
         duration = _duration;
         owner = _owner;
         id = _id;
         player = Server.clients[_owner].player as Charmandolphin;
         player.surfing = true;
+        key = _key;
+        priority = 1;
+        name = "surfing";
     }
 
     public override void UpdateEffect()
     {
-
     }
 
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         status.inputDirection = Vector3.zero;
-
         status.inputDirection += status.avatar.forward;
- 
         status.inputDirection *= surfSpeed * Time.deltaTime * 60;
+
         if (inputs[4])
         {
             player.surfing = false;
             Server.projectiles[id].OnEffectRemove();
             return Vector3.back;
         }
-
 
         ray.direction = Vector3.down;
         ray.origin = status.avatar.position;

@@ -33,10 +33,9 @@ public class Projectile
 
     public virtual void OnEffectRemove()
     {
-
     }
+
     public virtual void HitSelf()
     {
-
     }
 }

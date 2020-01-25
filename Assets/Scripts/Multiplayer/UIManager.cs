@@ -13,11 +13,14 @@ public class UIManager : MonoBehaviour
     public GameObject startMenu, lobby, characterSelection;
     public GameObject server;
     public GameObject startButton;
+    public GameObject myCursor;
     public InputField usernameField;
     public InputField ipAdress;
     public Text serverInfo, playerCount;
     public Text UsernameList;
-    public Dictionary<int, OnlineMousePointer> mousePointers = new Dictionary<int, OnlineMousePointer>();
+
+    public List<OnlineMousePointer> mousePointers = new List<OnlineMousePointer>();
+
     private void Awake()
     {
         if (instance == null)
@@ -28,6 +31,14 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
+        }
+    }
+
+    private void Start()
+    {
+        for(int i = 0; i<25; i++)
+        {
+            mousePointers.Add(null);
         }
     }
 
@@ -83,11 +94,11 @@ public class UIManager : MonoBehaviour
                 {
                     GameObject onlineCursor = (GameObject)Instantiate(Resources.Load("OnlineCursor"),characterSelection.transform);
                     OnlineMousePointer mp = onlineCursor.GetComponent<OnlineMousePointer>();
-                    mousePointers.Add(i, mp);
+                    mousePointers[i] = mp;
                 }
                 else
                 {
-                    GameObject myCursor = (GameObject)Instantiate(Resources.Load("Cursor"), characterSelection.transform);
+                    myCursor = (GameObject)Instantiate(Resources.Load("Cursor"), characterSelection.transform);
                 }
             }
             startCounter = true;
@@ -137,16 +148,18 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
     public void setMenuStatus(bool setStatus)
     {
         gameObject.SetActive(setStatus);
     }
+
     public void ResetUI()
     {
-        for(int i = mousePointers.Count - 1; i >= -1; i--)
+        for(int i = mousePointers.Count - 1; i >= 0; i--)
         {
             Destroy(mousePointers[i].gameObject);
-            mousePointers.Remove(i);
+            mousePointers.RemoveAt(i);
         }
         startCounter = false;
         timer = 10f;

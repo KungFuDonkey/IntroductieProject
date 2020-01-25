@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SpeedBoost : Effect
 {
-    public SpeedBoost(int _duration, float _dmovementSpeed, int _priority)
+    public SpeedBoost(int _duration, float _dmovementSpeed, int _priority, int _key)
     {
         duration = _duration;
         dmovementSpeed = _dmovementSpeed;
         priority = _priority;
+        key = _key;
+        name = "speedBoost";
     }
 }

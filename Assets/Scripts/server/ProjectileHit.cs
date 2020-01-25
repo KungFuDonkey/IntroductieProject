@@ -11,6 +11,7 @@ public class ProjectileHit : MonoBehaviour
             Destroy(this);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();

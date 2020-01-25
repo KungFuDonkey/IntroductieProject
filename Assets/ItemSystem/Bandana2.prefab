@@ -106,32 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8701fb5193c774346903ae236e4ec2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  itemNumber: 0
+  pickup: 1
   item: {fileID: 11400000, guid: 8e3e1e6eb843ec04a8820cb57aef0434, type: 2}
-  gear: {fileID: 0}
-  candyItem: {fileID: 0}
-  candyTrigger: {fileID: 0}
-  candy: 0
-  pokeballItem: {fileID: 0}
-  pokeballTrigger: {fileID: 0}
-  pokebal: 0
-  pechaBerryItem: {fileID: 0}
-  pechaBerryTrigger: {fileID: 0}
-  pechaBerry: 0
-  oranBerryItem: {fileID: 0}
-  oranBerryTrigger: {fileID: 0}
-  oranBerry: 0
-  lumBerryItem: {fileID: 0}
-  lumBerryTrigger: {fileID: 0}
-  lumBerry: 0
-  Bandana: {fileID: 1985978054550979944}
-  BandanaTrigger: {fileID: 1506737421757163460}
-  bandana: 1
-  Bracelet: {fileID: 0}
-  BraceletTrigger: {fileID: 0}
-  bracelet: 0
-  Pin: {fileID: 0}
-  PinTrigger: {fileID: 0}
-  pin: 0
 --- !u!1 &1985978054550979944
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 158b4f2fdf315884e8344509e0330be8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

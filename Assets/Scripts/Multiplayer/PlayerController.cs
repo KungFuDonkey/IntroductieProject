@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         };
         _inputs = new bool[11];
     }
+
     private void FixedUpdate()
     {
         SendInputToServer();

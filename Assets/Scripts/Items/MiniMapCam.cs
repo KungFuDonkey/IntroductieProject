@@ -6,6 +6,7 @@ public class MiniMapCam : MonoBehaviour
 {
     [SerializeField] public Transform playerTransform;
     [SerializeField] private float yOffset = 500;
+
     private void LateUpdate()
     {
         Vector3 targetPosition = playerTransform.position;

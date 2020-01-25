@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-
 public enum Type
 {
     water,
@@ -24,6 +23,7 @@ public abstract class Player
     public float verticalRotation;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
     public bool evolve = false, inStorm;
+
     void Awake()
     {
         instance = this;
@@ -40,8 +40,7 @@ public abstract class Player
                 controller = _gameobject.GetComponent<CharacterController>();
                 avatar = _gameobject.transform;
                 avatar.rotation = Quaternion.identity;
-                int childeren = _gameobject.transform.GetChild(1).childCount;
-                status.groundCheck = _gameobject.transform.GetChild(1).GetChild(childeren - 1);
+                status.groundCheck = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().groundcheck;
                 projectileSpawner = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner;
                 Debug.Log("avatar found");
             }
@@ -73,6 +72,7 @@ public abstract class Player
         CheckStorm();
         ServerSend.UpdateHUD(this);
     }
+
     //use the controller of the player to move the character and use his transfrom to tell the other players where this object is
     protected virtual void Move(Vector3 _inputDirection)
     {
@@ -98,6 +98,10 @@ public abstract class Player
             {
                 damageMultiplier = 1.5f;
             }
+            else if (Type.grass == projectile.type)
+            {
+                damageMultiplier = 0.6667f;
+            }
         }
         else if (status.type + 1 == projectile.type)
         {
@@ -105,7 +109,7 @@ public abstract class Player
         }
         else if (status.type == projectile.type)
         {
-            damageMultiplier = 1.5f;
+            damageMultiplier = 1;
         }
         else
         {

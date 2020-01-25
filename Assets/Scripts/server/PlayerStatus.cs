@@ -17,7 +17,9 @@ public class PlayerStatus
     public bool isGrounded, movable, silenced, invisible, alive = true;
     public Vector3 inputDirection;
     public Type type;
-    public List<Effect> effects = new List<Effect>();
+    public int effectcount = 1;//default effect has 0
+    public List<int> removeItems = new List<int>();
+    public Dictionary<int, Effect> effects = new Dictionary<int, Effect>();
 
     public void Update(bool[] inputs, Transform _avatar)
     {
@@ -25,40 +27,51 @@ public class PlayerStatus
         int strongestPriority = 100;
         if (effects.Count != 0)
         {
-            for (int i = effects.Count -1; i >= 0; i--)
+            bool reset = false;
+            foreach(Effect effect in effects.Values)
             {
-                effects[i].UpdateEffect();
-                if (effects[i].duration == -1)
+                Debug.Log($"{effect.key} {effect.name}");
+                effect.UpdateEffect();
+                if (effect.duration == -1)
                 {
-                    
                 }
-                else if (effects[i].duration <= 0)
+                else if (effect.duration <= 0)
                 {
-                    effects.Remove(effects[i]);
+                    removeItems.Add(effect.key);
                 }
-                if (effects[i].priority < strongestPriority)
+                if (effect.priority < strongestPriority)
                 {
-                    strongestPriority = effects[i].priority;
+                    strongestPriority = effect.priority;
                 }
             }
-
-            effects = effects.OrderBy(x => x.priority).ToList();
-            foreach (Effect effect in effects)
+            foreach (Effect effect in effects.Values)
             {
                 UpdateStatus(effect);
 
                 if (strongestPriority == effect.priority)
                 {
-                    SetUpMovement(inputs, effect);
+                    Debug.Log($"updating {effect.key} {effect.name} with prior {effect.priority}");
+                    SetUpMovement(inputs, effect, effect.key);
                     break;
                 }
+            }
+            foreach(int i in removeItems)
+            {
+                Debug.Log($"Removing effect from list: {i}");
+                effects.Remove(i);
+                reset = true;
+            }
+            if (reset)
+            {
+                removeItems = new List<int>();
             }
         }
         else
         {
-            SetUpMovement(inputs, defaultStatus);
+            SetUpMovement(inputs, defaultStatus, defaultStatus.key);
         }
     }
+
     public void UpdateStatus(Effect effect)
     {
         gravity *= effect.dgravity;
@@ -77,8 +90,8 @@ public class PlayerStatus
         {
             invisible = !invisible;
         }
-
     }
+
     public void SetStatus(Effect effect, Transform _avatar)
     {
         gravity = effect.dgravity;
@@ -99,13 +112,13 @@ public class PlayerStatus
         avatar = _avatar;
     }
 
-    public void SetUpMovement(bool[] inputs, Effect effect)
+    public void SetUpMovement(bool[] inputs, Effect effect, int key)
     {
         inputDirection = effect.SetUpMovement(this, inputs);
         if (inputDirection == Vector3.back)
         {
             inputDirection = Vector3.up;
-            effects.Remove(effect);
+            removeItems.Add(key);
         }
         animationValues = effect.SetUpAnimations(this, inputs);
     }
