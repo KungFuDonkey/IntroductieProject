@@ -213,6 +213,12 @@ public class ClientHandle : MonoBehaviour
         Destroy(GameManager.instance.gameItems[id]);
         GameManager.instance.gameItems[id] = null;
     }
+
+    public static void SetBus(Packet _packet)
+    {
+        Vector3 busPos = _packet.ReadVector3();
+        GameManager.instance.BattleBus.transform.position = busPos;
+    }
     /*
       
                   PingReply reply = ping.Send(Client.instance.ip, 1000);

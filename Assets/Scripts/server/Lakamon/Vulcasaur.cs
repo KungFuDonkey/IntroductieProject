@@ -17,7 +17,7 @@ public class Vulcasaur : Player
         status.effects.Add(0,defaultEffect);
         Debug.Log("values are Set");
         status.groundmask = GameManager.instance.groundMask;
-        inputs = new bool[11];
+        inputs = new bool[12];
         status.animationValues = new bool[4]
         {
             false,

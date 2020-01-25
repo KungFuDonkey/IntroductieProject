@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     public int selectedCharacter = 1;
     public bool startCounter = false;
-    public float timer = 10f;
-    public GameObject startMenu, lobby, characterSelection;
+    public float timer = 10f, loadTime, LOADTIME = 5;
+    public GameObject startMenu, lobby, characterSelection, loadingScreen;
     public GameObject server;
     public GameObject startButton;
     public GameObject myCursor;
@@ -103,10 +103,18 @@ public class UIManager : MonoBehaviour
             }
             startCounter = true;
         }
-        else if(menu == 2){
-            setMenuStatus(false);
-            Destroy(GameObject.Find("Main Camera"));
-            GameManager.instance.freezeInput = false;
+        else if(menu == 2)
+        {
+            characterSelection.SetActive(false);
+            loadingScreen.SetActive(true);
+            LoadingScreen.loading();
+            loadTime += Time.deltaTime;
+            if (loadTime >= LOADTIME)
+            {
+                setMenuStatus(false);
+                Destroy(GameObject.Find("Main Camera"));
+                GameManager.instance.freezeInput = false;
+            }
         }
     }
 
@@ -145,6 +153,7 @@ public class UIManager : MonoBehaviour
             if(timer < 0 && Client.instance.host)
             {
                 ServerSend.LoadMenu(2);
+                timer = 100f;
             }
         }
     }

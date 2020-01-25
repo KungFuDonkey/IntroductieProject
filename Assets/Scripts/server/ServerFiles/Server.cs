@@ -154,6 +154,7 @@ public class Server
             {
                 //spawnpoints 10 steps off the wall and 15 high
                 spawnPoints.Add((MaxPlayers + 1) * i + j, new Vector3(i * (280 / MaxPlayers) - 290, 15, j * (280 / MaxPlayers) - 290));
+                //spawnPoints.Add((MaxPlayers + 1) * i + j, new Vector3(0, 110, -350));
             }
         }
         Debug.Log("Initialized packets.");
@@ -163,6 +164,7 @@ public class Server
             Walls.walls[i] = GameManager.instance.walls[i].transform;
             Walls.startingPos[i] = GameManager.instance.walls[i].transform.position;
         }
+        BattleBus.Bus = GameManager.instance.BattleBus.transform;
     }
 
     public static Player charmandolphin(int id, string username, int selectedcharacter)

@@ -14,7 +14,7 @@ public class McQuirtle : Player
         status.defaultStatus = defaultEffect;
         status.effects.Add(0,defaultEffect);
         status.groundmask = GameManager.instance.groundMask;
-        inputs = new bool[11];
+        inputs = new bool[12];
         status.animationValues = new bool[4]
         {
             false,

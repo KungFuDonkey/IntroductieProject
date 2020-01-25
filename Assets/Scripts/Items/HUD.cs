@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
     public VisualShield shieldBar;
-    public GameObject Deathscreen, Winscreen, Resetscreen, StormOverlay;
+    public GameObject Deathscreen, Winscreen, StormOverlay;
     public Transform itemsParent;
     public Transform gearParent;
     public GameObject jinventoryUI;

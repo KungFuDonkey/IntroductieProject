@@ -58,7 +58,7 @@ public class ServerHandle
         int key = Server.clients[_fromClient].player.status.effectcount;
         if(item == 1)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new JumpBoost(10, 3f, 4,key));
+            Server.clients[_fromClient].player.status.effects.Add(key,new JumpBoost(10, 2f, 4,key));
         }
         else if (item == 2)
         {
@@ -66,7 +66,7 @@ public class ServerHandle
         }
         else
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10, 3f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10, 30f, 4, key));
         }
         Server.clients[_fromClient].player.status.effectcount++;
     }

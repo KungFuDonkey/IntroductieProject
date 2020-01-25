@@ -22,7 +22,6 @@ public abstract class Player
     public bool[] inputs;
     public float verticalRotation;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
-    public bool evolve = false, inStorm;
 
     void Awake()
     {
@@ -43,6 +42,10 @@ public abstract class Player
                 status.groundCheck = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().groundcheck;
                 projectileSpawner = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner;
                 Debug.Log("avatar found");
+                int effect = Server.clients[id].player.status.effectcount;
+                Server.clients[id].player.status.effects.Add(effect, new InTheBus(20, id, effect));
+                Server.clients[id].player.status.effectcount++;
+                status.inTheBus = true;
             }
             catch
             {
@@ -137,35 +140,46 @@ public abstract class Player
 
     public void CheckStorm()
     {
-        Vector3 pos = avatar.position;
-        if (pos.z > Walls.walls[0].position.z ||
-            pos.z < Walls.walls[1].position.z ||
-            pos.x > Walls.walls[2].position.x ||
-            pos.x < Walls.walls[3].position.x)
+        if (BattleBus.canJump)
         {
-            PlayerManager.instance.playerHUD.StormOverlay.SetActive(true);
-            if (!inStorm)
+            Vector3 pos = avatar.position;
+            if (pos.z > Walls.walls[0].position.z ||
+                pos.z < Walls.walls[1].position.z ||
+                pos.x > Walls.walls[2].position.x ||
+                pos.x < Walls.walls[3].position.x)
             {
-                inStorm = true;
-                stormDamage = STORMDAMAGE;
-                stormDamageTimer = 0.1f;
-            }
-            if (stormDamageTimer <= 0)
-            {
-                stormDamageTimer = STORMDAMAGETIMER;
-                Hit(stormDamage);
-                stormDamage += 1f;
+                PlayerManager.instance.playerHUD.StormOverlay.SetActive(true);
+                if (!status.inStorm)
+                {
+                    status.inStorm = true;
+                    stormDamage = STORMDAMAGE;
+                    stormDamageTimer = 0.1f;
+                }
+                if (stormDamageTimer <= 0)
+                {
+                    stormDamageTimer = STORMDAMAGETIMER;
+                    Hit(stormDamage);
+                    stormDamage += 1f;
+                }
+                else
+                {
+                    stormDamageTimer -= Time.deltaTime;
+                }
             }
             else
             {
-                stormDamageTimer -= Time.deltaTime;
+                PlayerManager.instance.playerHUD.StormOverlay.SetActive(false);
+                status.inStorm = false;
             }
         }
-        else
-        {
-            PlayerManager.instance.playerHUD.StormOverlay.SetActive(false);
-            inStorm = false;
-        }
+    }
+
+    public void Parachute()
+    {
+        Debug.Log("Jump");
+        int effect = Server.clients[id].player.status.effectcount;
+        Server.clients[id].player.status.effects.Add(effect, new Parachuting(20, id, effect));
+        Server.clients[id].player.status.effectcount++;
     }
 }
 

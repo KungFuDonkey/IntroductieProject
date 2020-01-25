@@ -31,7 +31,8 @@ public enum ServerPackets
     Evolve,
     SpawnItem,
     Item,
-    RemoveItem
+    RemoveItem,
+    SetBus
 }
 
 /// <summary>Sent from client to server.</summary>

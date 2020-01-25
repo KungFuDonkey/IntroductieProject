@@ -15,7 +15,7 @@ public class Charmandolphin : Player
         Effect defaultEffect = Effect.Charmandolphin;
         status.defaultStatus = defaultEffect;
         status.groundmask = GameManager.instance.groundMask;
-        inputs = new bool[11];
+        inputs = new bool[12];
         status.animationValues = new bool[4]
         {
             false,
@@ -55,6 +55,12 @@ public class Charmandolphin : Player
         {
             status.eTimer -= Time.deltaTime;
             status.animationValues[2] = false;
+        }
+        if (inputs[11] && !status.jumped && status.isGrounded)
+        {
+            Parachute();
+            status.jumped = true;
+            status.ySpeed = 50;
         }
     }
 

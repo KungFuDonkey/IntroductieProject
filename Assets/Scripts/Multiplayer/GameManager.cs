@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -11,11 +12,13 @@ public class GameManager : MonoBehaviour
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
     public GameObject[] Items = new GameObject[7];
     public GameObject[] gameItems = new GameObject[20];
-    public LayerMask groundMask;
+    public LayerMask groundMask, busMask;
     public GameObject[] characters = new GameObject[3];
     public GameObject[] enemies = new GameObject[3];
     public GameObject[] playerObject;
     public GameObject[] walls;
+    public GameObject BattleBus;
+    public Image loadingBar;
     public bool freezeInput = false;
     
     private void Awake()

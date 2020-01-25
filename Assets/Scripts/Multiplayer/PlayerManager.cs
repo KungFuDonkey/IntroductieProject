@@ -68,6 +68,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
+        /*
         GameManager.instance.freezeInput = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -80,6 +81,7 @@ public class PlayerManager : MonoBehaviour
         {
             playerHUD.Winscreen.SetActive(true);
         }
+        */
     }
 
     public void Die()
