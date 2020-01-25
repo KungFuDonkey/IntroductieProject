@@ -10,12 +10,12 @@ public class gameItem: MonoBehaviour
     public int itemNumber;
     public bool pickup = true;
     public Item item;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Avatar"))
+        if (other.CompareTag("Avatar") && Client.instance.host)
         {
-            ClientSend.pickupItem(id, itemNumber);
+            int _player = other.GetComponent<PlayerManager>().id;
+            ServerHandle.pickupItem(_player, id, itemNumber);
         }
     }
 }

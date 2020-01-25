@@ -22,7 +22,7 @@ public abstract class Player
     public bool[] inputs;
     public float verticalRotation;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
-    public bool evolve = false, inStorm;
+    public bool evolve = false, inStorm = false;
 
     void Awake()
     {
@@ -143,9 +143,9 @@ public abstract class Player
             pos.x > Walls.walls[2].position.x ||
             pos.x < Walls.walls[3].position.x)
         {
-            PlayerManager.instance.playerHUD.StormOverlay.SetActive(true);
             if (!inStorm)
             {
+                ServerSend.StormOverlay(id, true);
                 inStorm = true;
                 stormDamage = STORMDAMAGE;
                 stormDamageTimer = 0.1f;
@@ -161,9 +161,9 @@ public abstract class Player
                 stormDamageTimer -= Time.deltaTime;
             }
         }
-        else
+        else if(inStorm)
         {
-            PlayerManager.instance.playerHUD.StormOverlay.SetActive(false);
+            ServerSend.StormOverlay(id, false);
             inStorm = false;
         }
     }

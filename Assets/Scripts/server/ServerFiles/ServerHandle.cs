@@ -80,10 +80,8 @@ public class ServerHandle
         Server.clients[_fromClient].player.status.effectcount++;
     }
 
-    public static void pickupItem(int _fromClient, Packet _packet)
+    public static void pickupItem(int _fromClient, int id, int itemNumber)
     {
-        int id = _packet.ReadInt();
-        int itemNumber = _packet.ReadInt();
         if (GameManager.instance.gameItems[id] != null)
         {
             gameItem item = GameManager.instance.gameItems[id].GetComponentInChildren<gameItem>();

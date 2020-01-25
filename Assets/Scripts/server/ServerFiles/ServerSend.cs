@@ -292,7 +292,7 @@ public class ServerSend
             SendTCPDataToAll(_packet);
             if (alive == 1)
             {
-                SendWinScreen();
+                //SendWinScreen();
             }
         }
     }
@@ -361,6 +361,15 @@ public class ServerSend
         {
             _packet.Write(id);
             SendTCPDataToAll(_packet);
+        }
+    }
+
+    public static void StormOverlay(int id, bool storm)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.StormOverlay))
+        {
+            _packet.Write(storm);
+            SendTCPData(id, _packet);
         }
     }
     #endregion

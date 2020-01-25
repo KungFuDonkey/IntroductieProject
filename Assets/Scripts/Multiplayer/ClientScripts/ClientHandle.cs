@@ -213,6 +213,12 @@ public class ClientHandle : MonoBehaviour
         Destroy(GameManager.instance.gameItems[id]);
         GameManager.instance.gameItems[id] = null;
     }
+
+    public static void StormOverlay(Packet _packet)
+    {
+        bool storm = _packet.ReadBool();
+        GameManager.instance.players[Client.instance.myId].playerHUD.StormOverlay.SetActive(storm);
+    }
     /*
       
                   PingReply reply = ping.Send(Client.instance.ip, 1000);
