@@ -24,25 +24,21 @@ public class InTheBus : Effect
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         status.inputDirection = Vector3.zero;
-        if (duration < 0.4f * startDuration && status.inTheBus)
+        if (duration < 0.4f * startDuration)
         {
             duration = 0.4f * startDuration;
         }
-        if (status.inTheBus)
+        ServerSend.BusCamera(player.id, true);
+        onBus = Physics.CheckSphere(status.groundCheck.position, 0.5f, GameManager.instance.busMask);
+        if (!onBus)
         {
-            ServerSend.BusCamera(player.id, true);
-            onBus = Physics.CheckSphere(status.groundCheck.position, 2f, GameManager.instance.busMask);
-            if (!onBus)
-            {
-                status.ySpeed -= status.gravity * Time.deltaTime;
-            }
-            status.inputDirection = BattleBus.busMovement * Time.deltaTime * 60;
+            status.ySpeed -= status.gravity * Time.deltaTime;
         }
+        status.inputDirection = BattleBus.busMovement * Time.deltaTime * 60;
         if ((inputs[4] && BattleBus.canJump) || BattleBus.Bus.position.z >= 280)
         {
             ServerSend.BusCamera(owner, false);
             duration = 0;
-            status.inTheBus = false;
             status.effects.Remove(key);
             int effect = Server.clients[owner].player.status.effectcount;
             Server.clients[owner].player.status.effects.Add(effect, new Parachuting(20, owner, effect));

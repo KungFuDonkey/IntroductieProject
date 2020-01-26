@@ -46,7 +46,6 @@ public abstract class Player
                 int effect = Server.clients[id].player.status.effectcount;
                 Server.clients[id].player.status.effects.Add(effect, new InTheBus(20, id, effect));
                 Server.clients[id].player.status.effectcount++;
-                status.inTheBus = true;
             }
             catch
             {

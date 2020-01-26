@@ -5,8 +5,8 @@ using UnityEngine;
 public class BattleBus : MonoBehaviour
 {
     public static Transform Bus;
-    static float busWait = 5;
-    public static Vector3 busMovement = new Vector3(0, 0, 10);
+    static float busWait = 3;
+    public static Vector3 busMovement = new Vector3(0, 0, 25);
     static Vector3 startPosition = new Vector3(0, 110, -350);
     public static bool canJump = false;
 
