@@ -21,6 +21,7 @@ public class PlayerStatus
     public List<int> removeItems = new List<int>();
     public Dictionary<int, Effect> effects = new Dictionary<int, Effect>();
 
+
     public void Update(bool[] inputs, Transform _avatar)
     {
         SetStatus(defaultStatus, _avatar);
@@ -91,6 +92,7 @@ public class PlayerStatus
         {
             invisible = !invisible;
         }
+        Debug.Log(movementSpeed + "update");
     }
 
     public void SetStatus(Effect effect, Transform _avatar)
@@ -112,6 +114,8 @@ public class PlayerStatus
         if (effect.dinvisible)
             invisible = true;
         avatar = _avatar;
+        Debug.Log(movementSpeed + "set");
+       
     }
 
     public void SetUpMovement(bool[] inputs, Effect effect, int key)
@@ -124,4 +128,5 @@ public class PlayerStatus
         }
         animationValues = effect.SetUpAnimations(this, inputs);
     }
+   
 }

@@ -34,6 +34,7 @@ public class Effect
         dType = _dType;
         key = _key;
         name = "default";
+        Debug.Log(dmovementSpeed + "effect");
     }
 
     public virtual Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
