@@ -11,15 +11,5 @@ public class EquipmentInventorySlot : InventorySlot
     {
         EquipmentInventory.instance.Remove(Item);
     }
-
-    public override void UseItem()
-    {
-        if (Item.name == "Bandana")
-        {
-            Shield();
-        }
-        base.UseItem();
-       
-    }
 }
 

@@ -103,11 +103,6 @@ public class InventorySlot : MonoBehaviour
         Invoke("Jumpy", seconds);
     }
 
-    public void Shield()
-    {
-        ClientSend.AddEffects(4);
-    }
-
     public void Invy()
     {
         ClientSend.SetInvis(false);

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1506737421757163460
+--- !u!1 &6602110923006661641
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1667924304089849547}
-  - component: {fileID: 8450323918506328994}
-  - component: {fileID: 6713242131615394450}
-  - component: {fileID: 4277323692730622970}
-  - component: {fileID: 1304956476531601399}
+  - component: {fileID: 4817846054322215161}
+  - component: {fileID: 4119230932066995063}
+  - component: {fileID: 2848395668062282991}
+  - component: {fileID: 8069923748221593901}
+  - component: {fileID: 5895397529457139498}
   m_Layer: 0
-  m_Name: BandanaTrigger2
+  m_Name: BraceletTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1667924304089849547
+--- !u!4 &4817846054322215161
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506737421757163460}
+  m_GameObject: {fileID: 6602110923006661641}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
-  m_Father: {fileID: 787232459827217115}
+  m_Father: {fileID: 5776399636414494233}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8450323918506328994
+--- !u!33 &4119230932066995063
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506737421757163460}
+  m_GameObject: {fileID: 6602110923006661641}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6713242131615394450
+--- !u!23 &2848395668062282991
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506737421757163460}
+  m_GameObject: {fileID: 6602110923006661641}
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,36 +81,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &4277323692730622970
+--- !u!135 &8069923748221593901
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506737421757163460}
+  m_GameObject: {fileID: 6602110923006661641}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1304956476531601399
+--- !u!114 &5895397529457139498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506737421757163460}
+  m_GameObject: {fileID: 6602110923006661641}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8701fb5193c774346903ae236e4ec2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  itemNumber: 7
+  itemNumber: 8
   pickup: 1
-  item: {fileID: 11400000, guid: 8e3e1e6eb843ec04a8820cb57aef0434, type: 2}
---- !u!1 &1985978054550979944
+  item: {fileID: 11400000, guid: 03384c0e81267794aa21acbb283e26a6, type: 2}
+--- !u!1 &9130868622366568698
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,47 +118,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 787232459827217115}
-  - component: {fileID: 6079192722722672936}
-  - component: {fileID: 793164337253857470}
-  - component: {fileID: 8293276774633249934}
+  - component: {fileID: 5776399636414494233}
+  - component: {fileID: 6813412309173044892}
+  - component: {fileID: 3471977804711431355}
+  - component: {fileID: 7536944267014112891}
   m_Layer: 0
-  m_Name: Bandana2
+  m_Name: Bracelet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &787232459827217115
+--- !u!4 &5776399636414494233
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985978054550979944}
+  m_GameObject: {fileID: 9130868622366568698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 67.576965, y: 0.4, z: 37.6}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1667924304089849547}
+  - {fileID: 4817846054322215161}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6079192722722672936
+--- !u!33 &6813412309173044892
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985978054550979944}
+  m_GameObject: {fileID: 9130868622366568698}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &793164337253857470
+--- !u!23 &3471977804711431355
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985978054550979944}
+  m_GameObject: {fileID: 9130868622366568698}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -170,7 +170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 158b4f2fdf315884e8344509e0330be8, type: 2}
+  - {fileID: 2100000, guid: 0e75c8a328b16d6438c36255eb396cf6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -191,16 +191,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &8293276774633249934
+--- !u!135 &7536944267014112891
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985978054550979944}
+  m_GameObject: {fileID: 9130868622366568698}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
