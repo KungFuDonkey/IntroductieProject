@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
     public GameObject[] Items = new GameObject[7];
     public GameObject[] gameItems = new GameObject[20];
-    public LayerMask groundMask, busMask;
+    public LayerMask groundMask;
     public GameObject[] characters = new GameObject[3];
     public GameObject[] enemies = new GameObject[3];
     public GameObject[] playerObject;

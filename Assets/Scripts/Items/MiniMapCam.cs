@@ -10,7 +10,7 @@ public class MiniMapCam : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 targetPosition = playerTransform.position;
-        targetPosition.y += yOffset;
+        targetPosition.y = yOffset;
         transform.position = targetPosition;
     }
 }

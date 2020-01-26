@@ -5,9 +5,9 @@ using UnityEngine;
 public class BattleBus : MonoBehaviour
 {
     public static Transform Bus;
-    static float busWait = 3;
+    static float busWait = 4;
     public static Vector3 busMovement = new Vector3(0, 0, 25);
-    static Vector3 startPosition = new Vector3(0, 110, -350);
+    static Vector3 startPosition = new Vector3(0, 110, -380);
     public static bool canJump = false;
 
     public static void UpdateBus()
@@ -20,13 +20,13 @@ public class BattleBus : MonoBehaviour
         {
             canJump = true;
         }
-
-        if (busWait < 5)
+        if (Bus.position.z < 600)
         {
-            if (Bus.transform.position.z < 400)
-            {
-                Bus.transform.position += busMovement * Time.deltaTime;
-            }
+            Bus.position += busMovement * Time.deltaTime;
+        }
+        else
+        {
+            Bus.position = new Vector3(0, 0, 600);
         }
         ServerSend.SetBus();
     }

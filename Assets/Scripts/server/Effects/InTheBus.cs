@@ -28,16 +28,12 @@ public class InTheBus : Effect
         {
             duration = 0.4f * startDuration;
         }
-        ServerSend.BusCamera(player.id, true);
-        onBus = Physics.CheckSphere(status.groundCheck.position, 0.5f, GameManager.instance.busMask);
-        if (!onBus)
-        {
-            status.ySpeed -= status.gravity * Time.deltaTime;
-        }
+        //ServerSend.BusCamera(owner, true);
         status.inputDirection = BattleBus.busMovement * Time.deltaTime * 60;
         if ((inputs[4] && BattleBus.canJump) || BattleBus.Bus.position.z >= 280)
         {
-            ServerSend.BusCamera(owner, false);
+            Server.clients[owner].player.avatar.position = BattleBus.Bus.position;
+            //ServerSend.BusCamera(owner, false);
             duration = 0;
             status.effects.Remove(key);
             int effect = Server.clients[owner].player.status.effectcount;

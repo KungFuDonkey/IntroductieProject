@@ -158,6 +158,7 @@ public class UIManager : MonoBehaviour
             if (loadTime >= LOADTIME + 0.1f)
             {
                 ServerStart.started = true;
+                GameManager.instance.BattleBus.GetComponent<AudioSource>().Play();
                 setMenuStatus(false);
                 Destroy(GameObject.Find("Main Camera"));
                 GameManager.instance.freezeInput = false;

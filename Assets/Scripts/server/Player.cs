@@ -170,6 +170,10 @@ public abstract class Player
                 ServerSend.StormOverlay(id, false);
                 inStorm = false;
             }
+            if (avatar.position.y < -15)
+            {
+                Hit(200);
+            }
         }
     }
 }
