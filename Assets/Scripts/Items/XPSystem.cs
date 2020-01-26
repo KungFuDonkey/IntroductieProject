@@ -95,13 +95,13 @@ public class XPSystem : MonoBehaviour
 
     void Update()
     {
-        XPUpdate(2);
+        XPUpdate(50 * Time.deltaTime);
         MovesUpdate();
     }
 
-    public void XPUpdate(int xp)
+    public void XPUpdate(float xp)
     {
-        XP += xp;
+        XP += (int)xp;
         int level = (int)(0.1f * Mathf.Sqrt(XP));
         string levelCount = level.ToString();
         if (level != CurrentLevel && level != 1)

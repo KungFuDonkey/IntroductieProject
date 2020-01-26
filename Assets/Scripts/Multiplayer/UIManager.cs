@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public int selectedCharacter = 1;
-    public bool startCounter = false;
-    public float timer = 10f, loadTime, LOADTIME = 5;
+    public bool startCounter = false, loading = false;
+    public float timer = 10f, loadTime, LOADTIME = 1;
     public GameObject startMenu, lobby, characterSelection, loadingScreen;
     public GameObject server;
     public GameObject startButton;
@@ -105,16 +105,9 @@ public class UIManager : MonoBehaviour
         }
         else if(menu == 2)
         {
-            characterSelection.SetActive(false);
+            loading = true;
             loadingScreen.SetActive(true);
-            LoadingScreen.loading();
-            loadTime += Time.deltaTime;
-            if (loadTime >= LOADTIME)
-            {
-                setMenuStatus(false);
-                Destroy(GameObject.Find("Main Camera"));
-                GameManager.instance.freezeInput = false;
-            }
+            characterSelection.SetActive(false);
         }
     }
 
@@ -154,6 +147,21 @@ public class UIManager : MonoBehaviour
             {
                 ServerSend.LoadMenu(2);
                 timer = 100f;
+            }
+        }
+        if (loading)
+        {
+            float progress = Mathf.Clamp(loadTime / LOADTIME * 290, 0, 290);
+            GameManager.instance.loadingBar.rectTransform.sizeDelta = new Vector2(progress, 20);
+            GameManager.instance.loadingBar.rectTransform.localPosition = new Vector2(progress / 2 - 145, 0);
+            loadTime += Time.deltaTime;
+            if (loadTime >= LOADTIME + 0.1f)
+            {
+                ServerStart.started = true;
+                setMenuStatus(false);
+                Destroy(GameObject.Find("Main Camera"));
+                GameManager.instance.freezeInput = false;
+                loadTime = 0;
             }
         }
     }

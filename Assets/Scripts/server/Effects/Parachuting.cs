@@ -66,6 +66,7 @@ public class Parachuting : Effect
             status.effects.Remove(key);
             status.parachuting = false;
             status.jumped = false;
+            status.silenced = false;
             Debug.Log("stopped parachuting");
         }
         return status.inputDirection;

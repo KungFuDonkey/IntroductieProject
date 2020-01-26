@@ -164,9 +164,10 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.LoadMenu))
         {
-            if(menuNumber == 2)
+            if (menuNumber == 2)
             {
-                foreach(ServerClient client in Server.clients.Values)
+                UIManager.instance.LoadMenu(2);
+                foreach (ServerClient client in Server.clients.Values)
                 {
                     if (client.connected)
                     {
@@ -180,17 +181,12 @@ public class ServerSend
                         client.SendIntoGame();
                     }
                 }
-                ServerStart.started = true;
                 ServerStart.SpawnItem();
             }
             Server.joinable = false;
             _packet.Write(menuNumber);
             SendTCPDataToAll(_packet);
-        }
-        if(menuNumber == 2)
-        {
             UpdatePlayerCount();
-            UIManager.instance.LoadMenu(2);
         }
     }
 

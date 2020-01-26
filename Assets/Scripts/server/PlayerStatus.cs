@@ -17,7 +17,7 @@ public class PlayerStatus
     public bool isGrounded, movable, silenced, invisible, alive = true, inStorm, jumped, parachuting, inTheBus;
     public Vector3 inputDirection;
     public Type type;
-    public int effectcount = 1;//default effect has 0
+    public int effectcount = 1; //default effect has 0
     public List<int> removeItems = new List<int>();
     public Dictionary<int, Effect> effects = new Dictionary<int, Effect>();
 
