@@ -58,12 +58,6 @@ public class Charmandolphin : Player
                 status.eTimer -= Time.deltaTime;
                 status.animationValues[2] = false;
             }
-            if (inputs[11] && !status.jumped && status.isGrounded)
-            {
-                Parachute();
-                status.jumped = true;
-                status.ySpeed = 50;
-            }
         }
     }
 

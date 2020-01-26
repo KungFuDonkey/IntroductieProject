@@ -29,35 +29,17 @@ public class Parachuting : Effect
             duration = 0.4f * startDuration;
         }
 
-        status.parachuting = true;
         status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 2f, status.groundmask);
-        if (!status.parachuting && status.ySpeed <= 0)
+        if (!status.parachuting)
         {
             Debug.Log("Parachuting");
             status.parachuting = true;
+            //status.avatar.GetComponentInChildren<playerLook>().clampAngle = 60;
         }
-        else if (!status.parachuting)
-        {
-            //status.ySpeed -= status.gravity * Time.deltaTime;
-        }
-        if (inputs[0])
-        {
-            status.inputDirection += status.avatar.forward;
-        }
-        if (inputs[1])
-        {
-            status.inputDirection -= status.avatar.forward;
-        }
-        if (inputs[2])
-        {
-            status.inputDirection -= status.avatar.right;
-        }
-        if (inputs[3])
-        {
-            status.inputDirection += status.avatar.right;
-        }
+        float headRotation = player.verticalRotation;
+        status.inputDirection += status.avatar.forward * Mathf.Clamp((headRotation / -85 + 1) * 2, 0.5f, 2);
+        status.ySpeed = -5 * Mathf.Clamp(headRotation / 30, 1, 3);
         status.inputDirection *= dmovementSpeed * Time.deltaTime * 60 * 0.8f;
-        status.ySpeed = -3;
         status.inputDirection.y = status.ySpeed;
 
         if (status.isGrounded && status.parachuting)
@@ -68,6 +50,7 @@ public class Parachuting : Effect
             status.jumped = false;
             status.silenced = false;
             Debug.Log("stopped parachuting");
+            status.avatar.GetComponentInChildren<playerLook>().clampAngle = 85;
         }
         return status.inputDirection;
     }

@@ -231,6 +231,12 @@ public class ClientHandle : MonoBehaviour
         bool storm = _packet.ReadBool();
         GameManager.instance.players[Client.instance.myId].playerHUD.StormOverlay.SetActive(storm);
     }
+
+    public static void BusCamera(Packet _packet)
+    {
+        bool storm = _packet.ReadBool();
+        GameManager.instance.players[Client.instance.myId].playerHUD.BusCamera.SetActive(storm);
+    }
     /*
       
                   PingReply reply = ping.Send(Client.instance.ip, 1000);

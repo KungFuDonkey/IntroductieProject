@@ -95,6 +95,7 @@ public class XPSystem : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Xp update");
         XPUpdate(50 * Time.deltaTime);
         MovesUpdate();
     }
@@ -129,7 +130,7 @@ public class XPSystem : MonoBehaviour
         {
             Emove();
         }
-        if (CurrentLevel >= 5 )
+        if (CurrentLevel >= 5)
         {
             Qmove();
         }

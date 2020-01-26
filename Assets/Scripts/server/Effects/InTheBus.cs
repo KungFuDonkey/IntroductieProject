@@ -5,7 +5,6 @@ using UnityEngine;
 public class InTheBus : Effect
 {
     int owner;
-    int id;
     Player player;
     float startDuration;
     bool onBus;
@@ -25,13 +24,13 @@ public class InTheBus : Effect
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         status.inputDirection = Vector3.zero;
-        PlayerManager.instance.playerHUD.BusCamera.SetActive(true);
         if (duration < 0.4f * startDuration && status.inTheBus)
         {
             duration = 0.4f * startDuration;
         }
         if (status.inTheBus)
         {
+            ServerSend.BusCamera(player.id, true);
             onBus = Physics.CheckSphere(status.groundCheck.position, 2f, GameManager.instance.busMask);
             if (!onBus)
             {
@@ -41,7 +40,7 @@ public class InTheBus : Effect
         }
         if ((inputs[4] && BattleBus.canJump) || BattleBus.Bus.position.z >= 280)
         {
-            PlayerManager.instance.playerHUD.BusCamera.SetActive(false);
+            ServerSend.BusCamera(owner, false);
             duration = 0;
             status.inTheBus = false;
             status.effects.Remove(key);

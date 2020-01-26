@@ -66,7 +66,7 @@ public class ServerHandle
         }
         else if (item == 3)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10, 30f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10, 5f, 4, key));
         }
         else if (item == 4)
         {

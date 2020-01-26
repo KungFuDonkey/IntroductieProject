@@ -377,5 +377,14 @@ public class ServerSend
             SendTCPData(id, _packet);
         }
     }
+
+    public static void BusCamera(int id, bool bus)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.BusCamera))
+        {
+            _packet.Write(bus);
+            SendTCPData(id, _packet);
+        }
+    }
     #endregion
 }

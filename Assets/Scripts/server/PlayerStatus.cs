@@ -90,8 +90,6 @@ public class PlayerStatus
             silenced = true;
         if (effect.dinvisible)
             invisible = !invisible;
-        }
-        Debug.Log(movementSpeed + "update");
     }
 
     public void SetStatus(Effect effect, Transform _avatar)
@@ -113,8 +111,6 @@ public class PlayerStatus
         if (effect.dinvisible)
             invisible = true;
         avatar = _avatar;
-        Debug.Log(movementSpeed + "set");
-       
     }
 
     public void SetUpMovement(bool[] inputs, Effect effect, int key)
@@ -127,5 +123,4 @@ public class PlayerStatus
         }
         animationValues = effect.SetUpAnimations(this, inputs);
     }
-   
 }
