@@ -121,6 +121,15 @@ public class ServerSend
         }
     }
 
+    public static void Evolve(Player _player)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.Evolve))
+        {
+            _packet.Write(_player.id);
+            SendTCPDataToAll(_packet);
+        }
+    }
+
     public static void Projectile(Player _player, int _moveIndex, Projectile projectile)
     {
         using (Packet _packet = new Packet((int)ServerPackets.projectile))

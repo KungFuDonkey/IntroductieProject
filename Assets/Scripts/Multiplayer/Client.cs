@@ -274,6 +274,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.Reset, ClientHandle.Reset},
             { (int)ServerPackets.SpawnItem, ClientHandle.spawnItem },
             { (int)ServerPackets.Item, ClientHandle.Item },
+            { (int)ServerPackets.Evolve, ClientHandle.Evolve },
             { (int)ServerPackets.RemoveItem, ClientHandle.RemoveItem }
         };
         Debug.Log("Initialized packets.");

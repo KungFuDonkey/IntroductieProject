@@ -61,6 +61,10 @@ public abstract class Player
         }
         Move(status.inputDirection);
 
+        if (inputs[9])
+        {
+            Evolve();
+        }
 
         if (status.isGrounded)  //for projectiles
         {
@@ -79,6 +83,11 @@ public abstract class Player
         ServerSend.PlayerPosition(this);
         ServerSend.PlayerAnimation(this);
         ServerSend.PlayerRotation(this);
+    }
+
+    public void Evolve()
+    {
+        ServerSend.Evolve(this);
     }
 
     public void SetInput(bool[] _inputs, Quaternion _rotation, float _verticalRotation)
