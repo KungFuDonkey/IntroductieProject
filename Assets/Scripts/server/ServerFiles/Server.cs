@@ -153,7 +153,7 @@ public class Server
             {
                 //spawnpoints 10 steps off the wall and 15 high
                 //spawnPoints.Add((MaxPlayers + 1) * i + j, new Vector3(i * (280 / MaxPlayers) - 290, 15, j * (280 / MaxPlayers) - 290));
-                spawnPoints.Add((MaxPlayers + 1) * i + j, GameManager.instance.BattleBus.transform.position + new Vector3(0, -3, 0));
+                spawnPoints.Add((MaxPlayers + 1) * i + j, GameManager.instance.BattleBus.transform.position + new Vector3(0, -3, 0)); //player spawns in the bus
             }
         }
         Debug.Log("Initialized packets.");

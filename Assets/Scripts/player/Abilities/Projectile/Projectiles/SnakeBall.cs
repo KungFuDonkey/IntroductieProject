@@ -20,6 +20,7 @@ public class SnakeBall : Projectile
         speed = 30;
     }
 
+    //Updates position using sinWave
     public override void UpdateProjectile()
     {
         float distance = Vector3.Distance(spawnPosition, position);

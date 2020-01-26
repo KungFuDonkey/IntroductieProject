@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.freezeInput)
         {
-            for(int i = 0; i<10; i++)
+            for(int i = 0; i < 12; i++)
             {
                 _inputs[i] = Input.GetKey(keys[i]);
             }
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i<11; i++)
+            for(int i = 0; i < 12; i++)
             {
                 _inputs[i] = false;
             }

@@ -10,6 +10,7 @@ public class BattleBus : MonoBehaviour
     static Vector3 startPosition = new Vector3(0, 110, -380);
     public static bool canJump = false;
 
+    //Moves the bus across the map
     public static void UpdateBus()
     {
         if (busWait > 0)

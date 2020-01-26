@@ -24,6 +24,7 @@ public class VulcanoJumping : Effect
         key = _key;
     }
 
+    //Determines the strength of the jump based on vertical rotation of the head
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         if (duration < startDuration * 0.4f && player.jumping)

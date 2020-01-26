@@ -91,6 +91,7 @@ public abstract class Player
         verticalRotation = _verticalRotation;
     }
 
+    //Hit() is called by the server when a player gets hit by an projectile, the projectile has a type and damage value
     public void Hit(Projectile projectile)
     {
         float damageMultiplier = 1f;
@@ -126,6 +127,7 @@ public abstract class Player
         }
     }
 
+    //overload function of Hit(), does direct damage, not through projectile
     public void Hit(float damage)
     {
         status.defaultStatus.dshield -= damage;
@@ -137,6 +139,7 @@ public abstract class Player
         }
     }
 
+    //checks if the player is outside of the play area and "in the storm", does damage if they are
     public void CheckStorm()
     {
         if (BattleBus.canJump)

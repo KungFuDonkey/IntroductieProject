@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BusCamera : MonoBehaviour
 {
+    //Makes sure the position of the camera is correct
     private void LateUpdate()
     {
         Vector3 targetPosition = BattleBus.Bus.position;

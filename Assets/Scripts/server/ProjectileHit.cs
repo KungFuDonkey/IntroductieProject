@@ -12,6 +12,7 @@ public class ProjectileHit : MonoBehaviour
         }
     }
 
+    //Determines behaviour when a projectile hits something
     private void OnTriggerEnter(Collider other)
     {
         PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();

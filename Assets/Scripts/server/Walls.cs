@@ -13,6 +13,7 @@ public class Walls
     static bool[] wallMoving = new bool[4];
     static int smaller, wallsMove = 26;
 
+    //Updates the position of the walls
     public static void UpdateWalls()
     {
         if (preGameTimer > 0)
@@ -64,6 +65,7 @@ public class Walls
         }
     }
 
+    //Set the new position based on a Vector3 and the scale based on the position of the other walls
     public static void moveWalls()
     {
         for (int i = 0; i < 4; i++)
@@ -92,6 +94,7 @@ public class Walls
         }
     }
 
+    //Gives the position where the walls should move to
     public static void setDistances(float x, float z)
     {
         float eighth = (mapSize * 0.125f);
@@ -104,6 +107,7 @@ public class Walls
         Debug.Log("New circle: " + circlePosition.ToString());
     }
 
+    //Reset function for when the game is reset
     public static void Reset()
     {
         for(int i = 0; i < 4; i++)

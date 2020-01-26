@@ -16,6 +16,7 @@ public class VulcanoCollider : MonoBehaviour
         animator.SetTrigger("Launch");
     }
 
+    //Calls HitSelf() when the ability is used
     private void OnTriggerEnter(Collider other)
     {
         PlayerManager playerManager = other.gameObject.GetComponent<PlayerManager>();

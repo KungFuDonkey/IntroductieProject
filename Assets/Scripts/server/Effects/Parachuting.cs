@@ -21,6 +21,7 @@ public class Parachuting : Effect
         dsilenced = true;
     }
 
+    //Determines the movement of the player while parachuting down from the bus, the direction in which the player looks will determine forwards and downwards speed
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         status.inputDirection = Vector3.zero;
