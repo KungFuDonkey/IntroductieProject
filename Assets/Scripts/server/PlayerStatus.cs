@@ -14,10 +14,10 @@ public class PlayerStatus
     public LayerMask groundmask = GameManager.instance.groundMask;
     public Transform avatar;
     public float fireTimer = 0, FIRETIMER = 2, qTimer = 0, QTIMER = 2, eTimer = 0, ETIMER = 2, evolveTimer = 5, EVOLVETIMER = 10, movementSpeed = 20, runMultiplier = 2;
-    public bool isGrounded, movable, silenced, invisible, alive = true;
+    public bool isGrounded, movable, silenced, invisible, alive = true, inStorm;
     public Vector3 inputDirection;
     public Type type;
-    public int effectcount = 1;//default effect has 0
+    public int effectcount = 1; //default effect has 0
     public List<int> removeItems = new List<int>();
     public Dictionary<int, Effect> effects = new Dictionary<int, Effect>();
 
@@ -89,10 +89,7 @@ public class PlayerStatus
         if (effect.dsilenced)
             silenced = true;
         if (effect.dinvisible)
-        {
             invisible = !invisible;
-        }
-        Debug.Log(movementSpeed + "update");
     }
 
     public void SetStatus(Effect effect, Transform _avatar)
@@ -114,8 +111,6 @@ public class PlayerStatus
         if (effect.dinvisible)
             invisible = true;
         avatar = _avatar;
-        Debug.Log(movementSpeed + "set");
-       
     }
 
     public void SetUpMovement(bool[] inputs, Effect effect, int key)
@@ -128,5 +123,4 @@ public class PlayerStatus
         }
         animationValues = effect.SetUpAnimations(this, inputs);
     }
-   
 }

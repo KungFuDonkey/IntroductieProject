@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemies = new GameObject[3];
     public GameObject[] playerObject;
     public GameObject[] walls;
+    public GameObject BattleBus;
+    public Image loadingBar;
     public bool freezeInput = false;
     
     private void Awake()

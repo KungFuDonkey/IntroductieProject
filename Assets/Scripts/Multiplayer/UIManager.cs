@@ -8,9 +8,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public int selectedCharacter = 1;
-    public bool startCounter = false;
-    public float timer = 10f;
-    public GameObject startMenu, lobby, characterSelection;
+    public bool startCounter = false, loading = false;
+    public float timer = 10f, loadTime, LOADTIME = 1;
+    public GameObject startMenu, lobby, characterSelection, loadingScreen;
     public GameObject server;
     public GameObject startButton;
     public GameObject myCursor;
@@ -103,10 +103,11 @@ public class UIManager : MonoBehaviour
             }
             startCounter = true;
         }
-        else if(menu == 2){
-            setMenuStatus(false);
-            Destroy(GameObject.Find("Main Camera"));
-            GameManager.instance.freezeInput = false;
+        else if(menu == 2)
+        {
+            loading = true;
+            loadingScreen.SetActive(true);
+            characterSelection.SetActive(false);
         }
     }
 
@@ -145,6 +146,23 @@ public class UIManager : MonoBehaviour
             if(timer < 0 && Client.instance.host)
             {
                 ServerSend.LoadMenu(2);
+                timer = 100f;
+            }
+        }
+        if (loading)
+        {
+            float progress = Mathf.Clamp(loadTime / LOADTIME * 290, 0, 290);
+            GameManager.instance.loadingBar.rectTransform.sizeDelta = new Vector2(progress, 20);
+            GameManager.instance.loadingBar.rectTransform.localPosition = new Vector2(progress / 2 - 145, 0);
+            loadTime += Time.deltaTime;
+            if (loadTime >= LOADTIME + 0.1f)
+            {
+                ServerStart.started = true;
+                GameManager.instance.BattleBus.GetComponent<AudioSource>().Play();
+                setMenuStatus(false);
+                Destroy(GameObject.Find("Main Camera"));
+                GameManager.instance.freezeInput = false;
+                loadTime = 0;
             }
         }
     }

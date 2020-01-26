@@ -15,7 +15,7 @@ public class Charmandolphin : Player
         Effect defaultEffect = Effect.Charmandolphin;
         status.defaultStatus = defaultEffect;
         status.groundmask = GameManager.instance.groundMask;
-        inputs = new bool[11];
+        inputs = new bool[12];
         status.animationValues = new bool[4]
         {
             false,
@@ -28,33 +28,36 @@ public class Charmandolphin : Player
     public override void UpdatePlayer()
     {
         base.UpdatePlayer();
-        if (inputs[10] && status.fireTimer < 0)
+        if (!status.silenced)
         {
-            basicAttack();
-        }
-        else
-        {
-            status.fireTimer -= Time.deltaTime;
-            status.animationValues[2] = false;
-        }
-        if (inputs[6] && status.qTimer < 0)
-        {
-            eAttack();
-        }
-        else
-        {
-            status.qTimer -= Time.deltaTime;
-            status.animationValues[2] = false;
-        }
-        if (inputs[7] && status.eTimer < 0 && !surfing)
-        {
-            qAttack();
-            status.animationValues[2] = false;
-        }
-        else
-        {
-            status.eTimer -= Time.deltaTime;
-            status.animationValues[2] = false;
+            if (inputs[10] && status.fireTimer < 0)
+            {
+                basicAttack();
+            }
+            else
+            {
+                status.fireTimer -= Time.deltaTime;
+                status.animationValues[2] = false;
+            }
+            if (inputs[6] && status.qTimer < 0)
+            {
+                eAttack();
+            }
+            else
+            {
+                status.qTimer -= Time.deltaTime;
+                status.animationValues[2] = false;
+            }
+            if (inputs[7] && status.eTimer < 0 && !surfing)
+            {
+                qAttack();
+                status.animationValues[2] = false;
+            }
+            else
+            {
+                status.eTimer -= Time.deltaTime;
+                status.animationValues[2] = false;
+            }
         }
     }
 

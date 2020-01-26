@@ -220,10 +220,22 @@ public class ClientHandle : MonoBehaviour
         GameManager.instance.gameItems[id] = null;
     }
 
+    public static void SetBus(Packet _packet)
+    {
+        Vector3 busPos = _packet.ReadVector3();
+        GameManager.instance.BattleBus.transform.position = busPos;
+    }
+
     public static void StormOverlay(Packet _packet)
     {
         bool storm = _packet.ReadBool();
         GameManager.instance.players[Client.instance.myId].playerHUD.StormOverlay.SetActive(storm);
+    }
+
+    public static void BusCamera(Packet _packet)
+    {
+        bool storm = _packet.ReadBool();
+        GameManager.instance.players[Client.instance.myId].playerHUD.BusCamera.SetActive(storm);
     }
     /*
       

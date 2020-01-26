@@ -164,9 +164,10 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.LoadMenu))
         {
-            if(menuNumber == 2)
+            if (menuNumber == 2)
             {
-                foreach(ServerClient client in Server.clients.Values)
+                UIManager.instance.LoadMenu(2);
+                foreach (ServerClient client in Server.clients.Values)
                 {
                     if (client.connected)
                     {
@@ -180,17 +181,12 @@ public class ServerSend
                         client.SendIntoGame();
                     }
                 }
-                ServerStart.started = true;
                 ServerStart.SpawnItem();
             }
             Server.joinable = false;
             _packet.Write(menuNumber);
             SendTCPDataToAll(_packet);
-        }
-        if(menuNumber == 2)
-        {
             UpdatePlayerCount();
-            UIManager.instance.LoadMenu(2);
         }
     }
 
@@ -364,11 +360,29 @@ public class ServerSend
         }
     }
 
+    public static void SetBus()
+    {
+        using(Packet _packet = new Packet((int)ServerPackets.SetBus))
+        {
+            _packet.Write(BattleBus.Bus.position);
+            SendTCPDataToAll(_packet);
+        }
+    }
+
     public static void StormOverlay(int id, bool storm)
     {
         using (Packet _packet = new Packet((int)ServerPackets.StormOverlay))
         {
             _packet.Write(storm);
+            SendTCPData(id, _packet);
+        }
+    }
+
+    public static void BusCamera(int id, bool bus)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.BusCamera))
+        {
+            _packet.Write(bus);
             SendTCPData(id, _packet);
         }
     }

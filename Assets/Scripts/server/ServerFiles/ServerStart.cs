@@ -59,11 +59,12 @@ public class ServerStart : MonoBehaviour
             }
             foreach (int i in destroyId)
             {
-                Debug.Log($"Destroying: {i}");
+                //Debug.Log($"Destroying: {i}");
                 Server.projectiles.Remove(i);
                 reset = true;
             }
             Walls.UpdateWalls();
+            BattleBus.UpdateBus();
         }
         else if (!Server.joinable)
         {
@@ -71,7 +72,7 @@ public class ServerStart : MonoBehaviour
             {
                 if (_client.connected)
                 {
-                    Debug.Log(_client.mousePosition);
+                    //Debug.Log(_client.mousePosition);
                     ServerSend.SendMousePosition(_client.id, _client.mousePosition);
                 }
             }

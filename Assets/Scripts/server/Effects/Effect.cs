@@ -63,8 +63,8 @@ public class Effect
             status.inputDirection *= drunMultiplier;
         }
 
-        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 2f, status.groundmask);
-        if (status.isGrounded && status.ySpeed < 0)
+        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 0.5f, status.groundmask);
+        if (status.isGrounded && status.ySpeed <= 0)
         {
             if (inputs[4])
             {
@@ -72,7 +72,7 @@ public class Effect
             }
             else
             {
-                //ySpeed = -2f;
+                status.ySpeed = -1;
             }
         }
         status.ySpeed -= status.gravity * Time.deltaTime;
