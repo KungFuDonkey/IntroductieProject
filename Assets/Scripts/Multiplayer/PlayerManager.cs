@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -68,7 +68,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Screen(int screen)
     {
-        //GameManager.instance.freezeInput = true;
+        GameManager.instance.freezeInput = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         if (screen == 0)
