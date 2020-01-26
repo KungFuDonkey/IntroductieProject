@@ -7,7 +7,8 @@ public class SpeedBoost : Effect
     public SpeedBoost(int _duration, float _dmovementSpeed, int _priority, int _key)
     {
         duration = _duration;
-        dmovementSpeed = _dmovementSpeed;
+        dmovementSpeed = _dmovementSpeed * Time.deltaTime * 700;
+        Debug.Log(dmovementSpeed);
         priority = _priority;
         key = _key;
         name = "speedBoost";

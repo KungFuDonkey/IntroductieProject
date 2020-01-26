@@ -196,14 +196,20 @@ public class ClientHandle : MonoBehaviour
         {
             inventory.instance.Add(item.item);
         }
-        else
+        else if (itemNumber == 6)
         {
             EquipmentInventory.instance.Add(item.item);
-            VisualShield.instance.currentShield += 20;
-            if (VisualShield.instance.currentShield >= 100)
-            {
-                VisualShield.instance.currentShield = 100;
-            }
+            ClientSend.AddEffects(4);
+        }
+        else if (itemNumber == 7)
+        {
+            EquipmentInventory.instance.Add(item.item);
+            ClientSend.AddEffects(8);
+        }
+        else if (itemNumber == 8)
+        {
+            EquipmentInventory.instance.Add(item.item);
+            ClientSend.AddEffects(12);
         }
     }
 
@@ -218,6 +224,12 @@ public class ClientHandle : MonoBehaviour
     {
         Vector3 busPos = _packet.ReadVector3();
         GameManager.instance.BattleBus.transform.position = busPos;
+    }
+
+    public static void StormOverlay(Packet _packet)
+    {
+        bool storm = _packet.ReadBool();
+        GameManager.instance.players[Client.instance.myId].playerHUD.StormOverlay.SetActive(storm);
     }
     /*
       

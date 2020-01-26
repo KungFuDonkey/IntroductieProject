@@ -47,7 +47,7 @@ public class VulcanoJumping : Effect
                 {
                     player.jumping = true;
                     jumpDirection = status.avatar.forward;
-                    headRotation = -Mathf.Clamp(status.avatar.GetComponentInChildren<playerLook>().verticalRotation, -20, 20);
+                    headRotation = -Mathf.Clamp(player.verticalRotation, -20, 20);
                     headRotation = ((headRotation + 20) / 40) * 0.5f + 0.5f;
                     status.ySpeed = LaunchSpeed * headRotation;
                 }

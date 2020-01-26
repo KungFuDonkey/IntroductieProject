@@ -22,6 +22,7 @@ public abstract class Player
     public bool[] inputs;
     public float verticalRotation;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
+    public bool evolve = false, inStorm = false;
 
     void Awake()
     {
@@ -142,35 +143,23 @@ public abstract class Player
     {
         if (BattleBus.canJump)
         {
-            Vector3 pos = avatar.position;
-            if (pos.z > Walls.walls[0].position.z ||
-                pos.z < Walls.walls[1].position.z ||
-                pos.x > Walls.walls[2].position.x ||
-                pos.x < Walls.walls[3].position.x)
+            if (!inStorm)
             {
-                PlayerManager.instance.playerHUD.StormOverlay.SetActive(true);
-                if (!status.inStorm)
-                {
-                    status.inStorm = true;
-                    stormDamage = STORMDAMAGE;
-                    stormDamageTimer = 0.1f;
-                }
-                if (stormDamageTimer <= 0)
-                {
-                    stormDamageTimer = STORMDAMAGETIMER;
-                    Hit(stormDamage);
-                    stormDamage += 1f;
-                }
-                else
-                {
-                    stormDamageTimer -= Time.deltaTime;
-                }
+                ServerSend.StormOverlay(id, true);
+                inStorm = true;
+                stormDamage = STORMDAMAGE;
+                stormDamageTimer = 0.1f;
             }
             else
             {
                 PlayerManager.instance.playerHUD.StormOverlay.SetActive(false);
                 status.inStorm = false;
             }
+        }
+        else if(inStorm)
+        {
+            ServerSend.StormOverlay(id, false);
+            inStorm = false;
         }
     }
 

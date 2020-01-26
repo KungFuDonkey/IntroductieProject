@@ -20,11 +20,12 @@ public class Effect
         duration -= Time.deltaTime;
     }
 
-    public Effect(float _dgravity = 1f, float _djumpspeed = 1f, float _dhealth = 1f, float _dFIRETIMER = 2f, float _dQTIMER = 2f, float _dETIMER = 2f, float _dmovementSpeed = 20f, float _drunMultiplier = 2f, Type _dType = Type.noType, int _key = -1)
+    public Effect(float _dgravity = 1f, float _djumpspeed = 1f, float _dhealth = 1f, float _dshield = 1f, float _dFIRETIMER = 2f, float _dQTIMER = 2f, float _dETIMER = 2f, float _dmovementSpeed = 20f, float _drunMultiplier = 2f, Type _dType = Type.noType, int _key = -1)
     {
         djumpspeed = _djumpspeed;
         dgravity = _dgravity;
         dhealth = _dhealth;
+        dshield = _dshield;
         dFIRETIMER = _dFIRETIMER;
         dQTIMER = _dQTIMER;
         dETIMER = _dETIMER;
@@ -33,6 +34,7 @@ public class Effect
         dType = _dType;
         key = _key;
         name = "default";
+        Debug.Log(dmovementSpeed + "effect");
     }
 
     public virtual Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
@@ -104,17 +106,17 @@ public class Effect
 
     public static Effect Charmandolphin
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.water, 0); }
+        get { return new Effect(45f, 22f, 100f, 0f, 2f, 2f, 2f, 20f, 2f, Type.water, 0); }
     }
 
     public static Effect Vulcasaur
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.fire, 0); }
+        get { return new Effect(45f, 22f, 100f, 0f, 2f, 2f, 2f, 20f, 2f, Type.fire, 0); }
     }
 
     public static Effect McQuirtle
     {
-        get { return new Effect(45f, 22f, 100f, 2f, 2f, 2f, 20f, 2f, Type.grass, 0); }
+        get { return new Effect(45f, 22f, 100f, 0f, 2f, 2f, 2f, 20f, 2f, Type.grass, 0); }
     }
 }
 

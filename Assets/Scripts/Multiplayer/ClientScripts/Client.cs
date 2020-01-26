@@ -275,6 +275,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.SpawnItem, ClientHandle.spawnItem },
             { (int)ServerPackets.Item, ClientHandle.Item },
             { (int)ServerPackets.RemoveItem, ClientHandle.RemoveItem },
+            { (int)ServerPackets.StormOverlay, ClientHandle.StormOverlay }
             { (int)ServerPackets.SetBus, ClientHandle.SetBus }
         };
         Debug.Log("Initialized packets.");

@@ -32,6 +32,7 @@ public enum ServerPackets
     SpawnItem,
     Item,
     RemoveItem,
+    StormOverlay
     SetBus
 }
 
@@ -45,7 +46,6 @@ public enum ClientPackets
     ChoosePlayer,
     setHealth,
     AddEffects,
-    pickupItem,
     SetInvis,
     Evolve
 }

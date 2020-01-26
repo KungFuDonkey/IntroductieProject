@@ -128,7 +128,7 @@ public class InventorySlot : MonoBehaviour
         }
         else
         {
-            HealthBar.instance.currentHealth += 20;
+            ClientSend.AddEffects(5);
             if (HealthBar.instance.currentHealth >= 100)
                 HealthBar.instance.currentHealth = 100;
             inventory.instance.Remove(Item);
