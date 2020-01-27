@@ -11,7 +11,7 @@ public class ServerClient
     public static int dataBufferSize = 4096;
 
     public int id;
-    public int selectedCharacter;
+    public int selectedCharacter = 0;
     Vector3 spawnpoint;
     public string username;
     public Vector2 mousePosition;
