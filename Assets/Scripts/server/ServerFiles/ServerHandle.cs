@@ -48,7 +48,10 @@ public class ServerHandle
         }
         Quaternion _rotation = _packet.ReadQuaternion();
         float _verticalRotation = _packet.ReadFloat();
-        Server.clients[_fromClient].player.SetInput(_inputs, _rotation, _verticalRotation);
+        if(Server.clients[_fromClient].player != null)
+        {
+            Server.clients[_fromClient].player.SetInput(_inputs, _rotation, _verticalRotation);
+        }
     }
 
     public static void AddEffects(int _fromClient, Packet _packet)
@@ -111,17 +114,18 @@ public class ServerHandle
 
     public static void Reset()
     {
-        foreach(ServerClient client in Server.clients.Values)
+        Server.projectiles = new Dictionary<int, Projectile>();
+        Server.joinable = true;
+        ServerStart.started = false;
+        Walls.Reset();
+        BattleBus.Reset();
+        ServerSend.Reset();
+        foreach (ServerClient client in Server.clients.Values)
         {
             if (client.connected)
             {
                 client.player = null;
             }
         }
-        Server.projectiles = new Dictionary<int, Projectile>();
-        Server.joinable = true;
-        ServerStart.started = false;
-        Walls.Reset();
-        ServerSend.Reset();
     }
 }

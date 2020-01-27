@@ -174,11 +174,20 @@ public class UIManager : MonoBehaviour
 
     public void ResetUI()
     {
+        loading = false;
         for(int i = mousePointers.Count - 1; i >= 0; i--)
         {
-            Destroy(mousePointers[i].gameObject);
+            try
+            {
+                Destroy(mousePointers[i].gameObject);
+            }
+            catch
+            {
+
+            }
             mousePointers.RemoveAt(i);
         }
+        loadingScreen.SetActive(false);
         startCounter = false;
         timer = 10f;
     }

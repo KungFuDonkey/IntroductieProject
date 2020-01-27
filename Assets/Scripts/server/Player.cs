@@ -100,9 +100,12 @@ public abstract class Player
 
     public void SetInput(bool[] _inputs, Quaternion _rotation, float _verticalRotation)
     {
-        inputs = _inputs;
-        avatar.rotation = _rotation;
-        verticalRotation = _verticalRotation;
+        if(avatar != null)
+        {
+            inputs = _inputs;
+            avatar.rotation = _rotation;
+            verticalRotation = _verticalRotation;
+        }
     }
 
     //Hit() is called by the server when a player gets hit by an projectile, the projectile has a type and damage value

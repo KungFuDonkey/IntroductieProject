@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattleBus
 {
     public static Transform Bus;
-    static float busWait = 4;
+    static float busWait = 4f;
     public static Vector3 busMovement = new Vector3(0, 0, 25);
     static Vector3 startPosition = new Vector3(0, 80, -380);
     public static bool canJump = false, finished = false;
@@ -40,6 +40,8 @@ public class BattleBus
     public static void Reset()
     {
         Bus.position = startPosition;
+        busWait = 4f;
+        canJump = false;
         finished = false;
         ServerSend.SetBus();
     }
