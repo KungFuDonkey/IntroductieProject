@@ -1,25 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scoreboard : MonoBehaviour
 {
-    void OnEnable()
+    public static void ScoreboardPlacing(int playerCount)
     {
-        ServerClient[] players = Server.GetAllClients();
-        foreach (ServerClient player in players)
+        for (int i = 0; i < playerCount; i++)
         {
-            Debug.Log(player.username);
-        }
-        
-    }
-    public void ScoreboardPlacing()
-    {
-        ServerClient[] players = Server.GetAllClients();
-        foreach (ServerClient player in players)
-        {
-            Debug.Log(player.username);
-            Instantiate(Resources.Load("Overlays/Score"), player.player.avatar.GetChild(0).GetChild(8).GetChild(1).GetChild(0).GetChild(1));
+            GameObject score = Instantiate(Resources.Load("Overlays/Score"), GameObject.Find("Scores").transform) as GameObject;
+            score.transform.GetChild(0).gameObject.GetComponent<Text>().text = Server.clients[i + 1].username;
         }
     }
 }

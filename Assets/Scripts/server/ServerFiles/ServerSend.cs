@@ -176,6 +176,7 @@ public class ServerSend
         {
             if (menuNumber == 2)
             {
+                int i= 0;
                 UIManager.instance.LoadMenu(2);
                 foreach (ServerClient client in Server.clients.Values)
                 {
@@ -189,9 +190,11 @@ public class ServerSend
                     if (client.connected)
                     {
                         client.SendIntoGame();
+                        i++;
                     }
                 }
                 ServerStart.SpawnItem();
+                Scoreboard.ScoreboardPlacing(i);
             }
             Server.joinable = false;
             _packet.Write(menuNumber);

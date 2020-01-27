@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public GameObject scoreboard;
     public Item item;
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
@@ -33,7 +32,6 @@ public class HUD : MonoBehaviour
     {
         binventory = inventory.instance;
         jEquipmentInventory = EquipmentInventory.instance;
-
 
         binventory.onItemChangedCallback += UpdateUI;
         jEquipmentInventory.onItemChangedCallback += UpdateUI;
@@ -65,11 +63,11 @@ public class HUD : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            scoreboard.SetActive(true);
+            //scoreboard.SetActive(true);
         }
         else if (Input.GetKeyUp(KeyCode.Tab))
         {
-            scoreboard.SetActive(false);
+            //scoreboard.SetActive(false);
         }
     }
 

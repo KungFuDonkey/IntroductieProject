@@ -13,7 +13,7 @@ public enum Type
 
 public abstract class Player
 {
-    public int id, projectile, selectedCharacter;
+    public int id, projectile, selectedCharacter, kills;
     public string username;
     public PlayerStatus status;
     public Transform avatar, projectileSpawner;
@@ -142,6 +142,10 @@ public abstract class Player
             status.defaultStatus.dhealth -= remainingDamage;
             status.defaultStatus.dshield = 0;
         }
+        if (status.defaultStatus.dhealth <= 0)
+        {
+            Server.clients[projectile.owner].player.kills += 1;
+        }
     }
 
     //overload function of Hit(), does direct damage, not through projectile
@@ -192,7 +196,7 @@ public abstract class Player
             }
             if (avatar.position.y < -15)
             {
-                Hit(200);
+                Hit(400);
             }
         }
     }

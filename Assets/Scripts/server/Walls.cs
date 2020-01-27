@@ -16,7 +16,7 @@ public class Walls
     //Updates the position of the walls
     public static void UpdateWalls()
     {
-        if (preGameTimer > 0)
+        if (preGameTimer > 0 || GameManager.instance.freezeInput)
         {
             preGameTimer -= Time.deltaTime;
         }

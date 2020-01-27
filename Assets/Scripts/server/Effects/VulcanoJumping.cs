@@ -8,7 +8,7 @@ public class VulcanoJumping : Effect
     int id;
     Vulcasaur player;
     float startDuration, headRotation;
-    public float LaunchSpeed = 60f;
+    public float LaunchSpeed = 80f;
     Vector3 jumpDirection;
 
     public VulcanoJumping(float _duration, int _owner, int _id, int _key)
@@ -52,7 +52,7 @@ public class VulcanoJumping : Effect
                     headRotation = ((headRotation + 20) / 40) * 0.5f + 0.5f;
                     status.ySpeed = LaunchSpeed * headRotation;
                 }
-                status.inputDirection += jumpDirection * (headRotation * 10 + 10);
+                status.inputDirection += jumpDirection * (headRotation * 12 + 12);
             }
         }
 

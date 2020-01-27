@@ -21,7 +21,6 @@ public class PlayerStatus
     public List<int> removeItems = new List<int>();
     public Dictionary<int, Effect> effects = new Dictionary<int, Effect>();
 
-
     public void Update(bool[] inputs, Transform _avatar)
     {
         SetStatus(defaultStatus, _avatar);
