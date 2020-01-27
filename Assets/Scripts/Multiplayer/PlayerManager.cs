@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject Allparts;
+    public PlayerController controller;
+    public GameObject evolution1;
+    public GameObject evolution2;
+    public GameObject evolution3;
     public int id;
     public string username;
     public int selectedCharacter;
@@ -13,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public float lastPacketTime = 0f;
     public Animator playerAnimator;
     public HUD playerHUD;
+    private int evolutionStage = 1;
 
     public static PlayerManager instance;
 
@@ -31,6 +36,30 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void Evolve(int evolutionStage)
+    {
+        GameObject oldEvolution = null;
+        GameObject newEvolution = null;
+        PlayerObjectsAllocater allocater;
+        if (evolutionStage == 2)
+        {
+            oldEvolution = evolution1;
+            newEvolution = evolution2; 
+        }
+        else if (evolutionStage == 3)
+        {
+            oldEvolution = evolution2;
+            newEvolution = evolution3;
+        }
+        oldEvolution.SetActive(false);
+        newEvolution.SetActive(true);
+        allocater = newEvolution.GetComponent<PlayerObjectsAllocater>();
+        head = allocater.Head;
+        playerAnimator = allocater.playerAnimator;
+        Allparts = allocater.AllParts;
+        controller.playerAnimator = playerAnimator;
+
+    }
     private void LateUpdate()
     {
         if (id != Client.instance.myId)

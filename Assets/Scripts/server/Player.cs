@@ -22,6 +22,8 @@ public abstract class Player
     public bool[] inputs;
     public float verticalRotation;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
+    public int evolutionStage = 1;
+    bool readyToEvolve = false;
     public bool inStorm = false;
 
     void Awake()
@@ -62,6 +64,18 @@ public abstract class Player
             return;
         }
         Move(status.inputDirection);
+
+        if (XPSystem.instance.CurrentLevel == 4 && evolutionStage == 1 || XPSystem.instance.CurrentLevel == 6 && evolutionStage == 2)
+        {
+            evolutionStage += 1;
+            readyToEvolve = true;
+        }
+
+        if (readyToEvolve)
+        {
+            ServerSend.Evolve(this);
+            readyToEvolve = false;
+        }
 
         if (status.isGrounded)  //for projectiles
         {
