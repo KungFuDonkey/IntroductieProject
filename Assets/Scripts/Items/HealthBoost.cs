@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthBoost : Effect
 {
-    public HealthBoost(int _duration, float _dhealth, int _priority, int _key)
+    public HealthBoost(float _duration, float _dhealth, int _priority, int _key)
     {
         duration = _duration;
         dhealth = _dhealth;

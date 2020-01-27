@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleBus : MonoBehaviour
+public class BattleBus
 {
     public static Transform Bus;
     static float busWait = 4;
@@ -27,7 +27,7 @@ public class BattleBus : MonoBehaviour
         }
         else
         {
-            Bus.position = new Vector3(0, 0, 600);
+            return;
         }
         ServerSend.SetBus();
     }

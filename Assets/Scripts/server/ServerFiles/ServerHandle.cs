@@ -46,7 +46,6 @@ public class ServerHandle
         {
             _inputs[i] = _packet.ReadBool();
         }
-        //UnityEngine.Debug.LogError($"recieved package in { stopwatches[_fromClient - 1].Elapsed.TotalMilliseconds}ms from { _fromClient}");
         Quaternion _rotation = _packet.ReadQuaternion();
         float _verticalRotation = _packet.ReadFloat();
         Server.clients[_fromClient].player.SetInput(_inputs, _rotation, _verticalRotation);
@@ -58,34 +57,32 @@ public class ServerHandle
         int key = Server.clients[_fromClient].player.status.effectcount;
         if(item == 1)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new JumpBoost(10, 2f, 4,key));
+            Server.clients[_fromClient].player.status.effects.Add(key,new JumpBoost(10f, 2f, 4,key));
         }
         else if (item == 2)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new Invisible(10, false, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key,new Invisible(10f, false, 4, key));
         }
         else if (item == 3)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10, 5f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10f, 5f, 4, key));
         }
         else if (item == 4)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key, new ShieldBoost(1000, 25f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new ShieldBoost(10f, 25f, 4, key));
         }
         else if (item == 5)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key, new HealthBoost(1000, 25f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new HealthBoost(10f, 25f, 4, key));
         }
         else if (item == 8)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key, new ShieldBoost(1000, 30f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new ShieldBoost(10f, 30f, 4, key));
         }
         else if (item == 12)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key, new SpeedBoost(1000, 1.5f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new SpeedBoost(10f, 1.5f, 4, key));
         }
-      
-
         Server.clients[_fromClient].player.status.effectcount++;
     }
 
