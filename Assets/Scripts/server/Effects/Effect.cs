@@ -64,7 +64,7 @@ public class Effect
         }
 
         status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 0.5f, status.groundmask);
-        if (status.isGrounded && status.ySpeed <= 0)
+        if (status.isGrounded && status.ySpeed < 0)
         {
             if (inputs[4])
             {
@@ -72,7 +72,7 @@ public class Effect
             }
             else
             {
-                status.ySpeed = -1;
+                status.ySpeed = -3;
             }
         }
         status.ySpeed -= status.gravity * Time.deltaTime;

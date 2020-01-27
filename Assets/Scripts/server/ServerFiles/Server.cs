@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
+using System.Linq;
 
 public class Server
 {
@@ -164,6 +165,11 @@ public class Server
             Walls.startingPos[i] = GameManager.instance.walls[i].transform.position;
         }
         BattleBus.Bus = GameManager.instance.BattleBus.transform;
+    }
+
+    public static ServerClient[] GetAllClients()
+    {
+        return clients.Values.ToArray();
     }
 
     public static Player charmandolphin(int id, string username, int selectedcharacter)
