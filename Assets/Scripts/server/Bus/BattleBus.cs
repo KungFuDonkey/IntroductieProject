@@ -7,8 +7,8 @@ public class BattleBus
     public static Transform Bus;
     static float busWait = 4;
     public static Vector3 busMovement = new Vector3(0, 0, 25);
-    static Vector3 startPosition = new Vector3(0, 110, -380);
-    public static bool canJump = false;
+    static Vector3 startPosition = new Vector3(0, 80, -380);
+    public static bool canJump = false, finished = false;
 
     //Moves the bus across the map
     public static void UpdateBus()
@@ -25,6 +25,11 @@ public class BattleBus
         {
             Bus.position += busMovement * Time.deltaTime;
         }
+        else if(!finished)
+        {
+            Bus.position = new Vector3(0, -100, 600);
+            finished = true;
+        }
         else
         {
             return;
@@ -35,6 +40,7 @@ public class BattleBus
     public static void Reset()
     {
         Bus.position = startPosition;
+        finished = false;
         ServerSend.SetBus();
     }
 }

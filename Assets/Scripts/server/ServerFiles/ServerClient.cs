@@ -208,7 +208,7 @@ public class ServerClient
     public void SetCharacter()
     {
         player = Server.characters[selectedCharacter](id, username, selectedCharacter);
-        spawnpoint = Server.spawnPoints[Server.rand.Next(26 * 26)];
+        spawnpoint = Server.spawnPoints[id];
     }
 
     private void Disconnect()
