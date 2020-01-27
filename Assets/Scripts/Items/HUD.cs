@@ -36,7 +36,6 @@ public class HUD : MonoBehaviour
 
         binventory.onItemChangedCallback += UpdateUI;
         jEquipmentInventory.onItemChangedCallback += UpdateUI;
-      
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         gearslots = gearParent.GetComponentsInChildren<EquipmentInventorySlot>();
 

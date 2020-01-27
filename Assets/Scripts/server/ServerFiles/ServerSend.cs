@@ -298,7 +298,7 @@ public class ServerSend
             SendTCPDataToAll(_packet);
             if (alive == 1)
             {
-                SendWinScreen();
+                //SendWinScreen();
             }
         }
     }
