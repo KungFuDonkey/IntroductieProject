@@ -15,7 +15,6 @@ public class HUD : MonoBehaviour
     public GameObject jinventoryUI;
     public GameObject Spectator;
     public Text AlivePlayers;
-
     public EquipmentInventory jEquipmentInventory;
     public inventory binventory;
     InventorySlot[] slots;
@@ -32,13 +31,10 @@ public class HUD : MonoBehaviour
     {
         binventory = inventory.instance;
         jEquipmentInventory = EquipmentInventory.instance;
-
         binventory.onItemChangedCallback += UpdateUI;
         jEquipmentInventory.onItemChangedCallback += UpdateUI;
-      
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         gearslots = gearParent.GetComponentsInChildren<EquipmentInventorySlot>();
-
         jinventoryUI.SetActive(false);
     }
 

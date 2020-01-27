@@ -299,9 +299,9 @@ public class ServerSend
             }
             _packet.Write(alive);
             SendTCPDataToAll(_packet);
-            if (alive == 1)
+            if (alive <= 1)
             {
-                SendWinScreen();
+                //SendWinScreen();
             }
         }
     }

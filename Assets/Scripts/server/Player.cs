@@ -199,6 +199,10 @@ public abstract class Player
                 Hit(400);
             }
         }
+       
+        
+        
     }
+
 }
 
