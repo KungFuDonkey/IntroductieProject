@@ -185,11 +185,7 @@ public class UIManager : MonoBehaviour
             {
 
             }
-            mousePointers.RemoveAt(i);
-        }
-        for (int i = 0; i < 25; i++)
-        {
-            mousePointers.Add(null);
+            mousePointers[i] = null;
         }
         loadingScreen.SetActive(false);
         startCounter = false;
