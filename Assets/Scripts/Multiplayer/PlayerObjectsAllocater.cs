@@ -7,4 +7,6 @@ public class PlayerObjectsAllocater : MonoBehaviour
     public Transform projectileSpawner;
     public Transform Head;
     public Transform groundcheck;
+    public Animator playerAnimator;
+    public GameObject AllParts;
 }

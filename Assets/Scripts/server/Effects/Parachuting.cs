@@ -14,7 +14,7 @@ public class Parachuting : Effect
         startDuration = _duration;
         duration = _duration;
         owner = _owner;
-        player = Server.clients[_owner].player as Player;
+        player = Server.clients[_owner].player;
         priority = 1;
         name = "parachuting";
         key = _key;

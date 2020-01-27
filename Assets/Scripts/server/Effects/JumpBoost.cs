@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpBoost : Effect
 {
-    public JumpBoost(int _duration, float _djumpspeed, int _priority, int _key)
+    public JumpBoost(float _duration, float _djumpspeed, int _priority, int _key)
     {
         duration = _duration;
         djumpspeed = _djumpspeed;

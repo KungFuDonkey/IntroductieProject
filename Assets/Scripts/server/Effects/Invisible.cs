@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Invisible : Effect
 {
-    public Invisible(int _duration, bool _dinvisible, int _priority,int _key)
+    public Invisible(float _duration, bool _dinvisible, int _priority,int _key)
     {
         duration = _duration;
         dinvisible = _dinvisible;

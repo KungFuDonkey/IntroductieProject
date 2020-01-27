@@ -22,6 +22,8 @@ public abstract class Player
     public bool[] inputs;
     public float verticalRotation;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
+    public int evolutionStage = 1;
+    bool readyToEvolve = false;
     public bool inStorm = false;
 
     void Awake()
@@ -63,6 +65,18 @@ public abstract class Player
         }
         Move(status.inputDirection);
 
+        if (XPSystem.instance.CurrentLevel == 4 && evolutionStage == 1 || XPSystem.instance.CurrentLevel == 6 && evolutionStage == 2)
+        {
+            evolutionStage += 1;
+            readyToEvolve = true;
+        }
+
+        if (readyToEvolve)
+        {
+            ServerSend.Evolve(this);
+            readyToEvolve = false;
+        }
+
         if (status.isGrounded)  //for projectiles
         {
             status.inputDirection.y = 0;
@@ -86,9 +100,12 @@ public abstract class Player
 
     public void SetInput(bool[] _inputs, Quaternion _rotation, float _verticalRotation)
     {
-        inputs = _inputs;
-        avatar.rotation = _rotation;
-        verticalRotation = _verticalRotation;
+        if(avatar != null)
+        {
+            inputs = _inputs;
+            avatar.rotation = _rotation;
+            verticalRotation = _verticalRotation;
+        }
     }
 
     //Hit() is called by the server when a player gets hit by an projectile, the projectile has a type and damage value

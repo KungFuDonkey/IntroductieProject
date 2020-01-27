@@ -148,14 +148,10 @@ public class Server
             { 1, mcQuitle },
             { 2, vulcasaur }
         };
-        for (int i = 0; i <= MaxPlayers; i++)
+        for (int i = 0; i <= (MaxPlayers)/2; i++)
         {
-            for(int j = 0; j <= MaxPlayers; j++)
-            {
-                //spawnpoints 10 steps off the wall and 15 high
-                //spawnPoints.Add((MaxPlayers + 1) * i + j, new Vector3(i * (280 / MaxPlayers) - 290, 15, j * (280 / MaxPlayers) - 290));
-                spawnPoints.Add((MaxPlayers + 1) * i + j, GameManager.instance.BattleBus.transform.position + new Vector3(0, -3, 0)); //player spawns in the bus
-            }
+            spawnPoints.Add(i * 2, GameManager.instance.BattleBus.transform.position + new Vector3(1, -3, -10 + i * 2)); //player spawns in the bus
+            spawnPoints.Add(i * 2 + 1, GameManager.instance.BattleBus.transform.position + new Vector3(-1, -3, -9 + i * 2));
         }
         Debug.Log("Initialized packets.");
         ServerStart.instance.DebugServer("Initialized packets.");

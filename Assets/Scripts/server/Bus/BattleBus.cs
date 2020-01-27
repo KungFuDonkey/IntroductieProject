@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleBus : MonoBehaviour
+public class BattleBus
 {
     public static Transform Bus;
-    static float busWait = 4;
+    static float busWait = 4f;
     public static Vector3 busMovement = new Vector3(0, 0, 25);
-    static Vector3 startPosition = new Vector3(0, 110, -380);
-    public static bool canJump = false;
+    static Vector3 startPosition = new Vector3(0, 80, -380);
+    public static bool canJump = false, finished = false;
 
     //Moves the bus across the map
     public static void UpdateBus()
@@ -25,9 +25,14 @@ public class BattleBus : MonoBehaviour
         {
             Bus.position += busMovement * Time.deltaTime;
         }
+        else if(!finished)
+        {
+            Bus.position = new Vector3(0, -100, 600);
+            finished = true;
+        }
         else
         {
-            Bus.position = new Vector3(0, 0, 600);
+            return;
         }
         ServerSend.SetBus();
     }
@@ -35,6 +40,9 @@ public class BattleBus : MonoBehaviour
     public static void Reset()
     {
         Bus.position = startPosition;
+        busWait = 4f;
+        canJump = false;
+        finished = false;
         ServerSend.SetBus();
     }
 }
