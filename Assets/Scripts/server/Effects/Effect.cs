@@ -20,6 +20,7 @@ public class Effect
         duration -= Time.deltaTime;
     }
 
+
     public Effect(float _dgravity = 1f, float _djumpspeed = 1f, float _dhealth = 1f, float _dshield = 1f, float _dFIRETIMER = 2f, float _dQTIMER = 2f, float _dETIMER = 2f, float _dmovementSpeed = 20f, float _drunMultiplier = 2f, Type _dType = Type.noType, int _key = -1)
     {
         djumpspeed = _djumpspeed;
@@ -34,8 +35,8 @@ public class Effect
         dType = _dType;
         key = _key;
         name = "default";
-        Debug.Log(dmovementSpeed + "effect");
     }
+
 
     public virtual Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {

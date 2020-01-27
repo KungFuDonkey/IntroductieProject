@@ -72,11 +72,11 @@ public class ServerHandle
         }
         else if (item == 4)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key, new ShieldBoost(10f, 25f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new ShieldBoost(-1, 25f, 4, key));
         }
         else if (item == 5)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key, new HealthBoost(10f, 25f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new HealthBoost(-1, 25f, 4, key));
         }
         else if (item == 8)
         {
