@@ -60,6 +60,13 @@ public class ClientHandle : MonoBehaviour
         GameManager.instance.players[_id].transform.rotation = _rotation;
     }
 
+    public static void Evolve(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        int _evolutionStage = _packet.ReadInt();
+        GameManager.instance.players[_id].Evolve(_evolutionStage);
+    }
+
     public static void Projectile(Packet _packet)
     {
         int _id = _packet.ReadInt();
