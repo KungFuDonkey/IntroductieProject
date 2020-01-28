@@ -25,9 +25,27 @@ public class Charmandolphin : Player
         };
     }
 
+    public override void HandleEvolve()
+    {
+        base.HandleEvolve();
+        if (evolutionStage == 2)
+        {
+            projectileSpawner = projectileSpawner2;
+            controller.center.Set(0f, 2.45f, 0f);
+            controller.radius = 1;
+            controller.height = 5;
+        }
+        else
+        {
+            projectileSpawner = projectileSpawner3;
+            controller.center.Set(0f, 3.5f, 0f);
+            controller.radius = 2f;
+            controller.height = 7f;
+        }
+    }
+
     public override void UpdatePlayer()
     {
-        base.UpdatePlayer();
         if (!status.silenced)
         {
             if (inputs[10] && status.fireTimer < 0)
@@ -59,6 +77,7 @@ public class Charmandolphin : Player
                 status.animationValues[2] = false;
             }
         }
+        base.UpdatePlayer();
     }
 
     public void basicAttack()
@@ -90,7 +109,7 @@ public class Charmandolphin : Player
         {
             status.eTimer = status.ETIMER;
             Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
-            ServerSend.Projectile(this, 6, new Wave(GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
+            ServerSend.Projectile(this, 6, new Wave(GameManager.projectileNumber, avatar.position, rotation, status.inputDirection * 0.2f, id));
             status.animationValues[2] = true;
         }
         else

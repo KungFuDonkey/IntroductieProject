@@ -219,6 +219,10 @@ public class ClientHandle : MonoBehaviour
             EquipmentInventory.instance.Add(item.item);
             ClientSend.AddEffects(12);
         }
+        else if (itemNumber == 9)
+        {
+            EquipmentInventory.instance.Add(item.item);
+        }
     }
 
     public static void RemoveItem(Packet _packet)

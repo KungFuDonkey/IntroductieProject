@@ -16,7 +16,7 @@ public class XPSystem : MonoBehaviour
     public Text LevelText;
     public Text NextText;
     PlayerManager character;
-    float XP;
+    public float XP;
     public int CurrentLevel;
 
     public static XPSystem instance;

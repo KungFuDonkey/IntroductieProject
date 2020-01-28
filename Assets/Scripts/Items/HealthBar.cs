@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
     private float maxXValue;
     private float minXValue;
     public RectTransform healthTransform;
-    Vector3 position;
+     public Vector3 position;
     Color32 color;
     float stepOffset;
     private float cachedY;
@@ -35,12 +35,13 @@ public class HealthBar : MonoBehaviour
         visualHealth.color = color;
     }
 
-    private void Update()
+    public void Update()
     {
         float currentXValue = currentHealth * stepOffset + minXValue;
         color.g = (byte)currentHealth;
         color.r = (byte)(100 - currentHealth);
         position.x = currentXValue;
         healthTransform.position = position;
+        Debug.Log("Health: " + currentHealth);
     }
 }

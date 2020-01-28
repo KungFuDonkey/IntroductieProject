@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject Allparts;
     public PlayerController controller;
+    public CharacterController characterController;
     public GameObject evolution1;
     public GameObject evolution2;
     public GameObject evolution3;
@@ -36,6 +37,62 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public CharacterController UpdateCharacterController(CharacterController controller)
+    {
+        if (selectedCharacter == 0)
+        {
+            if(evolutionStage == 2)
+            {
+                controller.center = new Vector3(0f, 2.45f, 0f);
+                controller.radius = 1;
+                controller.height = 5;
+                return controller;
+            }
+            else
+            {
+                controller.center = new Vector3(0f, 3.5f, 0f);
+                controller.radius = 2f;
+                controller.height = 7f;
+                return controller;
+            }
+
+        }
+        else if(selectedCharacter == 1)
+        {
+            if (evolutionStage == 2)
+            {
+                controller.center = new Vector3(0f, 2.5f, 0.3f);
+                controller.radius = 2;
+                controller.height = 5.2f;
+                return controller;
+            }
+            else
+            {
+                controller.center = new Vector3(0f, 3.6f, 0f);
+                controller.radius = 3f;
+                controller.height = 7.5f;
+                return controller;
+            }
+        }
+        else
+        {
+            if (evolutionStage == 2)
+            {
+                controller.center = new Vector3(0f, 1.5f, 0.2f);
+                controller.radius = 1.5f;
+                controller.height = 1f;
+                return controller;
+            }
+            else
+            {
+                controller.center = new Vector3(0f, 3.6f, 0f);
+                controller.radius = 3.6f;
+                controller.height = 1f;
+                return controller;
+            }
+        }
+    }
+
     public void Evolve(int evolutionStage)
     {
         GameObject oldEvolution = null;
@@ -51,14 +108,17 @@ public class PlayerManager : MonoBehaviour
             oldEvolution = evolution2;
             newEvolution = evolution3;
         }
+        characterController = UpdateCharacterController(characterController);
         oldEvolution.SetActive(false);
         newEvolution.SetActive(true);
         allocater = newEvolution.GetComponent<PlayerObjectsAllocater>();
         head = allocater.Head;
         playerAnimator = allocater.playerAnimator;
         Allparts = allocater.AllParts;
-        controller.playerAnimator = playerAnimator;
-
+        if (id == Client.instance.myId)
+        {
+            controller.playerAnimator = playerAnimator;
+        }
     }
     private void LateUpdate()
     {
@@ -66,15 +126,48 @@ public class PlayerManager : MonoBehaviour
         {
             if (selectedCharacter == 0)
             {
-                head.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+                if (evolutionStage == 1)
+                {
+                    head.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+                }
+                else if(evolutionStage == 2)
+                {
+                    head.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+                }
+                else
+                {
+                    head.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+                }
             }
             else if (selectedCharacter == 1)
             {
-                head.localRotation = Quaternion.Euler(yRotation, 17.974f, 0f);
+                if (evolutionStage == 1)
+                {
+                    head.localRotation = Quaternion.Euler(yRotation, 17.974f, 0f);
+                }
+                else if (evolutionStage == 2)
+                {
+                    head.localRotation = Quaternion.Euler(yRotation, 17.974f, 0f);
+                }
+                else
+                {
+                    head.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+                }
             }
             else if (selectedCharacter == 2)
             {
-                head.localRotation = Quaternion.Euler(-1.14f, 17.087f, yRotation);
+                if (evolutionStage == 1)
+                {
+                    head.localRotation = Quaternion.Euler(-1.14f, 17.087f, yRotation);
+                }
+                else if (evolutionStage == 2)
+                {
+                    head.localRotation = Quaternion.Euler(0, 0, yRotation);
+                }
+                else
+                {
+                    head.localRotation = Quaternion.Euler(0, 0, yRotation);
+                }
             }
         }
     }

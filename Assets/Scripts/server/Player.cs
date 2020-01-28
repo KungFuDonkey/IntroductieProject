@@ -17,7 +17,7 @@ public abstract class Player
     public float verticalRotation;
     public string username;
     public PlayerStatus status;
-    public Transform avatar, projectileSpawner;
+    public Transform avatar, projectileSpawner, projectileSpawner2, projectileSpawner3;
     protected bool[] inputs;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
     bool readyToEvolve = false, inStorm = false;
@@ -36,6 +36,8 @@ public abstract class Player
                 avatar.rotation = Quaternion.identity;
                 status.groundCheck = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().groundcheck;
                 projectileSpawner = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner;
+                projectileSpawner2 = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner2;
+                projectileSpawner3 = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner3;
                 Debug.Log("avatar found");
                 int effect = Server.clients[id].player.status.effectcount;
                 Server.clients[id].player.status.effects.Add(effect, new InTheBus(20, id, effect));
@@ -50,6 +52,8 @@ public abstract class Player
         status.Update(inputs, avatar);
         if(status.health <= 0 && status.alive)
         {
+            HealthBar.instance.currentHealth = 0;
+            Debug.Log(status.health);
             status.alive = false;
             ServerSend.SendDeathScreen(this);
             ServerSend.UpdatePlayerCount();
@@ -64,8 +68,7 @@ public abstract class Player
         }
         if (readyToEvolve)
         {
-            ServerSend.Evolve(this);
-            readyToEvolve = false;
+            HandleEvolve();
         }
         if (status.isGrounded)  //for projectiles
         {
@@ -96,6 +99,12 @@ public abstract class Player
             avatar.rotation = _rotation;
             verticalRotation = _verticalRotation;
         }
+    }
+    
+    public virtual void HandleEvolve()
+    {
+       ServerSend.Evolve(this);
+       readyToEvolve = false;
     }
 
     //Hit() is called by the server when a player gets hit by an projectile, the projectile has a type and damage value

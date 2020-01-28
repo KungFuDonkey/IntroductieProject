@@ -24,6 +24,25 @@ public class McQuirtle : Player
         };
     }
 
+    public override void HandleEvolve()
+    {
+        base.HandleEvolve();
+        if (evolutionStage == 2)
+        {
+            projectileSpawner = projectileSpawner2;
+            controller.center.Set(0f, 2.5f, 0.3f);
+            controller.radius = 2;
+            controller.height = 5.2f;
+        }
+        else
+        {
+            projectileSpawner = projectileSpawner3;
+            controller.center.Set(0f, 3.6f, 0f);
+            controller.radius = 3f;
+            controller.height = 7.5f;
+        }
+    }
+
     public override void UpdatePlayer()
     {
         base.UpdatePlayer();
