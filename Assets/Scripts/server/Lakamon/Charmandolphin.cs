@@ -90,7 +90,7 @@ public class Charmandolphin : Player
         {
             status.eTimer = status.ETIMER;
             Quaternion rotation = Quaternion.Euler(0, avatar.rotation.eulerAngles.y - 90, avatar.rotation.eulerAngles.z);
-            ServerSend.Projectile(this, 6, new Wave(GameManager.projectileNumber, Vector3.zero, rotation, status.inputDirection * 0.2f, id));
+            ServerSend.Projectile(this, 6, new Wave(GameManager.projectileNumber, avatar.position, rotation, status.inputDirection * 0.2f, id));
             status.animationValues[2] = true;
         }
         else
