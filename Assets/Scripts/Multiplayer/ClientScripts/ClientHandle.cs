@@ -258,8 +258,8 @@ public class ClientHandle : MonoBehaviour
         {
             int kills = _packet.ReadInt();
             int damage = _packet.ReadInt();
-            HUD.instance.scores[j].transform.GetChild(1).GetComponent<Text>().text = kills.ToString();
-            HUD.instance.scores[j].transform.GetChild(2).GetComponent<Text>().text = damage.ToString();
+            GameManager.instance.players[Client.instance.myId].playerHUD.scores[j].transform.GetChild(1).GetComponent<Text>().text = kills.ToString();
+            GameManager.instance.players[Client.instance.myId].playerHUD.scores[j].transform.GetChild(2).GetComponent<Text>().text = damage.ToString();
         }
     }
 
@@ -279,7 +279,7 @@ public class ClientHandle : MonoBehaviour
             score.transform.GetChild(0).GetComponent<Text>().text = username;
             score.transform.GetChild(1).GetComponent<Text>().text = "0";
             score.transform.GetChild(2).GetComponent<Text>().text = "0";
-            HUD.instance.scores.Add(score);
+            GameManager.instance.players[Client.instance.myId].playerHUD.scores.Add(score);
             Debug.Log("Spawned score: " + score);
         }
         if (i > 12)
