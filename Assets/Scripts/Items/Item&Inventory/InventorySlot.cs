@@ -157,6 +157,7 @@ public class InventorySlot : MonoBehaviour
             }
             else if (Item.name == "Pecha Berry")
             {
+                XPSystem.instance.XP *= 2f;
                 inventory.instance.Remove(Item);
             }
         }
