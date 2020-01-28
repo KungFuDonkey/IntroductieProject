@@ -21,6 +21,7 @@ public class Vulcano : Projectile
         jumping = false;
         used = false;
         timer = _timer;
+        damage = 20;
     }
 
     public override void UpdateProjectile()
@@ -48,7 +49,7 @@ public class Vulcano : Projectile
             used = true;
             Debug.Log("jumping");
             int key = Server.clients[owner].player.status.effectcount;
-            Server.clients[owner].player.status.effects.Add(key,new VulcanoJumping(3, owner, key));
+            Server.clients[owner].player.status.effects.Add(key,new VulcanoJumping(3, owner, this, key));
             Server.clients[owner].player.status.effectcount++;
         }
     }

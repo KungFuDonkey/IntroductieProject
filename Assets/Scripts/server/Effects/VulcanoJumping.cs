@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class VulcanoJumping : Effect
 {
+    int owner;
     Vulcasaur player;
     float startDuration, headRotation, LaunchSpeed = 80f;
     Vector3 jumpDirection;
     bool jumping;
+    Projectile projectileOwner;
 
-    public VulcanoJumping(float _duration, int _owner, int _key)
+    public VulcanoJumping(float _duration, int _owner, Projectile _projectileOwner, int _key)
     {
         startDuration = _duration;
         duration = _duration;
+        owner = _owner;
         player = Server.clients[_owner].player as Vulcasaur;
         jumping = false;
         priority = 1;
@@ -30,10 +33,22 @@ public class VulcanoJumping : Effect
         }
 
         status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
-        if (duration < startDuration * 0.5f && status.isGrounded)
+        if (duration < startDuration * 0.6f && status.isGrounded)
         {
             jumping = false;
             duration = 0;
+            Collider[] HitPlayers = Physics.OverlapSphere(status.groundCheck.position, 20, 11);
+            foreach (Collider player in HitPlayers)
+            {
+                PlayerManager playerManager = player.gameObject.GetComponent<PlayerManager>();
+                if (playerManager != null)
+                {
+                    if (playerManager.id != owner)
+                    {
+                        Server.clients[playerManager.id].player.Hit(projectileOwner);
+                    }
+                }
+            }
         }
         else
         {

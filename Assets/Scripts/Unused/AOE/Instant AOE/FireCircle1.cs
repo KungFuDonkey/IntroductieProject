@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireCircle : InstantAoeBehaviour
+public class FireCircle1 : InstantAoeBehaviour
 {
-    public FireCircle()
+    public FireCircle1()
     {
         radius = 2f;
         duration = 10f;

@@ -60,15 +60,15 @@ public class ServerHandle
         int key = Server.clients[_fromClient].player.status.effectcount;
         if(item == 1)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new JumpBoost(10f, 2f, 4,key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new JumpBoost(10f, 2f, 4,key));
         }
         else if (item == 2)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new Invisible(10f, false, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new Invisible(10f, false, 4, key));
         }
         else if (item == 3)
         {
-            Server.clients[_fromClient].player.status.effects.Add(key,new SpeedBoost(10f, 5f, 4, key));
+            Server.clients[_fromClient].player.status.effects.Add(key, new SpeedBoost(10f, 40f, 4, key));
         }
         else if (item == 4)
         {

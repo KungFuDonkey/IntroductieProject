@@ -147,6 +147,7 @@ public abstract class Player
             Server.clients[lastHitPlayer].player.kills++;
         }
         Server.clients[lastHitPlayer].player.damage += (int)(projectile.damage * damageMultiplier);
+        ServerSend.ScoreboardUpdate();
     }
 
     //overload function of Hit(), does direct damage, not through projectile
@@ -157,6 +158,7 @@ public abstract class Player
         {
             Server.clients[lastHitPlayer].player.kills++;
         }
+        ServerSend.ScoreboardUpdate();
     }
 
     //checks if the player is outside of the play area and "in the storm", does damage if they are
