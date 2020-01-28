@@ -30,7 +30,7 @@ public class Parachuting : Effect
             duration = 0.4f * startDuration;
         }
 
-        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 0.5f, status.groundmask);
+        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
         float headRotation = player.verticalRotation;
         status.inputDirection += status.avatar.forward * Mathf.Clamp((headRotation / -85 + 1) * 2, 0.5f, 1.6f);
         status.ySpeed = -8 * Mathf.Clamp(headRotation / 30, 1, 2.5f);

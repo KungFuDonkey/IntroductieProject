@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClientHandle : MonoBehaviour
 {
@@ -243,6 +244,44 @@ public class ClientHandle : MonoBehaviour
     {
         bool storm = _packet.ReadBool();
         GameManager.instance.players[Client.instance.myId].playerHUD.BusCamera.SetActive(storm);
+    }
+
+    public static void ScoreboardUpdate(Packet _packet)
+    {
+        Debug.Log("UpdateClient");
+        int i = _packet.ReadInt();
+        for (int j = 0; j < i; j++)
+        {
+            int kills = _packet.ReadInt();
+            int damage = _packet.ReadInt();
+            HUD.instance.scores[j].transform.GetChild(1).GetComponent<Text>().text = kills.ToString();
+            HUD.instance.scores[j].transform.GetChild(2).GetComponent<Text>().text = damage.ToString();
+        }
+    }
+
+    public static void ScoreboardSetUp(Packet _packet)
+    {
+        Debug.Log("SetUpClient");
+        foreach (GameObject score in HUD.instance.scores)
+        {
+            Destroy(score);
+        }
+        HUD.instance.scores.Clear();
+        int i = _packet.ReadInt();
+        for (int j = 0; j < i; j++)
+        {
+            string username = _packet.ReadString();
+            GameObject score = Instantiate(HUD.instance.scoreboardItems[1], HUD.instance.scoreboardItems[2].transform) as GameObject;
+            score.transform.GetChild(0).GetComponent<Text>().text = username;
+            score.transform.GetChild(1).GetComponent<Text>().text = "0";
+            score.transform.GetChild(2).GetComponent<Text>().text = "0";
+            HUD.instance.scores.Add(score);
+            Debug.Log("Spawned score: " + score);
+        }
+        if (i > 12)
+        {
+            HUD.instance.scoreboardItems[3].SetActive(true);
+        }
     }
     /*
       

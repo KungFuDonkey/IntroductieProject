@@ -34,7 +34,9 @@ public enum ServerPackets
     RemoveItem,
     StormOverlay,
     SetBus,
-    BusCamera
+    BusCamera,
+    ScoreboardUpdate,
+    ScoreboardSetUp
 }
 
 /// <summary>Sent from client to server.</summary>

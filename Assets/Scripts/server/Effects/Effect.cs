@@ -64,7 +64,7 @@ public class Effect
             status.inputDirection *= drunMultiplier;
         }
 
-        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 0.5f, status.groundmask);
+        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
         if (status.isGrounded && status.ySpeed < 0)
         {
             if (inputs[4])

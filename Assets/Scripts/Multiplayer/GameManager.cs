@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] walls;
     public GameObject BattleBus;
     public Image loadingBar;
-    public bool freezeInput = false;
-    
+    public bool freezeInput = false, scoreSet = false;
+
     private void Awake()
     {
         if (instance == null)

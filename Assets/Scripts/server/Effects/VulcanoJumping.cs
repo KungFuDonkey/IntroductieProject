@@ -33,7 +33,7 @@ public class VulcanoJumping : Effect
         }
 
         status.inputDirection = Vector3.zero;
-        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 2f, status.groundmask);
+        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
 
         if (duration < startDuration * 0.5f && status.isGrounded)
         {

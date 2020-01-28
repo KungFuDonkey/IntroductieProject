@@ -17,6 +17,9 @@ public class HUD : MonoBehaviour
     public Text AlivePlayers;
     public EquipmentInventory jEquipmentInventory;
     public inventory binventory;
+    public GameObject[] scoreboardItems = new GameObject[4];
+    [HideInInspector]
+    public List<GameObject> scores = new List<GameObject>();
     InventorySlot[] slots;
     EquipmentInventorySlot[] gearslots;
 
@@ -59,11 +62,12 @@ public class HUD : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            //scoreboard.SetActive(true);
+            Debug.Log("Show scoreboard");
+            HUD.instance.scoreboardItems[0].SetActive(true);
         }
         else if (Input.GetKeyUp(KeyCode.Tab))
         {
-            //scoreboard.SetActive(false);
+            HUD.instance.scoreboardItems[0].SetActive(false);
         }
     }
 

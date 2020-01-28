@@ -176,7 +176,6 @@ public class ServerSend
         {
             if (menuNumber == 2)
             {
-                int i= 0;
                 UIManager.instance.LoadMenu(2);
                 foreach (ServerClient client in Server.clients.Values)
                 {
@@ -190,11 +189,10 @@ public class ServerSend
                     if (client.connected)
                     {
                         client.SendIntoGame();
-                        i++;
                     }
                 }
                 ServerStart.SpawnItem();
-                Scoreboard.ScoreboardPlacing(i);
+                ScoreboardSetUp();
             }
             Server.joinable = false;
             _packet.Write(menuNumber);
@@ -299,6 +297,7 @@ public class ServerSend
             }
             _packet.Write(alive);
             SendTCPDataToAll(_packet);
+            ScoreboardUpdate();
             if (alive <= 1)
             {
                 //SendWinScreen();
@@ -397,6 +396,65 @@ public class ServerSend
         {
             _packet.Write(bus);
             SendTCPData(id, _packet);
+        }
+    }
+
+    public static void ScoreboardUpdate()
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.ScoreboardUpdate))
+        {
+            Debug.Log("UpdateServer");
+            List<int[]> scores = new List<int[]>();
+            int i = 0;
+            foreach (ServerClient client in Server.clients.Values)
+            {
+                if (client.connected)
+                {
+                    i++;
+                    int[] score = new int[2];
+                    score[0] = client.player.kills;
+                    score[1] = 0;
+                    scores.Add(score);
+                }
+            }
+            _packet.Write(i);
+            for (int j = 0; j < i; j++)
+            {
+                for (int k = 0; k < 2; k++)
+                {
+                    _packet.Write(scores[j][k]);
+                }
+            }
+            SendTCPDataToAll(_packet);
+        }
+    }
+
+    public static void ScoreboardSetUp()
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.ScoreboardSetUp))
+        {
+            Debug.Log("SetUpServer");
+            List<string> usernames = new List<string>();
+            int i = 0;
+            foreach (ServerClient client in Server.clients.Values)
+            {
+                if (client.connected)
+                {
+                    i++;
+                    string username = Server.clients[i].username;
+                    if (username == null)
+                    {
+                        username = (i).ToString();
+                    }
+                    usernames.Add(username);
+                }
+            }
+            _packet.Write(i);
+            for (int j = 0; j < i; j++)
+            {
+                _packet.Write(usernames[j]);
+            }
+            SendTCPDataToAll(_packet);
         }
     }
     #endregion

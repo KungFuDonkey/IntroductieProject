@@ -13,7 +13,7 @@ public enum Type
 
 public abstract class Player
 {
-    public int id, projectile, selectedCharacter, kills;
+    public int id, projectile, selectedCharacter, kills = 0;
     public string username;
     public PlayerStatus status;
     public Transform avatar, projectileSpawner;
@@ -70,13 +70,11 @@ public abstract class Player
             evolutionStage += 1;
             readyToEvolve = true;
         }
-
         if (readyToEvolve)
         {
             ServerSend.Evolve(this);
             readyToEvolve = false;
         }
-
         if (status.isGrounded)  //for projectiles
         {
             status.inputDirection.y = 0;
@@ -144,7 +142,7 @@ public abstract class Player
         }
         if (status.defaultStatus.dhealth <= 0)
         {
-            Server.clients[projectile.owner].player.kills += 1;
+            Server.clients[projectile.owner].player.kills++;
         }
     }
 
