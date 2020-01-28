@@ -10,7 +10,7 @@ public class PlayerStatus
     public float ySpeed, gravity = 15, health = 100, shield = 0, jumpspeed = 3, damageBoost = 1;
     public float fireTimer = 0, FIRETIMER = 2, qTimer = 0, QTIMER = 2, eTimer = 0, ETIMER = 2, evolveTimer = 5,
                                                         EVOLVETIMER = 10, movementSpeed = 20, runMultiplier = 2;
-    public bool isGrounded, silenced, alive = true;
+    public bool isGrounded, alive = true, silenced;
     public bool[] animationValues;
     public Transform groundCheck, avatar;
     public LayerMask groundmask = GameManager.instance.groundMask;
@@ -83,7 +83,7 @@ public class PlayerStatus
         movementSpeed *= effect.dmovementSpeed;
         runMultiplier *= effect.drunMultiplier;
         if (effect.dsilenced)
-            silenced = true;
+            silenced = !silenced;
         if (effect.dinvisible)
             invisible = !invisible;
     }

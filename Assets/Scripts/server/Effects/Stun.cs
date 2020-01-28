@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Stun : Effect
 {
-    Player player;
-    public Stun(float _duration, int _owner, int _key)
+    public Stun(float _duration, int _priority, int _key)
     {
         duration = _duration;
-        player = Server.clients[_owner].player;
-        priority = 1;
+        priority = _priority;
         name = "stun";
         key = _key;
     }

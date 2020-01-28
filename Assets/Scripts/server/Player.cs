@@ -142,13 +142,7 @@ public abstract class Player
     //overload function of Hit(), does direct damage, not through projectile
     public void Hit(float damage)
     {
-        status.defaultStatus.dshield -= damage;
-        if (status.defaultStatus.dshield <= 0)
-        {
-            float remainingDamage = Mathf.Abs(status.defaultStatus.dshield);
-            status.defaultStatus.dhealth -= remainingDamage;
-            status.defaultStatus.dshield = 0;
-        }
+        status.defaultStatus.dhealth -= damage;
         if (status.defaultStatus.dhealth <= 0)
         {
             Server.clients[lastHitPlayer].player.kills++;

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
+    public static HUD instance;
+
     public Item item;
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
@@ -22,8 +24,6 @@ public class HUD : MonoBehaviour
     public List<GameObject> scores = new List<GameObject>();
     InventorySlot[] slots;
     EquipmentInventorySlot[] gearslots;
-
-    public static HUD instance;
 
     void Awake()
     {
@@ -45,15 +45,16 @@ public class HUD : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
+            GameManager.instance.freezeInput = !GameManager.instance.freezeInput;
             jinventoryUI.SetActive(!jinventoryUI.activeSelf);
-
+            Cursor.visible = !Cursor.visible;
             if (Cursor.lockState == CursorLockMode.None)
             {
                 Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
-               Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
         if (Input.GetKeyDown(KeyCode.R))

@@ -45,9 +45,12 @@ public class playerLook : MonoBehaviour
             mouseX = 0;
             mouseY = 0;
         }
-        verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
-        verticalRotation += mouseY * sensitivity * Time.deltaTime;
-        horizontalRotation += mouseX * sensitivity * Time.deltaTime;
-        playerbody.localRotation = Quaternion.Euler(0f, horizontalRotation, 0f);
+        if (!GameManager.instance.freezeInput)
+        {
+            verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
+            verticalRotation += mouseY * sensitivity * Time.deltaTime;
+            horizontalRotation += mouseX * sensitivity * Time.deltaTime;
+            playerbody.localRotation = Quaternion.Euler(0f, horizontalRotation, 0f);
+        }
     }
 }
