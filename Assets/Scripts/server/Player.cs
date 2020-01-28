@@ -58,6 +58,8 @@ public abstract class Player
         status.Update(inputs, avatar);
         if(status.health <= 0 && status.alive)
         {
+            HealthBar.instance.currentHealth = 0;
+            Debug.Log(status.health);
             status.alive = false;
             ServerSend.SendDeathScreen(this);
             ServerSend.UpdatePlayerCount();
@@ -143,6 +145,7 @@ public abstract class Player
         if (status.defaultStatus.dhealth <= 0)
         {
             Server.clients[projectile.owner].player.kills++;
+          
         }
     }
 
@@ -155,6 +158,8 @@ public abstract class Player
             float remainingDamage = Mathf.Abs(status.defaultStatus.dshield);
             status.defaultStatus.dhealth -= remainingDamage;
             status.defaultStatus.dshield = 0;
+           
+          
         }
     }
 
