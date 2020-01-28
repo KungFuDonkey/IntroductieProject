@@ -27,6 +27,25 @@ public class Vulcasaur : Player
         };
     }
 
+    public override void HandleEvolve()
+    {
+        base.HandleEvolve();
+        if (evolutionStage == 2)
+        {
+            projectileSpawner = projectileSpawner2;
+            controller.center.Set(0f, 1.5f, 0.2f);
+            controller.radius = 1.5f;
+            controller.height = 1f;
+        }
+        else
+        {
+            projectileSpawner = projectileSpawner3;
+            controller.center.Set(0f, 3.6f, 0f);
+            controller.radius = 3.6f;
+            controller.height = 1f;
+        }
+    }
+
     public override void UpdatePlayer()
     {
         base.UpdatePlayer();
