@@ -17,7 +17,7 @@ public class SnakeBall : Projectile
         owner = _owner;
         damage = 10;
         type = Type.water;
-        speed = 40;
+        speed = 80;
     }
 
     //Updates position using sinWave
@@ -48,7 +48,7 @@ public class SnakeBall : Projectile
     public override void Hit(int _id, int _type)
     {
         int effect = Server.clients[_id].player.status.effectcount;
-        Server.clients[_id].player.status.effects.Add(effect, new Stun(1, 1, effect));
+        Server.clients[_id].player.status.effects.Add(effect, new Stun(2, 1, effect));
         Server.clients[_id].player.status.effectcount++;
         base.Hit(_id, _type);
     }

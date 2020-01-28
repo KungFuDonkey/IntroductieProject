@@ -40,7 +40,7 @@ public abstract class Player
                 projectileSpawner3 = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner3;
                 Debug.Log("avatar found");
                 int effect = Server.clients[id].player.status.effectcount;
-                Server.clients[id].player.status.effects.Add(effect, new InTheBus(20, false, id, effect));
+                Server.clients[id].player.status.effects.Add(effect, new InTheBus(20, true, id, effect));
                 Server.clients[id].player.status.effectcount++;
             }
             catch
@@ -198,10 +198,6 @@ public abstract class Player
                 Hit(400);
             }
         }
-       
-        
-        
     }
-
 }
 

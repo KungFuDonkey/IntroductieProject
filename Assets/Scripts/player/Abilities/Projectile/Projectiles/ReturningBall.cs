@@ -16,7 +16,7 @@ public class ReturningBall : Projectile
         owner = _owner;
         damage = 8;
         type = Type.water;
-        speed = 60;
+        speed = 120;
     }
 
     //Updates position and returns to starting point
@@ -52,7 +52,7 @@ public class ReturningBall : Projectile
     public override void Hit(int _id, int _type)
     {
         int effect = Server.clients[_id].player.status.effectcount;
-        Server.clients[_id].player.status.effects.Add(effect, new Silence(2, false, 1, effect));
+        Server.clients[_id].player.status.effects.Add(effect, new Silence(3, false, 1, effect));
         Server.clients[_id].player.status.effectcount++;
         base.Hit(_id, _type);
     }

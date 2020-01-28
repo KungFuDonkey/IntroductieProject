@@ -11,7 +11,7 @@ public class Projectile
     public Vector3 position;
     public Quaternion rotation;
     public Type type;
-    protected float speed = 50, maxDistance = 150;
+    protected float speed = 100, maxDistance = 150;
     protected bool destroyed = false;
     protected Vector3 startDirection, spawnPosition;
 
