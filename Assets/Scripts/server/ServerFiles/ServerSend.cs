@@ -300,7 +300,7 @@ public class ServerSend
             ScoreboardUpdate();
             if (alive <= 1)
             {
-                //SendWinScreen();
+                SendWinScreen();
             }
         }
     }
