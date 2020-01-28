@@ -18,10 +18,10 @@ public abstract class Player
     public string username;
     public PlayerStatus status;
     public Transform avatar, projectileSpawner, projectileSpawner2, projectileSpawner3;
+    public CharacterController controller;
     protected bool[] inputs;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
     bool readyToEvolve = false, inStorm = false;
-    CharacterController controller;
     
     //update the player by checking his inputs and acting on them
     public virtual void UpdatePlayer()
