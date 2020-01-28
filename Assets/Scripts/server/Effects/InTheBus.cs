@@ -6,14 +6,14 @@ public class InTheBus : Effect
 {
     int owner;
 
-    public InTheBus(float _duration, int _owner, int _key)
+    public InTheBus(float _duration, bool _dsilenced, int _owner, int _key)
     {
         duration = _duration;
         owner = _owner;
         priority = 1;
         name = "inTheBus";
         key = _key;
-        dsilenced = true;
+        dsilenced = _dsilenced;
     }
 
     //Makes the player move along with the bus and when the player "jumps out" it's state will transition into parachuting
