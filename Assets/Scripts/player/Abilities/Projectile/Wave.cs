@@ -39,6 +39,10 @@ public class Wave : Projectile
             catch
             {
                 Debug.Log("not found");
+                if (!player.status.alive)
+                {
+                    DestroyProjectile();
+                }
                 return;
             }
         }
