@@ -13,7 +13,7 @@ public enum Type
 
 public abstract class Player
 {
-    public int id, projectile, selectedCharacter, kills = 0, evolutionStage = 1, lastHitPlayer;
+    public int id, projectile, selectedCharacter, kills = 0, damage = 0, evolutionStage = 1, lastHitPlayer;
     public float verticalRotation;
     public string username;
     public PlayerStatus status;
@@ -146,6 +146,7 @@ public abstract class Player
         {
             Server.clients[lastHitPlayer].player.kills++;
         }
+        Server.clients[lastHitPlayer].player.damage += (int)(projectile.damage * damageMultiplier);
     }
 
     //overload function of Hit(), does direct damage, not through projectile

@@ -33,7 +33,7 @@ public class AquaPulse : Projectile
     public override void Hit(int _id, int _type)
     {
         int effect = Server.clients[_id].player.status.effectcount;
-        Server.clients[_id].player.status.effects.Add(effect, new Confusion(10, 1, effect));
+        Server.clients[_id].player.status.effects.Add(effect, new Confusion(3, 1, effect));
         Server.clients[_id].player.status.effectcount++;
         base.Hit(_id, _type);
     }

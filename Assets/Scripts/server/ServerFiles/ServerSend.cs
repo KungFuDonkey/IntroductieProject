@@ -413,7 +413,7 @@ public class ServerSend
                     i++;
                     int[] score = new int[2];
                     score[0] = client.player.kills;
-                    score[1] = 0;
+                    score[1] = client.player.damage;
                     scores.Add(score);
                 }
             }
