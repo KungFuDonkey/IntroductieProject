@@ -266,16 +266,16 @@ public class ClientHandle : MonoBehaviour
     public static void ScoreboardSetUp(Packet _packet)
     {
         Debug.Log("SetUpClient");
-        foreach (GameObject score in HUD.instance.scores)
+        foreach (GameObject score in GameManager.instance.players[Client.instance.myId].playerHUD.scores)
         {
             Destroy(score);
         }
-        HUD.instance.scores.Clear();
+        GameManager.instance.players[Client.instance.myId].playerHUD.scores.Clear();
         int i = _packet.ReadInt();
         for (int j = 0; j < i; j++)
         {
             string username = _packet.ReadString();
-            GameObject score = Instantiate(HUD.instance.scoreboardItems[1], HUD.instance.scoreboardItems[2].transform) as GameObject;
+            GameObject score = Instantiate(HUD.instance.scoreboardItems[1], GameManager.instance.players[Client.instance.myId].playerHUD.scoreboardItems[2].transform) as GameObject;
             score.transform.GetChild(0).GetComponent<Text>().text = username;
             score.transform.GetChild(1).GetComponent<Text>().text = "0";
             score.transform.GetChild(2).GetComponent<Text>().text = "0";
@@ -284,7 +284,7 @@ public class ClientHandle : MonoBehaviour
         }
         if (i > 12)
         {
-            HUD.instance.scoreboardItems[3].SetActive(true);
+            GameManager.instance.players[Client.instance.myId].playerHUD.scoreboardItems[3].SetActive(true);
         }
     }
     /*
