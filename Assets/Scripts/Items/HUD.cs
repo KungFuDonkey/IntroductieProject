@@ -57,18 +57,14 @@ public class HUD : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             }
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ServerSend.UpdatePlayerCount();
-        }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Debug.Log("Show scoreboard");
-            HUD.instance.scoreboardItems[0].SetActive(true);
+            instance.scoreboardItems[0].SetActive(true);
         }
         else if (Input.GetKeyUp(KeyCode.Tab))
         {
-            HUD.instance.scoreboardItems[0].SetActive(false);
+            instance.scoreboardItems[0].SetActive(false);
         }
     }
 

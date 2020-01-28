@@ -33,7 +33,7 @@ public class ServerStart : MonoBehaviour
         serverLog = (GameObject)Instantiate(Resources.Load("ServerLog"));
         serverLog.SetActive(false);
         content = serverLog.transform.GetChild(0).GetChild(0).GetChild(0).GetComponentInChildren<Text>();
-        Server.Start(25, 26950);
+        Server.Start(10, 26950);
     }
 
     //let the server run on fixed ticks

@@ -90,4 +90,15 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F12) && Client.instance.host)
+        {
+            ServerStart.instance.resetScreen.SetActive(true);
+            GameManager.instance.freezeInput = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
 }

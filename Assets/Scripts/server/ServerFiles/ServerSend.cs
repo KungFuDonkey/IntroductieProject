@@ -295,6 +295,7 @@ public class ServerSend
                     }
                 }
             }
+            ServerStart.instance.DebugServer(alive.ToString());
             _packet.Write(alive);
             SendTCPDataToAll(_packet);
             ScoreboardUpdate();
