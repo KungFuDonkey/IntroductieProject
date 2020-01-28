@@ -6,14 +6,14 @@ public class Parachuting : Effect
 {
     Player player;
 
-    public Parachuting(float _duration, int _owner, int _key)
+    public Parachuting(float _duration, bool _dsilenced, int _owner, int _key)
     {
         duration = _duration;
         player = Server.clients[_owner].player;
         priority = 1;
         name = "parachuting";
         key = _key;
-        dsilenced = true;
+        dsilenced = _dsilenced;
     }
 
     //Determines the movement of the player while parachuting down from the bus, the direction in which the player looks will determine forwards and downwards speed
