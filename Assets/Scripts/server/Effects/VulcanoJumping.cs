@@ -8,7 +8,7 @@ public class VulcanoJumping : Effect
     int id;
     Vulcasaur player;
     float startDuration, headRotation;
-    public float LaunchSpeed = 60f;
+    public float LaunchSpeed = 80f;
     Vector3 jumpDirection;
 
     public VulcanoJumping(float _duration, int _owner, int _id, int _key)
@@ -24,6 +24,7 @@ public class VulcanoJumping : Effect
         key = _key;
     }
 
+    //Determines the strength of the jump based on vertical rotation of the head
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         if (duration < startDuration * 0.4f && player.jumping)
@@ -32,7 +33,7 @@ public class VulcanoJumping : Effect
         }
 
         status.inputDirection = Vector3.zero;
-        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 2f, status.groundmask);
+        status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
 
         if (duration < startDuration * 0.5f && status.isGrounded)
         {
@@ -47,11 +48,11 @@ public class VulcanoJumping : Effect
                 {
                     player.jumping = true;
                     jumpDirection = status.avatar.forward;
-                    headRotation = -Mathf.Clamp(status.avatar.GetComponentInChildren<playerLook>().verticalRotation, -20, 20);
+                    headRotation = -Mathf.Clamp(player.verticalRotation, -20, 20);
                     headRotation = ((headRotation + 20) / 40) * 0.5f + 0.5f;
                     status.ySpeed = LaunchSpeed * headRotation;
                 }
-                status.inputDirection += jumpDirection * (headRotation * 10 + 10);
+                status.inputDirection += jumpDirection * (headRotation * 12 + 12);
             }
         }
 

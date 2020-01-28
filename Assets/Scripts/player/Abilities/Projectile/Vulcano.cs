@@ -40,6 +40,7 @@ public class Vulcano : Projectile
         base.DestroyProjectile();
     }
 
+    //Gives VulcanoJumping effect to the player when casting
     public override void HitSelf()
     {
         if (!used)

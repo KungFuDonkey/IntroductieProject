@@ -9,15 +9,17 @@ public class HUD : MonoBehaviour
     public MiniMapCam MiniMap;
     public HealthBar healthBar;
     public VisualShield shieldBar;
-    public GameObject Deathscreen, Winscreen, Resetscreen, StormOverlay;
+    public GameObject Deathscreen, Winscreen, StormOverlay, BusCamera;
     public Transform itemsParent;
     public Transform gearParent;
     public GameObject jinventoryUI;
     public GameObject Spectator;
     public Text AlivePlayers;
-
     public EquipmentInventory jEquipmentInventory;
     public inventory binventory;
+    public GameObject[] scoreboardItems = new GameObject[4];
+    [HideInInspector]
+    public List<GameObject> scores = new List<GameObject>();
     InventorySlot[] slots;
     EquipmentInventorySlot[] gearslots;
 
@@ -32,14 +34,10 @@ public class HUD : MonoBehaviour
     {
         binventory = inventory.instance;
         jEquipmentInventory = EquipmentInventory.instance;
-
-
         binventory.onItemChangedCallback += UpdateUI;
         jEquipmentInventory.onItemChangedCallback += UpdateUI;
-      
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         gearslots = gearParent.GetComponentsInChildren<EquipmentInventorySlot>();
-
         jinventoryUI.SetActive(false);
     }
 
@@ -61,6 +59,15 @@ public class HUD : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ServerSend.UpdatePlayerCount();
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Debug.Log("Show scoreboard");
+            HUD.instance.scoreboardItems[0].SetActive(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            HUD.instance.scoreboardItems[0].SetActive(false);
         }
     }
 

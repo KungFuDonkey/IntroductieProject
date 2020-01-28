@@ -16,7 +16,7 @@ public class XPSystem : MonoBehaviour
     public Text LevelText;
     public Text NextText;
     PlayerManager character;
-    int XP;
+    public float XP;
     public int CurrentLevel;
 
     public static XPSystem instance;
@@ -95,11 +95,11 @@ public class XPSystem : MonoBehaviour
 
     void Update()
     {
-        XPUpdate(2);
+        XPUpdate(20 * Time.deltaTime);
         MovesUpdate();
     }
 
-    public void XPUpdate(int xp)
+    public void XPUpdate(float xp)
     {
         XP += xp;
         int level = (int)(0.1f * Mathf.Sqrt(XP));
@@ -110,7 +110,7 @@ public class XPSystem : MonoBehaviour
             WaitNewLevel();
         }
         int XPForNextLevel = 100 * (CurrentLevel + 1) * (CurrentLevel + 1) ;
-        int XPDifference = XPForNextLevel - XP;
+        float XPDifference = XPForNextLevel - XP;
         string XPNextLevel = XPDifference.ToString();
         if (level == 0 || level == 1)
         {
@@ -129,7 +129,7 @@ public class XPSystem : MonoBehaviour
         {
             Emove();
         }
-        if (CurrentLevel >= 5 )
+        if (CurrentLevel >= 5)
         {
             Qmove();
         }

@@ -31,7 +31,12 @@ public enum ServerPackets
     Evolve,
     SpawnItem,
     Item,
-    RemoveItem
+    RemoveItem,
+    StormOverlay,
+    SetBus,
+    BusCamera,
+    ScoreboardUpdate,
+    ScoreboardSetUp
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -44,7 +49,6 @@ public enum ClientPackets
     ChoosePlayer,
     setHealth,
     AddEffects,
-    pickupItem,
     SetInvis,
     Evolve
 }

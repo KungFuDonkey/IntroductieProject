@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Base class for all projectiles
 public class Projectile
 {
     public int id, owner;

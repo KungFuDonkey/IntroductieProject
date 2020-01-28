@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        keys = new KeyCode[10]{
+        keys = new KeyCode[12]{
             KeyCode.W,
             KeyCode.S,
             KeyCode.A,
@@ -20,9 +20,11 @@ public class PlayerController : MonoBehaviour
             KeyCode.Q,
             KeyCode.E,
             KeyCode.I,
-            KeyCode.V
+            KeyCode.V,
+            KeyCode.W, //Non existent, overwritten by mousebutton
+            KeyCode.Z
         };
-        _inputs = new bool[11];
+        _inputs = new bool[12];
     }
 
     private void FixedUpdate()
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.freezeInput)
         {
-            for(int i = 0; i<10; i++)
+            for(int i = 0; i < 12; i++)
             {
                 _inputs[i] = Input.GetKey(keys[i]);
             }
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i<11; i++)
+            for(int i = 0; i < 12; i++)
             {
                 _inputs[i] = false;
             }

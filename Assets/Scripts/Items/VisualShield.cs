@@ -8,6 +8,7 @@ public class VisualShield : MonoBehaviour
     private float maxXValue;
     private float minXValue;
     public RectTransform shieldTransform;
+    Color32 color;
     Vector3 position;
     private float cachedY;
     public float maxShield;
@@ -30,7 +31,9 @@ public class VisualShield : MonoBehaviour
         minXValue = shieldTransform.position.x - shieldTransform.rect.width;
         currentShield = maxShield;
         stepOffset = shieldTransform.rect.width / maxShield;
-        visualShield.color = new Color32(0, 0, 255, 255);
+        color = new Color32(0, 0, 255, 255);
+        visualShield.color = color;
+
     }
 
     private void Update()

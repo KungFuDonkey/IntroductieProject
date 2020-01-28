@@ -19,6 +19,7 @@ public class ReturningBall : Projectile
         speed = 60;
     }
 
+    //Updates position and returns to starting point
     public override void UpdateProjectile()
     {
         float distance = Vector3.Distance(spawnPosition, position);
@@ -32,7 +33,6 @@ public class ReturningBall : Projectile
             {
                 returning = true;
             }
-
             if (returning)
             {
                 position -= (rotation * Vector3.forward * speed + startDirection) * Time.deltaTime;
@@ -41,7 +41,6 @@ public class ReturningBall : Projectile
             {
                 position += (rotation * Vector3.forward * speed + startDirection) * Time.deltaTime;
             }
-
             if (returning && distance < 0.5f)
             {
                 DestroyProjectile();
