@@ -10,16 +10,14 @@ public class ServerClient
 {
     public static int dataBufferSize = 4096;
 
-    public int id;
-    public int selectedCharacter = 0;
-    Vector3 spawnpoint;
+    public int id, selectedCharacter = 0;
     public string username;
     public Vector2 mousePosition;
     public Player player;
     public TCP tcp;
     public UDP udp;
-    public bool connected = false;
-    public bool ready = false;
+    public bool connected = false, ready = false;
+    Vector3 spawnpoint;
 
     public ServerClient(int _clientId)
     {

@@ -8,16 +8,15 @@ using System;
 public class Client : MonoBehaviour
 {
     public static Client instance;
-    public static int dataBufferSize = 4096;
+    static int dataBufferSize = 4096;
 
     public string ip = "127.0.0.1";
-    public int port = 26950;
-    public int myId = 0;
+    public int port = 26950, myId = 0;
     public TCP tcp;
     public UDP udp;
     public bool host;
-    private delegate void PacketHandler(Packet _packet);
-    private static Dictionary<int, PacketHandler> packetHandlers;
+    delegate void PacketHandler(Packet _packet);
+    static Dictionary<int, PacketHandler> packetHandlers;
 
     private void Awake()
     {

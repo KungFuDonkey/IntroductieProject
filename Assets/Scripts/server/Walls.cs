@@ -5,13 +5,13 @@ using UnityEngine;
 public class Walls
 {
     public static Transform[] walls = new Transform[4];
-    static float wallsWait, WALLSWAIT = 25f, mapSize = 600, preGameTimer = 30;
-    public static Vector3 circlePosition;
-    static Vector3[] distances = new Vector3[4];
     public static Vector3[] startingPos = new Vector3[4];
-    static bool waiting = false;
-    static bool[] wallMoving = new bool[4];
     static int smaller, wallsMove = 26;
+    static float wallsWait, WALLSWAIT = 25f, mapSize = 600, preGameTimer = 30;
+    static bool[] wallMoving = new bool[4];
+    static bool waiting = false;
+    static Vector3[] distances = new Vector3[4];
+    static Vector3 circlePosition;
 
     //Updates the position of the walls
     public static void UpdateWalls()

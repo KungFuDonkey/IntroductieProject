@@ -8,18 +8,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static int projectileNumber = 0;
-    public PlayerManager[] players = new PlayerManager[Server.MaxPlayers];
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
+
+    public PlayerManager[] players = new PlayerManager[Server.MaxPlayers];
     public GameObject[] Items = new GameObject[7];
     public GameObject[] gameItems = new GameObject[20];
-    public LayerMask groundMask;
-    public GameObject[] characters = new GameObject[3];
-    public GameObject[] enemies = new GameObject[3];
-    public GameObject[] playerObject;
     public GameObject[] walls;
     public GameObject BattleBus;
-    public Image loadingBar;
+    public LayerMask groundMask;
     public bool freezeInput = false;
+    [SerializeField] GameObject[] characters = new GameObject[3];
+    [SerializeField] GameObject[] enemies = new GameObject[3];
+    [SerializeField] GameObject[] playerObject;
 
     private void Awake()
     {

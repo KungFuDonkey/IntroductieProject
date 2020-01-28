@@ -5,10 +5,11 @@ using UnityEngine;
 public class BattleBus
 {
     public static Transform Bus;
-    static float busWait = 4f;
     public static Vector3 busMovement = new Vector3(0, 0, 25);
+    public static bool canJump = false;
+    static float busWait = 4f;
     static Vector3 startPosition = new Vector3(0, 80, -380);
-    public static bool canJump = false, finished = false;
+    static bool finished = false;
 
     //Moves the bus across the map
     public static void UpdateBus()

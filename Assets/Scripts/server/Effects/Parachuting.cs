@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Parachuting : Effect
 {
-    int owner;
-    int id;
     Player player;
-    float startDuration;
 
     public Parachuting(float _duration, int _owner, int _key)
     {
-        startDuration = _duration;
         duration = _duration;
-        owner = _owner;
         player = Server.clients[_owner].player;
         priority = 1;
         name = "parachuting";
@@ -25,10 +20,7 @@ public class Parachuting : Effect
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
         status.inputDirection = Vector3.zero;
-        if (duration < 0.4f * startDuration)
-        {
-            duration = 0.4f * startDuration;
-        }
+        duration = 10f;
 
         status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
         float headRotation = player.verticalRotation;

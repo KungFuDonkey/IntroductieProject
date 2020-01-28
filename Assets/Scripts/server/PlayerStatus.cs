@@ -6,20 +6,19 @@ using UnityEngine;
 public class PlayerStatus
 {
     public Effect defaultStatus;
-    public float ySpeed;
-    public float gravity = 15;
-    public float health = 100, shield = 0, jumpspeed = 3, damageBoost = 1;
+    public int effectcount = 1; //default effect has 0
+    public float ySpeed, gravity = 15, health = 100, shield = 0, jumpspeed = 3, damageBoost = 1;
+    public float fireTimer = 0, FIRETIMER = 2, qTimer = 0, QTIMER = 2, eTimer = 0, ETIMER = 2, evolveTimer = 5,
+                                                        EVOLVETIMER = 10, movementSpeed = 20, runMultiplier = 2;
+    public bool isGrounded, silenced, alive = true;
     public bool[] animationValues;
-    public Transform groundCheck;
+    public Transform groundCheck, avatar;
     public LayerMask groundmask = GameManager.instance.groundMask;
-    public Transform avatar;
-    public float fireTimer = 0, FIRETIMER = 2, qTimer = 0, QTIMER = 2, eTimer = 0, ETIMER = 2, evolveTimer = 5, EVOLVETIMER = 10, movementSpeed = 20, runMultiplier = 2;
-    public bool isGrounded, movable, silenced, invisible, alive = true, inStorm;
     public Vector3 inputDirection;
     public Type type;
-    public int effectcount = 1; //default effect has 0
-    public List<int> removeItems = new List<int>();
     public Dictionary<int, Effect> effects = new Dictionary<int, Effect>();
+    bool invisible;
+    List<int> removeItems = new List<int>();
 
     public void Update(bool[] inputs, Transform _avatar)
     {
@@ -83,8 +82,6 @@ public class PlayerStatus
         ETIMER *= effect.dETIMER;
         movementSpeed *= effect.dmovementSpeed;
         runMultiplier *= effect.drunMultiplier;
-        if (effect.dmovable)
-            movable = false;
         if (effect.dsilenced)
             silenced = true;
         if (effect.dinvisible)
@@ -103,8 +100,6 @@ public class PlayerStatus
         movementSpeed = effect.dmovementSpeed;
         runMultiplier = effect.drunMultiplier;
         type = effect.dType;
-        if (effect.dmovable)
-            movable = false;
         if (effect.dsilenced)
             silenced = true;
         if (effect.dinvisible)

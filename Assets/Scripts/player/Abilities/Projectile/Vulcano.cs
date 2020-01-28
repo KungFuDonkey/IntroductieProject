@@ -48,7 +48,7 @@ public class Vulcano : Projectile
             used = true;
             Debug.Log("jumping");
             int key = Server.clients[owner].player.status.effectcount;
-            Server.clients[owner].player.status.effects.Add(key,new VulcanoJumping(3, owner, id, key));
+            Server.clients[owner].player.status.effects.Add(key,new VulcanoJumping(3, owner, key));
             Server.clients[owner].player.status.effectcount++;
         }
     }

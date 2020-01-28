@@ -5,14 +5,11 @@ using UnityEngine;
 public class InTheBus : Effect
 {
     int owner;
-    Player player;
-    bool onBus;
 
     public InTheBus(float _duration, int _owner, int _key)
     {
         duration = _duration;
         owner = _owner;
-        player = Server.clients[_owner].player as Player;
         priority = 1;
         name = "inTheBus";
         key = _key;

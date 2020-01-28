@@ -6,13 +6,14 @@ using UnityEngine;
 public class Projectile
 {
     public int id, owner;
-    public Vector3 position, startDirection, spawnPosition;
+    public float damage;
+    public bool reUseAble = false;
+    public Vector3 position;
     public Quaternion rotation;
     public Type type;
     protected float speed = 50, maxDistance = 150;
-    public float damage;
     protected bool destroyed = false;
-    public bool reUseAble = false; 
+    protected Vector3 startDirection, spawnPosition;
 
     public virtual void UpdateProjectile()
     {

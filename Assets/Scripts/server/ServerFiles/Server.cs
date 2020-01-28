@@ -7,19 +7,18 @@ using System;
 
 public class Server
 {
+    public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static int MaxPlayers { get; private set; }
     public static int Port { get; private set; }
 
     public static Dictionary<int, ServerClient> clients = new Dictionary<int, ServerClient>();
     public static Dictionary<int, Projectile> projectiles = new Dictionary<int, Projectile>();
-    public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
     public static Dictionary<int, Func<int,string,int,Player>> characters;
-    public static System.Random rand = new System.Random();
     public static Dictionary<int, Vector3> spawnPoints = new Dictionary<int, Vector3>();
-    private static TcpListener tcpListener;
-    private static UdpClient udpListener;
     public static bool joinable = true;
+    static TcpListener tcpListener;
+    static UdpClient udpListener;
 
     public static void Start(int _maxPlayers, int _port)
     {

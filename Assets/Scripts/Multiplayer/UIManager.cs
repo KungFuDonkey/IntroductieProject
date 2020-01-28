@@ -2,24 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    public int selectedCharacter = 1;
-    public bool startCounter = false, loading = false;
-    public float timer = 10f, loadTime, LOADTIME = 1;
-    public GameObject startMenu, lobby, characterSelection, loadingScreen;
-    public GameObject server;
-    public GameObject startButton;
-    public GameObject myCursor;
-    public InputField usernameField;
-    public InputField ipAdress;
-    public Text serverInfo, playerCount;
-    public Text UsernameList;
 
+    public int selectedCharacter = 1;
+    public InputField usernameField;
     public List<OnlineMousePointer> mousePointers = new List<OnlineMousePointer>();
+    [SerializeField] InputField ipAdress;
+    [SerializeField] Text serverInfo, playerCount, UsernameList;
+    [SerializeField] Image loadingBar;
+    [SerializeField] GameObject startMenu, lobby, characterSelection, loadingScreen;
+    [SerializeField] GameObject server;
+    [SerializeField] GameObject startButton;
+    float timer = 10f, loadTime, LOADTIME = 1;
+    bool startCounter = false, loading = false;
+
 
     private void Awake()
     {
@@ -98,7 +97,7 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    myCursor = (GameObject)Instantiate(Resources.Load("Cursor"), characterSelection.transform);
+                    GameObject myCursor = (GameObject)Instantiate(Resources.Load("Cursor"), characterSelection.transform);
                 }
             }
             startCounter = true;
@@ -152,8 +151,8 @@ public class UIManager : MonoBehaviour
         if (loading)
         {
             float progress = Mathf.Clamp(loadTime / LOADTIME * 290, 0, 290);
-            GameManager.instance.loadingBar.rectTransform.sizeDelta = new Vector2(progress, 20);
-            GameManager.instance.loadingBar.rectTransform.localPosition = new Vector2(progress / 2 - 145, 0);
+            loadingBar.rectTransform.sizeDelta = new Vector2(progress, 20);
+            loadingBar.rectTransform.localPosition = new Vector2(progress / 2 - 145, 0);
             loadTime += Time.deltaTime;
             if (loadTime >= LOADTIME + 0.1f)
             {

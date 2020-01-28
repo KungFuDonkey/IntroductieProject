@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class VulcanoJumping : Effect
 {
-    int owner;
-    int id;
     Vulcasaur player;
-    float startDuration, headRotation;
-    public float LaunchSpeed = 80f;
+    float startDuration, headRotation, LaunchSpeed = 80f;
     Vector3 jumpDirection;
+    bool jumping;
 
-    public VulcanoJumping(float _duration, int _owner, int _id, int _key)
+    public VulcanoJumping(float _duration, int _owner, int _key)
     {
         startDuration = _duration;
         duration = _duration;
-        owner = _owner;
-        id = _id;
         player = Server.clients[_owner].player as Vulcasaur;
-        player.jumping = false;
+        jumping = false;
         priority = 1;
         name = "vulcano";
         key = _key;
@@ -27,26 +23,25 @@ public class VulcanoJumping : Effect
     //Determines the strength of the jump based on vertical rotation of the head
     public override Vector3 SetUpMovement(PlayerStatus status, bool[] inputs)
     {
-        if (duration < startDuration * 0.4f && player.jumping)
+        status.inputDirection = Vector3.zero;
+        if (duration < startDuration * 0.4f && jumping)
         {
             duration = startDuration * 0.4f;
         }
 
-        status.inputDirection = Vector3.zero;
         status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
-
         if (duration < startDuration * 0.5f && status.isGrounded)
         {
-            player.jumping = false;
+            jumping = false;
             duration = 0;
         }
         else
         {
             if (duration <= startDuration * 0.75f)
             {
-                if (!player.jumping)
+                if (!jumping)
                 {
-                    player.jumping = true;
+                    jumping = true;
                     jumpDirection = status.avatar.forward;
                     headRotation = -Mathf.Clamp(player.verticalRotation, -20, 20);
                     headRotation = ((headRotation + 20) / 40) * 0.5f + 0.5f;

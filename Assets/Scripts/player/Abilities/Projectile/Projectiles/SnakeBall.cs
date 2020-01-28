@@ -45,6 +45,14 @@ public class SnakeBall : Projectile
         base.UpdateProjectile();
     }
 
+    public override void Hit(int _id, int _type)
+    {
+        int effect = Server.clients[_id].player.status.effectcount;
+        Server.clients[_id].player.status.effects.Add(effect, new Stun(5, owner, effect));
+        Server.clients[_id].player.status.effectcount++;
+        base.Hit(_id, _type);
+    }
+
     public override void DestroyProjectile()
     {
         destroyed = true;

@@ -13,22 +13,15 @@ public enum Type
 
 public abstract class Player
 {
-    public int id, projectile, selectedCharacter, kills = 0;
+    public int id, projectile, selectedCharacter, kills = 0, evolutionStage = 1, lastHitPlayer;
+    public float verticalRotation;
     public string username;
     public PlayerStatus status;
     public Transform avatar, projectileSpawner;
-    public CharacterController controller;
-    public static Player instance;
-    public bool[] inputs;
-    public float verticalRotation;
+    protected bool[] inputs;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
-    public int evolutionStage = 1;
     bool readyToEvolve = false, inStorm = false;
-
-    void Awake()
-    {
-        instance = this;
-    }
+    CharacterController controller;
     
     //update the player by checking his inputs and acting on them
     public virtual void UpdatePlayer()
@@ -108,6 +101,7 @@ public abstract class Player
     //Hit() is called by the server when a player gets hit by an projectile, the projectile has a type and damage value
     public void Hit(Projectile projectile)
     {
+        lastHitPlayer = projectile.owner;
         float damageMultiplier = 1f;
         if (status.type + 1 == Type.noType)
         {
@@ -141,7 +135,7 @@ public abstract class Player
         }
         if (status.defaultStatus.dhealth <= 0)
         {
-            Server.clients[projectile.owner].player.kills++;
+            Server.clients[lastHitPlayer].player.kills++;
         }
     }
 
@@ -154,6 +148,10 @@ public abstract class Player
             float remainingDamage = Mathf.Abs(status.defaultStatus.dshield);
             status.defaultStatus.dhealth -= remainingDamage;
             status.defaultStatus.dshield = 0;
+        }
+        if (status.defaultStatus.dhealth <= 0)
+        {
+            Server.clients[lastHitPlayer].player.kills++;
         }
     }
 

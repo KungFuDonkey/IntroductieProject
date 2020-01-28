@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Vulcasaur : Player
 {
-    public bool jumping;
-
     public Vulcasaur(int _id, string _username, int _selectedCharacter)
     {
         id = _id;

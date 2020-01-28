@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class Wave : Projectile
 {
+    int effect;
+    float distance = 0;
+    bool surfing;
+    Vector3 groundCheckLift = new Vector3(0, 0.2f, 0), correctedRotation;
     Transform groundCheck;
     LayerMask groundMask;
-    public bool surfing, hasSurfed;
-    Vector3 groundCheckLift = new Vector3(0, 0.2f, 0);
-    Vector3 correctedRotation;
-    float distance = 0;
-    int effect;
     Charmandolphin player;
 
     public Wave(int _id, Vector3 _spawnPosition, Quaternion _rotation, Vector3 _startDirection, int _owner)
@@ -24,7 +23,6 @@ public class Wave : Projectile
         type = Type.water;
         speed = 40f;
         surfing = false;
-        hasSurfed = false;
         reUseAble = true;
         groundMask = LayerMask.GetMask("Ground");
         player = Server.clients[_owner].player as Charmandolphin;
@@ -102,7 +100,6 @@ public class Wave : Projectile
     {
         if (!surfing)
         {
-            hasSurfed = true;
             Debug.Log("surfing");
             surfing = true;
             effect = Server.clients[owner].player.status.effectcount;
