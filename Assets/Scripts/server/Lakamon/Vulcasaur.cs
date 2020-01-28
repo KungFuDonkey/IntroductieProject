@@ -52,7 +52,7 @@ public class Vulcasaur : Player
                 status.animationValues[2] = false;
             }
 
-            if (inputs[7] && status.eTimer < 0)
+            if (inputs[7] && status.eTimer < 0 && status.isGrounded)
             {
                 eAttack();
                 status.animationValues[2] = false;

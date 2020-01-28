@@ -73,7 +73,7 @@ public class Effect
             }
             else
             {
-                status.ySpeed = -3;
+                status.ySpeed = -4;
             }
         }
         status.ySpeed -= status.gravity * Time.deltaTime;

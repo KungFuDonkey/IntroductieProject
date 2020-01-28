@@ -23,8 +23,7 @@ public abstract class Player
     public float verticalRotation;
     float stormDamage, STORMDAMAGE = 2, stormDamageTimer, STORMDAMAGETIMER = 2;
     public int evolutionStage = 1;
-    bool readyToEvolve = false;
-    public bool inStorm = false;
+    bool readyToEvolve = false, inStorm = false;
 
     void Awake()
     {
