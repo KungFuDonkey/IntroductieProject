@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject startMenu, lobby, characterSelection, loadingScreen;
     [SerializeField] GameObject server;
     [SerializeField] GameObject startButton;
+    public GameObject startScreen;
     float timer = 10f, loadTime, LOADTIME = 1;
     bool startCounter = false, loading = false;
 
@@ -159,7 +160,7 @@ public class UIManager : MonoBehaviour
                 ServerStart.started = true;
                 GameManager.instance.BattleBus.GetComponent<AudioSource>().Play();
                 setMenuStatus(false);
-                Destroy(GameObject.Find("Main Camera"));
+                Destroy(startScreen);
                 GameManager.instance.freezeInput = false;
                 loadTime = 0;
             }

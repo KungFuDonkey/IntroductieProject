@@ -109,6 +109,5 @@ public class HUD : MonoBehaviour
     public void Spectate()
     {
         Instantiate(Spectator, transform.position, transform.rotation);
-        Destroy(transform.parent.gameObject);
     }
 }
