@@ -46,7 +46,7 @@ public class Charmandolphin : Player
 
     public override void UpdatePlayer()
     {
-        if (!status.silenced && !GameManager.instance.inInventory)
+        if (!status.silenced)
         {
             if (inputs[10] && status.fireTimer < 0)
             {

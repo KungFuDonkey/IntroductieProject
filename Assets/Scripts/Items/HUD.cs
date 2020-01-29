@@ -45,7 +45,7 @@ public class HUD : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            GameManager.instance.inInventory = !GameManager.instance.inInventory;
+            GameManager.instance.freezeInput = !GameManager.instance.freezeInput;
             jinventoryUI.SetActive(!jinventoryUI.activeSelf);
             Cursor.visible = !Cursor.visible;
             if (Cursor.lockState == CursorLockMode.None)

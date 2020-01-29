@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] walls;
     public GameObject BattleBus;
     public LayerMask groundMask;
-    public bool freezeInput = false, inInventory = false;
+    public bool freezeInput = false;
     [SerializeField] GameObject[] characters = new GameObject[3];
     [SerializeField] GameObject[] enemies = new GameObject[3];
     [SerializeField] GameObject[] playerObject;
