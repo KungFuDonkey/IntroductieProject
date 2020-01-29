@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    Vector3 newPos;
+    Vector3 oldPos;
+    float newPosTime;
+    float oldPosTime;
+
     public GameObject Allparts;
     public PlayerController controller;
     public CharacterController characterController;
@@ -27,6 +32,19 @@ public class PlayerManager : MonoBehaviour
         instance = this;
     }
 
+    void Update()
+    {
+        Vector3 pos = oldPos + (Time.deltaTime / (newPosTime - oldPosTime)) * (oldPos - newPos);
+        transform.position = pos;
+    }
+
+    public void receiveNewPos(float time, Vector3 pos)
+    {
+        oldPos = newPos;
+        oldPosTime = newPosTime;
+        newPos = pos;
+        newPosTime = time;
+    }
     public void SetAnimations(bool[] animationValues)
     {
         playerAnimator.SetBool("IsWalking", animationValues[0]);

@@ -38,8 +38,8 @@ public class HealthBar : MonoBehaviour
     public void Update()
     {
         float currentXValue = currentHealth * stepOffset + minXValue;
-        color.g = (byte)currentHealth;
-        color.r = (byte)(100 - currentHealth);
+        color.g = (byte)((currentHealth / maxHealth) * 255);
+        color.r = (byte)((1 - currentHealth / maxHealth) * 255);
         position.x = currentXValue;
         healthTransform.position = position;
         visualHealth.color = color;

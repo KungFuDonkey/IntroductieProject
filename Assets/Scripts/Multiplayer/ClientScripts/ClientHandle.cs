@@ -37,7 +37,7 @@ public class ClientHandle : MonoBehaviour
         if(time > GameManager.instance.players[_id].lastPacketTime)
         {
             GameManager.instance.players[_id].lastPacketTime = time;
-            GameManager.instance.players[_id].transform.position = _position;
+            GameManager.instance.players[_id].receiveNewPos(time, _position);
         }
     }
 
