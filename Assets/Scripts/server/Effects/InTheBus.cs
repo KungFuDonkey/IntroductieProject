@@ -30,7 +30,7 @@ public class InTheBus : Effect
             duration = 0;
             status.effects.Remove(key);
             int effect = Server.clients[owner].player.status.effectcount;
-            Server.clients[owner].player.status.effects.Add(effect, new Parachuting(20, true, owner, effect));
+            Server.clients[owner].player.status.effects.Add(effect, new Parachuting(20, false, owner, effect));
             Server.clients[owner].player.status.effectcount++;
         }
         status.inputDirection.y = status.ySpeed;

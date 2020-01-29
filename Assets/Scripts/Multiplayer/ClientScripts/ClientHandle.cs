@@ -252,7 +252,6 @@ public class ClientHandle : MonoBehaviour
 
     public static void ScoreboardUpdate(Packet _packet)
     {
-        Debug.Log("UpdateClient");
         int i = _packet.ReadInt();
         for (int j = 0; j < i; j++)
         {
@@ -265,7 +264,6 @@ public class ClientHandle : MonoBehaviour
 
     public static void ScoreboardSetUp(Packet _packet)
     {
-        Debug.Log("SetUpClient");
         foreach (GameObject score in GameManager.instance.players[Client.instance.myId].playerHUD.scores)
         {
             Destroy(score);
@@ -280,7 +278,6 @@ public class ClientHandle : MonoBehaviour
             score.transform.GetChild(1).GetComponent<Text>().text = "0";
             score.transform.GetChild(2).GetComponent<Text>().text = "0";
             GameManager.instance.players[Client.instance.myId].playerHUD.scores.Add(score);
-            Debug.Log("Spawned score: " + score);
         }
         if (i > 12)
         {

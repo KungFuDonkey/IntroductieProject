@@ -21,7 +21,7 @@ public class Vulcano : Projectile
         jumping = false;
         used = false;
         timer = _timer;
-        damage = 20;
+        damage = 15;
     }
 
     public override void UpdateProjectile()

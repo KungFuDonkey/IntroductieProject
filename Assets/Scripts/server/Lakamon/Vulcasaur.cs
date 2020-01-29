@@ -13,7 +13,6 @@ public class Vulcasaur : Player
         Effect defaultEffect = Effect.Vulcasaur;
         status.defaultStatus = defaultEffect;
         status.effects.Add(0,defaultEffect);
-        Debug.Log("values are Set");
         status.groundmask = GameManager.instance.groundMask;
         inputs = new bool[12];
         status.animationValues = new bool[4]
@@ -47,7 +46,7 @@ public class Vulcasaur : Player
     public override void UpdatePlayer()
     {
         base.UpdatePlayer();
-        if (!status.silenced)
+        if (!status.silenced && !GameManager.instance.inInventory)
         {
             if (inputs[10] && status.fireTimer < 0)
             {

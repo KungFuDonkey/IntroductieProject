@@ -13,8 +13,8 @@ public enum Type
 
 public abstract class Player
 {
-    public int id, projectile, selectedCharacter, kills = 0, damage = 0, evolutionStage = 1, lastHitPlayer;
-    public float verticalRotation;
+    public int id, projectile, selectedCharacter, kills = 0, evolutionStage = 1, lastHitPlayer;
+    public float verticalRotation, damage = 0;
     public string username;
     public PlayerStatus status;
     public Transform avatar, projectileSpawner, projectileSpawner2, projectileSpawner3;
@@ -40,7 +40,7 @@ public abstract class Player
                 projectileSpawner3 = _gameobject.GetComponentInChildren<PlayerObjectsAllocater>().projectileSpawner3;
                 Debug.Log("avatar found");
                 int effect = Server.clients[id].player.status.effectcount;
-                Server.clients[id].player.status.effects.Add(effect, new InTheBus(20, true, id, effect));
+                Server.clients[id].player.status.effects.Add(effect, new InTheBus(20, false, id, effect));
                 Server.clients[id].player.status.effectcount++;
             }
             catch
@@ -116,16 +116,16 @@ public abstract class Player
         {
             if (Type.water == projectile.type)
             {
-                damageMultiplier = 1.5f;
+                damageMultiplier = 1.2f;
             }
             else if (Type.grass == projectile.type)
             {
-                damageMultiplier = 0.6667f;
+                damageMultiplier = 0.8333f;
             }
         }
         else if (status.type + 1 == projectile.type)
         {
-            damageMultiplier = 1.5f;
+            damageMultiplier = 1.2f;
         }
         else if (status.type == projectile.type)
         {
@@ -133,7 +133,7 @@ public abstract class Player
         }
         else
         {
-            damageMultiplier = 0.6667f;
+            damageMultiplier = 0.8333f;
         }
         status.defaultStatus.dshield -= projectile.damage * damageMultiplier * status.damageBoost;
         if (status.defaultStatus.dshield <= 0)

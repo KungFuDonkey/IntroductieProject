@@ -45,7 +45,7 @@ public class playerLook : MonoBehaviour
             mouseX = 0;
             mouseY = 0;
         }
-        if (!GameManager.instance.freezeInput)
+        if (!GameManager.instance.inInventory)
         {
             verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
             verticalRotation += mouseY * sensitivity * Time.deltaTime;

@@ -17,6 +17,7 @@ public class VulcanoJumping : Effect
         duration = _duration;
         owner = _owner;
         player = Server.clients[_owner].player as Vulcasaur;
+        projectileOwner = _projectileOwner;
         jumping = false;
         priority = 1;
         name = "vulcano";
@@ -33,7 +34,7 @@ public class VulcanoJumping : Effect
         }
 
         status.isGrounded = Physics.CheckSphere(status.groundCheck.position, 1f, status.groundmask);
-        if (duration < startDuration * 0.6f && status.isGrounded)
+        if (duration < startDuration * 0.5f && status.isGrounded)
         {
             jumping = false;
             duration = 0;
@@ -45,6 +46,7 @@ public class VulcanoJumping : Effect
                 {
                     if (playerManager.id != owner)
                     {
+                        Debug.Log("HitPlayer");
                         Server.clients[playerManager.id].player.Hit(projectileOwner);
                     }
                 }

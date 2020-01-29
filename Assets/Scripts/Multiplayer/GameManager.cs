@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] walls;
     public GameObject BattleBus;
     public LayerMask groundMask;
-    public bool freezeInput = false;
+    public bool freezeInput = false, inInventory = false;
     [SerializeField] GameObject[] characters = new GameObject[3];
     [SerializeField] GameObject[] enemies = new GameObject[3];
     [SerializeField] GameObject[] playerObject;
@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     public void SpawnProjectile(int _id, Vector3 _position, Quaternion _rotation, int moveIndex, int owner)
     {
         GameObject _projectile;
-        //todo : different projectiles
         _projectile = Instantiate(playerObject[moveIndex], _position, _rotation);
         _projectile.GetComponent<ProjectileManager>().id = _id;
         projectiles.Add(_id, _projectile.GetComponent<ProjectileManager>());
@@ -96,7 +95,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F12) && Client.instance.host)
         {
             ServerStart.instance.resetScreen.SetActive(true);
-            GameManager.instance.freezeInput = true;
+            freezeInput = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }

@@ -404,7 +404,6 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.ScoreboardUpdate))
         {
-            Debug.Log("UpdateServer");
             List<int[]> scores = new List<int[]>();
             int i = 0;
             foreach (ServerClient client in Server.clients.Values)
@@ -414,7 +413,7 @@ public class ServerSend
                     i++;
                     int[] score = new int[2];
                     score[0] = client.player.kills;
-                    score[1] = client.player.damage;
+                    score[1] = (int)client.player.damage;
                     scores.Add(score);
                 }
             }
@@ -434,7 +433,6 @@ public class ServerSend
     {
         using (Packet _packet = new Packet((int)ServerPackets.ScoreboardSetUp))
         {
-            Debug.Log("SetUpServer");
             List<string> usernames = new List<string>();
             int i = 0;
             foreach (ServerClient client in Server.clients.Values)
